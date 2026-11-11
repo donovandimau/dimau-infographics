@@ -34,6 +34,13 @@ const LOADERS = {
   almanac: () => import('../showcase.js').then(m => ({ default: (m.default || m).Almanac })),
   goalmeter: () => import('../showcase.js').then(m => ({ default: (m.default || m).Goalmeter })),
   dayclock: () => import('../showcase.js').then(m => ({ default: (m.default || m).Dayclock })),
+  // the six compare-and-decide formats share one file
+  dropoff: () => import('../compare.js').then(m => ({ default: (m.default || m).Dropoff })),
+  quadrant: () => import('../compare.js').then(m => ({ default: (m.default || m).Quadrant })),
+  slope: () => import('../compare.js').then(m => ({ default: (m.default || m).Slope })),
+  pathfinder: () => import('../compare.js').then(m => ({ default: (m.default || m).Pathfinder })),
+  radar: () => import('../compare.js').then(m => ({ default: (m.default || m).Radar })),
+  pyramid: () => import('../compare.js').then(m => ({ default: (m.default || m).Pyramid })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -63,7 +70,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);
