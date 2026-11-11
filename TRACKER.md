@@ -14,7 +14,7 @@
 - Status: v1 merged to `main` (PR #1, 11 Nov 2026); not live yet
 - Templates: Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline (time)
 - Next action: import this repo as a Vercel project (team donovandimau-3468s-projects, no build step), then set the live address here and on the Ops card
-- Blocker: no Vercel project yet (needs one import in the Vercel dashboard after approval)
+- Blocker: no Vercel project yet (needs one import in the Vercel dashboard)
 
 ## Rules for this library
 - `catalog.json` is the one list of templates. The loader (`v1/dimau-infographics.js`) and `tests/smoke.cjs` must agree with it; the test fails if they do not.
