@@ -45,7 +45,6 @@
   <section class="panel">
     <div class="demo-head"><div><p class="eyebrow">Proportion · one square per thing</p><h1>Peoplegrid</h1><p class="lede">Every square is one thing, here one FijiLearn chapter. Switch between all together, grouped blocks and bars and watch the same squares move. Tap a key to pick out one group.</p></div></div>
     <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
-    <p class="out" id="out" aria-live="polite"></p>
     <p class="row" style="margin:10px 0 0;gap:10px"><span class="chip">Real data</span><span style="font-size:13px;color:var(--muted)">The published FijiLearn catalogue: 40 courses, 109 chapters, exported 11 November 2026.</span></p>
   </section>
   <section class="panel use stack" id="use"></section>
@@ -55,13 +54,9 @@
 <script src="/templates/demo.js"></script>
 <script>
 (function () {
-  var out = document.getElementById('out');
-  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   DIDemo.usePanel(document.getElementById('use'), 'peoplegrid');
   var tl = new Peoplegrid(document.getElementById('stage'), window.PEOPLEGRID_DATA, {});
   window.timeline = tl;
-  
-  
 })();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>

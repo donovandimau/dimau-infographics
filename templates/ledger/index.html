@@ -45,7 +45,6 @@
   <section class="panel">
     <div class="demo-head"><div><p class="eyebrow">Table · look things up</p><h1>Ledger</h1><p class="lede">A table that does more: sort any column, search as you type, bars and colour inside the cells, and tap a row to open its detail. Tables are the most published chart type there is.</p></div></div>
     <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
-    <p class="out" id="out" aria-live="polite"></p>
     <p class="row" style="margin:10px 0 0;gap:10px"><span class="chip">Real data</span><span style="font-size:13px;color:var(--muted)">The published FijiLearn catalogue: 40 courses, 109 chapters, exported 11 November 2026.</span></p>
   </section>
   <section class="panel use stack" id="use"></section>
@@ -55,13 +54,9 @@
 <script src="/templates/demo.js"></script>
 <script>
 (function () {
-  var out = document.getElementById('out');
-  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   DIDemo.usePanel(document.getElementById('use'), 'ledger');
   var tl = new Ledger(document.getElementById('stage'), window.LEDGER_DATA, {});
   window.timeline = tl;
-  
-  
 })();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>

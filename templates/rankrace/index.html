@@ -45,7 +45,6 @@
   <section class="panel">
     <div class="demo-head"><div><p class="eyebrow">Comparison · rankings over time</p><h1>Rankrace</h1><p class="lede">Bars overtake one another as time plays. Press Play, or drag the slider to any moment. The sentence underneath says who leads and who climbed most.</p></div></div>
     <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
-    <p class="out" id="out" aria-live="polite"></p>
     <p class="row" style="margin:10px 0 0;gap:10px"><span class="example-flag">Example figures</span><span style="font-size:13px;color:var(--muted)">Weekly sales at a village market stall, made up to show the template.</span></p>
   </section>
   <section class="panel use stack" id="use"></section>
@@ -55,13 +54,10 @@
 <script src="/templates/demo.js"></script>
 <script>
 (function () {
-  var out = document.getElementById('out');
-  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   DIDemo.usePanel(document.getElementById('use'), 'rankrace');
   var tl = new Rankrace(document.getElementById('stage'), window.RANKRACE_DATA, {});
   window.timeline = tl;
   
-  tl.on('frame', function (e) {});
 })();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>

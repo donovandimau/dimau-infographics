@@ -45,7 +45,6 @@
   <section class="panel">
     <div class="demo-head"><div><p class="eyebrow">Flow · where it goes</p><h1>Flowbank</h1><p class="lede">A flow diagram: each band is as thick as the amount it carries. Tap a band or a box to follow it, and the sentence underneath says what share goes where.</p></div></div>
     <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
-    <p class="out" id="out" aria-live="polite"></p>
     <p class="row" style="margin:10px 0 0;gap:10px"><span class="example-flag">Example figures</span><span style="font-size:13px;color:var(--muted)">Where a fortnight’s pay goes: the same example budget as Tidepool.</span></p>
   </section>
   <section class="panel use stack" id="use"></section>
@@ -55,13 +54,9 @@
 <script src="/templates/demo.js"></script>
 <script>
 (function () {
-  var out = document.getElementById('out');
-  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   DIDemo.usePanel(document.getElementById('use'), 'flowbank');
   var tl = new Flowbank(document.getElementById('stage'), window.FLOWBANK_DATA, {});
   window.timeline = tl;
-  
-  
 })();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>

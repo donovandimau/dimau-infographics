@@ -45,7 +45,6 @@
   <section class="panel">
     <div class="demo-head"><div><p class="eyebrow">Prediction · draw your guess</p><h1>Guessline</h1><p class="lede">The reader draws where they think the line goes, then the real line is revealed and their guess is scored. People remember a number far better after guessing it first.</p></div></div>
     <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
-    <p class="out" id="out" aria-live="polite"></p>
     <p class="row" style="margin:10px 0 0;gap:10px"><span class="chip">Calculated</span><span style="font-size:13px;color:var(--muted)">Plain arithmetic: FJD 60 saved every fortnight with 5% a year interest added each fortnight.</span></p>
   </section>
   <section class="panel use stack" id="use"></section>
@@ -55,13 +54,9 @@
 <script src="/templates/demo.js"></script>
 <script>
 (function () {
-  var out = document.getElementById('out');
-  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   DIDemo.usePanel(document.getElementById('use'), 'guessline');
   var tl = new Guessline(document.getElementById('stage'), window.GUESSLINE_DATA, {});
   window.timeline = tl;
-  
-  
 })();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>

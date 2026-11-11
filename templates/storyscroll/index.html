@@ -45,7 +45,6 @@
   <section class="panel">
     <div class="demo-head"><div><p class="eyebrow">Story · scroll to explain</p><h1>Storyscroll</h1><p class="lede">Scrollytelling: the chart stays in view while the story scrolls past it, and each step re-sorts and highlights the chart to make one point. On a phone the chart sits on top and the steps slide over.</p></div></div>
     <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
-    <p class="out" id="out" aria-live="polite"></p>
     <p class="row" style="margin:10px 0 0;gap:10px"><span class="chip">Real data</span><span style="font-size:13px;color:var(--muted)">The published FijiLearn catalogue: 40 courses, 109 chapters, exported 11 November 2026.</span></p>
   </section>
   <section class="panel use stack" id="use"></section>
@@ -55,13 +54,9 @@
 <script src="/templates/demo.js"></script>
 <script>
 (function () {
-  var out = document.getElementById('out');
-  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   DIDemo.usePanel(document.getElementById('use'), 'storyscroll');
   var tl = new Storyscroll(document.getElementById('stage'), window.STORYSCROLL_DATA, { stickyTop: document.querySelector('.site-head').offsetHeight });
   window.timeline = tl;
-  
-  
 })();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>
