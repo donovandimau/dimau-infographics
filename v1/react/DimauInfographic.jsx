@@ -20,6 +20,13 @@ const LOADERS = {
   swimlane: () => import('../timelines.js').then(m => ({ default: (m.default || m).Swimlane })),
   roadmap: () => import('../timelines.js').then(m => ({ default: (m.default || m).Roadmap })),
   waypath: () => import('../timelines.js').then(m => ({ default: (m.default || m).Waypath })),
+  // the six story charts share one file
+  rankrace: () => import('../charts.js').then(m => ({ default: (m.default || m).Rankrace })),
+  peoplegrid: () => import('../charts.js').then(m => ({ default: (m.default || m).Peoplegrid })),
+  guessline: () => import('../charts.js').then(m => ({ default: (m.default || m).Guessline })),
+  flowbank: () => import('../charts.js').then(m => ({ default: (m.default || m).Flowbank })),
+  ledger: () => import('../charts.js').then(m => ({ default: (m.default || m).Ledger })),
+  storyscroll: () => import('../charts.js').then(m => ({ default: (m.default || m).Storyscroll })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -49,7 +56,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

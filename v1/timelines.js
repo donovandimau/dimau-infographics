@@ -443,7 +443,9 @@
       }
       const now = new Date(), tn = now.getFullYear() + (now.getMonth() + now.getDate() / 31) / 12;
       if (tn > this.view[0] && tn < this.view[1]) axis += '<line x1="' + f1(this._x(tn)) + '" y1="' + axisH + '" x2="' + f1(this._x(tn)) + '" y2="' + H + '" stroke="' + T.accent + '" stroke-width="2"/><text x="' + f1(this._x(tn) + 5) + '" y="' + (H - 6) + '" font-size="11" font-weight="700" fill="' + T.accent + '">Today</text>';
+      const act = document.activeElement, keep = act && this.$stage.contains(act) ? (act.closest('.ev') ? act.closest('.ev').dataset.id : '__stage') : null;
       this.$stage.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" height="' + H + '" font-family="' + esc(T.font) + '">' + bands + body + axis + '</svg>';
+      if (keep && keep !== '__stage') { const g = this.$stage.querySelector('.ev[data-id="' + CSS.escape(keep) + '"]'); (g || this.$stage).focus({ preventScroll: true }); }
       this._nav(T);
     }
     _nav(T) {
@@ -569,8 +571,10 @@
         deps += '<path d="M' + f1(p.f) + ' ' + f1(p.y) + ' H' + f1(mx) + ' V' + f1(q.y) + ' H' + f1(q.s - 4) + '" fill="none" stroke="' + T.muted + '" stroke-width="1.4" opacity=".7" marker-end="url(#rm-arrow)"/>';
       }));
       const defs = '<defs><marker id="rm-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="' + T.muted + '"/></marker></defs>';
+      const act = document.activeElement, keep = act && this.$wrap.contains(act) && act.closest('.rm-bar') ? act.closest('.rm-bar').dataset.id : null;
       this.$wrap.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" font-family="' + esc(T.font) + '">' + defs + g + deps + '</svg>';
       this._bindBars();
+      if (keep) { const b = this.$wrap.querySelector('.rm-bar[data-id="' + CSS.escape(keep) + '"]'); b && b.focus({ preventScroll: true }); }
     }
     _bindBars() {
       const svg = this.$wrap.querySelector('svg');
