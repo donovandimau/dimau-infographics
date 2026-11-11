@@ -1,5 +1,7 @@
 import { Worker } from 'worker_threads';
 import { createRequire } from 'module';
+import path from 'path';
+import { pathToFileURL } from 'url';
 
 /**
  * @antv/infographic's server renderer installs a fake browser (window, document, ...) on the global
@@ -10,7 +12,7 @@ import { createRequire } from 'module';
 
 const WORKER_CODE = `
 const { parentPort, workerData } = require('worker_threads');
-const ready = Promise.resolve().then(() => require(workerData.entry));
+const ready = import(workerData.entry);
 parentPort.on('message', async ({ id, options }) => {
   try {
     const { renderToString } = await ready;
@@ -30,9 +32,11 @@ const pending = new Map<number, Pending>();
 
 function entryPath(): string {
   // Resolved here (not in the worker) so it works wherever the server's node_modules live.
-  // next.config.ts ships the package and its dependencies with every API function.
+  // The ES module build is loaded: the CommonJS build require()s ES-only packages (lodash-es),
+  // which the Vercel runtime refuses. next.config.ts ships the package and all its dependencies.
   const req = createRequire(/*turbopackIgnore: true*/ `${process.cwd()}/package.json`);
-  return req.resolve('@antv/infographic/ssr');
+  const cjsEntry = req.resolve('@antv/infographic/ssr'); // <pkg>/lib/ssr/index.js
+  return pathToFileURL(path.resolve(path.dirname(cjsEntry), '..', '..', 'esm', 'ssr', 'index.js')).href;
 }
 
 function getWorker(): Worker {
