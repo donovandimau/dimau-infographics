@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Community Pulse · Dimau Infographics</title>
+<meta name="description" content="Community Pulse: A province or community hub at a glance: creators, mood, top tag and tips around one centre.">
+<meta property="og:title" content="Community Pulse · Dimau Infographics">
+<meta property="og:description" content="Community Pulse: A province or community hub at a glance: creators, mood, top tag and tips around one centre.">
+<meta property="og:image" content="/icons/icon-512.png">
+<meta name="theme-color" content="#87CEEB">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/templates/cards.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Dimau Infographics home"><img src="/icons/icon.svg" alt=""><b>Dimau Infographics</b></a>
+    <nav class="site-nav" aria-label="Templates">
+      <a href="/">Library</a>
+      <a href="/templates/lanternfield/">Lanternfield</a>
+      <a href="/templates/tidepool/">Tidepool</a>
+      <a href="/templates/strata/">Strata</a>
+      <a href="/templates/riverline/">Riverline</a>
+      <a href="/#timelines">Timelines</a>
+      <a href="/#cards" aria-current="page">Cards</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap card-page">
+  <section class="panel">
+    <div class="demo-head">
+      <div><p class="eyebrow">Signal card · sota-kece-community-pulse</p><h1>Community Pulse</h1><p class="lede">A province or community hub at a glance: creators, mood, top tag and tips around one centre.</p></div>
+    </div>
+    <div class="card-grid">
+      <div class="cardwrap" data-theme="dark">
+        <div id="stage"></div>
+        <p class="out" id="out" aria-live="polite">Tap or hover any part of the card for detail.</p>
+      </div>
+      <aside class="editor" aria-label="Card values">
+        <div class="row tools">
+          <div class="seg" id="theme" role="group" aria-label="Theme"><button type="button" data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">Light</button></div>
+          <div class="seg" id="variant" role="group" aria-label="Shape"><button type="button" data-v="main" aria-pressed="true">Full</button><button type="button" data-v="card" aria-pressed="false">Share card</button></div>
+        </div>
+        <div class="row tools"><button class="btn primary" type="button" id="png">Download PNG</button><button class="btn" type="button" id="svg">Download SVG</button><span class="note" id="note" aria-live="polite"></span></div>
+        <h2>Values</h2>
+        <p class="example-flag">Example values</p>
+        <div id="fields" class="fields"></div>
+        <button class="btn" type="button" id="reset">Back to the defaults</button>
+      </aside>
+    </div>
+  </section>
+  <section class="panel use stack">
+    <h2>Use it in an app</h2>
+    <p>Every value is optional: anything left out shows its default. The card picks the tall layout by itself on narrow screens, and <code>card.toPNG()</code> or <code>card.download('png')</code> gives the app an image to share.</p>
+    <div class="row"><button class="btn" type="button" id="copy">Copy embed code</button></div>
+    <pre id="code"></pre>
+  </section>
+</main>
+<script src="/v1/signal-cards.js"></script>
+<script src="/templates/cards-demo.js"></script>
+<script>DICardDemo({ id: "sota-kece-community-pulse", global: "CommunityPulse" });</script>
+<script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>
+<script src="https://fijian-assistant-api.vercel.app/dimau-consistency.js" defer></script>
+</body>
+</html>

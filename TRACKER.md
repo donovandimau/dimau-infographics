@@ -11,9 +11,10 @@
 - What it is: **Infographics Fiji** — the template registry, studio and render API (`/vault`, `/studio/[slug]`, `/api/v1/*`) plus the v1 interactive template library (`/v1/`, unchanged, served from `public/`). Apps load `/v1/dimau-infographics.js` from the live address and pick a template by name, or call the render API. Related but separate: Dimau Visuals (`platform-dimau-visuals`) is a finished product; this is the shared library apps build with.
 
 ## Current state
-- Status: v1 live since 11 Nov 2026; Infographics Fiji v2 (Next.js app + render API) on branch `claude/infographics-fiji-studio-api`
-- Templates: v1 Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline (time); v2 starters rbf-sandbox-settlement-flow, sota-kece-community-pulse, pacific-backhaul-node-map, debt-freedom-trajectory
-- Next action: merge the v2 PR — the Vercel project must use the Next.js framework preset (it was a no-build static site); set env vars from `.env.example`; run `supabase/migrations/001_infographics_fiji.sql` then `supabase/seed.sql`
+- Status: v1 live since 11 Nov 2026 (12 templates); Infographics Fiji v2 (Next.js app + render API) in PR #4
+- Templates, v1 interactive (12): Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline, Switchback, Swimlane, Roadmap (time), Waypath (steps), and four signal cards from the Infographics Fiji spec (browser-drawn, `v1/signal-cards.js`)
+- Templates, v2 render API (4, same slugs as the signal cards): rbf-sandbox-settlement-flow, sota-kece-community-pulse (+ 1200x630 share card), pacific-backhaul-node-map, debt-freedom-trajectory — server-rendered SVG/PNG at `/api/v1/render/<slug>` for img tags, link previews, emails and server code
+- Next action: merge PR #4; set env vars from `.env.example`; run `supabase/migrations/001_infographics_fiji.sql` then `supabase/seed.sql`; apps adopt templates and record each in `catalog.json` `usedBy`
 - Blocker: none for the render API (works with no database); saving from the studio needs the Supabase env vars
 
 ## Rules for this library
@@ -39,6 +40,7 @@
 - 2026-11-11 — Claude — v1 built on `build-v1` and merged by Donovan as PR #1; `npm test` passes at 1360px and 390px. Ops card, room artifact and Command Room post recorded. Rollout row added via Dimau-Ops-Room PR #429. Vercel project NOT created: the automated setup was refused by a permission check, so after approval someone imports this repo in Vercel (team donovandimau-3468s-projects, no build step) and sets the live address on the card. `dimau-pwa.js` was copied unchanged from fiji-planner (md5 cd3f4845…).
 
 ## Done — newest first
+- 2026-11-11 — Claude — v1.1: four signal cards from Donovan's Infographics Fiji spec (settlement flow, community pulse, backhaul node map, debt-freedom trajectory; value slots with defaults, wide/tall/share-card, dark/light, PNG/SVG export) and four timeline views sharing one data shape (Switchback, Swimlane, Roadmap, Waypath), built as original templates from the timeline formats in the links Donovan sent (the pages themselves could not be opened from the build session). The loader now downloads a shared file once. Two garbled spec defaults replaced with marked example values (FJD 1.25M, FJD $4,120). npm test covers all 12 at 1360px and 390px.
 - 2026-11-11 — Claude — Linked the Vercel project and confirmed production at https://dimau-infographics.vercel.app/ serves the site, catalog.json and /v1/ files with open cross-site access. Ops card set to Live.
 - 2026-11-11 — Claude — v1 library merged (PR #1): loader, shared theme, Lanternfield, Tidepool, Strata, Riverline, React wrapper, library site and demo pages, smoke test passing at 1360px and 390px.
 

@@ -13,9 +13,17 @@
     lanternfield: { file: 'lanternfield.js', global: 'Lanternfield' },
     tidepool: { file: 'tidepool.js', global: 'Tidepool' },
     strata: { file: 'strata.js', global: 'Strata' },
-    riverline: { file: 'riverline.js', global: 'Riverline' }
+    riverline: { file: 'riverline.js', global: 'Riverline' },
+    switchback: { file: 'timelines.js', global: 'Switchback' },
+    swimlane: { file: 'timelines.js', global: 'Swimlane' },
+    roadmap: { file: 'timelines.js', global: 'Roadmap' },
+    waypath: { file: 'timelines.js', global: 'Waypath' },
+    'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
+    'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
+    'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
+    'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' }
   };
-  var VERSION = '1.0.0';
+  var VERSION = '1.1.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
@@ -32,15 +40,16 @@
     var t = TEMPLATES[id];
     if (!t) return Promise.reject(new Error('Dimau Infographics: no template called "' + id + '". Available: ' + Object.keys(TEMPLATES).join(', ')));
     if (root[t.global]) return Promise.resolve(root[t.global]);
-    if (loading[id]) return loading[id];
-    loading[id] = new Promise(function (resolve, reject) {
+    // several templates can share one file: download each file once
+    if (loading[t.file]) return loading[t.file].then(function () { return root[t.global] || Promise.reject(new Error('Dimau Infographics: ' + t.file + ' did not define ' + t.global)); });
+    loading[t.file] = new Promise(function (resolve, reject) {
       var s = document.createElement('script');
       s.src = base + t.file; s.async = true; s.crossOrigin = 'anonymous';
       s.onload = function () { root[t.global] ? resolve(root[t.global]) : reject(new Error('Dimau Infographics: ' + t.file + ' loaded but did not define ' + t.global)); };
-      s.onerror = function () { delete loading[id]; reject(new Error('Dimau Infographics: could not download ' + s.src)); };
+      s.onerror = function () { delete loading[t.file]; reject(new Error('Dimau Infographics: could not download ' + s.src)); };
       document.head.appendChild(s);
     });
-    return loading[id];
+    return loading[t.file];
   }
 
   function mount(target, cfg) {

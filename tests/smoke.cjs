@@ -18,7 +18,7 @@ const pass = m => console.log('  ✓ ' + m);
 const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog.json'), 'utf8'));
 const loader = fs.readFileSync(path.join(ROOT, 'v1/dimau-infographics.js'), 'utf8');
 const react = fs.readFileSync(path.join(ROOT, 'v1/react/DimauInfographic.jsx'), 'utf8');
-const loaderIds = [...loader.matchAll(/^\s{4}(\w+): \{ file: '([^']+)', global: '(\w+)' \}/gm)].map(m => ({ id: m[1], file: m[2], global: m[3] }));
+const loaderIds = [...loader.matchAll(/^\s{4}'?([\w-]+)'?: \{ file: '([^']+)', global: '(\w+)' \}/gm)].map(m => ({ id: m[1], file: m[2], global: m[3] }));
 console.log('Catalogue');
 for (const t of catalog.templates) {
   const l = loaderIds.find(x => x.id === t.id);
@@ -26,7 +26,7 @@ for (const t of catalog.templates) {
   else if (l.file !== t.file || l.global !== t.global) fail(t.id + ': loader file/global differ from catalog.json');
   if (!fs.existsSync(path.join(ROOT, 'v1', t.file))) fail(t.id + ': v1/' + t.file + ' missing');
   if (!fs.existsSync(path.join(ROOT, 'templates', t.id, 'index.html'))) fail(t.id + ': demo page missing');
-  if (!new RegExp('\\b' + t.id + ': \\(\\) => import').test(react)) fail(t.id + ': missing from the React wrapper');
+  if (!react.includes("'" + t.id + "'") && !new RegExp('\\b' + t.id + ': \\(\\) => import').test(react)) fail(t.id + ': missing from the React wrapper');
 }
 for (const l of loaderIds) if (!catalog.templates.find(t => t.id === l.id)) fail(l.id + ' is in the loader but not in catalog.json');
 if (!failures.length) pass(catalog.templates.length + ' templates agree across catalog.json, loader and React wrapper');
@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 4, null, { timeout: 8000 });
-      return '4 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 9, null, { timeout: 8000 });
+      return '9 live templates mounted';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
@@ -77,7 +77,63 @@ const PAGES = [
       const on = await p.locator('.rl-card.on').count();
       if (on !== 1) throw new Error('no selected event card');
       return 'step to an event';
-  } }
+  } },
+  { url: '/templates/switchback/', name: 'switchback', check: async p => {
+      const n = await p.locator('.sb-item').count();
+      if (n < 20) throw new Error('only ' + n + ' events');
+      await p.click('.tl-chip >> nth=0');
+      const m = await p.locator('.sb-item').count();
+      if (m >= n) throw new Error('filter did not hide anything');
+      await p.click('.sb-play');
+      await p.waitForTimeout(300);
+      if (await p.locator('.sb-item.on').count() !== 1) throw new Error('story mode did not open an event');
+      await p.click('.sb-play');
+      return n + ' events, filter, story mode';
+  } },
+  { url: '/templates/swimlane/', name: 'swimlane', check: async p => {
+      await p.click('.sl-stage .ev >> nth=0');
+      if (await p.isHidden('.sl-detail')) throw new Error('detail panel did not open');
+      const before = await p.evaluate(() => window.timeline.view.slice());
+      await p.click('[data-z="in"]');
+      const after = await p.evaluate(() => window.timeline.view.slice());
+      if (!(after[1] - after[0] < before[1] - before[0])) throw new Error('zoom did not narrow the view');
+      await p.click('.sl-detail [data-n="1"]');
+      return 'open detail, zoom, next';
+  } },
+  { url: '/templates/roadmap/', name: 'roadmap', check: async p => {
+      const before = await p.evaluate(() => window.timeline._finish());
+      // three weeks is more than the plan's slack, so the finish must move
+      await p.focus('.rm-bar[data-id="data"]');
+      for (let i = 0; i < 3; i++) await p.keyboard.press('ArrowRight');
+      const after = await p.evaluate(() => window.timeline._finish());
+      if (!(after > before)) throw new Error('finish did not move after slipping a task on the critical path');
+      const msg = await p.textContent('.rm-msg');
+      if (!/moves the finish/.test(msg)) throw new Error('no plain-language result: ' + msg);
+      return 'slip a task, dependants and finish move';
+  } },
+  { url: '/templates/waypath/', name: 'waypath', check: async p => {
+      await p.click('.wp-stop >> nth=2');
+      if (!/Stop 3 of 6/.test(await p.textContent('.wp-card'))) throw new Error('stop 3 did not open');
+      for (const s of ['cycle', 'steps', 'road']) { await p.click('[data-s="' + s + '"]'); if (await p.locator('.wp-stop').count() !== 6) throw new Error(s + ' lost stops'); }
+      return 'reveal a stop, three shapes';
+  } },
+  ...['rbf-sandbox-settlement-flow', 'sota-kece-community-pulse', 'pacific-backhaul-node-map', 'debt-freedom-trajectory'].map(id => ({
+    url: '/templates/' + id + '/', name: id, check: async p => {
+      await p.waitForSelector('#stage svg');
+      const first = (await p.$$('#fields input'))[0];
+      await first.fill('Test value 4321');
+      await p.waitForFunction(() => document.querySelector('#stage svg').textContent.includes('4321'), null, { timeout: 4000 });
+      await p.click('#theme [data-v="light"]');
+      const bg = await p.evaluate(() => document.querySelector('#stage svg rect').getAttribute('fill'));
+      if (bg !== '#F8FAFC') throw new Error('light theme not applied: ' + bg);
+      await p.click('#variant [data-v="card"]');
+      const vb = await p.evaluate(() => document.querySelector('#stage svg').getAttribute('viewBox'));
+      if (vb !== '0 0 1200 630') throw new Error('share card viewBox ' + vb);
+      const size = await p.evaluate(() => window.card.toPNG({ scale: 1 }).then(b => b.size));
+      if (size < 5000) throw new Error('PNG export too small: ' + size);
+      return 'edit value, light theme, share card, PNG ' + Math.round(size / 1024) + ' KB';
+    }
+  }))
 ];
 
 const server = http.createServer((req, res) => {
