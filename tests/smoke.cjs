@@ -78,6 +78,20 @@ const PAGES = [
       if (on !== 1) throw new Error('no selected event card');
       return 'step to an event';
   } },
+  { url: '/templates/archive-desk/', name: 'archive-desk', check: async p => {
+      const before = await p.textContent('.ad-folio');
+      await p.click('.ad-next');
+      await p.waitForTimeout(1200);
+      const after = await p.textContent('.ad-folio');
+      if (before === after) throw new Error('page did not turn');
+      await p.click('.ad-hud button[data-mode="watch"]');
+      await p.waitForTimeout(400);
+      if (await p.isHidden('.ad-frame')) throw new Error('lightbox did not open');
+      await p.click('.ad-hud button[data-mode="read"]');
+      await p.click('.ad-badge >> nth=0');
+      if (await p.isHidden('.ad-card')) throw new Error('picture card did not open');
+      return 'turn a page, lightbox, picture card';
+  } },
   { url: '/templates/switchback/', name: 'switchback', check: async p => {
       const n = await p.locator('.sb-item').count();
       if (n < 20) throw new Error('only ' + n + ' events');
@@ -208,7 +222,7 @@ const server = http.createServer((req, res) => {
   for (const vp of [{ name: 'desktop', width: 1360, height: 860 }, { name: 'phone', width: 390, height: 844, isMobile: true, hasTouch: true }]) {
     console.log('\n' + vp.name);
     for (const pg of PAGES) {
-      const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch, deviceScaleFactor: 1 });
+      const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch, deviceScaleFactor: 1, serviceWorkers: 'block' });
       const p = await ctx.newPage();
       const errs = [];
       p.on('pageerror', e => errs.push(e.message));
