@@ -119,9 +119,15 @@
         "Year rail",
         "Category filters",
         "Read more",
-        "Story mode"
+        "Story mode",
+        "Time-gap markers on the spine (+N years)",
+        "Spans drawn as era bars beside the spine",
+        "Spotlight on the card crossing the reading line",
+        "Milestone rings, big tabular dates, connector ticks",
+        "Event-density bars on the year rail",
+        "Optional picture and place on a card"
       ],
-      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?, media?:{src,caption?,alt?}, location?:{label}}] } (shared by every timeline view; Riverline data works too). Switchback options: gapYears (50, 0 = off), spotlight (true), spanBars (true)",
       "events": [
         "open",
         "filter",
