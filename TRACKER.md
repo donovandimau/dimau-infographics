@@ -11,9 +11,9 @@
 - What it is: the one central library of interactive infographic templates. Apps load `/v1/dimau-infographics.js` from the live address and pick a template by name. Related but separate: Dimau Visuals (`platform-dimau-visuals`) is a finished product; this is the shared component library apps build with.
 
 ## Current state
-- Status: first build (v1) on branch `build-v1`, pull request open for Donovan's review
+- Status: v1 merged to `main` (PR #1, 11 Nov 2026); not live yet
 - Templates: Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline (time)
-- Next action: Donovan reviews the pull request on desktop and phone; after approval, merge and connect the Vercel project so apps can load the files
+- Next action: import this repo as a Vercel project (team donovandimau-3468s-projects, no build step), then set the live address here and on the Ops card
 - Blocker: no Vercel project yet (needs one import in the Vercel dashboard after approval)
 
 ## Rules for this library
@@ -26,7 +26,7 @@
 ## In progress — claim a task here BEFORE you start it
 | Started | AI | Task | Branch / PR |
 |---|---|---|---|
-| 2026-11-11 | Claude | First build: library site, loader, four templates, React wrapper | `build-v1` |
+| — | — | nothing claimed | — |
 
 ## Do not change
 - The `--di-*` theme token names and the template ids: apps depend on them.
@@ -35,6 +35,6 @@
 - 2026-11-11 — Claude — v1 built on `build-v1`, PR #1 open (draft) for Donovan's review; `npm test` passes at 1360px and 390px. Ops card, room artifact and Command Room post recorded. Rollout row added via Dimau-Ops-Room PR #429. Vercel project NOT created: the automated setup was refused by a permission check, so after approval someone imports this repo in Vercel (team donovandimau-3468s-projects, no build step) and sets the live address on the card. `dimau-pwa.js` was copied unchanged from fiji-planner (md5 cd3f4845…).
 
 ## Done — newest first
-- nothing logged yet
+- 2026-11-11 — Claude — v1 library merged (PR #1): loader, shared theme, Lanternfield, Tidepool, Strata, Riverline, React wrapper, library site and demo pages, smoke test passing at 1360px and 390px.
 
 _Seeded 2026-11-11 from the Ops Room. From here on, this file is the record for this project._
