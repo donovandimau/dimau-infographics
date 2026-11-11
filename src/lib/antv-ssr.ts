@@ -1,5 +1,6 @@
 import { Worker } from 'worker_threads';
 import { createRequire } from 'module';
+import fs from 'fs';
 import path from 'path';
 import { pathToFileURL } from 'url';
 
@@ -31,12 +32,14 @@ let seq = 0;
 const pending = new Map<number, Pending>();
 
 function entryPath(): string {
-  // Resolved here (not in the worker) so it works wherever the server's node_modules live.
-  // The ES module build is used because that is the one the deployment bundler traces.
+  // The ES module build is used because that is the one the deployment bundler traces
+  // (the CommonJS build under lib/ is not shipped to Vercel).
+  const direct = path.join(/*turbopackIgnore: true*/ process.cwd(), 'node_modules', '@antv', 'infographic', 'esm', 'ssr', 'index.js');
+  if (fs.existsSync(/*turbopackIgnore: true*/ direct)) return pathToFileURL(direct).href;
+  // Fallback for unusual layouts (e.g. hoisted workspaces): resolve the package, then point at its ESM build.
   const req = createRequire(/*turbopackIgnore: true*/ `${process.cwd()}/package.json`);
   const cjsEntry = req.resolve('@antv/infographic/ssr'); // <pkg>/lib/ssr/index.js
-  const pkgRoot = path.resolve(path.dirname(cjsEntry), '..', '..');
-  return pathToFileURL(path.join(pkgRoot, 'esm', 'ssr', 'index.js')).href;
+  return pathToFileURL(path.resolve(path.dirname(cjsEntry), '..', '..', 'esm', 'ssr', 'index.js')).href;
 }
 
 function getWorker(): Worker {
