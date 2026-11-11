@@ -1,4 +1,4 @@
-/*! Timelines 1.0 · Dimau Infographics
+/*! Timelines 1.1 · Dimau Infographics
  *  One timeline dataset, four views. Every view reads the same data, so an app can switch view without
  *  reshaping anything, and Riverline data (lanes/lane) works here too.
  *
@@ -13,7 +13,10 @@
  *
  *  data = { title?, categories|lanes:[{id,label,color?}], eras?:[{start,end,label}],
  *           events:[{ id?, date|start, end?, when?, title, summary?, category|lane, status?, progress?,
- *                     depends?:[id], milestone?, link?, weight? }] }
+ *                     depends?:[id], milestone?, link?, weight?, media?:{src,caption?,alt?}, location?:{label} }] }
+ *  Switchback 1.1 (additive): time-gap markers on the spine, span events drawn as era bars beside the
+ *  spine, the card crossing the reading line spotlit, milestone rings, density bars on the year rail.
+ *  Options: gapYears (50; 0 turns gaps off), spotlight (true), spanBars (true).
  *  dates: a year (1874, -1000), '1874-10', '1874-10-10'.
  *  new Switchback(el, data, opts) · .on('open'|'filter'|'progress'|'change'|'step', fn) · .open(id) · .destroy()
  *  Theme: --di-bg --di-fg --di-muted --di-surface --di-line --di-accent --di-font --di-display --di-mono --di-c-<categoryId>
@@ -166,6 +169,38 @@
 .wp-card h4{margin:0;font:700 18px/1.25 var(--di-display,inherit)}
 .wp-card p{margin:0;font-size:14.5px;line-height:1.55}
 .wp-card small{font:600 12px var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#4f6578)}
+/* Switchback 1.1 */
+.sb-card{border-left:3px solid var(--c);border-radius:6px 14px 14px 6px}
+.sb-card::after{content:"";position:absolute;top:24px;width:30px;height:2px;right:-32px;background:linear-gradient(270deg,var(--c),color-mix(in srgb,var(--c) 15%,transparent))}
+.sb-item.r .sb-card::after{right:auto;left:-32px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 15%,transparent))}
+.sb-card{position:relative}
+.sb-year{display:block;font:700 22px/1.05 var(--di-mono,ui-monospace,monospace);font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--c);margin-bottom:4px}
+.sb-meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
+.sb-meta span{font:700 10.5px/1 var(--di-font,inherit);text-transform:uppercase;letter-spacing:.06em;color:var(--di-muted,#4f6578);border:1px solid var(--di-line,#c9dce8);border-radius:99px;padding:3px 8px}
+.sb-meta span.sb-era{background:color-mix(in srgb,var(--c) 14%,transparent);border-color:color-mix(in srgb,var(--c) 45%,transparent);color:var(--di-fg,#13263a)}
+.sb-loc{margin:6px 0 0;font-size:12.5px;font-weight:600;color:var(--di-muted,#4f6578)}
+.sb-loc::before{content:"";display:inline-block;width:8px;height:8px;margin-right:6px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--c)}
+.sb-media{margin:9px 0 0;border-radius:9px;overflow:hidden;background:var(--di-line,#c9dce8)}
+.sb-media img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.sb-media figcaption{padding:5px 8px;font-size:12px;color:var(--di-muted,#4f6578);background:var(--di-surface,#fff)}
+.sb-item.ms .sb-dot{width:24px;height:24px;margin-left:-12px;top:23px;box-shadow:0 0 0 4px var(--di-surface,#fff),0 0 0 6px var(--c)}
+.sb-gap{position:relative;list-style:none;display:flex;justify-content:center;padding:14px 0;z-index:2}
+.sb-gap span{font:600 11.5px/1 var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#4f6578);background:var(--di-bg,#eef7fb);border:1px dashed var(--di-line,#c9dce8);border-radius:99px;padding:5px 11px}
+.sb-gap::before,.sb-gap::after{content:"";position:absolute;left:50%;width:10px;height:2px;margin-left:-5px;background:var(--di-muted,#4f6578);opacity:.45;transform:skewY(-20deg)}
+.sb-gap::before{top:6px}.sb-gap::after{bottom:6px}
+.sb-bars{position:absolute;left:50%;top:0;bottom:0;width:0;pointer-events:none}
+.sb-bar{position:absolute;width:6px;border-radius:99px;background:var(--c);opacity:.38;pointer-events:auto}
+.sb-bar:hover{opacity:.7}
+.sb.spot .sb-item.seen:not(.cur):not(.on) .sb-card{opacity:.6}
+.sb.spot .sb-item.cur .sb-card{opacity:1;box-shadow:0 0 0 1px var(--c),0 16px 34px -18px color-mix(in srgb,var(--c) 70%,#000)}
+.sb-rail button{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px}
+.sb-rail button i{display:block;height:4px;border-radius:2px;background:currentColor;opacity:.5;justify-self:end}
+.tl.narrow .sb-card::after{left:-23px;right:auto;width:21px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 15%,transparent))}
+.tl.narrow .sb-bars{left:9px}
+.tl.narrow .sb-item .sb-card,.tl.narrow .sb-item.r .sb-card{width:auto;min-width:0}
+.tl.narrow .sb-gap{justify-content:flex-start;padding-left:30px}
+.tl.narrow .sb-gap::before,.tl.narrow .sb-gap::after{left:9px}
+.tl.narrow .sb-item.ms .sb-dot{margin-left:-12px}
 @media (prefers-reduced-motion:reduce){.sb-card,.sb-fill,.sb-dot{transition:none}}
 `;
   function injectStyle() {
@@ -214,29 +249,42 @@
     constructor(el, data, opts) {
       super(el, data, opts);
       el.innerHTML = '<div class="tl-bar"><div class="tl-bar sb-chips" style="margin:0"></div><span style="flex:1"></span><button type="button" class="tl-btn sb-play">Play story</button></div>' +
-        '<div class="sb"><div class="sb-col"><div class="sb-spine"></div><div class="sb-fill"></div><ol class="sb-list"></ol></div><nav class="sb-rail" aria-label="Jump to a year"></nav></div>';
+        '<div class="sb' + (this.o.spotlight ? ' spot' : '') + '"><div class="sb-col"><div class="sb-spine"></div><div class="sb-fill"></div><div class="sb-bars" aria-hidden="true"></div><ol class="sb-list"></ol></div><nav class="sb-rail" aria-label="Jump to a year"></nav></div>';
       this.$chips = el.querySelector('.sb-chips'); this.$list = el.querySelector('.sb-list'); this.$rail = el.querySelector('.sb-rail');
-      this.$fill = el.querySelector('.sb-fill'); this.$play = el.querySelector('.sb-play');
+      this.$fill = el.querySelector('.sb-fill'); this.$play = el.querySelector('.sb-play'); this.$bars = el.querySelector('.sb-bars');
       this.chips(this.$chips);
       this.$play.onclick = () => (this._story ? this.stop() : this.play());
+      this.$list.addEventListener('load', () => this._bars(), true);
       this._onScroll = () => { cancelAnimationFrame(this._raf); this._raf = requestAnimationFrame(() => this._progress()); };
       window.addEventListener('scroll', this._onScroll, { passive: true });
       window.addEventListener('resize', this._onScroll);
       this.render();
     }
-    _resize() { const n = this.el.clientWidth < 640; if (n !== this.el.classList.contains('narrow')) { this.el.classList.toggle('narrow', n); this._progress(); } else this._progress(); }
+    _resize() { const n = this.el.clientWidth < 640; if (n !== this.el.classList.contains('narrow')) this.el.classList.toggle('narrow', n); this._bars(); this._progress(); }
     render() {
       const evs = this.visible();
-      this.$list.querySelectorAll('.sb-item').forEach(n => n.remove());
+      this.$list.querySelectorAll('.sb-item, .sb-gap').forEach(n => n.remove());
       const frag = document.createDocumentFragment();
+      const gapY = this.o.gapYears;
       evs.forEach((e, i) => {
+        const prev = evs[i - 1];
+        if (gapY > 0 && prev && prev.p !== 'seq' && e.t0 - prev.t0 >= gapY) {
+          const g = document.createElement('li');
+          g.className = 'sb-gap'; g.setAttribute('aria-hidden', 'true');
+          g.innerHTML = '<span>+' + Math.round(e.t0 - prev.t0).toLocaleString('en-GB') + ' years</span>';
+          frag.appendChild(g);
+        }
         const li = document.createElement('li');
-        li.className = 'sb-item' + (i % 2 ? ' r' : '');
+        const ms = e.milestone || e.w >= 3;
+        li.className = 'sb-item' + (i % 2 ? ' r' : '') + (ms ? ' ms' : '');
         li.dataset.id = e.id;
         li.style.setProperty('--c', catColor(this.el, e.cat));
         li.innerHTML = '<div class="sb-dot" aria-hidden="true"></div><article class="sb-card" tabindex="0" aria-label="' + esc(e.whenText + ': ' + e.title) + '">' +
-          '<div class="sb-when"><b>' + esc(e.whenText) + '</b>' + (e.spanText ? '<span>' + esc(e.spanText) + '</span>' : '') + (this.d.cats.length > 1 ? '<span>' + esc(e.cat.label) + '</span>' : '') + '</div>' +
+          (e.whenText ? '<b class="sb-year">' + esc(e.whenText) + '</b>' : '') +
+          ((e.spanText || this.d.cats.length > 1) ? '<div class="sb-meta">' + (e.spanText ? '<span class="sb-era">' + esc(e.spanText) + '</span>' : '') + (this.d.cats.length > 1 ? '<span>' + esc(e.cat.label) + '</span>' : '') + '</div>' : '') +
           '<h4>' + esc(e.title) + '</h4>' + (e.summary ? '<p>' + esc(e.summary) + '</p><button type="button" class="sb-more" hidden>Read more</button>' : '') +
+          (e.location && e.location.label ? '<p class="sb-loc" style="-webkit-line-clamp:unset">' + esc(e.location.label) + '</p>' : '') +
+          (e.media && e.media.src ? '<figure class="sb-media"><img src="' + esc(e.media.src) + '" alt="' + esc(e.media.alt || e.media.caption || '') + '" loading="lazy" decoding="async">' + (e.media.caption ? '<figcaption>' + esc(e.media.caption) + '</figcaption>' : '') + '</figure>' : '') +
           (e.link ? '<p style="-webkit-line-clamp:unset"><a href="' + esc(e.link) + '" target="_blank" rel="noopener">Source</a></p>' : '') + '</article>';
         frag.appendChild(li);
       });
@@ -253,10 +301,30 @@
       // year rail: one jump target per decade (or per year for short spans)
       const ys = evs.map(e => e.t0), spanY = ys.length ? ys[ys.length - 1] - ys[0] : 0;
       const step = spanY > 200 ? 100 : spanY > 40 ? 10 : 1, marks = [];
-      evs.forEach(e => { const k = Math.floor(e.t0 / step) * step; if (!marks.length || marks[marks.length - 1].k !== k) marks.push({ k, id: e.id }); });
-      this.$rail.innerHTML = marks.map(m => '<button type="button" data-id="' + esc(m.id) + '">' + esc(step === 1 ? yearLabel(m.k) : yearLabel(m.k) + (m.k >= 0 ? 's' : '')) + '</button>').join('');
+      evs.forEach(e => { const k = Math.floor(e.t0 / step) * step; if (!marks.length || marks[marks.length - 1].k !== k) marks.push({ k, id: e.id, n: 1 }); else marks[marks.length - 1].n++; });
+      const most = Math.max(1, ...marks.map(m => m.n));
+      this.$rail.innerHTML = marks.map(m => '<button type="button" data-id="' + esc(m.id) + '" title="' + m.n + (m.n === 1 ? ' event' : ' events') + '"><i style="width:' + Math.round(4 + 22 * m.n / most) + 'px"></i>' + esc(step === 1 ? yearLabel(m.k) : yearLabel(m.k) + (m.k >= 0 ? 's' : '')) + '</button>').join('');
       this.$rail.querySelectorAll('button').forEach(b => b.onclick = () => this.open(b.dataset.id));
       this._resize();
+    }
+    _bars() {
+      if (!this.$bars) return;
+      this.$bars.innerHTML = '';
+      if (!this.o.spanBars) return;
+      const items = [...this.$list.querySelectorAll('.sb-item')], byId = new Map(items.map(li => [li.dataset.id, li]));
+      const evs = this.visible().filter(e => e.t1 != null && e.t1 > e.t0 && byId.has(e.id));
+      const lanes = [];
+      evs.forEach(e => {
+        const a = byId.get(e.id);
+        let last = a;
+        this.visible().forEach(x => { if (x.t0 >= e.t0 && x.t0 <= e.t1 && byId.has(x.id)) { const n = byId.get(x.id); if (n.offsetTop > last.offsetTop) last = n; } });
+        const top = a.offsetTop + 26, bottom = last.offsetTop + Math.max(36, last.offsetHeight - 10);
+        let lane = lanes.findIndex(end => end < top); if (lane < 0) { lane = lanes.length; lanes.push(0); } lanes[lane] = bottom;
+        const b = document.createElement('div');
+        b.className = 'sb-bar'; b.title = e.title + (e.spanText ? ' · ' + e.spanText : '');
+        b.style.cssText = '--c:' + catColor(this.el, e.cat) + ';top:' + top + 'px;height:' + Math.max(20, bottom - top) + 'px;left:' + (this.el.classList.contains('narrow') ? 6 + lane * 9 : 9 + lane * 9) + 'px';
+        this.$bars.appendChild(b);
+      });
     }
     open(id, o) {
       o = o || {};
@@ -276,6 +344,7 @@
       this.$fill.style.height = fill + 'px';
       let seen = 0, current = null;
       items.forEach(li => { const b = li.getBoundingClientRect(); if (b.top < line) { li.classList.add('seen'); seen++; current = li; } });
+      items.forEach(li => li.classList.toggle('cur', li === current));
       this.$rail.querySelectorAll('button').forEach(b => b.classList.remove('on'));
       if (current) {
         const evIdx = items.indexOf(current), ids = [...this.$rail.querySelectorAll('button')].map(b => b.dataset.id);
@@ -302,7 +371,7 @@
     stop() { this._story = false; clearTimeout(this._storyT); this.$play.textContent = 'Play story'; this.$play.classList.remove('on'); }
     _teardown() { this.stop(); window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
   }
-  Switchback.DEFAULTS = { storyMs: 3200 };
+  Switchback.DEFAULTS = { storyMs: 3200, gapYears: 50, spotlight: true, spanBars: true };
 
   /* ======================================================================================
    * Swimlane: lanes, points and spans, zoom/pan, navigator brush, detail panel
