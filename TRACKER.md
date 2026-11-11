@@ -14,7 +14,7 @@
 - Status: first build (v1) on branch `build-v1`, pull request open for Donovan's review
 - Templates: Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline (time)
 - Next action: Donovan reviews the pull request on desktop and phone; after approval, merge and connect the Vercel project so apps can load the files
-- Blocker: none
+- Blocker: no Vercel project yet (needs one import in the Vercel dashboard after approval)
 
 ## Rules for this library
 - `catalog.json` is the one list of templates. The loader (`v1/dimau-infographics.js`) and `tests/smoke.cjs` must agree with it; the test fails if they do not.
@@ -32,7 +32,7 @@
 - The `--di-*` theme token names and the template ids: apps depend on them.
 
 ## Last handover
-- none recorded
+- 2026-11-11 — Claude — v1 built on `build-v1`, PR #1 open (draft) for Donovan's review; `npm test` passes at 1360px and 390px. Ops card, room artifact and Command Room post recorded. Rollout row added via Dimau-Ops-Room PR #429. Vercel project NOT created: the automated setup was refused by a permission check, so after approval someone imports this repo in Vercel (team donovandimau-3468s-projects, no build step) and sets the live address on the card. `dimau-pwa.js` was copied unchanged from fiji-planner (md5 cd3f4845…).
 
 ## Done — newest first
 - nothing logged yet
