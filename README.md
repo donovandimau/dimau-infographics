@@ -1,5 +1,7 @@
 # Dimau Infographics
 
+Live: https://dimau-infographics.vercel.app/
+
 The central library of interactive infographic templates for every Dimau app. Each app loads one shared script, picks the template that fits the shape of its information, and supplies its own data and colours. Nothing is copied into app repos, so a fix here reaches every app.
 
 | Template | Shape of information | Best for | Original mechanics |
@@ -15,7 +17,7 @@ The library site shows every template live with sample data, and each template h
 
 ```html
 <div id="explore" style="min-height:480px"></div>
-<script src="https://<live address>/v1/dimau-infographics.js"></script>
+<script src="https://dimau-infographics.vercel.app/v1/dimau-infographics.js"></script>
 <script>
   DimauInfographics.mount('#explore', {
     template: 'tidepool',          // lanternfield | tidepool | strata | riverline

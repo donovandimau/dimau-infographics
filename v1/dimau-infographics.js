@@ -1,7 +1,7 @@
 /*! Dimau Infographics loader 1.0
  *  One script for every app. Pick a template by name; only that template's code is downloaded.
  *
- *  <script src="https://<infographics host>/v1/dimau-infographics.js"></script>
+ *  <script src="https://dimau-infographics.vercel.app/v1/dimau-infographics.js"></script>
  *  DimauInfographics.mount('#where', { template: 'tidepool', data, options, on: { change: e => … } })
  *    .then(instance => …);
  *
