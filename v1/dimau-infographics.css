@@ -1,0 +1,38 @@
+/* Dimau Infographics shared theme 1.0
+   Default tokens for every template. An app can override any of them on the mounted element or an ancestor.
+   Light values follow the Dimau sky-blue brand (light panels, darker text); dark values apply automatically. */
+.di-theme {
+  --di-bg: #eef7fb;
+  --di-surface: #ffffff;
+  --di-fg: #13263a;
+  --di-muted: #4f6578;
+  --di-line: #c9dce8;
+  --di-line-strong: rgba(19, 38, 58, .38);
+  --di-accent: #0b6fa4;
+  --di-water: #2a8fc4;
+  --di-fog: #d3e6f0;
+  --di-fog-alpha: .74;
+  --di-popover: #13263a;
+  --di-popover-fg: #ffffff;
+  --di-popover-border: rgba(19, 38, 58, .12);
+  --di-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --di-display: var(--di-font);
+  --di-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+/* Lanternfield's hover card is light on the light theme */
+.di-theme { --lf-peek-bg: rgba(255, 255, 255, .97); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .di-theme:not([data-di-theme="light"]) {
+    --di-bg: #0a1622; --di-surface: #10202f; --di-fg: #e4eef5; --di-muted: #8fa6b8; --di-line: #1f3446;
+    --di-line-strong: rgba(214, 230, 242, .42); --di-accent: #6cc4ee; --di-water: #4fb0e0;
+    --di-fog: #050c13; --di-fog-alpha: .8; --di-popover: #e4eef5; --di-popover-fg: #0a1622;
+    --di-popover-border: rgba(255, 255, 255, .1); --lf-peek-bg: rgba(16, 32, 47, .96);
+  }
+}
+:root[data-theme="dark"] .di-theme:not([data-di-theme="light"]), .di-theme[data-di-theme="dark"] {
+  --di-bg: #0a1622; --di-surface: #10202f; --di-fg: #e4eef5; --di-muted: #8fa6b8; --di-line: #1f3446;
+  --di-line-strong: rgba(214, 230, 242, .42); --di-accent: #6cc4ee; --di-water: #4fb0e0;
+  --di-fog: #050c13; --di-fog-alpha: .8; --di-popover: #e4eef5; --di-popover-fg: #0a1622;
+  --di-popover-border: rgba(255, 255, 255, .1); --lf-peek-bg: rgba(16, 32, 47, .96);
+}

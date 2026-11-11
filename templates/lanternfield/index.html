@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Lanternfield · Dimau Infographics</title>
+<meta name="description" content="Lanternfield: explore connected topics with a lantern lens, a rim compass that points to related topics, fog that marks what you have not seen, and pins that reveal how two areas connect.">
+<meta property="og:title" content="Lanternfield · Dimau Infographics">
+<meta property="og:description" content="Explore connected topics with a lantern, a rim compass, fog of discovery and pinned bridges.">
+<meta property="og:image" content="/icons/icon-512.png">
+<meta name="theme-color" content="#87CEEB">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/v1/dimau-infographics.css">
+<link rel="stylesheet" href="/site.css">
+<style>
+/* Layout: toolbar, then the field beside a reading panel; stacks on phones. */
+.lf-page { display: grid; gap: 14px; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.toolbar .title { margin-right: auto; display: grid; gap: 2px; }
+.toolbar .title p { margin: 0; color: var(--muted); font-size: 13px; }
+.search { position: relative; }
+.search input { width: 200px; max-width: 58vw; height: 38px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--rule); background: var(--panel); }
+.results { position: absolute; top: 42px; left: 0; z-index: 20; width: 280px; max-width: 86vw; margin: 0; padding: 4px; list-style: none; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; box-shadow: var(--shadow); }
+.results button { width: 100%; display: flex; align-items: center; gap: 8px; padding: 7px 8px; border: 0; background: none; border-radius: 6px; text-align: left; cursor: pointer; }
+.results button:hover, .results button.active { background: var(--chip); }
+.results small { margin-left: auto; color: var(--muted); font: 11px var(--mono); }
+.size { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; }
+.size input { width: 84px; accent-color: var(--accent); }
+.meter { display: grid; gap: 4px; min-width: 150px; font: 12px var(--mono); color: var(--muted); }
+.meter b { color: var(--ink); }
+.bar { height: 4px; border-radius: 2px; background: var(--rule); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .4s; }
+.lf-main { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 14px; height: min(78vh, 760px); min-height: 480px; }
+.field { position: relative; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); --lf-bg: var(--di-surface); }
+.status { position: absolute; left: 12px; top: 12px; z-index: 3; margin: 0; max-width: min(380px, calc(100% - 24px)); padding: 7px 11px; border-radius: 10px; font-size: 13px; background: var(--panel); border: 1px solid var(--rule); }
+.tourcard { position: absolute; z-index: 4; left: 50%; bottom: 14px; transform: translateX(-50%); width: min(460px, calc(100% - 24px)); background: var(--panel); border: 1px solid var(--accent); border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow); display: grid; gap: 8px; }
+.tourcard .tc-top { display: flex; align-items: center; gap: 8px; font: 600 11px var(--mono); color: var(--muted); }
+.tourcard .tc-top b { color: var(--accent); }
+.tourcard p { margin: 0; font-size: 14px; }
+.tourcard .dots { display: flex; gap: 4px; margin-left: auto; }
+.tourcard .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--rule); }
+.tourcard .dots i.on { background: var(--accent); }
+.tourcard .row { justify-content: flex-end; }
+.field.touring .lf-mini, .field.touring .status { display: none; }
+.side { overflow: auto; display: flex; flex-direction: column; gap: 20px; }
+.side h3 { font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; display: flex; gap: 8px; }
+.side.has-detail #toursec { order: 10; }
+.sw { width: 9px; height: 9px; border-radius: 50%; flex: none; display: inline-block; }
+.summary { margin: 8px 0 14px; font-size: 15px; }
+.conns { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.conns button { width: 100%; text-align: left; border: 0; background: none; padding: 8px; border-radius: 10px; cursor: pointer; display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 2px 8px; align-items: center; }
+.conns button:hover { background: var(--chip); }
+.conns .t { font-weight: 700; }
+.conns .s { grid-column: 2 / 4; color: var(--muted); font-size: 12.5px; line-height: 1.4; }
+.tag { font: 10.5px var(--mono); padding: 1px 6px; border-radius: 99px; border: 1px solid var(--rule); color: var(--muted); }
+.tag.new { border-color: var(--accent); color: var(--accent); }
+.path { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; counter-reset: step; }
+.path button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px 4px 4px; border-radius: 99px; border: 1px solid var(--rule); background: var(--panel-2); cursor: pointer; font-size: 12.5px; }
+.path button::before { counter-increment: step; content: counter(step); font: 600 10px/18px var(--mono); width: 18px; text-align: center; border-radius: 50%; background: var(--accent); color: var(--accent-ink); }
+.path button.cur { border-color: var(--accent); }
+.tours { display: grid; gap: 8px; }
+.tourbtn { text-align: left; border: 1px solid var(--rule); background: var(--panel-2); border-radius: 12px; padding: 10px 12px; cursor: pointer; display: grid; gap: 2px; }
+.tourbtn:hover { border-color: var(--accent); }
+.tourbtn b { font: 700 15px/1.2 var(--display); }
+.tourbtn span { color: var(--muted); font: 11px var(--mono); }
+.bridge { border: 1px solid var(--rule); border-radius: 12px; padding: 10px 12px; display: grid; gap: 6px; }
+.bridge header { display: flex; align-items: center; gap: 8px; font-weight: 700; flex-wrap: wrap; }
+.pinchip { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 700 11px var(--display); }
+.bridge ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.bridge ul b { color: var(--ink); }
+.pins { display: flex; flex-wrap: wrap; gap: 6px; }
+.pins button { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--rule); background: var(--panel-2); border-radius: 99px; padding: 3px 9px 3px 3px; cursor: pointer; font-size: 12.5px; }
+.empty { color: var(--muted); font-size: 13px; margin: 0; }
+.howpop { position: absolute; right: 12px; top: 12px; z-index: 6; width: min(320px, calc(100% - 24px)); background: var(--panel); border-radius: 14px; box-shadow: var(--shadow); border: 1px solid var(--rule); padding: 14px 16px; display: grid; gap: 10px; font-size: 13.5px; }
+.howpop ul { margin: 0; padding: 0 0 0 16px; display: grid; gap: 8px; }
+.btn.warn { border-color: #c0392b; color: #c0392b; }
+.use { margin-top: 14px; }
+@media (max-width: 900px) {
+  .lf-main { grid-template-columns: minmax(0, 1fr); height: auto; }
+  .field { height: 64vh; min-height: 380px; }
+  .side { overflow: visible; }
+}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Dimau Infographics home"><img src="/icons/icon.svg" alt=""><b>Dimau Infographics</b></a>
+    <nav class="site-nav" aria-label="Templates">
+      <a href="/">Library</a>
+      <a href="/templates/lanternfield/" aria-current="page">Lanternfield</a>
+      <a href="/templates/tidepool/">Tidepool</a>
+      <a href="/templates/strata/">Strata</a>
+      <a href="/templates/riverline/">Riverline</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lf-page">
+  <div class="panel toolbar">
+    <div class="title"><h1 style="font-size:24px">Lanternfield</h1><p>Sample: how a city works · 56 systems, 94 links <span class="example-flag">Illustrative</span></p></div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Find a topic…" autocomplete="off" aria-label="Find a topic" aria-controls="results">
+      <ul id="results" class="results" role="listbox" hidden></ul>
+    </div>
+    <button id="suggest" class="btn primary tip" type="button" data-tip="Picks an unexplored topic linked to the ones you have opened">Suggest next</button>
+    <button id="pin" class="btn tip" type="button" data-tip="Leaves a lantern here. Pin two areas to see how they connect. Shortcut: P">Pin lantern</button>
+    <button id="fit" class="btn" type="button">Overview</button>
+    <button id="how" class="btn" type="button" aria-expanded="false" aria-controls="howpop">How to explore</button>
+    <button id="reset" class="btn tip" type="button" data-tip="Clears the fog, your path and pins">Reset</button>
+    <label class="size" for="lens">Lantern <input id="lens" type="range" min="60" max="220" step="5" value="115"></label>
+    <div class="meter" aria-live="polite"><span>Seen <b id="seen">0</b>/<span id="total">0</span> · Opened <b id="opened">0</b></span><span class="bar"><i id="bar"></i></span></div>
+  </div>
+
+  <div class="lf-main">
+    <div class="field di-theme" id="field">
+      <p class="status" id="status" aria-live="polite">Move over the map to steer the lantern. Push past its rim to carry it.</p>
+      <div class="howpop" id="howpop" hidden>
+        <b>How to explore</b>
+        <ul>
+          <li><b>The lantern</b> magnifies and names what is under it. Inside the rim the pointer roams freely; past the rim it pulls the lantern along.</li>
+          <li><b>Rim compass:</b> dots on the rim point to related topics outside the lantern. Click one to bring it in. Ringed dots are unexplored.</li>
+          <li><b>Fog</b> stays where you have not looked yet.</li>
+          <li><b>Pins:</b> double-click or press P to leave a lantern. Pin two areas to see every link between them.</li>
+          <li>Drag to pan, scroll or pinch to zoom, [ and ] change the lantern size.</li>
+        </ul>
+      </div>
+      <div class="tourcard" id="tourcard" role="region" aria-label="Guided tour" aria-live="polite" hidden></div>
+    </div>
+    <aside class="panel side" id="side" aria-label="Details">
+      <section id="intro"><h2>Read the city like a map at night</h2><p class="empty" style="margin-top:8px">Everything starts dark. Open a topic or take a tour.</p></section>
+      <section id="toursec"><h3>Guided tours</h3><div class="tours" id="tours"></div></section>
+      <section id="detail" hidden></section>
+      <section id="bridgesec" hidden></section>
+      <section id="pathsec" hidden><h3>Your path <span id="pathct"></span></h3><ol class="path" id="path"></ol></section>
+    </aside>
+  </div>
+
+  <section class="panel use stack" id="use"></section>
+</main>
+
+<script src="/templates/lanternfield/sample-data.js"></script>
+<script src="/v1/lanternfield.js"></script>
+<script src="/templates/demo.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var col = function (n) { return n.c.col; };
+  var DATA = window.CITY_DATA;
+  var lf = new Lanternfield($('field'), DATA, { lensRadius: 115, startAt: 'grid' });
+  window.lanternfield = lf;
+  DIDemo.usePanel($('use'), 'lanternfield'); DIDemo.tips();
+
+  function renderProgress(p) {
+    $('seen').textContent = p.seen; $('total').textContent = p.total; $('opened').textContent = p.opened;
+    $('bar').style.width = (100 * p.seen / p.total).toFixed(1) + '%';
+  }
+  lf.on('progress', renderProgress); renderProgress(lf.progress());
+
+  lf.on('open', function (e) {
+    var node = e.node, neighbors = e.neighbors;
+    $('intro').hidden = true; $('side').classList.add('has-detail');
+    var order = DATA.clusters.map(function (c) { return c.id; });
+    neighbors.sort(function (a, b) { return (a.node.cluster === node.cluster) - (b.node.cluster === node.cluster) || order.indexOf(a.node.cluster) - order.indexOf(b.node.cluster); });
+    var cross = neighbors.filter(function (n) { return n.node.cluster !== node.cluster; }).length;
+    $('detail').hidden = false;
+    $('detail').innerHTML =
+      '<p class="eyebrow"><span class="sw" style="background:' + col(node) + '"></span> ' + esc(node.c.label) + '</p>' +
+      '<h2>' + esc(node.title) + '</h2><p class="summary">' + esc(node.summary) + '</p>' +
+      '<button class="btn" type="button" id="dpin">Pin a lantern here</button>' +
+      '<h3 style="margin-top:20px">Connections ' + neighbors.length + ' · ' + cross + ' to other systems</h3>' +
+      '<ul class="conns">' + neighbors.map(function (nb) {
+        return '<li><button type="button" data-id="' + esc(nb.node.id) + '"><span class="sw" style="background:' + col(nb.node) + '"></span><span class="t">' + esc(nb.node.title) + '</span>' +
+          (nb.opened ? '<span class="tag">opened</span>' : nb.seen ? '<span class="tag">seen</span>' : '<span class="tag new">unexplored</span>') +
+          '<span class="s">' + esc(nb.sentence) + '</span></button></li>';
+      }).join('') + '</ul>';
+    $('dpin').onclick = function () { lf.focus(node.id); setTimeout(function () { lf.pinLens(); }, 850); };
+    $('detail').querySelectorAll('.conns button').forEach(function (b) { b.onclick = function () { lf.open(b.dataset.id); }; });
+    renderPath(e.path, node);
+    $('status').textContent = 'Opened ' + node.title + '. ' + cross + ' of its ' + neighbors.length + ' connections reach other systems.';
+  });
+  function renderPath(path, cur) {
+    $('pathsec').hidden = !path.length;
+    $('pathct').textContent = path.length + (path.length === 1 ? ' stop' : ' stops');
+    $('path').innerHTML = path.map(function (n) { return '<li><button type="button" data-id="' + esc(n.id) + '"' + (n === cur ? ' class="cur" aria-current="step"' : '') + '>' + esc(n.title) + '</button></li>'; }).join('');
+    $('path').querySelectorAll('button').forEach(function (b) { b.onclick = function () { lf.open(b.dataset.id); }; });
+  }
+  lf.on('pins', function (e) {
+    var s = $('bridgesec'), pins = e.pins, bridges = e.bridges;
+    s.hidden = !pins.length; if (!pins.length) return;
+    var html = '<h3>Pinned lanterns ' + pins.length + '/4</h3><div class="pins">' + pins.map(function (p) { return '<button type="button" data-pin="' + esc(p.id) + '" aria-label="Remove pin ' + p.letter + '"><span class="pinchip">' + p.letter + '</span>near ' + esc(p.name) + ' ✕</button>'; }).join('') + '</div>';
+    if (pins.length < 2) html += '<p class="empty" style="margin-top:10px">Pin a second area to see how the two connect.</p>';
+    else if (!bridges.length) html += '<p class="empty" style="margin-top:10px">No direct links between these areas. Try a larger lantern or another spot.</p>';
+    else html += '<div style="display:grid;gap:8px;margin-top:12px">' + bridges.map(function (b) {
+      return '<div class="bridge"><header><span class="pinchip">' + b.a.letter + '</span>↔<span class="pinchip">' + b.b.letter + '</span>' + b.links.length + (b.links.length === 1 ? ' connection' : ' connections') + '</header><ul>' +
+        b.links.map(function (l) { return '<li><b>' + esc(l.from.title) + '</b> ' + esc(l.label) + ' <b>' + esc(l.to.title) + '</b></li>'; }).join('') + '</ul></div>';
+    }).join('') + '</div>';
+    s.innerHTML = html;
+    s.querySelectorAll('[data-pin]').forEach(function (b) { b.onclick = function () { lf.removePin(b.dataset.pin); }; });
+  });
+
+  $('suggest').onclick = function () {
+    var r = lf.suggestNext();
+    if (!r) { $('status').textContent = 'You have opened every topic.'; return; }
+    $('status').textContent = r.because.length ? 'Try ' + r.node.title + '. It links to ' + r.because.map(function (n) { return n.title; }).slice(0, 3).join(', ') + ', which you opened.' : 'Start with ' + r.node.title + ', one of the most connected topics.';
+  };
+  $('pin').onclick = function () { lf.pinLens(); };
+  $('fit').onclick = function () { lf.fit(true); };
+  $('how').onclick = function () { var p = $('howpop'); p.hidden = !p.hidden; $('how').setAttribute('aria-expanded', String(!p.hidden)); };
+  $('lens').oninput = function (e) { lf.setLensRadius(+e.target.value); };
+  lf.on('lens', function (r) { $('lens').value = r; });
+
+  var q = $('q'), res = $('results'), hits = [], active = 0;
+  function pick(id) { lf.open(id, { zoom: 1.3 }); q.value = ''; res.hidden = true; }
+  q.addEventListener('input', function () {
+    hits = lf.search(q.value); active = 0; res.hidden = !hits.length;
+    res.innerHTML = hits.map(function (n, i) { return '<li role="option"><button type="button" data-id="' + esc(n.id) + '"' + (i === 0 ? ' class="active"' : '') + '><span class="sw" style="background:' + col(n) + '"></span>' + esc(n.title) + '<small>' + esc(n.c.label) + '</small></button></li>'; }).join('');
+    res.querySelectorAll('button').forEach(function (b) { b.onmousedown = function (e) { e.preventDefault(); pick(b.dataset.id); }; });
+  });
+  q.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!hits.length) return; active = (active + (e.key === 'ArrowDown' ? 1 : hits.length - 1)) % hits.length; res.querySelectorAll('button').forEach(function (b, i) { b.classList.toggle('active', i === active); }); }
+    else if (e.key === 'Enter' && hits[active]) pick(hits[active].id);
+    else if (e.key === 'Escape') { q.value = ''; res.hidden = true; }
+  });
+  q.addEventListener('blur', function () { setTimeout(function () { res.hidden = true; }, 120); });
+
+  var tours = DATA.tours || [];
+  $('tours').innerHTML = tours.map(function (t) { return '<button class="tourbtn" type="button" data-tour="' + esc(t.id) + '"><b>' + esc(t.title) + '</b><span>' + t.steps.length + ' stops</span></button>'; }).join('');
+  $('tours').querySelectorAll('[data-tour]').forEach(function (b) { b.onclick = function () { lf.tourStart(tours.find(function (t) { return t.id === b.dataset.tour; })); }; });
+  lf.on('tour', function (t) {
+    var card = $('tourcard'); $('field').classList.toggle('touring', !!t);
+    if (!t) { card.hidden = true; return; }
+    var last = t.index === t.total - 1, note = esc(t.step.note);
+    if (t.bridges) { var n = t.bridges.reduce(function (a, b) { return a + b.links.length; }, 0); note += ' <b>' + n + (n === 1 ? ' connection' : ' connections') + '</b> are listed in the panel.'; }
+    card.hidden = false;
+    card.innerHTML = '<div class="tc-top"><b>TOUR</b>' + esc(t.title) + ' · ' + (t.index + 1) + '/' + t.total + '<span class="dots">' + Array.from({ length: t.total }, function (_, i) { return '<i' + (i <= t.index ? ' class="on"' : '') + '></i>'; }).join('') + '</span></div>' +
+      '<p>' + note + '</p><div class="row"><button class="btn" type="button" id="tExit">Exit tour</button><button class="btn" type="button" id="tPrev"' + (t.index ? '' : ' disabled') + '>Back</button><button class="btn primary" type="button" id="tNext">' + (last ? 'Finish' : 'Next') + '</button></div>';
+    $('tExit').onclick = function () { lf.tourStop(); };
+    $('tPrev').onclick = function () { lf.tourPrev(); };
+    $('tNext').onclick = function () { last ? lf.tourStop() : lf.tourNext(); };
+    $('tNext').focus({ preventScroll: true });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!lf.tour || e.target.closest('input')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); lf.tourNext(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); lf.tourPrev(); }
+    else if (e.key === 'Escape') lf.tourStop();
+  }, true);
+
+  var armed = null;
+  $('reset').onclick = function () {
+    if (!armed) { $('reset').textContent = 'Click again to reset'; $('reset').classList.add('warn'); armed = setTimeout(function () { armed = null; $('reset').textContent = 'Reset'; $('reset').classList.remove('warn'); }, 3000); return; }
+    clearTimeout(armed); armed = null; $('reset').textContent = 'Reset'; $('reset').classList.remove('warn'); lf.reset();
+  };
+  var KEY = 'dimau-infographics:lanternfield-demo';
+  lf.on('reset', function () {
+    $('intro').hidden = false; $('side').classList.remove('has-detail');
+    $('detail').hidden = true; $('pathsec').hidden = true; $('bridgesec').hidden = true;
+    $('status').textContent = 'Exploration cleared. The city is dark again.';
+    try { localStorage.removeItem(KEY); } catch (_) {}
+  });
+  lf.on('statechange', function (s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (_) {} });
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (saved && lf.setState(saved)) { var p = lf.progress(); $('status').textContent = 'Welcome back. You have seen ' + p.seen + ' of ' + p.total + ' topics.'; }
+  } catch (_) {}
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest('input, textarea, canvas, button')) return;
+    if (e.key === 'p' || e.key === 'P') lf.pinLens();
+  });
+})();
+</script>
+<script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>
+<script src="https://fijian-assistant-api.vercel.app/dimau-consistency.js" defer></script>
+</body>
+</html>
