@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.4, 30 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.5, 31 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -40,6 +40,11 @@ window.PATHFINDER_DATA = {
     {
      "label": "An explainer told as a story",
      "to": "r_storyscroll"
+    },
+    {
+     "label": "A story with its pictures",
+     "hint": "archives, histories, reports",
+     "to": "r_archive-desk"
     },
     {
      "label": "A few headline numbers",
@@ -344,6 +349,12 @@ window.PATHFINDER_DATA = {
    "text": "Headline-number cards: send your values and get an interactive card plus a PNG or SVG to share.",
    "link": "/#cards",
    "linkLabel": "See the cards"
+  },
+  "r_archive-desk": {
+   "result": "Archive Desk",
+   "text": "Read a story and see its pictures together: a book beside a picture stack, with a lightbox and loupe.",
+   "link": "/templates/archive-desk/",
+   "linkLabel": "Open Archive Desk"
   }
  }
 };
