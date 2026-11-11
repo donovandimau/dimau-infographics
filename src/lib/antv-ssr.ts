@@ -1,8 +1,5 @@
 import { Worker } from 'worker_threads';
 import { createRequire } from 'module';
-import fs from 'fs';
-import path from 'path';
-import { pathToFileURL } from 'url';
 
 /**
  * @antv/infographic's server renderer installs a fake browser (window, document, ...) on the global
@@ -13,7 +10,7 @@ import { pathToFileURL } from 'url';
 
 const WORKER_CODE = `
 const { parentPort, workerData } = require('worker_threads');
-const ready = import(workerData.entry);
+const ready = Promise.resolve().then(() => require(workerData.entry));
 parentPort.on('message', async ({ id, options }) => {
   try {
     const { renderToString } = await ready;
@@ -32,14 +29,10 @@ let seq = 0;
 const pending = new Map<number, Pending>();
 
 function entryPath(): string {
-  // The ES module build is used because that is the one the deployment bundler traces
-  // (the CommonJS build under lib/ is not shipped to Vercel).
-  const direct = path.join(/*turbopackIgnore: true*/ process.cwd(), 'node_modules', '@antv', 'infographic', 'esm', 'ssr', 'index.js');
-  if (fs.existsSync(/*turbopackIgnore: true*/ direct)) return pathToFileURL(direct).href;
-  // Fallback for unusual layouts (e.g. hoisted workspaces): resolve the package, then point at its ESM build.
+  // Resolved here (not in the worker) so it works wherever the server's node_modules live.
+  // next.config.ts ships the package and its dependencies with every API function.
   const req = createRequire(/*turbopackIgnore: true*/ `${process.cwd()}/package.json`);
-  const cjsEntry = req.resolve('@antv/infographic/ssr'); // <pkg>/lib/ssr/index.js
-  return pathToFileURL(path.resolve(path.dirname(cjsEntry), '..', '..', 'esm', 'ssr', 'index.js')).href;
+  return req.resolve('@antv/infographic/ssr');
 }
 
 function getWorker(): Worker {
