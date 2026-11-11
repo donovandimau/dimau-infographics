@@ -10,6 +10,13 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Tidepool** | Amounts | Budgets, allocations, trade-offs | Communicating vessels with flow through pipes, locks, a plain-language trade-off sentence |
 | **Strata** | Levels | Catalogues, curricula, categories, organisations | Core-sample layers sized by value, x-ray strip previews, pull-out drilling, depth gauge |
 | **Riverline** | Time | Histories, project timelines, logs | River that widens with activity, magnifying current, lanes, reading strip |
+| **Switchback** | Time | Stories and histories read in order | Alternating cards that collapse to one column, spine that fills as you read, year rail, filters, story mode |
+| **Swimlane** | Time | Several threads side by side | One lane per theme, points and spans, zoom and pan, navigator strip with a draggable window, detail panel |
+| **Roadmap** | Time | Plans with dependencies | Gantt rows, milestones, dependency arrows, progress, today line, drag a task and its dependants follow |
+| **Waypath** | Steps | Processes, journeys, learning paths | Road, cycle or staircase; tap a stop to reveal it; play walks the path; works without dates |
+| **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
+
+The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
 
 The library site shows every template live with sample data, and each template has a full demo page with its data shape, events and embed code.
 
@@ -20,7 +27,7 @@ The library site shows every template live with sample data, and each template h
 <script src="https://dimau-infographics.vercel.app/v1/dimau-infographics.js"></script>
 <script>
   DimauInfographics.mount('#explore', {
-    template: 'tidepool',          // lanternfield | tidepool | strata | riverline
+    template: 'tidepool',          // any id in catalog.json, e.g. strata, swimlane, debt-freedom-trajectory
     data: myData,                  // shape: see catalog.json or the template's page
     options: {},                   // optional, per template
     on: { change: e => console.log(e) }
@@ -55,7 +62,9 @@ The wrapper code-splits each template and forwards events as `on<Event>` props. 
 catalog.json                 the one list of templates (loader and tests check against it)
 v1/dimau-infographics.js     loader: DimauInfographics.mount / load
 v1/dimau-infographics.css    shared --di-* theme tokens (light sky-blue brand + dark)
-v1/<template>.js             the templates; each is self-contained, no dependencies
+v1/<template>.js             the templates; each file is self-contained, no dependencies
+v1/timelines.js              Switchback, Swimlane, Roadmap, Waypath (one shared timeline data shape)
+v1/signal-cards.js           the four signal cards
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

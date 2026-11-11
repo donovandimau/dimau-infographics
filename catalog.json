@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "base": "/v1/",
   "templates": [
     {
@@ -12,9 +12,25 @@
       "status": "ready",
       "shape": "network",
       "bestFor": "Many connected topics where the links matter: systems, ecosystems, who-does-what, product maps.",
-      "mechanics": ["Leashed lantern lens", "Rim compass", "Fog of discovery", "Pins and bridges", "Guided tours", "Saved exploration"],
+      "mechanics": [
+        "Leashed lantern lens",
+        "Rim compass",
+        "Fog of discovery",
+        "Pins and bridges",
+        "Guided tours",
+        "Saved exploration"
+      ],
       "dataShape": "{ clusters:[{id,label,color}], nodes:[{id,cluster,title,summary}], links:[{source,target,label}], tours? }",
-      "events": ["open", "focus", "progress", "pins", "lens", "tour", "statechange", "reset"],
+      "events": [
+        "open",
+        "focus",
+        "progress",
+        "pins",
+        "lens",
+        "tour",
+        "statechange",
+        "reset"
+      ],
       "demo": "/templates/lanternfield/",
       "sample": "How a city works: 56 systems and 94 links (illustrative)",
       "usedBy": []
@@ -27,9 +43,17 @@
       "status": "ready",
       "shape": "quantities",
       "bestFor": "Budgets, allocations and trade-offs, where moving one amount changes the others.",
-      "mechanics": ["Communicating vessels", "Flow through pipes", "Lock to protect an amount", "Plain-language trade-off sentence"],
+      "mechanics": [
+        "Communicating vessels",
+        "Flow through pipes",
+        "Lock to protect an amount",
+        "Plain-language trade-off sentence"
+      ],
       "dataShape": "{ unit, period, conserve, step, items:[{id,label,value,min?,max?,locked?,note?}] }",
-      "events": ["change", "lock"],
+      "events": [
+        "change",
+        "lock"
+      ],
       "demo": "/templates/tidepool/",
       "sample": "A fortnight's pay in FJD (example figures)",
       "usedBy": []
@@ -42,9 +66,17 @@
       "status": "ready",
       "shape": "hierarchy",
       "bestFor": "Anything with levels: catalogues, curricula, spending categories, organisations.",
-      "mechanics": ["Core-sample layers sized by value", "X-ray strip previews what is inside", "Pull a layer out to drill in", "Depth gauge to climb back"],
+      "mechanics": [
+        "Core-sample layers sized by value",
+        "X-ray strip previews what is inside",
+        "Pull a layer out to drill in",
+        "Depth gauge to climb back"
+      ],
       "dataShape": "{ unit, unitSingular, source, root:{label,note,children:[…]} }",
-      "events": ["drill", "select"],
+      "events": [
+        "drill",
+        "select"
+      ],
       "demo": "/templates/strata/",
       "sample": "FijiLearn catalogue: 9 subjects, 40 courses, 109 chapters (real data, 11 Nov 2026)",
       "usedBy": []
@@ -57,12 +89,242 @@
       "status": "ready",
       "shape": "time",
       "bestFor": "Histories, project timelines and logs, where it matters when things bunch together.",
-      "mechanics": ["River widens with activity", "Magnifying current", "Lanes for themes", "Reading strip of what is in view"],
+      "mechanics": [
+        "River widens with activity",
+        "Magnifying current",
+        "Lanes for themes",
+        "Reading strip of what is in view"
+      ],
       "dataShape": "{ view?, lanes:[{id,label}], eras:[{start,end,label}], events:[{date,when?,title,summary,lane,weight?}] }",
-      "events": ["open", "range"],
+      "events": [
+        "open",
+        "range"
+      ],
       "demo": "/templates/riverline/",
       "sample": "Fiji through time: 23 dated events from c. 1000 BCE to 2022",
       "usedBy": []
+    },
+    {
+      "id": "switchback",
+      "name": "Switchback",
+      "global": "Switchback",
+      "file": "timelines.js",
+      "status": "ready",
+      "shape": "time",
+      "family": "timelines",
+      "bestFor": "Histories, case studies and project stories meant to be read in order.",
+      "mechanics": [
+        "Alternating cards that collapse to one column",
+        "Spine fills with reading progress",
+        "Year rail",
+        "Category filters",
+        "Read more",
+        "Story mode"
+      ],
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "events": [
+        "open",
+        "filter",
+        "progress",
+        "step"
+      ],
+      "demo": "/templates/switchback/",
+      "sample": "Fiji through time: dated events plus spans",
+      "usedBy": []
+    },
+    {
+      "id": "swimlane",
+      "name": "Swimlane",
+      "global": "Swimlane",
+      "file": "timelines.js",
+      "status": "ready",
+      "shape": "time",
+      "family": "timelines",
+      "bestFor": "Several threads happening side by side: departments, product lines, family branches, themes in history.",
+      "mechanics": [
+        "Lanes per category",
+        "Points and spans",
+        "Zoom and pan",
+        "Navigator strip with a draggable window",
+        "Detail panel with previous and next",
+        "Today line"
+      ],
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "events": [
+        "open",
+        "filter",
+        "range"
+      ],
+      "demo": "/templates/swimlane/",
+      "sample": "Fiji through time: dated events plus spans",
+      "usedBy": []
+    },
+    {
+      "id": "roadmap",
+      "name": "Roadmap",
+      "global": "Roadmap",
+      "file": "timelines.js",
+      "status": "ready",
+      "shape": "time",
+      "family": "timelines",
+      "bestFor": "Project plans, launch schedules and anything with tasks that depend on each other.",
+      "mechanics": [
+        "Phases and tasks",
+        "Milestones",
+        "Dependency arrows",
+        "Progress fill",
+        "Today line",
+        "Drag to slip a task; dependants follow"
+      ],
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "events": [
+        "change",
+        "filter"
+      ],
+      "demo": "/templates/roadmap/",
+      "sample": "Adding a template to an app (example plan)",
+      "usedBy": []
+    },
+    {
+      "id": "waypath",
+      "name": "Waypath",
+      "global": "Waypath",
+      "file": "timelines.js",
+      "status": "ready",
+      "shape": "steps",
+      "family": "timelines",
+      "bestFor": "Step-by-step processes, learning paths, onboarding and journeys, with or without dates.",
+      "mechanics": [
+        "Road, cycle or staircase",
+        "Tap to reveal",
+        "Play walks the path",
+        "Works without dates"
+      ],
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "events": [
+        "open",
+        "step",
+        "filter"
+      ],
+      "demo": "/templates/waypath/",
+      "sample": "How an app adopts a template (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "rbf-sandbox-settlement-flow",
+      "name": "Settlement Flow",
+      "global": "SettlementFlow",
+      "file": "signal-cards.js",
+      "status": "ready",
+      "events": [
+        "select",
+        "change",
+        "render"
+      ],
+      "usedBy": [],
+      "mechanics": [
+        "Named value slots with defaults",
+        "Tap any part for detail",
+        "Wide, tall and 1200x630 share card",
+        "Dark and light",
+        "PNG and SVG export"
+      ],
+      "shape": "card",
+      "domain": "executive_regulatory",
+      "tags": [
+        "dimau_capital"
+      ],
+      "bestFor": "Sandbox clearance slides and live capital-flow reports: a five-stage settlement path with the headline numbers.",
+      "sample": "Example values from the Infographics Fiji spec",
+      "dataShape": "{ <variable>: string, … } — every variable optional; see the template page for the list and defaults",
+      "demo": "/templates/rbf-sandbox-settlement-flow/"
+    },
+    {
+      "id": "sota-kece-community-pulse",
+      "name": "Community Pulse",
+      "global": "CommunityPulse",
+      "file": "signal-cards.js",
+      "status": "ready",
+      "events": [
+        "select",
+        "change",
+        "render"
+      ],
+      "usedBy": [],
+      "mechanics": [
+        "Named value slots with defaults",
+        "Tap any part for detail",
+        "Wide, tall and 1200x630 share card",
+        "Dark and light",
+        "PNG and SVG export"
+      ],
+      "shape": "card",
+      "domain": "social_community",
+      "tags": [
+        "sota_kece"
+      ],
+      "bestFor": "A province or community hub at a glance: creators, mood, top tag and tips around one centre.",
+      "sample": "Example values from the Infographics Fiji spec",
+      "dataShape": "{ <variable>: string, … } — every variable optional; see the template page for the list and defaults",
+      "demo": "/templates/sota-kece-community-pulse/"
+    },
+    {
+      "id": "pacific-backhaul-node-map",
+      "name": "Backhaul Node Map",
+      "global": "BackhaulMap",
+      "file": "signal-cards.js",
+      "status": "ready",
+      "events": [
+        "select",
+        "change",
+        "render"
+      ],
+      "usedBy": [],
+      "mechanics": [
+        "Named value slots with defaults",
+        "Tap any part for detail",
+        "Wide, tall and 1200x630 share card",
+        "Dark and light",
+        "PNG and SVG export"
+      ],
+      "shape": "card",
+      "domain": "connectivity_telecom",
+      "tags": [
+        "vanua_os"
+      ],
+      "bestFor": "Network status across islands: the uplink, every node as a status dot, and latency, eSIM and power figures.",
+      "sample": "Example values from the Infographics Fiji spec",
+      "dataShape": "{ <variable>: string, … } — every variable optional; see the template page for the list and defaults",
+      "demo": "/templates/pacific-backhaul-node-map/"
+    },
+    {
+      "id": "debt-freedom-trajectory",
+      "name": "Debt Freedom Trajectory",
+      "global": "DebtTrajectory",
+      "file": "signal-cards.js",
+      "status": "ready",
+      "events": [
+        "select",
+        "change",
+        "render"
+      ],
+      "usedBy": [],
+      "mechanics": [
+        "Named value slots with defaults",
+        "Tap any part for detail",
+        "Wide, tall and 1200x630 share card",
+        "Dark and light",
+        "PNG and SVG export"
+      ],
+      "shape": "card",
+      "domain": "fintech_capital",
+      "tags": [
+        "mydebtcalculator"
+      ],
+      "bestFor": "The result of a repayment plan: minimum payments versus the plan, months saved and interest saved.",
+      "sample": "Example values from the Infographics Fiji spec",
+      "dataShape": "{ <variable>: string, … } — every variable optional; see the template page for the list and defaults",
+      "demo": "/templates/debt-freedom-trajectory/"
     }
   ]
 }

@@ -14,7 +14,17 @@ const LOADERS = {
   lanternfield: () => import('../lanternfield.js'),
   tidepool: () => import('../tidepool.js'),
   strata: () => import('../strata.js'),
-  riverline: () => import('../riverline.js')
+  riverline: () => import('../riverline.js'),
+  // the four timeline views share one file
+  switchback: () => import('../timelines.js').then(m => ({ default: (m.default || m).Switchback })),
+  swimlane: () => import('../timelines.js').then(m => ({ default: (m.default || m).Swimlane })),
+  roadmap: () => import('../timelines.js').then(m => ({ default: (m.default || m).Roadmap })),
+  waypath: () => import('../timelines.js').then(m => ({ default: (m.default || m).Waypath })),
+  // the four signal cards share one file
+  'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
+  'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
+  'pacific-backhaul-node-map': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).BackhaulMap })),
+  'debt-freedom-trajectory': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).DebtTrajectory }))
 };
 
 const read = key => { try { return JSON.parse(localStorage.getItem('dimau-infographics:' + key) || 'null'); } catch (_) { return null; } };
@@ -39,7 +49,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

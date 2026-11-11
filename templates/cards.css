@@ -1,0 +1,22 @@
+/* Signal card demo pages: the card on the left, its value editor on the right; stacks on phones. */
+.demo-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 20px; }
+.card-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; margin-top: 18px; align-items: start; }
+.cardwrap { border-radius: 18px; padding: 14px; background: #07090E; transition: background .2s; }
+.cardwrap[data-theme="light"] { background: #E9EEF4; }
+.cardwrap .out { margin: 10px 4px 2px; font-size: 13.5px; color: #8E99AB; min-height: 1.4em; }
+.cardwrap[data-theme="light"] .out { color: #556072; }
+.editor { display: grid; gap: 12px; min-width: 0; }
+.editor h2 { font-size: 18px; margin-top: 6px; }
+.editor .example-flag { justify-self: start; margin: 0; }
+.tools { gap: 8px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.seg button { border: 0; background: var(--panel); padding: 8px 12px; font-weight: 600; font-size: 13.5px; cursor: pointer; color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.note { font-size: 13px; color: var(--accent); font-weight: 600; }
+.fields { display: grid; gap: 10px; }
+.field { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.field span { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.field code { font-size: 11px; color: var(--muted); opacity: .8; }
+.field input { height: 38px; border-radius: 9px; border: 1px solid var(--rule); background: var(--panel-2); padding: 0 10px; font-size: 14px; color: var(--ink); min-width: 0; }
+.card-page .use { margin-top: 14px; }
+@media (max-width: 900px) { .card-grid { grid-template-columns: minmax(0, 1fr); } }

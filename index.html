@@ -46,7 +46,21 @@
 .uses th { font: 600 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .table-wrap { overflow-x: auto; }
 .copied { color: var(--accent); font-size: 13px; font-weight: 600; }
+.family { margin-top: 20px; display: grid; gap: 16px; }
+.family-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.stage-mini { min-width: 0; }
+.family-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.family-list a { display: grid; gap: 3px; height: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+.family-list a:hover { border-color: var(--accent); }
+.family-list b { font: 700 15px/1.2 var(--display); }
+.family-list span { font-size: 13px; color: var(--muted); }
+.card-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card-tile { display: grid; gap: 8px; text-decoration: none; color: var(--ink); }
+.card-tile b { font: 700 15px/1.2 var(--display); }
+.card-tile:hover b { color: var(--accent); }
+.ct-stage { border-radius: 16px; overflow: hidden; pointer-events: none; }
 @media (max-width: 900px) {
+  .card-tiles { grid-template-columns: minmax(0, 1fr); }
   .hero, .cards, .how { grid-template-columns: minmax(0, 1fr); }
   .hero-live { min-height: 340px; }
   .shapes { grid-template-columns: minmax(0, 1fr); }
@@ -63,6 +77,8 @@
       <a href="/templates/tidepool/">Tidepool</a>
       <a href="/templates/strata/">Strata</a>
       <a href="/templates/riverline/">Riverline</a>
+      <a href="/#timelines">Timelines</a>
+      <a href="/#cards">Cards</a>
     </nav>
   </div>
 </header>
@@ -72,12 +88,14 @@
     <div class="panel">
       <p class="eyebrow">Template library · v1</p>
       <h1>Interactive infographics every Dimau app can pick from</h1>
-      <p class="lede">Four original ways to explore unfamiliar information. Each app loads one shared script, chooses the template that fits the shape of its information, and supplies its own data and colours.</p>
+      <p class="lede">Original ways to explore unfamiliar information: networks, amounts, levels, timelines and headline-number cards. Each app loads one shared script, chooses the template that fits the shape of its information, and supplies its own data and colours.</p>
       <ul class="shapes" aria-label="Choose by the shape of your information">
         <li><a href="#lanternfield"><b>Connections</b><span>Lanternfield: topics and the links between them</span></a></li>
         <li><a href="#tidepool"><b>Amounts</b><span>Tidepool: budgets and trade-offs</span></a></li>
         <li><a href="#strata"><b>Levels</b><span>Strata: catalogues and categories</span></a></li>
-        <li><a href="#riverline"><b>Time</b><span>Riverline: histories and timelines</span></a></li>
+        <li><a href="#timelines"><b>Time</b><span>Riverline, Switchback, Swimlane and Roadmap</span></a></li>
+        <li><a href="/templates/waypath/"><b>Steps</b><span>Waypath: journeys and processes</span></a></li>
+        <li><a href="#cards"><b>Headline numbers</b><span>Signal cards with share images</span></a></li>
       </ul>
     </div>
     <div class="panel hero-live di-theme" aria-label="Live Lanternfield">
@@ -116,6 +134,34 @@
     </article>
   </section>
 
+  <section class="panel family" id="timelines" aria-labelledby="tl-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Timelines · one dataset, four views</p><h2 id="tl-h">Timelines</h2>
+      <p class="lede">Every timeline view reads the same data, so an app can switch view without reshaping anything. Riverline's data works in all of them.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-swimlane"></div>
+    <ul class="family-list">
+      <li><a href="/templates/switchback/"><b>Switchback</b><span>Vertical story: alternating cards, reading progress, year rail, story mode.</span></a></li>
+      <li><a href="/templates/swimlane/"><b>Swimlane</b><span>Lanes of points and spans with zoom, a navigator strip and a detail panel.</span></a></li>
+      <li><a href="/templates/roadmap/"><b>Roadmap</b><span>Gantt plan with milestones and dependencies. Drag a task and see what moves.</span></a></li>
+      <li><a href="/templates/waypath/"><b>Waypath</b><span>Stops on a road, cycle or staircase. Tap to reveal, press play to walk it.</span></a></li>
+      <li><a href="/templates/riverline/"><b>Riverline</b><span>Time as a river that widens where more happened.</span></a></li>
+    </ul>
+  </section>
+
+  <section class="panel family" id="cards" aria-labelledby="cards-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
+      <p class="lede">Headline-number infographics. An app sends its own values (anything left out shows its default) and gets an interactive card plus a PNG or SVG to share, in wide, tall and 1200×630 shapes.</p></div>
+    </div>
+    <div class="card-tiles">
+      <a class="card-tile" href="/templates/rbf-sandbox-settlement-flow/"><div class="ct-stage" id="pv-c1"></div><b>Settlement Flow</b></a>
+      <a class="card-tile" href="/templates/sota-kece-community-pulse/"><div class="ct-stage" id="pv-c2"></div><b>Community Pulse</b></a>
+      <a class="card-tile" href="/templates/pacific-backhaul-node-map/"><div class="ct-stage" id="pv-c3"></div><b>Backhaul Node Map</b></a>
+      <a class="card-tile" href="/templates/debt-freedom-trajectory/"><div class="ct-stage" id="pv-c4"></div><b>Debt Freedom Trajectory</b></a>
+    </div>
+  </section>
+
   <section class="how">
     <div class="panel stack">
       <h2>Add one to an app</h2>
@@ -135,6 +181,7 @@
 <script src="/templates/tidepool/sample-data.js"></script>
 <script src="/templates/strata/sample-data.js"></script>
 <script src="/templates/riverline/sample-data.js"></script>
+<script src="/templates/timelines-fiji.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -144,6 +191,10 @@
   D.mount('#pv-tidepool', { template: 'tidepool', data: window.TIDEPOOL_DATA });
   D.mount('#pv-strata', { template: 'strata', data: window.STRATA_DATA, options: { info: false, height: 300 } });
   D.mount('#pv-riverline', { template: 'riverline', data: window.RIVERLINE_DATA, options: { height: 230 } });
+  D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
+  [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {
+    D.mount(c[0], { template: c[1], data: {}, options: { variant: 'card', animate: false }, theme: false });
+  });
 
   function snippet(id) {
     return '<div id="explore" style="height:560px"></div>\n' +
