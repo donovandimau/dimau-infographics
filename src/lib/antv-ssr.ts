@@ -44,11 +44,8 @@ function getWorker(): Worker {
   // antv depends on packages that ship ES module code in plain .js files (e.g. @antv/layout) and
   // on ES-only packages (lodash-es). Some hosts start Node with module detection switched off, so
   // the worker turns it back on explicitly.
-  const execArgv = [
-    ...process.execArgv.filter((a) => !/detect-module|require-module/.test(a)),
-    '--experimental-detect-module',
-    '--experimental-require-module',
-  ];
+  // (The parent's own flags are not passed on: memory/GC flags are not allowed in workers.)
+  const execArgv = ['--experimental-detect-module', '--experimental-require-module'];
   const env = { ...process.env, NODE_OPTIONS: (process.env.NODE_OPTIONS ?? '').replace(/--no-experimental-(detect|require)-module/g, '').trim() };
   const w = new Worker(WORKER_CODE, { eval: true, workerData: { entry: entryPath() }, execArgv, env });
   w.unref();
