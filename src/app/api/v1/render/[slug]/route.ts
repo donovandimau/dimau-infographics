@@ -23,7 +23,7 @@ async function respond(req: Request, slug: string, body: RenderRequest & { versi
   } catch (e) {
     if (e instanceof VariableError) return json({ error: e.message, field: e.field }, 422, cors);
     console.error('render failed', slug, e);
-    return json({ error: 'Render failed' }, 500, cors);
+    return json({ error: 'Render failed', detail: (e as Error).message }, 500, cors);
   }
 }
 
