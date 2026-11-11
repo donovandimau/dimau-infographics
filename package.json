@@ -1,0 +1,11 @@
+{
+  "name": "dimau-infographics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dimau Infographics: the central library of interactive infographic templates for every Dimau app.",
+  "scripts": {
+    "serve": "python3 -m http.server 8790",
+    "test": "node tests/smoke.cjs"
+  },
+  "license": "UNLICENSED"
+}

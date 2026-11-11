@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Dimau Infographics</title>
+<meta name="description" content="The Dimau library of interactive infographic templates. Each app picks the template that fits the shape of its information: networks, amounts, levels or time.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dimau Infographics">
+<meta property="og:title" content="Dimau Infographics">
+<meta property="og:description" content="Interactive infographic templates for every Dimau app: Lanternfield, Tidepool, Strata and Riverline.">
+<meta property="og:image" content="/icons/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#87CEEB">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/site.css">
+<style>
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; align-items: stretch; margin-top: 8px; }
+.hero .panel { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.shapes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.shapes a { display: grid; gap: 2px; padding: 12px 14px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+.shapes a:hover { border-color: var(--accent); }
+.shapes b { font: 700 15px/1.2 var(--display); }
+.shapes span { font-size: 13px; color: var(--muted); }
+.hero-live { padding: 0; overflow: hidden; display: block; min-height: 380px; position: relative; }
+.hero-live .stage { position: absolute; inset: 0; }
+.hero-live .cap { position: absolute; left: 14px; top: 12px; z-index: 5; pointer-events: none; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+.card { display: grid; gap: 14px; align-content: start; }
+.card .preview { border-radius: 14px; overflow: hidden; background: var(--di-bg, var(--panel-2)); border: 1px solid var(--rule); position: relative; }
+.card .preview.tall { height: 340px; }
+.card .preview.pad { padding: 14px; }
+.card header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.card p { margin: 0; }
+.mech { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.mech li { font-size: 12.5px; padding: 4px 9px; border-radius: 99px; background: var(--chip); }
+.how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-top: 20px; }
+.uses { width: 100%; border-collapse: collapse; font-size: 14px; }
+.uses th, .uses td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.uses th { font: 600 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.table-wrap { overflow-x: auto; }
+.copied { color: var(--accent); font-size: 13px; font-weight: 600; }
+@media (max-width: 900px) {
+  .hero, .cards, .how { grid-template-columns: minmax(0, 1fr); }
+  .hero-live { min-height: 340px; }
+  .shapes { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Dimau Infographics home"><img src="/icons/icon.svg" alt=""><b>Dimau Infographics</b></a>
+    <nav class="site-nav" aria-label="Templates">
+      <a href="/" aria-current="page">Library</a>
+      <a href="/templates/lanternfield/">Lanternfield</a>
+      <a href="/templates/tidepool/">Tidepool</a>
+      <a href="/templates/strata/">Strata</a>
+      <a href="/templates/riverline/">Riverline</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="panel">
+      <p class="eyebrow">Template library · v1</p>
+      <h1>Interactive infographics every Dimau app can pick from</h1>
+      <p class="lede">Four original ways to explore unfamiliar information. Each app loads one shared script, chooses the template that fits the shape of its information, and supplies its own data and colours.</p>
+      <ul class="shapes" aria-label="Choose by the shape of your information">
+        <li><a href="#lanternfield"><b>Connections</b><span>Lanternfield: topics and the links between them</span></a></li>
+        <li><a href="#tidepool"><b>Amounts</b><span>Tidepool: budgets and trade-offs</span></a></li>
+        <li><a href="#strata"><b>Levels</b><span>Strata: catalogues and categories</span></a></li>
+        <li><a href="#riverline"><b>Time</b><span>Riverline: histories and timelines</span></a></li>
+      </ul>
+    </div>
+    <div class="panel hero-live di-theme" aria-label="Live Lanternfield">
+      <p class="cap chip">Live · move over the map</p>
+      <div class="stage" id="hero-stage"></div>
+    </div>
+  </section>
+
+  <section class="cards" aria-label="Templates">
+    <article class="panel card" id="lanternfield">
+      <header><h2>Lanternfield</h2><span class="chip">Connections</span></header>
+      <p>A lantern magnifies whatever it passes over, its rim points to related topics outside it, and fog marks what the reader has not looked at yet.</p>
+      <ul class="mech"><li>Leashed lantern</li><li>Rim compass</li><li>Fog of discovery</li><li>Pins and bridges</li><li>Guided tours</li></ul>
+      <div class="row"><a class="btn primary" href="/templates/lanternfield/">Open the full demo</a><button class="btn" type="button" data-copy="lanternfield">Copy embed code</button><span class="copied" hidden></span></div>
+    </article>
+
+    <article class="panel card" id="tidepool">
+      <header><h2>Tidepool</h2><span class="chip">Amounts</span></header>
+      <p>Amounts are vessels joined by pipes. Raise one and the water visibly drains from the others, so a trade-off is something you see, not a sum you do.</p>
+      <div class="preview pad di-theme" id="pv-tidepool"></div>
+      <div class="row"><a class="btn primary" href="/templates/tidepool/">Open the full demo</a><button class="btn" type="button" data-copy="tidepool">Copy embed code</button><span class="copied" hidden></span></div>
+    </article>
+
+    <article class="panel card" id="strata">
+      <header><h2>Strata</h2><span class="chip">Levels</span></header>
+      <p>Each level is a core sample of layers sized by value. A strip in every layer previews what is inside; pull one out to drill down, and the depth gauge leads back up.</p>
+      <div class="preview pad di-theme" id="pv-strata"></div>
+      <div class="row"><a class="btn primary" href="/templates/strata/">Open the full demo</a><button class="btn" type="button" data-copy="strata">Copy embed code</button><span class="copied" hidden></span></div>
+    </article>
+
+    <article class="panel card" id="riverline">
+      <header><h2>Riverline</h2><span class="chip">Time</span></header>
+      <p>Time flows as a river that widens wherever more happened. A magnifying current spreads out the busy years under the pointer.</p>
+      <div class="preview pad di-theme" id="pv-riverline"></div>
+      <div class="row"><a class="btn primary" href="/templates/riverline/">Open the full demo</a><button class="btn" type="button" data-copy="riverline">Copy embed code</button><span class="copied" hidden></span></div>
+    </article>
+  </section>
+
+  <section class="how">
+    <div class="panel stack">
+      <h2>Add one to an app</h2>
+      <p>Load the shared script once, then mount the template you picked. Only that template's code is downloaded.</p>
+      <pre id="snippet"></pre>
+      <p>React apps use <code>v1/react/DimauInfographic.jsx</code>. Each template's page lists its data shape and events.</p>
+    </div>
+    <div class="panel stack">
+      <h2>Which apps use which</h2>
+      <p>Every app that adopts a template is listed in <code>catalog.json</code>, so updates can be checked against the apps that depend on them.</p>
+      <div class="table-wrap"><table class="uses"><thead><tr><th>Template</th><th>Status</th><th>Apps using it</th></tr></thead><tbody id="uses"></tbody></table></div>
+    </div>
+  </section>
+</main>
+
+<script src="/templates/lanternfield/sample-data.js"></script>
+<script src="/templates/tidepool/sample-data.js"></script>
+<script src="/templates/strata/sample-data.js"></script>
+<script src="/templates/riverline/sample-data.js"></script>
+<script src="/v1/dimau-infographics.js"></script>
+<script>
+(function () {
+  var D = window.DimauInfographics;
+  var host = location.origin;
+  D.mount('#hero-stage', { template: 'lanternfield', data: window.CITY_DATA, options: { lensRadius: 100, startAt: 'grid', minimap: false } });
+  D.mount('#pv-tidepool', { template: 'tidepool', data: window.TIDEPOOL_DATA });
+  D.mount('#pv-strata', { template: 'strata', data: window.STRATA_DATA, options: { info: false, height: 300 } });
+  D.mount('#pv-riverline', { template: 'riverline', data: window.RIVERLINE_DATA, options: { height: 230 } });
+
+  function snippet(id) {
+    return '<div id="explore" style="height:560px"></div>\n' +
+      '<script src="' + host + '/v1/dimau-infographics.js"><\/script>\n' +
+      '<script>\n  DimauInfographics.mount("#explore", {\n    template: "' + id + '",\n    data: myData,               // see the template page for the shape\n    on: { open: function (e) { console.log(e); } }\n  });\n<\/script>';
+  }
+  document.getElementById('snippet').textContent = snippet('tidepool');
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = snippet(b.dataset.copy), note = b.nextElementSibling;
+      var done = function (msg) { note.textContent = msg; note.hidden = false; setTimeout(function () { note.hidden = true; }, 2200); };
+      document.getElementById('snippet').textContent = text;
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done('Copied'); }, function () { done('Shown below to copy'); });
+      else done('Shown below to copy');
+    });
+  });
+
+  fetch('/catalog.json').then(function (r) { return r.json(); }).then(function (cat) {
+    document.getElementById('uses').innerHTML = cat.templates.map(function (t) {
+      var apps = t.usedBy && t.usedBy.length ? t.usedBy.map(function (a) { return a.app || a; }).join(', ') : 'None yet';
+      return '<tr><td><a href="' + t.demo + '">' + t.name + '</a></td><td>' + (t.status === 'ready' ? 'Ready' : t.status) + '</td><td>' + apps + '</td></tr>';
+    }).join('');
+  }).catch(function () {
+    document.getElementById('uses').innerHTML = '<tr><td colspan="3">Could not read the catalogue.</td></tr>';
+  });
+})();
+</script>
+<script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>
+<script src="https://fijian-assistant-api.vercel.app/dimau-consistency.js" defer></script>
+</body>
+</html>

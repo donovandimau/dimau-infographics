@@ -1,0 +1,68 @@
+{
+  "name": "Dimau Infographics",
+  "version": "1.0.0",
+  "base": "/v1/",
+  "templates": [
+    {
+      "id": "lanternfield",
+      "name": "Lanternfield",
+      "global": "Lanternfield",
+      "file": "lanternfield.js",
+      "types": "lanternfield.d.ts",
+      "status": "ready",
+      "shape": "network",
+      "bestFor": "Many connected topics where the links matter: systems, ecosystems, who-does-what, product maps.",
+      "mechanics": ["Leashed lantern lens", "Rim compass", "Fog of discovery", "Pins and bridges", "Guided tours", "Saved exploration"],
+      "dataShape": "{ clusters:[{id,label,color}], nodes:[{id,cluster,title,summary}], links:[{source,target,label}], tours? }",
+      "events": ["open", "focus", "progress", "pins", "lens", "tour", "statechange", "reset"],
+      "demo": "/templates/lanternfield/",
+      "sample": "How a city works: 56 systems and 94 links (illustrative)",
+      "usedBy": []
+    },
+    {
+      "id": "tidepool",
+      "name": "Tidepool",
+      "global": "Tidepool",
+      "file": "tidepool.js",
+      "status": "ready",
+      "shape": "quantities",
+      "bestFor": "Budgets, allocations and trade-offs, where moving one amount changes the others.",
+      "mechanics": ["Communicating vessels", "Flow through pipes", "Lock to protect an amount", "Plain-language trade-off sentence"],
+      "dataShape": "{ unit, period, conserve, step, items:[{id,label,value,min?,max?,locked?,note?}] }",
+      "events": ["change", "lock"],
+      "demo": "/templates/tidepool/",
+      "sample": "A fortnight's pay in FJD (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "strata",
+      "name": "Strata",
+      "global": "Strata",
+      "file": "strata.js",
+      "status": "ready",
+      "shape": "hierarchy",
+      "bestFor": "Anything with levels: catalogues, curricula, spending categories, organisations.",
+      "mechanics": ["Core-sample layers sized by value", "X-ray strip previews what is inside", "Pull a layer out to drill in", "Depth gauge to climb back"],
+      "dataShape": "{ unit, unitSingular, source, root:{label,note,children:[…]} }",
+      "events": ["drill", "select"],
+      "demo": "/templates/strata/",
+      "sample": "FijiLearn catalogue: 9 subjects, 40 courses, 109 chapters (real data, 11 Nov 2026)",
+      "usedBy": []
+    },
+    {
+      "id": "riverline",
+      "name": "Riverline",
+      "global": "Riverline",
+      "file": "riverline.js",
+      "status": "ready",
+      "shape": "time",
+      "bestFor": "Histories, project timelines and logs, where it matters when things bunch together.",
+      "mechanics": ["River widens with activity", "Magnifying current", "Lanes for themes", "Reading strip of what is in view"],
+      "dataShape": "{ view?, lanes:[{id,label}], eras:[{start,end,label}], events:[{date,when?,title,summary,lane,weight?}] }",
+      "events": ["open", "range"],
+      "demo": "/templates/riverline/",
+      "sample": "Fiji through time: 23 dated events from c. 1000 BCE to 2022",
+      "usedBy": []
+    }
+  ]
+}

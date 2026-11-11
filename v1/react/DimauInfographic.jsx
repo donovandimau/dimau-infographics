@@ -1,0 +1,70 @@
+/* React wrapper for every Dimau Infographics template.
+ *
+ *   import DimauInfographic from '<path>/v1/react/DimauInfographic.jsx';
+ *   <DimauInfographic template="tidepool" data={data} persistKey="budget" onChange={e => …} style={{ minHeight: 420 }} />
+ *
+ * Event props are on + the event name: onOpen, onChange, onDrill, onStateChange, onTour …
+ * Only the chosen template's code is loaded (each import below becomes its own chunk).
+ * Keep `data` referentially stable (a module constant or useMemo): a new object rebuilds the template.
+ */
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import '../dimau-infographics.css';
+
+const LOADERS = {
+  lanternfield: () => import('../lanternfield.js'),
+  tidepool: () => import('../tidepool.js'),
+  strata: () => import('../strata.js'),
+  riverline: () => import('../riverline.js')
+};
+
+const read = key => { try { return JSON.parse(localStorage.getItem('dimau-infographics:' + key) || 'null'); } catch (_) { return null; } };
+const write = (key, v) => { try { v == null ? localStorage.removeItem('dimau-infographics:' + key) : localStorage.setItem('dimau-infographics:' + key, JSON.stringify(v)); } catch (_) {} };
+
+const DimauInfographic = forwardRef(function DimauInfographic(
+  { template, data, options, persistKey, className, style, ...rest },
+  ref
+) {
+  const host = useRef(null);
+  const inst = useRef(null);
+  const handlers = useRef(rest);
+  handlers.current = rest;
+
+  useEffect(() => {
+    let cancelled = false, saveT;
+    const load = LOADERS[template];
+    if (!load) { console.error('DimauInfographic: unknown template "' + template + '"'); return undefined; }
+    load().then(m => {
+      if (cancelled || !host.current) return;
+      const Ctor = m.default || m;
+      const lf = new Ctor(host.current, data, options);
+      inst.current = lf;
+      // forward every event to the matching on<Event> prop, read fresh on each call
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range'];
+      events.forEach(type => lf.on(type, payload => {
+        const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
+        if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);
+      }));
+      if (persistKey && lf.getState && lf.setState) {
+        const saved = read(persistKey);
+        if (saved) lf.setState(saved);
+        const save = () => { clearTimeout(saveT); saveT = setTimeout(() => write(persistKey, lf.getState()), 400); };
+        ['statechange', 'change', 'lock', 'drill'].forEach(t => lf.on(t, save));
+        lf.on('reset', () => write(persistKey, null));
+      }
+    });
+    return () => {
+      cancelled = true; clearTimeout(saveT);
+      if (inst.current) { inst.current.destroy(); inst.current = null; }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [template, data]);
+
+  useImperativeHandle(ref, () => ({
+    /** The live template instance (Lanternfield, Tidepool, Strata or Riverline), or null while loading. */
+    get instance() { return inst.current; }
+  }), []);
+
+  return <div ref={host} className={'di-theme' + (className ? ' ' + className : '')} style={{ position: 'relative', ...style }} />;
+});
+
+export default DimauInfographic;

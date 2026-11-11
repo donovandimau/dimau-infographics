@@ -1,0 +1,125 @@
+/* Smoke test for the whole library. Run: npm test   (optional: node tests/smoke.cjs <screenshot-dir>)
+ * Serves the repo on a local port, opens every page at desktop and phone width, uses each template,
+ * and fails on page errors, sideways page scroll, or a catalog/loader mismatch. */
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+let chromium;
+try { ({ chromium } = require('playwright')); } catch (_) { ({ chromium } = require('/opt/npm-tools/node_modules/playwright')); }
+
+const ROOT = path.resolve(__dirname, '..');
+const SHOTS = process.argv[2] || null;
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.jsx': 'text/javascript' };
+const failures = [];
+const fail = m => { failures.push(m); console.log('  ✗ ' + m); };
+const pass = m => console.log('  ✓ ' + m);
+
+// 1. catalog.json and the loader must list the same templates, and every file must exist
+const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog.json'), 'utf8'));
+const loader = fs.readFileSync(path.join(ROOT, 'v1/dimau-infographics.js'), 'utf8');
+const react = fs.readFileSync(path.join(ROOT, 'v1/react/DimauInfographic.jsx'), 'utf8');
+const loaderIds = [...loader.matchAll(/^\s{4}(\w+): \{ file: '([^']+)', global: '(\w+)' \}/gm)].map(m => ({ id: m[1], file: m[2], global: m[3] }));
+console.log('Catalogue');
+for (const t of catalog.templates) {
+  const l = loaderIds.find(x => x.id === t.id);
+  if (!l) fail(t.id + ' is in catalog.json but not in the loader');
+  else if (l.file !== t.file || l.global !== t.global) fail(t.id + ': loader file/global differ from catalog.json');
+  if (!fs.existsSync(path.join(ROOT, 'v1', t.file))) fail(t.id + ': v1/' + t.file + ' missing');
+  if (!fs.existsSync(path.join(ROOT, 'templates', t.id, 'index.html'))) fail(t.id + ': demo page missing');
+  if (!new RegExp('\\b' + t.id + ': \\(\\) => import').test(react)) fail(t.id + ': missing from the React wrapper');
+}
+for (const l of loaderIds) if (!catalog.templates.find(t => t.id === l.id)) fail(l.id + ' is in the loader but not in catalog.json');
+if (!failures.length) pass(catalog.templates.length + ' templates agree across catalog.json, loader and React wrapper');
+
+// 2. pages
+const PAGES = [
+  { url: '/', name: 'library', check: async p => {
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 4, null, { timeout: 8000 });
+      return '4 live templates mounted';
+  } },
+  { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
+      await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
+      await p.waitForTimeout(900);
+      const t = await p.textContent('#detail h2');
+      if (t !== 'Pumping stations') throw new Error('detail panel shows ' + t);
+      await p.evaluate(() => window.lanternfield.tourStart(window.CITY_DATA.tours[0]));
+      await p.waitForTimeout(400);
+      if (await p.isHidden('#tourcard')) throw new Error('tour card did not open');
+      await p.evaluate(() => window.lanternfield.tourStop());
+      return 'open topic, start tour';
+  } },
+  { url: '/templates/tidepool/', name: 'tidepool', check: async p => {
+      const glass = p.locator('.tp-glass[aria-label="Savings"]');
+      await glass.focus();
+      for (let i = 0; i < 4; i++) await p.keyboard.press('ArrowUp');
+      const r = await p.evaluate(() => ({ total: window.tidepool.total(), savings: window.tidepool.items.find(i => i.id === 'savings').value, rent: window.tidepool.items.find(i => i.id === 'rent').value }));
+      if (r.savings !== 80) throw new Error('savings ' + r.savings + ', expected 80');
+      if (r.total !== 1110) throw new Error('total changed to ' + r.total);
+      if (r.rent !== 420) throw new Error('locked rent moved to ' + r.rent);
+      const story = await p.textContent('.tp-story');
+      if (!/took/.test(story)) throw new Error('no trade-off sentence: ' + story);
+      return 'savings +20, total kept, locked rent untouched';
+  } },
+  { url: '/templates/strata/', name: 'strata', check: async p => {
+      await p.click('.st-band >> nth=0');
+      await p.waitForTimeout(500);
+      const d = await p.textContent('.st-depth');
+      if (!/Level 2/.test(d)) throw new Error('depth reads ' + d);
+      await p.keyboard.press('Escape');
+      await p.waitForTimeout(300);
+      if (!/Level 1/.test(await p.textContent('.st-depth'))) throw new Error('could not climb back up');
+      return 'drill down and back up';
+  } },
+  { url: '/templates/riverline/', name: 'riverline', check: async p => {
+      await p.focus('.rl-stage canvas');
+      await p.keyboard.press('ArrowRight');
+      await p.waitForTimeout(200);
+      const on = await p.locator('.rl-card.on').count();
+      if (on !== 1) throw new Error('no selected event card');
+      return 'step to an event';
+  } }
+];
+
+const server = http.createServer((req, res) => {
+  let u = decodeURIComponent(req.url.split('?')[0]);
+  if (u.endsWith('/')) u += 'index.html';
+  const f = path.join(ROOT, u);
+  if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); res.end('not found'); return; }
+  res.writeHead(200, { 'Content-Type': TYPES[path.extname(f)] || 'application/octet-stream' });
+  fs.createReadStream(f).pipe(res);
+});
+
+(async () => {
+  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  const base = 'http://127.0.0.1:' + server.address().port;
+  const browser = await chromium.launch();
+  for (const vp of [{ name: 'desktop', width: 1360, height: 860 }, { name: 'phone', width: 390, height: 844, isMobile: true, hasTouch: true }]) {
+    console.log('\n' + vp.name);
+    for (const pg of PAGES) {
+      const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch, deviceScaleFactor: 1 });
+      const p = await ctx.newPage();
+      const errs = [];
+      p.on('pageerror', e => errs.push(e.message));
+      p.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_|net::/.test(m.text())) errs.push(m.text()); });
+      // outside services (fonts, shared Dimau footer, Workbox) are not needed for these checks
+      await p.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
+      try {
+        await p.goto(base + pg.url, { waitUntil: 'load' });
+        await p.waitForTimeout(700);
+        const what = await pg.check(p);
+        const over = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        if (over > 1) throw new Error('page scrolls sideways by ' + over + 'px');
+        if (errs.length) throw new Error('page errors: ' + errs.join(' | '));
+        pass(pg.name + ': ' + what);
+        if (SHOTS) await p.screenshot({ path: path.join(SHOTS, vp.name + '-' + pg.name + '.png'), fullPage: vp.name === 'phone' });
+      } catch (e) {
+        fail(pg.name + ' (' + vp.name + '): ' + e.message);
+      }
+      await ctx.close();
+    }
+  }
+  await browser.close();
+  server.close();
+  console.log(failures.length ? '\n' + failures.length + ' check(s) failed' : '\nAll checks passed');
+  process.exit(failures.length ? 1 : 0);
+})();
