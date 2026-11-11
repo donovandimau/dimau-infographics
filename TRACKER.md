@@ -7,14 +7,14 @@
 ## Project
 - Ops Room card: `platform-dimau-infographics` (created 11 Nov 2026)
 - Code: https://github.com/donovandimau/dimau-infographics
-- Live: not set until the first build is approved and deployed
+- Live: https://dimau-infographics.vercel.app/ (Vercel project `dimau-infographics`, team donovandimau-3468s-projects; every merge to `main` deploys)
 - What it is: the one central library of interactive infographic templates. Apps load `/v1/dimau-infographics.js` from the live address and pick a template by name. Related but separate: Dimau Visuals (`platform-dimau-visuals`) is a finished product; this is the shared component library apps build with.
 
 ## Current state
-- Status: v1 merged to `main` (PR #1, 11 Nov 2026); not live yet
+- Status: v1 live since 11 Nov 2026
 - Templates: Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline (time)
-- Next action: import this repo as a Vercel project (team donovandimau-3468s-projects, no build step), then set the live address here and on the Ops card
-- Blocker: no Vercel project yet (needs one import in the Vercel dashboard)
+- Next action: apps adopt templates; record each in `catalog.json` `usedBy`
+- Blocker: none
 
 ## Rules for this library
 - `catalog.json` is the one list of templates. The loader (`v1/dimau-infographics.js`) and `tests/smoke.cjs` must agree with it; the test fails if they do not.
@@ -35,6 +35,7 @@
 - 2026-11-11 — Claude — v1 built on `build-v1` and merged by Donovan as PR #1; `npm test` passes at 1360px and 390px. Ops card, room artifact and Command Room post recorded. Rollout row added via Dimau-Ops-Room PR #429. Vercel project NOT created: the automated setup was refused by a permission check, so after approval someone imports this repo in Vercel (team donovandimau-3468s-projects, no build step) and sets the live address on the card. `dimau-pwa.js` was copied unchanged from fiji-planner (md5 cd3f4845…).
 
 ## Done — newest first
+- 2026-11-11 — Claude — Linked the Vercel project and confirmed production at https://dimau-infographics.vercel.app/ serves the site, catalog.json and /v1/ files with open cross-site access. Ops card set to Live.
 - 2026-11-11 — Claude — v1 library merged (PR #1): loader, shared theme, Lanternfield, Tidepool, Strata, Riverline, React wrapper, library site and demo pages, smoke test passing at 1360px and 390px.
 
 _Seeded 2026-11-11 from the Ops Room. From here on, this file is the record for this project._
