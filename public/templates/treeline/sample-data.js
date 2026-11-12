@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.9.0), every family and template. */
+/* Real data: this library (catalog.json, v1.10.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.9.0",
+  "label": "Dimau Infographics 1.10.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -295,6 +295,41 @@ window.TREELINE_DATA = {
       "label": "Slotgrid",
       "sub": "Clinic appointments, room bookings, ferry seats, tutoring sessions.",
       "link": "/templates/slotgrid/"
+     }
+    ]
+   },
+   {
+    "label": "Chartbook",
+    "children": [
+     {
+      "label": "Stackbar",
+      "sub": "Budgets by category, survey answers by group, courses by length, sales by product per shop.",
+      "link": "/templates/stackbar/"
+     },
+     {
+      "label": "Featuregrid",
+      "sub": "Plans and prices, products, services, ways of doing something.",
+      "link": "/templates/featuregrid/"
+     },
+     {
+      "label": "Ringflow",
+      "sub": "People moving between places, trade between countries, students between schools, money between accounts.",
+      "link": "/templates/ringflow/"
+     },
+     {
+      "label": "Bumpline",
+      "sub": "League tables, best-selling products, top subjects, most-visited places by month.",
+      "link": "/templates/bumpline/"
+     },
+     {
+      "label": "Spiral",
+      "sub": "Rainfall, sales, visitors, illness: anything with seasons.",
+      "link": "/templates/spiral/"
+     },
+     {
+      "label": "Streamgraph",
+      "sub": "Topics over time, sales by product line, visitors by source, how a collection grew.",
+      "link": "/templates/streamgraph/"
      }
     ]
    },

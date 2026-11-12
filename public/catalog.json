@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1213,6 +1213,150 @@
       ],
       "demo": "/templates/slotgrid/",
       "sample": "Clinic appointments (example)",
+      "usedBy": []
+    },
+    {
+      "id": "stackbar",
+      "name": "Stackbar",
+      "global": "Stackbar",
+      "file": "chartbook.js",
+      "status": "ready",
+      "shape": "composition",
+      "family": "chartbook",
+      "bestFor": "Budgets by category, survey answers by group, courses by length, sales by product per shop.",
+      "mechanics": [
+        "Share or numbers",
+        "Sort by any part",
+        "Tap a piece for its numbers",
+        "Percentages inside the bars"
+      ],
+      "dataShape": "{ groups:[{id,label}], parts:[{id,label,color?}], values:{ groupId:{ partId:number } }, unit? }",
+      "events": [
+        "select",
+        "mode",
+        "focus"
+      ],
+      "demo": "/templates/stackbar/",
+      "sample": "FijiLearn courses by length (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "featuregrid",
+      "name": "Featuregrid",
+      "global": "Featuregrid",
+      "file": "chartbook.js",
+      "status": "ready",
+      "shape": "comparison-table",
+      "family": "chartbook",
+      "bestFor": "Plans and prices, products, services, ways of doing something.",
+      "mechanics": [
+        "Yes, no and partly in words and symbols",
+        "Show only the differences",
+        "Pick an option",
+        "Grouped rows",
+        "Real table, works with screen readers"
+      ],
+      "dataShape": "{ options:[{id,label,note?}], features:[{id,label,group?,note?,values:{optId: true|false|'partial'|string}}] }",
+      "events": [
+        "pick",
+        "filter"
+      ],
+      "demo": "/templates/featuregrid/",
+      "sample": "Ways to use this library (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "ringflow",
+      "name": "Ringflow",
+      "global": "Ringflow",
+      "file": "chartbook.js",
+      "status": "ready",
+      "shape": "chord",
+      "family": "chartbook",
+      "bestFor": "People moving between places, trade between countries, students between schools, money between accounts.",
+      "mechanics": [
+        "Bands sized by amount",
+        "Tap a group to follow its flows",
+        "Biggest flow in words",
+        "Most in and most out"
+      ],
+      "dataShape": "{ groups:[{id,label,color?}], flows:[{from,to,value}], unit? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/ringflow/",
+      "sample": "Moves between places (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "bumpline",
+      "name": "Bumpline",
+      "global": "Bumpline",
+      "file": "chartbook.js",
+      "status": "ready",
+      "shape": "ranking",
+      "family": "chartbook",
+      "bestFor": "League tables, best-selling products, top subjects, most-visited places by month.",
+      "mechanics": [
+        "Ranks worked out from values",
+        "Smooth crossing lines",
+        "Follow one line",
+        "Biggest climber and drop in words"
+      ],
+      "dataShape": "{ periods:[labels], items:[{id,label,values:[]}], higherIsBetter? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/bumpline/",
+      "sample": "Market stall bestsellers (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "spiral",
+      "name": "Spiral",
+      "global": "Spiral",
+      "file": "chartbook.js",
+      "status": "ready",
+      "shape": "cycle",
+      "family": "chartbook",
+      "bestFor": "Rainfall, sales, visitors, illness: anything with seasons.",
+      "mechanics": [
+        "One turn per year",
+        "Thickness and shade for size",
+        "Compare one month across years",
+        "Highest and lowest month in words"
+      ],
+      "dataShape": "{ start:'YYYY-MM', values:[monthly numbers], label?, prefix?, suffix? }",
+      "events": [
+        "select",
+        "month"
+      ],
+      "demo": "/templates/spiral/",
+      "sample": "Monthly rainfall (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "streamgraph",
+      "name": "Streamgraph",
+      "global": "Streamgraph",
+      "file": "chartbook.js",
+      "status": "ready",
+      "shape": "stream",
+      "family": "chartbook",
+      "bestFor": "Topics over time, sales by product line, visitors by source, how a collection grew.",
+      "mechanics": [
+        "Stream or stacked",
+        "Smooth layers",
+        "Follow one layer",
+        "Share of the total in words"
+      ],
+      "dataShape": "{ periods:[labels], series:[{id,label,values:[],color?}], unit? }",
+      "events": [
+        "select",
+        "mode"
+      ],
+      "demo": "/templates/streamgraph/",
+      "sample": "This library, release by release (real data)",
       "usedBy": []
     },
     {

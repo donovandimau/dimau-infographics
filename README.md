@@ -93,6 +93,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Treeline** | A big list in branches | Site maps, catalogues, org charts | Open and close, counts, search with highlights, full ARIA tree keys |
 | **Monthview** | Events | Community events, timetables | Month grid, events coloured by kind, tap a day, dots on phones |
 | **Slotgrid** | Bookings | Appointments, rooms, seats | Free, booked and closed in words and pattern; pick and book |
+| **Stackbar** | Composition | Budgets by category, courses by length | 100% bars or numbers, sort by any part, tap a piece |
+| **Featuregrid** | Feature comparison | Plans, products, services | Yes/no/partly in words, show only the differences, pick an option |
+| **Ringflow** | Flows between groups | Migration, trade, transfers | Chord diagram; tap a group to follow its flows |
+| **Bumpline** | Rankings over time | League tables, bestsellers | Crossing lines, ranks worked out from values, follow one line |
+| **Spiral** | Seasons | Rainfall, sales, visitors | One turn a year; compare one month across the years |
+| **Streamgraph** | Layers over time | Topics, product lines, how a collection grew | Stream or stacked, follow one layer |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -151,6 +157,7 @@ v1/insight.js                Factwall, Swarm, Scatter, Heatgrid, Bridge, Overlap
 v1/learn.js                  Flashdeck, Quizline, Hotspot, Checklist, Scaleup, Sorter (learn)
 v1/plan.js                   Loanpath, Savegrow, Countdown, Pollbar, Rankit, Opinion (plan and ask)
 v1/track.js                  Dial, Statusboard, Sparkgrid, Treeline, Monthview, Slotgrid (track)
+v1/chartbook.js              Stackbar, Featuregrid, Ringflow, Bumpline, Spiral, Streamgraph (chartbook)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template
