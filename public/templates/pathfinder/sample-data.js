@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.21, 127 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.22, 133 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -697,6 +697,33 @@ window.PATHFINDER_DATA = {
     {
      "label": "Counting down to a date",
      "to": "r_countdown"
+    },
+    {
+     "label": "Where pay goes",
+     "to": "r_paysplit"
+    },
+    {
+     "label": "Spending against a plan",
+     "to": "r_budgetplan",
+     "hint": "needs, wants, savings"
+    },
+    {
+     "label": "Paying off several debts",
+     "to": "r_debtplan"
+    },
+    {
+     "label": "Sending money home",
+     "to": "r_sendmoney",
+     "hint": "fees and rates"
+    },
+    {
+     "label": "Getting through the month",
+     "to": "r_cashcalendar",
+     "hint": "paydays and bills"
+    },
+    {
+     "label": "What rising prices do",
+     "to": "r_pricerise"
     }
    ]
   },
@@ -1462,6 +1489,42 @@ window.PATHFINDER_DATA = {
    "text": "Flash cards in boxes.",
    "link": "/templates/leitner/",
    "linkLabel": "Open Leitner"
+  },
+  "r_paysplit": {
+   "result": "Paysplit",
+   "text": "Where a pay packet goes.",
+   "link": "/templates/paysplit/",
+   "linkLabel": "Open Paysplit"
+  },
+  "r_budgetplan": {
+   "result": "Budgetplan",
+   "text": "Needs, wants and savings against a plan.",
+   "link": "/templates/budgetplan/",
+   "linkLabel": "Open Budgetplan"
+  },
+  "r_debtplan": {
+   "result": "Debtplan",
+   "text": "Two ways to clear debts, compared.",
+   "link": "/templates/debtplan/",
+   "linkLabel": "Open Debtplan"
+  },
+  "r_sendmoney": {
+   "result": "Sendmoney",
+   "text": "How much arrives with each provider.",
+   "link": "/templates/sendmoney/",
+   "linkLabel": "Open Sendmoney"
+  },
+  "r_cashcalendar": {
+   "result": "Cashcalendar",
+   "text": "The balance through a month.",
+   "link": "/templates/cashcalendar/",
+   "linkLabel": "Open Cashcalendar"
+  },
+  "r_pricerise": {
+   "result": "Pricerise",
+   "text": "What rising prices do to money.",
+   "link": "/templates/pricerise/",
+   "linkLabel": "Open Pricerise"
   }
  }
 };

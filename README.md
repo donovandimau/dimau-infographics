@@ -165,6 +165,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Estimator** | Guess a number | Distances, populations, prices | Slider guess, guess and answer side by side, points for closeness, sources |
 | **Masterygrid** | Who needs help | Teachers and trainers planning groups | Learners by skills, who else needs the same help, filter and sort, arrow keys |
 | **Leitner** | Flash cards in boxes | Vocabulary, facts, road signs | Flip, knew it or not, hard cards come round sooner |
+| **Paysplit** | Where pay goes | Payslip explainers, budgeting lessons | Per week, fortnight, month or year; amounts or percentages; shortfall warning |
+| **Budgetplan** | Needs, wants, savings | Budgeting lessons, family money talks | Editable amounts, shares against the plan, over or short in words |
+| **Debtplan** | Clearing debts | Debt advice, credit unions | Smallest-first and highest-interest-first worked out month by month, extra payment slider |
+| **Sendmoney** | Sending money home | Remittance comparisons, family apps | Amount arriving per provider, fee and rate losses split out, any amount |
+| **Cashcalendar** | The month ahead | Planning around paydays and bills | Day-by-day balance, lowest point, below-zero warning, bills on and off |
+| **Pricerise** | Rising prices | Savings talks, school economics | What money buys, what is needed to keep up, doubling time |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -235,6 +241,7 @@ v1/tools.js                  Worldclock, Lifegrid, Settleup, Unitprice, Seatarc,
 v1/metrics.js                Cohortgrid, Burndown, Controlchart, Cumflow, Kpitiles, Abtest (metrics)
 v1/basics.js                 Donut, Barchart, Linechart, Areachart, Combochart, Waffle (basics)
 v1/practice.js               Matchup, Sequence, Fillgap, Estimator, Masterygrid, Leitner (practice)
+v1/money.js                  Paysplit, Budgetplan, Debtplan, Sendmoney, Cashcalendar, Pricerise (money)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

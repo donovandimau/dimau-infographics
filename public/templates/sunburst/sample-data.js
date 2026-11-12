@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.21.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.22.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -721,6 +721,41 @@ window.SUNBURST_DATA = {
       "label": "Leitner",
       "value": 1,
       "note": "Vocabulary, facts, formulas, road signs: anything learned by repetition."
+     }
+    ]
+   },
+   {
+    "label": "Money",
+    "children": [
+     {
+      "label": "Paysplit",
+      "value": 1,
+      "note": "Payslip explainers, budgeting lessons, job offers, household planning."
+     },
+     {
+      "label": "Budgetplan",
+      "value": 1,
+      "note": "Budgeting lessons, family money talks, financial literacy apps."
+     },
+     {
+      "label": "Debtplan",
+      "value": 1,
+      "note": "Debt advice services, credit unions, budgeting lessons."
+     },
+     {
+      "label": "Sendmoney",
+      "value": 1,
+      "note": "Remittance comparisons, diaspora and family apps, money lessons."
+     },
+     {
+      "label": "Cashcalendar",
+      "value": 1,
+      "note": "Planning around paydays, avoiding overdrafts, school fee and festive months."
+     },
+     {
+      "label": "Pricerise",
+      "value": 1,
+      "note": "Savings and pension talks, school economics, pay negotiations."
      }
     ]
    },

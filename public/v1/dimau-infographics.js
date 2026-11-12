@@ -132,13 +132,19 @@
     estimator: { file: 'practice.js', global: 'Estimator' },
     masterygrid: { file: 'practice.js', global: 'Masterygrid' },
     leitner: { file: 'practice.js', global: 'Leitner' },
+    paysplit: { file: 'money.js', global: 'Paysplit' },
+    budgetplan: { file: 'money.js', global: 'Budgetplan' },
+    debtplan: { file: 'money.js', global: 'Debtplan' },
+    sendmoney: { file: 'money.js', global: 'Sendmoney' },
+    cashcalendar: { file: 'money.js', global: 'Cashcalendar' },
+    pricerise: { file: 'money.js', global: 'Pricerise' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.21.0';
+  var VERSION = '1.22.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};

@@ -98,6 +98,7 @@
       <a href="/#metrics">Metrics</a>
       <a href="/#basics">Basics</a>
       <a href="/#practice">Practice</a>
+      <a href="/#money">Money</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -477,6 +478,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="money" aria-labelledby="money-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Money · household tools (not financial advice)</p><h2 id="money-h">Money</h2>
+      <p class="lede">Where pay goes, spending against a plan, clearing debts, sending money home, the month ahead, and what rising prices do.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-cashcalendar"></div>
+    <ul class="family-list">
+      <li><a href="/templates/paysplit/"><b>Paysplit</b><span>Where a pay packet goes.</span></a></li>
+      <li><a href="/templates/budgetplan/"><b>Budgetplan</b><span>Needs, wants and savings against a plan.</span></a></li>
+      <li><a href="/templates/debtplan/"><b>Debtplan</b><span>Two ways to clear debts, compared.</span></a></li>
+      <li><a href="/templates/sendmoney/"><b>Sendmoney</b><span>How much arrives with each provider.</span></a></li>
+      <li><a href="/templates/cashcalendar/"><b>Cashcalendar</b><span>The balance through a month.</span></a></li>
+      <li><a href="/templates/pricerise/"><b>Pricerise</b><span>What rising prices do to money.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -529,6 +546,7 @@
 <script src="/templates/kpitiles/sample-data.js"></script>
 <script src="/templates/barchart/sample-data.js"></script>
 <script src="/templates/estimator/sample-data.js"></script>
+<script src="/templates/cashcalendar/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -556,6 +574,7 @@
   D.mount('#pv-kpitiles', { template: 'kpitiles', data: window.KPITILES_DATA });
   D.mount('#pv-barchart', { template: 'barchart', data: window.BARCHART_DATA });
   D.mount('#pv-estimator', { template: 'estimator', data: window.ESTIMATOR_DATA });
+  D.mount('#pv-cashcalendar', { template: 'cashcalendar', data: window.CASHCALENDAR_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

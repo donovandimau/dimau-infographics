@@ -89,6 +89,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.21",
    "value": 127
+  },
+  {
+   "label": "v1.22",
+   "value": 133
   }
  ],
  "notes": [
@@ -166,6 +170,11 @@ window.ANNOTLINE_DATA = {
    "at": 21,
    "title": "Practice",
    "text": "Matching, ordering, gap-fill, estimating, a mastery grid and flash cards in boxes."
+  },
+  {
+   "at": 22,
+   "title": "Money",
+   "text": "Pay, budgets, debts, sending money home, the month ahead and rising prices."
   }
  ]
 };

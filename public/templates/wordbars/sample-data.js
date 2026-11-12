@@ -1,4 +1,4 @@
-/* Real data: the "best for" line of every template in this library (catalog.json, v1.21.0). */
+/* Real data: the "best for" line of every template in this library (catalog.json, v1.22.0). */
 window.WORDBARS_DATA = {
  "texts": [
   {
@@ -488,6 +488,30 @@ window.WORDBARS_DATA = {
   {
    "label": "Leitner",
    "text": "Vocabulary, facts, formulas, road signs: anything learned by repetition."
+  },
+  {
+   "label": "Paysplit",
+   "text": "Payslip explainers, budgeting lessons, job offers, household planning."
+  },
+  {
+   "label": "Budgetplan",
+   "text": "Budgeting lessons, family money talks, financial literacy apps."
+  },
+  {
+   "label": "Debtplan",
+   "text": "Debt advice services, credit unions, budgeting lessons."
+  },
+  {
+   "label": "Sendmoney",
+   "text": "Remittance comparisons, diaspora and family apps, money lessons."
+  },
+  {
+   "label": "Cashcalendar",
+   "text": "Planning around paydays, avoiding overdrafts, school fee and festive months."
+  },
+  {
+   "label": "Pricerise",
+   "text": "Savings and pension talks, school economics, pay negotiations."
   },
   {
    "label": "Settlement Flow",

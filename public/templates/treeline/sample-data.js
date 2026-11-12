@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.21.0), every family and template. */
+/* Real data: this library (catalog.json, v1.22.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.21.0",
+  "label": "Dimau Infographics 1.22.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -720,6 +720,41 @@ window.TREELINE_DATA = {
       "label": "Leitner",
       "sub": "Vocabulary, facts, formulas, road signs: anything learned by repetition.",
       "link": "/templates/leitner/"
+     }
+    ]
+   },
+   {
+    "label": "Money",
+    "children": [
+     {
+      "label": "Paysplit",
+      "sub": "Payslip explainers, budgeting lessons, job offers, household planning.",
+      "link": "/templates/paysplit/"
+     },
+     {
+      "label": "Budgetplan",
+      "sub": "Budgeting lessons, family money talks, financial literacy apps.",
+      "link": "/templates/budgetplan/"
+     },
+     {
+      "label": "Debtplan",
+      "sub": "Debt advice services, credit unions, budgeting lessons.",
+      "link": "/templates/debtplan/"
+     },
+     {
+      "label": "Sendmoney",
+      "sub": "Remittance comparisons, diaspora and family apps, money lessons.",
+      "link": "/templates/sendmoney/"
+     },
+     {
+      "label": "Cashcalendar",
+      "sub": "Planning around paydays, avoiding overdrafts, school fee and festive months.",
+      "link": "/templates/cashcalendar/"
+     },
+     {
+      "label": "Pricerise",
+      "sub": "Savings and pension talks, school economics, pay negotiations.",
+      "link": "/templates/pricerise/"
      }
     ]
    },

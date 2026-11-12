@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2929,6 +2929,145 @@
       ],
       "demo": "/templates/leitner/",
       "sample": "Pacific capitals (real reference)",
+      "usedBy": []
+    },
+    {
+      "id": "paysplit",
+      "name": "Paysplit",
+      "global": "Paysplit",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "pay-split",
+      "family": "money",
+      "bestFor": "Payslip explainers, budgeting lessons, job offers, household planning.",
+      "mechanics": [
+        "Per week, fortnight, month or year",
+        "Amounts or percentages of pay",
+        "Warns when more goes out than in",
+        "Tap a part"
+      ],
+      "dataShape": "{ prefix?, gross, per, items:[{id,label,kind:'deduction'|'bill'|'saving',amount?|percent?}] }",
+      "events": [
+        "per"
+      ],
+      "demo": "/templates/paysplit/",
+      "sample": "A monthly pay (example)",
+      "usedBy": []
+    },
+    {
+      "id": "budgetplan",
+      "name": "Budgetplan",
+      "global": "Budgetplan",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "budget-plan",
+      "family": "money",
+      "bestFor": "Budgeting lessons, family money talks, financial literacy apps.",
+      "mechanics": [
+        "Editable amounts and income",
+        "Shares against the plan",
+        "Over or short in plain words",
+        "Any plan split"
+      ],
+      "dataShape": "{ prefix?, income, plan:{needs,wants,savings}, items:[{id,label,kind,amount}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/budgetplan/",
+      "sample": "A household budget (example)",
+      "usedBy": []
+    },
+    {
+      "id": "debtplan",
+      "name": "Debtplan",
+      "global": "Debtplan",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "debt-payoff",
+      "family": "money",
+      "bestFor": "Debt advice services, credit unions, budgeting lessons.",
+      "mechanics": [
+        "Both methods worked out month by month",
+        "Extra payment slider",
+        "Order and first win shown",
+        "Warns when debts never clear"
+      ],
+      "dataShape": "{ prefix?, debts:[{id,label,balance,rate,min}], extra, maxExtra? }",
+      "events": [
+        "extra"
+      ],
+      "demo": "/templates/debtplan/",
+      "sample": "Three debts (example)",
+      "usedBy": []
+    },
+    {
+      "id": "sendmoney",
+      "name": "Sendmoney",
+      "global": "Sendmoney",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "remittance",
+      "family": "money",
+      "bestFor": "Remittance comparisons, diaspora and family apps, money lessons.",
+      "mechanics": [
+        "Amount arriving, best first",
+        "Fee and rate losses split out",
+        "Any amount: fixed fees hurt small sends",
+        "Tap a provider"
+      ],
+      "dataShape": "{ send, from, to, mid, providers:[{id,label,fee,rate,speed?}] }",
+      "events": [
+        "amount"
+      ],
+      "demo": "/templates/sendmoney/",
+      "sample": "Sending NZD to Fiji (example)",
+      "usedBy": []
+    },
+    {
+      "id": "cashcalendar",
+      "name": "Cashcalendar",
+      "global": "Cashcalendar",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "cash-flow",
+      "family": "money",
+      "bestFor": "Planning around paydays, avoiding overdrafts, school fee and festive months.",
+      "mechanics": [
+        "Day-by-day balance",
+        "Lowest point marked",
+        "Below-zero warning",
+        "Bills on and off"
+      ],
+      "dataShape": "{ prefix?, month:'YYYY-MM', start, events:[{id,label,day,amount}] }",
+      "events": [
+        "day",
+        "change"
+      ],
+      "demo": "/templates/cashcalendar/",
+      "sample": "A December budget (example)",
+      "usedBy": []
+    },
+    {
+      "id": "pricerise",
+      "name": "Pricerise",
+      "global": "Pricerise",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "inflation",
+      "family": "money",
+      "bestFor": "Savings and pension talks, school economics, pay negotiations.",
+      "mechanics": [
+        "Rate and years sliders",
+        "What it buys and what is needed",
+        "When prices double",
+        "Both lines together"
+      ],
+      "dataShape": "{ prefix?, amount, rate, years }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/pricerise/",
+      "sample": "$100 over ten years (example)",
       "usedBy": []
     },
     {

@@ -48,9 +48,9 @@ window.ESTIMATOR_DATA = {
    "min": 0,
    "max": 200,
    "step": 1,
-   "answer": 127,
+   "answer": 133,
    "unit": "templates",
-   "source": "This library’s catalogue, v1.21.0."
+   "source": "This library’s catalogue, v1.22.0."
   }
  ]
 };

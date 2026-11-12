@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Budgetplan · Dimau Infographics</title>
+<meta name="description" content="Budgetplan: Budgeting lessons, family money talks, financial literacy apps.">
+<meta property="og:title" content="Budgetplan · Dimau Infographics">
+<meta property="og:description" content="Budgetplan: Budgeting lessons, family money talks, financial literacy apps.">
+<meta property="og:image" content="/icons/icon-512.png">
+<meta name="theme-color" content="#87CEEB">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/v1/dimau-infographics.css">
+<link rel="stylesheet" href="/site.css">
+<style>
+.demo-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 20px; }
+.stagewrap { margin-top: 16px; }
+.use { margin-top: 14px; }
+.out { margin: 12px 0 0; font-size: 14px; color: var(--muted); min-height: 1.5em; }
+.out b { color: var(--ink); }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Dimau Infographics home"><img src="/icons/icon.svg" alt=""><b>Dimau Infographics</b></a>
+    <nav class="site-nav" aria-label="Templates">
+      <a href="/">Library</a>
+      <a href="/templates/lanternfield/">Lanternfield</a>
+      <a href="/templates/tidepool/">Tidepool</a>
+      <a href="/templates/strata/">Strata</a>
+      <a href="/templates/riverline/">Riverline</a>
+      <a href="/templates/archive-desk/">Archive Desk</a>
+      <a href="/#timelines">Timelines</a>
+      <a href="/#charts">Charts</a>
+      <a href="/#everyday">Everyday</a>
+      <a href="/#compare">Compare</a>
+      <a href="/#insight">Insight</a>
+      <a href="/#learn">Learn</a>
+      <a href="/#plan">Plan</a>
+      <a href="/#track">Track</a>
+      <a href="/#chartbook">Chartbook</a>
+      <a href="/#guides">Guides</a>
+      <a href="/#stories">Stories</a>
+      <a href="/#places">Places</a>
+      <a href="/#stats">Stats</a>
+      <a href="/#structure">Structure</a>
+      <a href="/#analyse">Analyse</a>
+      <a href="/#words">Words</a>
+      <a href="/#tools">Tools</a>
+      <a href="/#metrics">Metrics</a>
+      <a href="/#basics">Basics</a>
+      <a href="/#practice">Practice</a>
+      <a href="/#money" aria-current="page">Money</a>
+      <a href="/#cards">Cards</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <div class="demo-head"><div><p class="eyebrow">Money · needs, wants, savings</p><h1>Budgetplan</h1><p class="lede">Spending against a needs, wants and savings plan. Change any amount and see the shares move against the plan.</p></div></div>
+    <div class="stagewrap"><div class="di-theme" id="stage"></div></div>
+    <p class="row" style="margin:10px 0 0;gap:10px"><span class="example-flag">Example figures</span><span style="font-size:13px;color:var(--muted)">A made-up household against a 50 / 30 / 20 plan. Not financial advice.</span></p>
+  </section>
+  <section class="panel use stack" id="use"></section>
+</main>
+<script src="/templates/budgetplan/sample-data.js"></script>
+<script src="/v1/money.js"></script>
+<script src="/templates/demo.js"></script>
+<script>
+(function () {
+  DIDemo.usePanel(document.getElementById('use'), 'budgetplan');
+  var tl = new Budgetplan(document.getElementById('stage'), window.BUDGETPLAN_DATA, {});
+  window.timeline = tl;
+  
+})();
+</script>
+<script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>
+<script src="https://fijian-assistant-api.vercel.app/dimau-consistency.js" defer></script>
+</body>
+</html>

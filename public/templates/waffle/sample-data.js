@@ -1,4 +1,4 @@
-/* Real data: what kind of sample each template in this library ships with (catalog.json, v1.21.0). */
+/* Real data: what kind of sample each template in this library ships with (catalog.json, v1.22.0). */
 window.WAFFLE_DATA = {
  "unit": "templates",
  "items": [
@@ -15,7 +15,7 @@ window.WAFFLE_DATA = {
   {
    "id": "example",
    "label": "Marked example figures",
-   "value": 69
+   "value": 75
   }
  ]
 };

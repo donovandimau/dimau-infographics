@@ -1,14 +1,13 @@
-/* Real data: this library at v1.21 compared with v1.20, from catalog.json and the smoke test. */
+/* Real data: this library at v1.22 compared with v1.21, from catalog.json and the smoke test. */
 window.KPITILES_DATA = {
  "period": "the last release",
  "tiles": [
   {
    "id": "templates",
    "label": "Templates",
-   "value": 127,
-   "prev": 121,
+   "value": 133,
+   "prev": 127,
    "history": [
-    73,
     79,
     85,
     91,
@@ -17,17 +16,17 @@ window.KPITILES_DATA = {
     109,
     115,
     121,
-    127
+    127,
+    133
    ],
    "note": "Six were added in this release."
   },
   {
    "id": "families",
    "label": "Families",
-   "value": 22,
-   "prev": 21,
+   "value": 23,
+   "prev": 22,
    "history": [
-    13,
     14,
     15,
     16,
@@ -36,15 +35,16 @@ window.KPITILES_DATA = {
     19,
     20,
     21,
-    22
+    22,
+    23
    ],
    "note": "Counting Explore and Signal cards."
   },
   {
    "id": "checks",
    "label": "Smoke test checks",
-   "value": 257,
-   "prev": 245,
+   "value": 269,
+   "prev": 257,
    "history": [
     161,
     173,
@@ -54,7 +54,8 @@ window.KPITILES_DATA = {
     221,
     233,
     245,
-    257
+    257,
+    269
    ],
    "note": "Every page at desktop and phone width, plus a check for each template."
   },
@@ -72,6 +73,7 @@ window.KPITILES_DATA = {
     2.03,
     2.03,
     2.03,
+    2.02,
     2.02,
     2.02
    ],
