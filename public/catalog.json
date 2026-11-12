@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1925,6 +1925,151 @@
       ],
       "demo": "/templates/marimekko/",
       "sample": "Travel to work by district (example)",
+      "usedBy": []
+    },
+    {
+      "id": "sunburst",
+      "name": "Sunburst",
+      "global": "Sunburst",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "sunburst",
+      "family": "structure",
+      "bestFor": "Budgets by department and item, catalogues, course structures, file and folder sizes.",
+      "mechanics": [
+        "Up to three rings at a time",
+        "Zoom in and back up",
+        "Breadcrumbs",
+        "Shares of the part and of the whole"
+      ],
+      "dataShape": "{ unit?, prefix?, root:{label, children:[{id?,label,value?,children?,note?}]} }",
+      "events": [
+        "select",
+        "zoom"
+      ],
+      "demo": "/templates/sunburst/",
+      "sample": "This library, family by family (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "circlepack",
+      "name": "Circlepack",
+      "global": "Circlepack",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "circle-packing",
+      "family": "structure",
+      "bestFor": "Sizes within groups: spending, file sizes, populations by region and town, stock by category.",
+      "mechanics": [
+        "Circles packed by size",
+        "Zoom in and back up",
+        "Breadcrumbs",
+        "Shares of the part and of the whole"
+      ],
+      "dataShape": "{ unit?, prefix?, root:{label, children:[{id?,label,value?,children?}]} }",
+      "events": [
+        "select",
+        "zoom"
+      ],
+      "demo": "/templates/circlepack/",
+      "sample": "This library’s files by size (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "icicle",
+      "name": "Icicle",
+      "global": "Icicle",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "icicle",
+      "family": "structure",
+      "bestFor": "Course and chapter outlines, budgets, org structures by headcount, website sections.",
+      "mechanics": [
+        "Three levels at a time",
+        "Zoom in and back up",
+        "Names and amounts on blocks",
+        "Breadcrumbs"
+      ],
+      "dataShape": "{ unit?, prefix?, root:{label, children:[...]} }",
+      "events": [
+        "select",
+        "zoom"
+      ],
+      "demo": "/templates/icicle/",
+      "sample": "FijiLearn subjects, courses and chapters (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "arcflow",
+      "name": "Arcflow",
+      "global": "Arcflow",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "arc-diagram",
+      "family": "structure",
+      "bestFor": "Ferry and bus routes, trade between places, who works with whom, references between documents.",
+      "mechanics": [
+        "Arc thickness by amount",
+        "Tap for one item’s links",
+        "Sort four ways",
+        "Groups by colour"
+      ],
+      "dataShape": "{ nodes:[{id,label,group?}], groups?:[{id,label}], links:[{from,to,value}], unit? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/arcflow/",
+      "sample": "Ferry trips between islands (example)",
+      "usedBy": []
+    },
+    {
+      "id": "linkmatrix",
+      "name": "Linkmatrix",
+      "global": "Linkmatrix",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "adjacency-matrix",
+      "family": "structure",
+      "bestFor": "Messages between teams, trade between countries, referrals between services, travel between towns.",
+      "mechanics": [
+        "One way or both ways",
+        "Both directions for any pair",
+        "Arrow keys across the grid",
+        "Sort by total or name"
+      ],
+      "dataShape": "{ nodes:[{id,label}], links:[{from,to,value}], directed?, unit?, rowsLabel? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/linkmatrix/",
+      "sample": "Messages between teams (example)",
+      "usedBy": []
+    },
+    {
+      "id": "lifespans",
+      "name": "Lifespans",
+      "global": "Lifespans",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "lifespans",
+      "family": "structure",
+      "bestFor": "History lessons, leaders and terms of office, project and contract periods, family histories.",
+      "mechanics": [
+        "Year slider",
+        "Who overlapped with whom",
+        "Ages in any year",
+        "Show or hide groups"
+      ],
+      "dataShape": "{ groups?:[{id,label}], items:[{id,label,start,end?,group?,note?}], verb?, now? }",
+      "events": [
+        "select",
+        "year",
+        "filter"
+      ],
+      "demo": "/templates/lifespans/",
+      "sample": "Scientists, 1564–1958 (real data)",
       "usedBy": []
     },
     {

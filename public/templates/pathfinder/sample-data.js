@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.14, 85 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.15, 91 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -98,6 +98,29 @@ window.PATHFINDER_DATA = {
     {
      "label": "Blocks inside blocks, sized by amount",
      "to": "r_mosaic"
+    },
+    {
+     "label": "Rings inside rings, to zoom into",
+     "to": "r_sunburst"
+    },
+    {
+     "label": "Circles inside circles, sized by amount",
+     "to": "r_circlepack"
+    },
+    {
+     "label": "A list in levels, as blocks",
+     "to": "r_icicle",
+     "hint": "e.g. subjects, courses, chapters"
+    },
+    {
+     "label": "Links between places or people",
+     "to": "r_arcflow",
+     "hint": "e.g. routes, trade"
+    },
+    {
+     "label": "Who links to whom, as a grid",
+     "to": "r_linkmatrix",
+     "hint": "e.g. messages between teams"
     }
    ]
   },
@@ -193,6 +216,10 @@ window.PATHFINDER_DATA = {
     {
      "label": "Several layers growing and shrinking",
      "to": "r_streamgraph"
+    },
+    {
+     "label": "Lives, eras or terms that overlap",
+     "to": "r_lifespans"
     }
    ]
   },
@@ -996,6 +1023,42 @@ window.PATHFINDER_DATA = {
    "text": "Shares by width and height at once.",
    "link": "/templates/marimekko/",
    "linkLabel": "Open Marimekko"
+  },
+  "r_sunburst": {
+   "result": "Sunburst",
+   "text": "Rings to zoom into, slice by slice.",
+   "link": "/templates/sunburst/",
+   "linkLabel": "Open Sunburst"
+  },
+  "r_circlepack": {
+   "result": "Circlepack",
+   "text": "Circles inside circles, sized by amount.",
+   "link": "/templates/circlepack/",
+   "linkLabel": "Open Circlepack"
+  },
+  "r_icicle": {
+   "result": "Icicle",
+   "text": "Stacked blocks, left to right.",
+   "link": "/templates/icicle/",
+   "linkLabel": "Open Icicle"
+  },
+  "r_arcflow": {
+   "result": "Arcflow",
+   "text": "Links as arcs; tap one to see its links.",
+   "link": "/templates/arcflow/",
+   "linkLabel": "Open Arcflow"
+  },
+  "r_linkmatrix": {
+   "result": "Linkmatrix",
+   "text": "Who links to whom, as a grid.",
+   "link": "/templates/linkmatrix/",
+   "linkLabel": "Open Linkmatrix"
+  },
+  "r_lifespans": {
+   "result": "Lifespans",
+   "text": "Who was around at the same time.",
+   "link": "/templates/lifespans/",
+   "linkLabel": "Open Lifespans"
   }
  }
 };

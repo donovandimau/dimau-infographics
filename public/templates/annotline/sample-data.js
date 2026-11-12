@@ -61,6 +61,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.14",
    "value": 85
+  },
+  {
+   "label": "v1.15",
+   "value": 91
   }
  ],
  "notes": [
@@ -103,6 +107,11 @@ window.ANNOTLINE_DATA = {
    "at": 14,
    "title": "Stats",
    "text": "Histograms, box plots, dumbbells, bullet bars, ridgelines and Marimekko charts."
+  },
+  {
+   "at": 15,
+   "title": "Structure",
+   "text": "Rings, circles and blocks to zoom into, links as arcs or a grid, and overlapping lifespans."
   }
  ]
 };

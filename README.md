@@ -123,6 +123,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Bulletbar** | Against a target | Monthly reports, service standards | Result, target and poor-to-good bands in one line, percent of target |
 | **Ridgeline** | Shapes compared | Waiting times by day, temperatures by month | Smoothed shape per group, read every group at one value |
 | **Marimekko** | Shares two ways | Market shares by region, transport by district | Width and height both mean something, three shares for any block, highlight one part |
+| **Sunburst** | Rings to zoom into | Budgets, catalogues, course structures | Up to three rings, zoom in and back up, breadcrumbs, shares of the part and the whole |
+| **Circlepack** | Circles inside circles | Sizes within groups: spending, files, populations | Circles packed by size, zoom in and back up, breadcrumbs |
+| **Icicle** | Blocks left to right | Course outlines, budgets, site sections | Three levels at a time, names and amounts on blocks, zoom and breadcrumbs |
+| **Arcflow** | Links as arcs | Routes, trade, who works with whom | Arc thickness by amount, one item's links, sort four ways |
+| **Linkmatrix** | Who links to whom | Messages between teams, trade between places | Shaded grid, one way or both ways, arrow keys across cells, sort |
+| **Lifespans** | Who overlapped | History, terms of office, project periods | Year slider with ages, overlaps for any bar, show or hide groups |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -186,6 +192,7 @@ v1/guides.js                 Weighscore, Routeline, Levelup, Orgchart, Numberlin
 v1/stories.js                Beforeafter, Slidestory, Verdict, Annotline, Liveticker, Flowchart (stories, with Archive Desk)
 v1/places.js                 Daylight, Moonmonth, Windrose, Reachrings, Profileline, Floorplan (places)
 v1/stats.js                  Histobins, Boxplot, Dumbbell, Bulletbar, Ridgeline, Marimekko (stats)
+v1/structure.js              Sunburst, Circlepack, Icicle, Arcflow, Linkmatrix, Lifespans (structure)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

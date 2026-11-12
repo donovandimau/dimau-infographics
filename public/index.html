@@ -91,6 +91,7 @@
       <a href="/#stories">Stories</a>
       <a href="/#places">Places</a>
       <a href="/#stats">Stats</a>
+      <a href="/#structure">Structure</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -358,6 +359,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="structure" aria-labelledby="structure-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Structure · how things nest and link</p><h2 id="structure-h">Structure</h2>
+      <p class="lede">Nested lists as rings, circles or blocks you can zoom into, links as arcs or a grid, and lives or eras that overlap in time.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-sunburst"></div>
+    <ul class="family-list">
+      <li><a href="/templates/sunburst/"><b>Sunburst</b><span>Rings to zoom into, slice by slice.</span></a></li>
+      <li><a href="/templates/circlepack/"><b>Circlepack</b><span>Circles inside circles, sized by amount.</span></a></li>
+      <li><a href="/templates/icicle/"><b>Icicle</b><span>Stacked blocks, left to right.</span></a></li>
+      <li><a href="/templates/arcflow/"><b>Arcflow</b><span>Links as arcs; tap one to see its links.</span></a></li>
+      <li><a href="/templates/linkmatrix/"><b>Linkmatrix</b><span>Who links to whom, as a grid.</span></a></li>
+      <li><a href="/templates/lifespans/"><b>Lifespans</b><span>Who was around at the same time.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -403,6 +420,7 @@
 <script src="/templates/slidestory/sample-data.js"></script>
 <script src="/templates/daylight/sample-data.js"></script>
 <script src="/templates/boxplot/sample-data.js"></script>
+<script src="/templates/sunburst/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -423,6 +441,7 @@
   D.mount('#pv-slidestory', { template: 'slidestory', data: window.SLIDESTORY_DATA });
   D.mount('#pv-daylight', { template: 'daylight', data: window.DAYLIGHT_DATA });
   D.mount('#pv-boxplot', { template: 'boxplot', data: window.BOXPLOT_DATA });
+  D.mount('#pv-sunburst', { template: 'sunburst', data: window.SUNBURST_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {
