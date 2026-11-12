@@ -48,6 +48,13 @@ const LOADERS = {
   heatgrid: () => import('../insight.js').then(m => ({ default: (m.default || m).Heatgrid })),
   bridge: () => import('../insight.js').then(m => ({ default: (m.default || m).Bridge })),
   overlap: () => import('../insight.js').then(m => ({ default: (m.default || m).Overlap })),
+  // the six learning formats share one file
+  flashdeck: () => import('../learn.js').then(m => ({ default: (m.default || m).Flashdeck })),
+  quizline: () => import('../learn.js').then(m => ({ default: (m.default || m).Quizline })),
+  hotspot: () => import('../learn.js').then(m => ({ default: (m.default || m).Hotspot })),
+  checklist: () => import('../learn.js').then(m => ({ default: (m.default || m).Checklist })),
+  scaleup: () => import('../learn.js').then(m => ({ default: (m.default || m).Scaleup })),
+  sorter: () => import('../learn.js').then(m => ({ default: (m.default || m).Sorter })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -78,7 +85,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

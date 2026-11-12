@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "base": "/v1/",
   "templates": [
     {
@@ -782,6 +782,151 @@
       ],
       "demo": "/templates/overlap/",
       "sample": "How adults handle money (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "flashdeck",
+      "name": "Flashdeck",
+      "global": "Flashdeck",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "recall",
+      "family": "learn",
+      "bestFor": "Vocabulary, key terms, formulas, road signs: anything learned by recall.",
+      "mechanics": [
+        "Tap or Space to turn over",
+        "Mark known or still learning",
+        "Practise only the ones you are learning",
+        "Shuffle",
+        "Progress saved (storageKey or getState)"
+      ],
+      "dataShape": "{ cards:[{id,front,back,hint?,tag?}] }",
+      "events": [
+        "flip",
+        "mark",
+        "done"
+      ],
+      "demo": "/templates/flashdeck/",
+      "sample": "Everyday Fijian words (real vocabulary)",
+      "usedBy": []
+    },
+    {
+      "id": "quizline",
+      "name": "Quizline",
+      "global": "Quizline",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "quiz",
+      "family": "learn",
+      "bestFor": "End-of-lesson checks, safety training, onboarding, revision.",
+      "mechanics": [
+        "One question at a time",
+        "Explanation after every answer",
+        "Right and wrong marked with words, not just colour",
+        "Score with what to review"
+      ],
+      "dataShape": "{ title?, questions:[{id,q,options:[string],answer:index,explain?}] }",
+      "events": [
+        "answer",
+        "finish"
+      ],
+      "demo": "/templates/quizline/",
+      "sample": "Reading charts (example quiz)",
+      "usedBy": []
+    },
+    {
+      "id": "hotspot",
+      "name": "Hotspot",
+      "global": "Hotspot",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "diagram",
+      "family": "learn",
+      "bestFor": "How a machine, system or building works; parts of a plant or the body; a site map.",
+      "mechanics": [
+        "Numbered points on any drawing",
+        "Tour from part to part",
+        "List of parts as buttons",
+        "Drawing follows the theme, light or dark"
+      ],
+      "dataShape": "{ viewBox, shapes:[{type,tone?,fillTone?,...svg attributes}], spots:[{id,x,y,label,text}], title? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/hotspot/",
+      "sample": "Collecting rainwater (example diagram)",
+      "usedBy": []
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "global": "Checklist",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "how-to",
+      "family": "learn",
+      "bestFor": "Setup guides, applications, “getting started”, any task with several steps.",
+      "mechanics": [
+        "Real checkboxes",
+        "Next step highlighted",
+        "Time left",
+        "Show how for each step",
+        "Progress saved (storageKey or getState)"
+      ],
+      "dataShape": "{ title?, steps:[{id,label,detail?,minutes?,link?,linkLabel?}] }",
+      "events": [
+        "change",
+        "complete"
+      ],
+      "demo": "/templates/checklist/",
+      "sample": "Add a template to your app (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "scaleup",
+      "name": "Scaleup",
+      "global": "Scaleup",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "scale",
+      "family": "learn",
+      "bestFor": "Comparing sizes people find hard to picture: budgets, areas, populations, catalogues.",
+      "mechanics": [
+        "Circle area to scale",
+        "Pick two to compare",
+        "How many times bigger, in words",
+        "Share of the total"
+      ],
+      "dataShape": "{ unit?, unitSingular?, items:[{id,label,value,note?,color?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/scaleup/",
+      "sample": "FijiLearn chapters per subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "sorter",
+      "name": "Sorter",
+      "global": "Sorter",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "classify",
+      "family": "learn",
+      "bestFor": "Classifying exercises: words by meaning, waste by bin, foods by group, symptoms by cause.",
+      "mechanics": [
+        "Tap then tap, or drag",
+        "Works by keyboard",
+        "Check answers",
+        "Why each wrong answer is wrong"
+      ],
+      "dataShape": "{ prompt?, bins:[{id,label}], items:[{id,label,bin,why?}] }",
+      "events": [
+        "place",
+        "check"
+      ],
+      "demo": "/templates/sorter/",
+      "sample": "Fijian words by group (real vocabulary)",
       "usedBy": []
     },
     {
