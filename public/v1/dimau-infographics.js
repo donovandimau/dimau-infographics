@@ -72,13 +72,19 @@
     orgchart: { file: 'guides.js', global: 'Orgchart' },
     numberline: { file: 'guides.js', global: 'Numberline' },
     glossary: { file: 'guides.js', global: 'Glossary' },
+    beforeafter: { file: 'stories.js', global: 'Beforeafter' },
+    slidestory: { file: 'stories.js', global: 'Slidestory' },
+    verdict: { file: 'stories.js', global: 'Verdict' },
+    annotline: { file: 'stories.js', global: 'Annotline' },
+    liveticker: { file: 'stories.js', global: 'Liveticker' },
+    flowchart: { file: 'stories.js', global: 'Flowchart' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.11.0';
+  var VERSION = '1.12.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
