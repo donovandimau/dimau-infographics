@@ -129,6 +129,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Arcflow** | Links as arcs | Routes, trade, who works with whom | Arc thickness by amount, one item's links, sort four ways |
 | **Linkmatrix** | Who links to whom | Messages between teams, trade between places | Shaded grid, one way or both ways, arrow keys across cells, sort |
 | **Lifespans** | Who overlapped | History, terms of office, project periods | Year slider with ages, overlaps for any bar, show or hide groups |
+| **Bubbletrail** | Bubbles through the years | Development indicators, products, regions over time | Play and pause, bubbles glide between years, trail for any bubble, optional ×10 scale |
+| **Fanchart** | A forecast with its ranges | Savings, budgets, visitor and demand forecasts | Even-chance and 9-in-10 ranges, when a goal is most likely reached, drag or arrow keys |
+| **Rangebars** | Low to high | Temperatures, prices through the day, waiting times | Floating bars with averages, widest and narrowest spread in words |
+| **Pareto** | The few that matter most | Complaints by cause, sales by product, costs | Sorted bars with a running total, share slider, the few named |
+| **Parallelaxes** | Many measures at once | Choosing plans, products, sites or suppliers | Better always at the top, keep the better half on any measure, ranks |
+| **Radialbars** | Bars around a circle | Many categories in a small space | Sort by size or name, total in the middle, share and rank |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -193,6 +199,7 @@ v1/stories.js                Beforeafter, Slidestory, Verdict, Annotline, Liveti
 v1/places.js                 Daylight, Moonmonth, Windrose, Reachrings, Profileline, Floorplan (places)
 v1/stats.js                  Histobins, Boxplot, Dumbbell, Bulletbar, Ridgeline, Marimekko (stats)
 v1/structure.js              Sunburst, Circlepack, Icicle, Arcflow, Linkmatrix, Lifespans (structure)
+v1/analyse.js                Bubbletrail, Fanchart, Rangebars, Pareto, Parallelaxes, Radialbars (analyse)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

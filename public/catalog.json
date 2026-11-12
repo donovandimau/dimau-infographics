@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2070,6 +2070,148 @@
       ],
       "demo": "/templates/lifespans/",
       "sample": "Scientists, 1564–1958 (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "bubbletrail",
+      "name": "Bubbletrail",
+      "global": "Bubbletrail",
+      "file": "analyse.js",
+      "status": "ready",
+      "shape": "motion-bubbles",
+      "family": "analyse",
+      "bestFor": "Development and health indicators, sales against margin by product, regions over time.",
+      "mechanics": [
+        "Play and pause through the years",
+        "Bubbles glide between years",
+        "Trail for any bubble",
+        "Optional ×10 scale across"
+      ],
+      "dataShape": "{ x:{label,unit?,prefix?,log?}, y:{label,...}, size:{label,...}, periods:[...], groups?, items:[{id,label,group?,values:[[x,y,size] per period]}] }",
+      "events": [
+        "select",
+        "period"
+      ],
+      "demo": "/templates/bubbletrail/",
+      "sample": "Districts, 2016–2026 (example)",
+      "usedBy": []
+    },
+    {
+      "id": "fanchart",
+      "name": "Fanchart",
+      "global": "Fanchart",
+      "file": "analyse.js",
+      "status": "ready",
+      "shape": "fan-chart",
+      "family": "analyse",
+      "bestFor": "Savings and budgets, visitor and sales forecasts, population and demand projections.",
+      "mechanics": [
+        "Even-chance and 9-in-10 ranges",
+        "When a goal is most likely reached",
+        "Drag or arrow keys along it",
+        "Show or hide the wide range"
+      ],
+      "dataShape": "{ unit?, prefix?, history:[{label,value}], forecast:[{label,mid,lo50,hi50,lo90,hi90}], target?:{value,label} }",
+      "events": [
+        "move"
+      ],
+      "demo": "/templates/fanchart/",
+      "sample": "A savings club’s fund (example)",
+      "usedBy": []
+    },
+    {
+      "id": "rangebars",
+      "name": "Rangebars",
+      "global": "Rangebars",
+      "file": "analyse.js",
+      "status": "ready",
+      "shape": "range-bars",
+      "family": "analyse",
+      "bestFor": "Temperatures and rainfall by month, prices through the day, waiting times by week.",
+      "mechanics": [
+        "Floating low-to-high bars",
+        "Average dots and line",
+        "Widest and narrowest spread in words",
+        "Tap for detail"
+      ],
+      "dataShape": "{ unit?, prefix?, decimals?, periods:[{label,lo,hi,avg?}], loLabel?, hiLabel? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/rangebars/",
+      "sample": "Daylight at Suva by month (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "pareto",
+      "name": "Pareto",
+      "global": "Pareto",
+      "file": "analyse.js",
+      "status": "ready",
+      "shape": "pareto",
+      "family": "analyse",
+      "bestFor": "Complaints by cause, sales by product, costs by line, time by task.",
+      "mechanics": [
+        "Sorted bars and running total",
+        "Share slider",
+        "The few named in words",
+        "Tap for rank and share"
+      ],
+      "dataShape": "{ unit?, prefix?, items:[{id,label,value}] }",
+      "events": [
+        "select",
+        "share"
+      ],
+      "demo": "/templates/pareto/",
+      "sample": "FijiLearn chapters by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "parallelaxes",
+      "name": "Parallelaxes",
+      "global": "Parallelaxes",
+      "file": "analyse.js",
+      "status": "ready",
+      "shape": "parallel-coordinates",
+      "family": "analyse",
+      "bestFor": "Choosing plans, products, sites or suppliers on several measures at once.",
+      "mechanics": [
+        "Better at the top, even when lower is better",
+        "Keep the better half on any measure",
+        "Ranks for any item",
+        "Names at the end of each line"
+      ],
+      "dataShape": "{ axes:[{id,label,unit?,prefix?,better?:'down'}], items:[{id,label,group?,values:{axisId:number}}], groups? }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/parallelaxes/",
+      "sample": "Phone plans on five measures (example)",
+      "usedBy": []
+    },
+    {
+      "id": "radialbars",
+      "name": "Radialbars",
+      "global": "Radialbars",
+      "file": "analyse.js",
+      "status": "ready",
+      "shape": "radial-bars",
+      "family": "analyse",
+      "bestFor": "Categories that come round in a cycle, many small categories, a compact headline graphic.",
+      "mechanics": [
+        "Bars around a ring",
+        "Sort by size or name",
+        "Total in the middle",
+        "Tap for share and rank"
+      ],
+      "dataShape": "{ unit?, prefix?, items:[{id,label,value,group?}], groups?, centre? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/radialbars/",
+      "sample": "This library’s families (real data)",
       "usedBy": []
     },
     {

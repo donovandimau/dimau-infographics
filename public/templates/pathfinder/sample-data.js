@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.15, 91 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.16, 97 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -161,6 +161,14 @@ window.PATHFINDER_DATA = {
      "label": "Shares split two ways at once",
      "to": "r_marimekko",
      "hint": "e.g. transport by district"
+    },
+    {
+     "label": "The few that make up most of the total",
+     "to": "r_pareto"
+    },
+    {
+     "label": "Many categories in a small, round graphic",
+     "to": "r_radialbars"
     }
    ]
   },
@@ -220,6 +228,20 @@ window.PATHFINDER_DATA = {
     {
      "label": "Lives, eras or terms that overlap",
      "to": "r_lifespans"
+    },
+    {
+     "label": "Several measures changing together",
+     "to": "r_bubbletrail",
+     "hint": "e.g. income and schooling by district"
+    },
+    {
+     "label": "A forecast and how sure it is",
+     "to": "r_fanchart"
+    },
+    {
+     "label": "Lows and highs by period",
+     "to": "r_rangebars",
+     "hint": "e.g. temperatures by month"
     }
    ]
   },
@@ -261,6 +283,11 @@ window.PATHFINDER_DATA = {
      "label": "Before and after, row by row",
      "to": "r_dumbbell",
      "hint": "e.g. start and end of year"
+    },
+    {
+     "label": "Many options on several measures at once",
+     "to": "r_parallelaxes",
+     "hint": "e.g. plans, products, sites"
     }
    ]
   },
@@ -1059,6 +1086,42 @@ window.PATHFINDER_DATA = {
    "text": "Who was around at the same time.",
    "link": "/templates/lifespans/",
    "linkLabel": "Open Lifespans"
+  },
+  "r_bubbletrail": {
+   "result": "Bubbletrail",
+   "text": "Bubbles moving through the years; press play.",
+   "link": "/templates/bubbletrail/",
+   "linkLabel": "Open Bubbletrail"
+  },
+  "r_fanchart": {
+   "result": "Fanchart",
+   "text": "A forecast with the ranges it could fall in.",
+   "link": "/templates/fanchart/",
+   "linkLabel": "Open Fanchart"
+  },
+  "r_rangebars": {
+   "result": "Rangebars",
+   "text": "The low and the high of each period.",
+   "link": "/templates/rangebars/",
+   "linkLabel": "Open Rangebars"
+  },
+  "r_pareto": {
+   "result": "Pareto",
+   "text": "The few that make up most of the total.",
+   "link": "/templates/pareto/",
+   "linkLabel": "Open Pareto"
+  },
+  "r_parallelaxes": {
+   "result": "Parallelaxes",
+   "text": "Many things on several measures at once.",
+   "link": "/templates/parallelaxes/",
+   "linkLabel": "Open Parallelaxes"
+  },
+  "r_radialbars": {
+   "result": "Radialbars",
+   "text": "Bars around a circle.",
+   "link": "/templates/radialbars/",
+   "linkLabel": "Open Radialbars"
   }
  }
 };

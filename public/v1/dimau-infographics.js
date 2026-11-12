@@ -96,13 +96,19 @@
     arcflow: { file: 'structure.js', global: 'Arcflow' },
     linkmatrix: { file: 'structure.js', global: 'Linkmatrix' },
     lifespans: { file: 'structure.js', global: 'Lifespans' },
+    bubbletrail: { file: 'analyse.js', global: 'Bubbletrail' },
+    fanchart: { file: 'analyse.js', global: 'Fanchart' },
+    rangebars: { file: 'analyse.js', global: 'Rangebars' },
+    pareto: { file: 'analyse.js', global: 'Pareto' },
+    parallelaxes: { file: 'analyse.js', global: 'Parallelaxes' },
+    radialbars: { file: 'analyse.js', global: 'Radialbars' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.15.0';
+  var VERSION = '1.16.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
