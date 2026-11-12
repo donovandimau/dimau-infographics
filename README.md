@@ -20,6 +20,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Flowbank** | Flow | Budgets, funding, supply chains | Bands sized by amount, tap to follow a flow, share in plain words |
 | **Ledger** | Table | Directories, price lists, catalogues | Sort, search, bars and heat in cells, sparklines, rows that open |
 | **Storyscroll** | Story | Explainers and reports | Sticky chart that re-sorts and highlights as the story scrolls |
+| **Tilemap** | Places | Provinces, districts, regions | Every place an equal tile set roughly where it sits, so small places are as easy to tap as big ones; colour by group or value |
+| **Mosaic** | Proportion inside proportion | Catalogues, budgets, storage | Treemap blocks sized by amount; tap to zoom into a block, a path (or Escape) to come back out |
+| **Duel** | Comparison | This versus that | Pick any two, one measure per row, a star on each row's leader, the score in a sentence |
+| **Almanac** | Day by day | Habits, attendance, activity | Calendar heatmap that finds and outlines the longest streak |
+| **Goalmeter** | Progress | Fundraising, savings, targets | Bar built from each contribution, milestones, and when the goal will be reached at the pace so far |
+| **Dayclock** | A day | Routines, opening hours, shifts | A whole day on a 24-hour clock face; switch between days to compare |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -72,6 +78,7 @@ v1/<template>.js             the templates; each file is self-contained, no depe
 v1/timelines.js              Switchback, Swimlane, Roadmap, Waypath (one shared timeline data shape)
 v1/signal-cards.js           the four signal cards
 v1/charts.js                 Rankrace, Peoplegrid, Guessline, Flowbank, Ledger, Storyscroll
+v1/showcase.js               Tilemap, Mosaic, Duel, Almanac, Goalmeter, Dayclock (everyday formats)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

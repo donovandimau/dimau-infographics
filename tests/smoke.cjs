@@ -34,8 +34,53 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 10, null, { timeout: 8000 });
-      return '10 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 11, null, { timeout: 8000 });
+      return '11 live templates mounted';
+  } },
+  { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
+      if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
+      await p.click('.ds-hot[data-k="rewa"]');
+      const n = await p.textContent('.ds-note');
+      if (!/Rewa.*Central Division/.test(n) || !/Naitasiri/.test(n)) throw new Error('tile detail wrong: ' + n);
+      return '15 tiles, Rewa in Central with its neighbours';
+  } },
+  { url: '/templates/mosaic/', name: 'mosaic', check: async p => {
+      if (await p.locator('.mo-tile').count() !== 9) throw new Error('expected 9 subject blocks');
+      await p.click('.mo-tile[data-k] >> nth=0');
+      const n = await p.locator('.mo-tile').count();
+      if (n !== 12) throw new Error('zoomed into ' + n + ' blocks, expected 12 maths courses');
+      await p.keyboard.press('Escape');
+      if (await p.locator('.mo-tile').count() !== 9) throw new Error('Escape did not zoom out');
+      return 'zoom into Maths & Money (12 courses) and back';
+  } },
+  { url: '/templates/duel/', name: 'duel', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/Maths & Money<\/b>|Maths & Money/.test(n) || !/leads on/.test(n)) throw new Error('no score sentence: ' + n);
+      await p.selectOption('select[data-side="b"]', 'vosa');
+      if (!/Vosa Vakaviti/.test(await p.textContent('.ds-note'))) throw new Error('second side did not change');
+      await p.click('[data-swap]');
+      return 'score, change a side, swap';
+  } },
+  { url: '/templates/almanac/', name: 'almanac', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/Longest streak: \d+ days/.test(n)) throw new Error('no streak sentence: ' + n);
+      await p.click('.ds-hot[data-k="2026-08-10"]');
+      if (!/10 Aug 2026/.test(await p.textContent('.ds-note'))) throw new Error('day detail missing');
+      return 'streak found, tap a day';
+  } },
+  { url: '/templates/goalmeter/', name: 'goalmeter', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/to go\./.test(n) || !/reached around/.test(n)) throw new Error('no projection: ' + n);
+      await p.focus('.ds-hot[data-k="1"]'); await p.keyboard.press('Enter');
+      if (!/Tank base poured.*reached/.test(await p.textContent('.ds-note'))) throw new Error('milestone status wrong');
+      return 'projection, milestone reached';
+  } },
+  { url: '/templates/dayclock/', name: 'dayclock', check: async p => {
+      await p.click('[data-d="market"]');
+      await p.click('.ds-hot >> nth=3');
+      const n = await p.textContent('.ds-note');
+      if (!/Market.*06:00 to 14:00.*8h/.test(n)) throw new Error('slice detail wrong: ' + n);
+      return 'switch day, tap a slice';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

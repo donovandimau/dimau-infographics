@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "base": "/v1/",
   "templates": [
     {
@@ -355,6 +355,145 @@
       ],
       "demo": "/templates/storyscroll/",
       "sample": "The FijiLearn catalogue in five steps (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "tilemap",
+      "name": "Tilemap",
+      "global": "Tilemap",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "map",
+      "family": "everyday",
+      "bestFor": "Results by province, district, island or region, where real map shapes would make small places impossible to see.",
+      "mechanics": [
+        "Equal tiles in map positions",
+        "Colour by group or by value",
+        "Tap a tile for detail and its neighbours in the group"
+      ],
+      "dataShape": "{ groups?:[{id,label,color?}], tiles:[{id,label,short?,row,col,group?,value?,note?}], valueLabel?, prefix?, suffix? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/tilemap/",
+      "sample": "Provinces of Fiji by division (real)",
+      "usedBy": []
+    },
+    {
+      "id": "mosaic",
+      "name": "Mosaic",
+      "global": "Mosaic",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "proportion",
+      "family": "everyday",
+      "bestFor": "Budgets, portfolios, catalogues and anything where the parts of the parts matter.",
+      "mechanics": [
+        "Blocks sized by value",
+        "Tap to zoom in",
+        "Path back out",
+        "Share of the whole in words"
+      ],
+      "dataShape": "{ unit?, unitSingular?, root:{label, children:[{label,value?,note?,children?}]} }",
+      "events": [
+        "zoom",
+        "select"
+      ],
+      "demo": "/templates/mosaic/",
+      "sample": "FijiLearn subjects and courses (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "duel",
+      "name": "Duel",
+      "global": "Duel",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "comparison",
+      "family": "everyday",
+      "bestFor": "Product or plan comparisons, before and after, this year versus last, one place against another.",
+      "mechanics": [
+        "Pick both sides",
+        "Swap",
+        "Leader marked on every row",
+        "Score in words",
+        "Lower-is-better measures supported"
+      ],
+      "dataShape": "{ items:[{id,label,values:{metricId:number}}], metrics:[{id,label,prefix?,suffix?,better?:higher|lower}], a?, b? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/duel/",
+      "sample": "FijiLearn subjects compared (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "almanac",
+      "name": "Almanac",
+      "global": "Almanac",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "calendar",
+      "family": "everyday",
+      "bestFor": "Habits, attendance, activity logs, sales by day: anything that happens (or doesn’t) day by day.",
+      "mechanics": [
+        "One square per day",
+        "Longest streak found and outlined",
+        "Active days and totals in words",
+        "Tap a day"
+      ],
+      "dataShape": "{ days:{ 'YYYY-MM-DD': number }, label?, unit?, goal?, from?, to? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/almanac/",
+      "sample": "Daily study minutes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "goalmeter",
+      "name": "Goalmeter",
+      "global": "Goalmeter",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "progress",
+      "family": "everyday",
+      "bestFor": "Fundraising, savings goals, project targets, community campaigns.",
+      "mechanics": [
+        "Built from each contribution",
+        "Milestones reached or still to go",
+        "Projected finish date at the current pace"
+      ],
+      "dataShape": "{ goal, prefix?, suffix?, label?, milestones?:[{at,label}], entries:[{date:'YYYY-MM-DD', amount, note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/goalmeter/",
+      "sample": "Village water tank fund (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "dayclock",
+      "name": "Dayclock",
+      "global": "Dayclock",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "day",
+      "family": "everyday",
+      "bestFor": "Daily routines, shift patterns, opening hours, how a service is used across the day.",
+      "mechanics": [
+        "24-hour clock face",
+        "Switch between days",
+        "Tap a slice for times and share",
+        "Time per activity in the legend"
+      ],
+      "dataShape": "{ activities:[{id,label,color?}], days:[{id,label,blocks:[{activity,from:'HH:MM',to:'HH:MM',note?}]}] }",
+      "events": [
+        "select",
+        "day"
+      ],
+      "demo": "/templates/dayclock/",
+      "sample": "A school day, a market day and a Sunday (example)",
       "usedBy": []
     },
     {

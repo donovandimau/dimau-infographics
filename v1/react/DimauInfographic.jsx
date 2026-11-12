@@ -27,6 +27,13 @@ const LOADERS = {
   flowbank: () => import('../charts.js').then(m => ({ default: (m.default || m).Flowbank })),
   ledger: () => import('../charts.js').then(m => ({ default: (m.default || m).Ledger })),
   storyscroll: () => import('../charts.js').then(m => ({ default: (m.default || m).Storyscroll })),
+  // the six everyday formats share one file
+  tilemap: () => import('../showcase.js').then(m => ({ default: (m.default || m).Tilemap })),
+  mosaic: () => import('../showcase.js').then(m => ({ default: (m.default || m).Mosaic })),
+  duel: () => import('../showcase.js').then(m => ({ default: (m.default || m).Duel })),
+  almanac: () => import('../showcase.js').then(m => ({ default: (m.default || m).Almanac })),
+  goalmeter: () => import('../showcase.js').then(m => ({ default: (m.default || m).Goalmeter })),
+  dayclock: () => import('../showcase.js').then(m => ({ default: (m.default || m).Dayclock })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -57,7 +64,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);
