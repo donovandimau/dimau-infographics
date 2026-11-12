@@ -38,6 +38,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Heatgrid** | Patterns in a table | Use by day and hour, sales by month | Cells coloured by size, row totals, sort, arrow keys between cells |
 | **Bridge** | Start to finish | Budgets, profit, stock over a year | Waterfall with running totals; step through one bar at a time |
 | **Overlap** | Groups | Survey answers, customers of several services | Venn diagram of two or three groups; tap any region |
+| **Flashdeck** | Learn by recall | Vocabulary, key terms | Flip cards, mark known, practise only the rest, progress saved |
+| **Quizline** | Check knowledge | Lesson checks, training | One question at a time, explanation after every answer, score with what to review |
+| **Hotspot** | Parts of a whole | How a system or machine works | Numbered points on any drawing, tour from part to part |
+| **Checklist** | Steps to do | Setup guides, applications | Real checkboxes, next step highlighted, time left, progress saved |
+| **Scaleup** | Sizes | Budgets, areas, catalogues | Circles with area to scale; pick two to see how many times bigger |
+| **Sorter** | Classify | Sorting exercises | Tap-then-tap or drag into groups, check answers, why each wrong one is wrong |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -93,6 +99,7 @@ v1/charts.js                 Rankrace, Peoplegrid, Guessline, Flowbank, Ledger, 
 v1/showcase.js               Tilemap, Mosaic, Duel, Almanac, Goalmeter, Dayclock (everyday formats)
 v1/compare.js                Dropoff, Quadrant, Slope, Pathfinder, Radar, Pyramid (compare and decide)
 v1/insight.js                Factwall, Swarm, Scatter, Heatgrid, Bridge, Overlap (insight)
+v1/learn.js                  Flashdeck, Quizline, Hotspot, Checklist, Scaleup, Sorter (learn)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

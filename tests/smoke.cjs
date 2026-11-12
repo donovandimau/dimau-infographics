@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 13, null, { timeout: 8000 });
-      return '13 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 14, null, { timeout: 8000 });
+      return '14 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -191,6 +191,67 @@ const PAGES = [
       await p.mouse.click(b.x + b.width / 2, b.y + b.height / 2 + 6);
       if (!/Mobile wallet, Bank card and Savings group: 28/.test(await p.textContent('.dn-note'))) throw new Error('tap on the middle wrong: ' + await p.textContent('.dn-note'));
       return 'regions, chip, tap the middle';
+  } },
+  { url: '/templates/flashdeck/', name: 'flashdeck', check: async p => {
+      if (!/Card 1 of 14 · you know 0 of 14/.test(await p.textContent('[data-count]'))) throw new Error('count wrong');
+      await p.click('.fd-card');
+      if (!(await p.getAttribute('.fd-card', 'class')).includes('flip')) throw new Error('card did not turn over');
+      await p.click('[data-know]');
+      if (!/Card 2 of 14 · you know 1 of 14/.test(await p.textContent('[data-count]'))) throw new Error('marking known failed');
+      await p.click('[data-only]');
+      if (!/of 13 · you know 1 of 14/.test(await p.textContent('[data-count]'))) throw new Error('practise-only failed: ' + await p.textContent('[data-count]'));
+      await p.focus('.fd-card'); await p.keyboard.press('ArrowRight');
+      return 'turn over, mark known, practise the rest';
+  } },
+  { url: '/templates/quizline/', name: 'quizline', check: async p => {
+      await p.click('[data-o="1"]');
+      if (!/^Correct\./.test(await p.textContent('.qz-why'))) throw new Error('right answer not marked');
+      await p.click('[data-next]'); await p.click('[data-o="0"]');
+      if (!/Not quite\. The answer is Nothing about cause/.test(await p.textContent('.qz-why'))) throw new Error('wrong answer not explained');
+      for (const o of [1, 1, 0, 0]) { await p.click('[data-next]'); await p.click('[data-o="' + o + '"]'); }
+      await p.click('[data-next]');
+      if (!/You scored 5 out of 6\./.test(await p.textContent('.qz-q'))) throw new Error('score wrong: ' + await p.textContent('.qz-q'));
+      await p.click('[data-again]');
+      return 'right and wrong explained, score 5 of 6, try again';
+  } },
+  { url: '/templates/hotspot/', name: 'hotspot', check: async p => {
+      if (await p.locator('.hs-list button').count() !== 7) throw new Error('expected 7 parts');
+      await p.click('svg .hs-pin[data-k="3"]');
+      if ((await p.textContent('.hs-panel h4')) !== 'First-flush pipe') throw new Error('pin did not open');
+      await p.click('[data-step="1"]');
+      if ((await p.textContent('.hs-panel h4')) !== 'Tank') throw new Error('tour did not move on');
+      return 'tap a part, tour to the next';
+  } },
+  { url: '/templates/checklist/', name: 'checklist', check: async p => {
+      if (await p.locator('.ck-item input').count() !== 6) throw new Error('expected 6 steps');
+      if (!/0 of 6 done · about 50 minutes left/.test(await p.textContent('[data-sum]'))) throw new Error('summary wrong');
+      await p.check('#ck-shape');
+      if (!/1 of 6 done · about 45 minutes left/.test(await p.textContent('[data-sum]'))) throw new Error('tick did not count');
+      if (!(await p.getAttribute('.ck-item >> nth=1', 'class')).includes('next')) throw new Error('next step not highlighted');
+      await p.click('[data-more="data"]');
+      if ((await p.getAttribute('[data-more="data"]', 'aria-expanded')) !== 'true') throw new Error('how-to did not open');
+      return 'tick a step, time left, next step, show how';
+  } },
+  { url: '/templates/scaleup/', name: 'scaleup', check: async p => {
+      if (await p.locator('[data-row] .hs-pin').count() !== 9) throw new Error('expected 9 circles');
+      if (!/Maths & Money is the biggest at 36 chapters/.test(await p.textContent('.dl-note'))) throw new Error('summary wrong');
+      await p.focus('[data-row] [data-k="0"]'); await p.keyboard.press('Enter');
+      await p.focus('[data-row] [data-k="1"]'); await p.keyboard.press('Enter');
+      if (!/Maths & Money \(36 chapters\) is 2 times the size of Coding & AI \(18 chapters\)/.test(await p.textContent('.dl-note'))) throw new Error('comparison wrong: ' + await p.textContent('.dl-note'));
+      if (await p.isHidden('[data-cmp]')) throw new Error('comparison drawing hidden');
+      return 'pick two, how many times bigger';
+  } },
+  { url: '/templates/sorter/', name: 'sorter', check: async p => {
+      if (await p.locator('.so-tray .so-chip').count() !== 10) throw new Error('expected 10 words');
+      await p.click('.so-chip[data-id="bula"]'); await p.click('.so-bin[data-bin="greet"]');
+      await p.click('.so-chip[data-id="kana"]'); await p.click('.so-bin[data-bin="home"]');
+      await p.focus('.so-chip[data-id="wai"]'); await p.keyboard.press('Enter'); await p.focus('.so-bin[data-bin="food"]'); await p.keyboard.press('Enter');
+      await p.click('[data-check]');
+      if (!/2 of 10 right\. 7 still to sort\./.test(await p.textContent('.dl-note'))) throw new Error('check wrong: ' + await p.textContent('.dl-note'));
+      if (!(await p.getAttribute('.so-chip[data-id="kana"]', 'class')).includes('no')) throw new Error('wrong answer not marked');
+      await p.click('.so-chip[data-id="kana"]');
+      if (!/Kana: Kana means to eat\./.test(await p.textContent('.dl-note'))) throw new Error('why not shown');
+      return 'tap and keyboard sorting, check, why it is wrong';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

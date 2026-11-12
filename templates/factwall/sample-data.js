@@ -1,4 +1,4 @@
-/* Real data: the published FijiLearn catalogue (exported 11 Nov 2026) and this library (v1.6). */
+/* Real data: the published FijiLearn catalogue (exported 11 Nov 2026) and this library (v1.7). */
 window.FACTWALL_DATA = {
  "facts": [
   {
@@ -40,10 +40,10 @@ window.FACTWALL_DATA = {
   },
   {
    "id": "templates",
-   "value": 37,
+   "value": 43,
    "label": "templates in Dimau Infographics with this release",
    "detail": "Every one is listed in catalog.json and has a demo page.",
-   "source": "This library, v1.6"
+   "source": "This library, v1.7"
   }
  ]
 };

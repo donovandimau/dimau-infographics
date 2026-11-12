@@ -83,6 +83,7 @@
       <a href="/#everyday">Everyday</a>
       <a href="/#compare">Compare</a>
       <a href="/#insight">Insight</a>
+      <a href="/#learn">Learn</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -221,6 +222,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="learn" aria-labelledby="learn-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Learn · teach, practise, check</p><h2 id="learn-h">Learn</h2>
+      <p class="lede">Flip cards, a quiz that explains every answer, a diagram to tap through, a checklist to tick off, sizes compared as circles, and a sorting exercise.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-flashdeck"></div>
+    <ul class="family-list">
+      <li><a href="/templates/flashdeck/"><b>Flashdeck</b><span>Flip cards; practise the ones you don’t know yet.</span></a></li>
+      <li><a href="/templates/quizline/"><b>Quizline</b><span>One question at a time, explained.</span></a></li>
+      <li><a href="/templates/hotspot/"><b>Hotspot</b><span>Tap the numbered parts of a diagram.</span></a></li>
+      <li><a href="/templates/checklist/"><b>Checklist</b><span>A how-to to tick off, with time left.</span></a></li>
+      <li><a href="/templates/scaleup/"><b>Scaleup</b><span>Sizes as circles; pick two to compare.</span></a></li>
+      <li><a href="/templates/sorter/"><b>Sorter</b><span>Sort items into groups, then check.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -258,6 +275,7 @@
 <script src="/templates/tilemap/sample-data.js"></script>
 <script src="/templates/pathfinder/sample-data.js"></script>
 <script src="/templates/factwall/sample-data.js"></script>
+<script src="/templates/flashdeck/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -270,6 +288,7 @@
   D.mount('#pv-tilemap', { template: 'tilemap', data: window.TILEMAP_DATA });
   D.mount('#pv-pathfinder', { template: 'pathfinder', data: window.PATHFINDER_DATA, options: { map: false } });
   D.mount('#pv-factwall', { template: 'factwall', data: window.FACTWALL_DATA });
+  D.mount('#pv-flashdeck', { template: 'flashdeck', data: window.FLASHDECK_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

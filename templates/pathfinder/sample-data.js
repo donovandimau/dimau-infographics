@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.6, 37 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.7, 43 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -41,6 +41,11 @@ window.PATHFINDER_DATA = {
      "label": "Patterns in a set of numbers",
      "hint": "spread, links, busy times",
      "to": "nums"
+    },
+    {
+     "label": "Something people should learn or practise",
+     "hint": "lessons, training, guides",
+     "to": "learn"
     },
     {
      "label": "An explainer told as a story",
@@ -441,6 +446,71 @@ window.PATHFINDER_DATA = {
    "text": "A Venn diagram of two or three groups.",
    "link": "/templates/overlap/",
    "linkLabel": "Open Overlap"
+  },
+  "learn": {
+   "q": "What should the reader do?",
+   "options": [
+    {
+     "label": "Remember words or terms",
+     "to": "r_flashdeck"
+    },
+    {
+     "label": "Check what they know",
+     "to": "r_quizline"
+    },
+    {
+     "label": "See how the parts of something work",
+     "to": "r_hotspot"
+    },
+    {
+     "label": "Follow steps and tick them off",
+     "to": "r_checklist"
+    },
+    {
+     "label": "Picture how big things are",
+     "to": "r_scaleup"
+    },
+    {
+     "label": "Sort things into groups",
+     "to": "r_sorter"
+    }
+   ]
+  },
+  "r_flashdeck": {
+   "result": "Flashdeck",
+   "text": "Flip cards; mark the ones you know and practise the rest.",
+   "link": "/templates/flashdeck/",
+   "linkLabel": "Open Flashdeck"
+  },
+  "r_quizline": {
+   "result": "Quizline",
+   "text": "One question at a time, with an explanation after every answer.",
+   "link": "/templates/quizline/",
+   "linkLabel": "Open Quizline"
+  },
+  "r_hotspot": {
+   "result": "Hotspot",
+   "text": "A diagram with numbered parts to tap, and a tour.",
+   "link": "/templates/hotspot/",
+   "linkLabel": "Open Hotspot"
+  },
+  "r_checklist": {
+   "result": "Checklist",
+   "text": "A how-to with steps to tick off and time left.",
+   "link": "/templates/checklist/",
+   "linkLabel": "Open Checklist"
+  },
+  "r_scaleup": {
+   "result": "Scaleup",
+   "text": "Sizes as circles to scale; pick two to compare.",
+   "link": "/templates/scaleup/",
+   "linkLabel": "Open Scaleup"
+  },
+  "r_sorter": {
+   "result": "Sorter",
+   "text": "Sort items into groups, then check the answers.",
+   "link": "/templates/sorter/",
+   "linkLabel": "Open Sorter"
   }
  }
 };
