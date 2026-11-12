@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 14, null, { timeout: 8000 });
-      return '14 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 15, null, { timeout: 8000 });
+      return '15 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -252,6 +252,53 @@ const PAGES = [
       await p.click('.so-chip[data-id="kana"]');
       if (!/Kana: Kana means to eat\./.test(await p.textContent('.dl-note'))) throw new Error('why not shown');
       return 'tap and keyboard sorting, check, why it is wrong';
+  } },
+  { url: '/templates/loanpath/', name: 'loanpath', check: async p => {
+      const k = await p.textContent('.dq-kpis');
+      if (!/\$471each month/.test(k) || !/\$1,298total interest/.test(k) || !/\$138saved by paying \$50 extra/.test(k)) throw new Error('figures wrong: ' + k);
+      if (!/finishes 2 months sooner/.test(await p.textContent('.dq-note'))) throw new Error('extra-payment sentence wrong');
+      await p.focus('input[data-k="years"]'); await p.keyboard.press('ArrowRight');
+      if (!/\$332each month/.test(await p.textContent('.dq-kpis'))) throw new Error('slider did not recalculate: ' + await p.textContent('.dq-kpis'));
+      return 'payment, interest, extra saved, slider by keyboard';
+  } },
+  { url: '/templates/savegrow/', name: 'savegrow', check: async p => {
+      const k = await p.textContent('.dq-kpis');
+      if (!/\$15,052after 10 years/.test(k) || !/\$12,500you put in/.test(k) || !/\$2,552interest earned/.test(k) || !/10 yearsto reach \$15,000/.test(k)) throw new Error('figures wrong: ' + k);
+      await p.evaluate(() => window.timeline.set('monthly', 50));
+      if (!/out of reach|You reach/.test(await p.textContent('.dq-note'))) throw new Error('goal sentence missing');
+      return 'balance, deposits, interest, goal date, change a slider';
+  } },
+  { url: '/templates/countdown/', name: 'countdown', check: async p => {
+      if (!/days until the end of \d{4}/.test(await p.textContent('.dq-note'))) throw new Error('countdown sentence missing: ' + await p.textContent('.dq-note'));
+      if (await p.locator('svg [data-k]').count() !== 4) throw new Error('expected 4 milestones');
+      await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
+      if (!/Christmas Day: 25 Dec \d{4}, (in \d+ days|\d+ days ago)/.test(await p.textContent('.dq-note'))) throw new Error('milestone detail wrong');
+      return 'days left, milestones, tap one';
+  } },
+  { url: '/templates/pollbar/', name: 'pollbar', check: async p => {
+      if (!/438 votes\. Staying safe from phone scams leads with 32%, 13 ahead of Budgeting for a family/.test(await p.textContent('.dq-note'))) throw new Error('summary wrong: ' + await p.textContent('.dq-note'));
+      await p.click('[data-v="garden"]');
+      if (!/439 votes/.test(await p.textContent('.dq-note')) || !/your vote/.test(await p.textContent('.pb-row.mine'))) throw new Error('vote not counted');
+      await p.click('[data-v="budget"]'); await p.click('[data-v="budget"]');
+      if (!/438 votes/.test(await p.textContent('.dq-note')) || await p.locator('.pb-row.mine').count()) throw new Error('change or take back failed');
+      return 'vote, change, take back';
+  } },
+  { url: '/templates/rankit/', name: 'rankit', check: async p => {
+      await p.click('[data-id="price"] [data-mv="1"]');
+      await p.focus('[data-id="coverage"] [data-mv="-1"]'); await p.keyboard.press('Enter'); await p.keyboard.press('Enter');
+      const order = await p.evaluate(() => window.timeline.getState().order.join(','));
+      if (order !== 'coverage,data,price,speed,service,contract') throw new Error('order wrong: ' + order);
+      await p.click('[data-done]');
+      if (!/You put 2 of 6 in the same place/.test(await p.textContent('.dq-note'))) throw new Error('comparison wrong: ' + await p.textContent('.dq-note'));
+      return 'move by click and keyboard, compare with the group';
+  } },
+  { url: '/templates/opinion/', name: 'opinion', check: async p => {
+      const n = await p.textContent('.dq-note');
+      if (!/Most agreed: I have used something I learned \(77% agree\)/.test(n) || !/The app uses too much data \(42% disagree\)/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.click('[data-s="net"]');
+      await p.focus('svg [data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/The lessons are easy to follow.*In all, 77% agree and 9% disagree \(220 answers\)/.test(await p.textContent('.dq-note'))) throw new Error('detail wrong: ' + await p.textContent('.dq-note'));
+      return 'most and least agreed, sort, full split';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

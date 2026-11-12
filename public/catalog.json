@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "base": "/v1/",
   "templates": [
     {
@@ -927,6 +927,146 @@
       ],
       "demo": "/templates/sorter/",
       "sample": "Fijian words by group (real vocabulary)",
+      "usedBy": []
+    },
+    {
+      "id": "loanpath",
+      "name": "Loanpath",
+      "global": "Loanpath",
+      "file": "plan.js",
+      "status": "ready",
+      "shape": "calculator",
+      "family": "plan",
+      "bestFor": "Loans, hire purchase, school fees on credit, any money paid back over time.",
+      "mechanics": [
+        "Sliders for amount, rate, years and extra",
+        "Monthly payment and total interest",
+        "What paying extra saves",
+        "Balance over time"
+      ],
+      "dataShape": "{ prefix?, amount:{label,min,max,step,value}, rate:{…}, years:{…}, extra?:{…}, note? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/loanpath/",
+      "sample": "A personal loan (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "savegrow",
+      "name": "Savegrow",
+      "global": "Savegrow",
+      "file": "plan.js",
+      "status": "ready",
+      "shape": "calculator",
+      "family": "plan",
+      "bestFor": "Savings goals, school or wedding funds, retirement, community savings groups.",
+      "mechanics": [
+        "Sliders for start, monthly, rate and years",
+        "Deposits and interest shown apart",
+        "When the goal is reached",
+        "Plain-language summary"
+      ],
+      "dataShape": "{ prefix?, goal?, start:{label,min,max,step,value}, monthly:{…}, rate:{…}, years:{…}, note? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/savegrow/",
+      "sample": "Saving for a goal (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "countdown",
+      "name": "Countdown",
+      "global": "Countdown",
+      "file": "plan.js",
+      "status": "ready",
+      "shape": "countdown",
+      "family": "plan",
+      "bestFor": "Exams, launches, harvests, savings deadlines, the end of a term or year.",
+      "mechanics": [
+        "Days, weeks and hours left",
+        "How far through",
+        "Milestones passed and to come",
+        "Updates every minute"
+      ],
+      "dataShape": "{ label, start:'YYYY-MM-DD', end:'YYYY-MM-DD', milestones?:[{date,label}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/countdown/",
+      "sample": "Until the end of the year (real dates)",
+      "usedBy": []
+    },
+    {
+      "id": "pollbar",
+      "name": "Pollbar",
+      "global": "Pollbar",
+      "file": "plan.js",
+      "status": "ready",
+      "shape": "poll",
+      "family": "plan",
+      "bestFor": "Community choices, “what should we do next”, class votes, feedback.",
+      "mechanics": [
+        "Vote, change or take back",
+        "Your vote marked",
+        "Leader and margin in words",
+        "App saves the vote via the vote event"
+      ],
+      "dataShape": "{ question, options:[{id,label,votes}], vote? }",
+      "events": [
+        "vote"
+      ],
+      "demo": "/templates/pollbar/",
+      "sample": "Which lesson next? (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "rankit",
+      "name": "Rankit",
+      "global": "Rankit",
+      "file": "plan.js",
+      "status": "ready",
+      "shape": "ranking",
+      "family": "plan",
+      "bestFor": "Priorities, “what matters most”, planning workshops, surveys.",
+      "mechanics": [
+        "Drag or arrow buttons",
+        "Works by keyboard",
+        "Compare with the group",
+        "Order saved (getState)"
+      ],
+      "dataShape": "{ prompt?, items:[{id,label,note?}], average?:[ids], averageLabel? }",
+      "events": [
+        "change",
+        "done"
+      ],
+      "demo": "/templates/rankit/",
+      "sample": "What matters in a data plan (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "opinion",
+      "name": "Opinion",
+      "global": "Opinion",
+      "file": "plan.js",
+      "status": "ready",
+      "shape": "survey",
+      "family": "plan",
+      "bestFor": "Feedback surveys, staff surveys, community consultations, course reviews.",
+      "mechanics": [
+        "Bars centred on neutral",
+        "Sort by net agreement",
+        "Full split on tap",
+        "Most and least agreed in words"
+      ],
+      "dataShape": "{ scale:[labels], statements:[{id,label,counts:[n per scale point]}], respondents? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/opinion/",
+      "sample": "Learner survey (example figures)",
       "usedBy": []
     },
     {

@@ -48,13 +48,19 @@
     checklist: { file: 'learn.js', global: 'Checklist' },
     scaleup: { file: 'learn.js', global: 'Scaleup' },
     sorter: { file: 'learn.js', global: 'Sorter' },
+    loanpath: { file: 'plan.js', global: 'Loanpath' },
+    savegrow: { file: 'plan.js', global: 'Savegrow' },
+    countdown: { file: 'plan.js', global: 'Countdown' },
+    pollbar: { file: 'plan.js', global: 'Pollbar' },
+    rankit: { file: 'plan.js', global: 'Rankit' },
+    opinion: { file: 'plan.js', global: 'Opinion' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.7.0';
+  var VERSION = '1.8.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};

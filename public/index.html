@@ -84,6 +84,7 @@
       <a href="/#compare">Compare</a>
       <a href="/#insight">Insight</a>
       <a href="/#learn">Learn</a>
+      <a href="/#plan">Plan</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -238,6 +239,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="plan" aria-labelledby="plan-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Plan &amp; ask · money, time and opinions</p><h2 id="plan-h">Plan &amp; ask</h2>
+      <p class="lede">A loan calculator, savings that grow, a countdown with milestones, a poll people can vote in, a ranking to put in order, and agree–disagree survey results.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-loanpath"></div>
+    <ul class="family-list">
+      <li><a href="/templates/loanpath/"><b>Loanpath</b><span>What a loan costs, and what paying extra saves.</span></a></li>
+      <li><a href="/templates/savegrow/"><b>Savegrow</b><span>Savings growing year by year, to a goal.</span></a></li>
+      <li><a href="/templates/countdown/"><b>Countdown</b><span>Time left, with milestones.</span></a></li>
+      <li><a href="/templates/pollbar/"><b>Pollbar</b><span>A poll people can vote in.</span></a></li>
+      <li><a href="/templates/rankit/"><b>Rankit</b><span>Put things in order; compare with everyone.</span></a></li>
+      <li><a href="/templates/opinion/"><b>Opinion</b><span>Agree or disagree, at a glance.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -276,6 +293,7 @@
 <script src="/templates/pathfinder/sample-data.js"></script>
 <script src="/templates/factwall/sample-data.js"></script>
 <script src="/templates/flashdeck/sample-data.js"></script>
+<script src="/templates/loanpath/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -289,6 +307,7 @@
   D.mount('#pv-pathfinder', { template: 'pathfinder', data: window.PATHFINDER_DATA, options: { map: false } });
   D.mount('#pv-factwall', { template: 'factwall', data: window.FACTWALL_DATA });
   D.mount('#pv-flashdeck', { template: 'flashdeck', data: window.FLASHDECK_DATA });
+  D.mount('#pv-loanpath', { template: 'loanpath', data: window.LOANPATH_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

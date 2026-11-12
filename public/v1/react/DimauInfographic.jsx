@@ -55,6 +55,13 @@ const LOADERS = {
   checklist: () => import('../learn.js').then(m => ({ default: (m.default || m).Checklist })),
   scaleup: () => import('../learn.js').then(m => ({ default: (m.default || m).Scaleup })),
   sorter: () => import('../learn.js').then(m => ({ default: (m.default || m).Sorter })),
+  // the six plan-and-ask formats share one file
+  loanpath: () => import('../plan.js').then(m => ({ default: (m.default || m).Loanpath })),
+  savegrow: () => import('../plan.js').then(m => ({ default: (m.default || m).Savegrow })),
+  countdown: () => import('../plan.js').then(m => ({ default: (m.default || m).Countdown })),
+  pollbar: () => import('../plan.js').then(m => ({ default: (m.default || m).Pollbar })),
+  rankit: () => import('../plan.js').then(m => ({ default: (m.default || m).Rankit })),
+  opinion: () => import('../plan.js').then(m => ({ default: (m.default || m).Opinion })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -85,7 +92,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);
