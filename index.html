@@ -85,6 +85,7 @@
       <a href="/#insight">Insight</a>
       <a href="/#learn">Learn</a>
       <a href="/#plan">Plan</a>
+      <a href="/#track">Track</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -255,6 +256,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="track" aria-labelledby="track-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Track · readings, status and schedules</p><h2 id="track-h">Track</h2>
+      <p class="lede">A gauge with zones, service status day by day, many small trend lines, a tree to open and close, a month of events, and a booking grid.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-treeline"></div>
+    <ul class="family-list">
+      <li><a href="/templates/dial/"><b>Dial</b><span>Where a reading sits: low, fine or high.</span></a></li>
+      <li><a href="/templates/statusboard/"><b>Statusboard</b><span>Working, slow or down, day by day.</span></a></li>
+      <li><a href="/templates/sparkgrid/"><b>Sparkgrid</b><span>Many small trends; sort by rise or fall.</span></a></li>
+      <li><a href="/templates/treeline/"><b>Treeline</b><span>An outline to open, close and search.</span></a></li>
+      <li><a href="/templates/monthview/"><b>Monthview</b><span>A month of events; tap a day.</span></a></li>
+      <li><a href="/templates/slotgrid/"><b>Slotgrid</b><span>Pick and book a free time.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -294,6 +311,7 @@
 <script src="/templates/factwall/sample-data.js"></script>
 <script src="/templates/flashdeck/sample-data.js"></script>
 <script src="/templates/loanpath/sample-data.js"></script>
+<script src="/templates/treeline/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -308,6 +326,7 @@
   D.mount('#pv-factwall', { template: 'factwall', data: window.FACTWALL_DATA });
   D.mount('#pv-flashdeck', { template: 'flashdeck', data: window.FLASHDECK_DATA });
   D.mount('#pv-loanpath', { template: 'loanpath', data: window.LOANPATH_DATA });
+  D.mount('#pv-treeline', { template: 'treeline', data: window.TREELINE_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {
