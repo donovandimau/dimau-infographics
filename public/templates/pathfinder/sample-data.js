@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.18, 109 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.19, 115 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -298,6 +298,11 @@ window.PATHFINDER_DATA = {
      "label": "Many options on several measures at once",
      "to": "r_parallelaxes",
      "hint": "e.g. plans, products, sites"
+    },
+    {
+     "label": "Which of two versions works better",
+     "to": "r_abtest",
+     "hint": "e.g. two messages or posters"
     }
    ]
   },
@@ -747,6 +752,30 @@ window.PATHFINDER_DATA = {
     {
      "label": "Results against targets",
      "to": "r_bulletbar"
+    },
+    {
+     "label": "Headline numbers with change and targets",
+     "to": "r_kpitiles"
+    },
+    {
+     "label": "Work left against a deadline",
+     "to": "r_burndown",
+     "hint": "e.g. a project or sprint"
+    },
+    {
+     "label": "Whether a reading is unusual",
+     "to": "r_controlchart",
+     "hint": "e.g. daily waiting times"
+    },
+    {
+     "label": "Work stuck in stages",
+     "to": "r_cumflow",
+     "hint": "e.g. requests, orders, repairs"
+    },
+    {
+     "label": "People who keep coming back",
+     "to": "r_cohortgrid",
+     "hint": "e.g. members, learners"
     }
    ]
   },
@@ -1263,6 +1292,42 @@ window.PATHFINDER_DATA = {
    "text": "Standings round by round.",
    "link": "/templates/leaderboard/",
    "linkLabel": "Open Leaderboard"
+  },
+  "r_cohortgrid": {
+   "result": "Cohortgrid",
+   "text": "How many of each group are still active.",
+   "link": "/templates/cohortgrid/",
+   "linkLabel": "Open Cohortgrid"
+  },
+  "r_burndown": {
+   "result": "Burndown",
+   "text": "Work left, the plan and the finish date.",
+   "link": "/templates/burndown/",
+   "linkLabel": "Open Burndown"
+  },
+  "r_controlchart": {
+   "result": "Controlchart",
+   "text": "Normal ups and downs, or something unusual?",
+   "link": "/templates/controlchart/",
+   "linkLabel": "Open Controlchart"
+  },
+  "r_cumflow": {
+   "result": "Cumflow",
+   "text": "Work in each stage over time.",
+   "link": "/templates/cumflow/",
+   "linkLabel": "Open Cumflow"
+  },
+  "r_kpitiles": {
+   "result": "Kpitiles",
+   "text": "Headline numbers with change and trend.",
+   "link": "/templates/kpitiles/",
+   "linkLabel": "Open Kpitiles"
+  },
+  "r_abtest": {
+   "result": "Abtest",
+   "text": "Which of two versions works better.",
+   "link": "/templates/abtest/",
+   "linkLabel": "Open Abtest"
   }
  }
 };

@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.18.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.19.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -616,6 +616,41 @@ window.SUNBURST_DATA = {
       "label": "Leaderboard",
       "value": 1,
       "note": "Quizzes and competitions, school houses, sales teams, fundraising drives."
+     }
+    ]
+   },
+   {
+    "label": "Metrics",
+    "children": [
+     {
+      "label": "Cohortgrid",
+      "value": 1,
+      "note": "Learners or members who keep coming back, customers who reorder, volunteers who stay."
+     },
+     {
+      "label": "Burndown",
+      "value": 1,
+      "note": "Projects and sprints, building works, fundraising to a deadline, exam revision."
+     },
+     {
+      "label": "Controlchart",
+      "value": 1,
+      "note": "Waiting times, defects, daily sales, attendance: telling a real change from normal ups and downs."
+     },
+     {
+      "label": "Cumflow",
+      "value": 1,
+      "note": "Help desks, applications and approvals, orders, repairs: spotting where work gets stuck."
+     },
+     {
+      "label": "Kpitiles",
+      "value": 1,
+      "note": "Dashboards, monthly reports, app home screens, board papers."
+     },
+     {
+      "label": "Abtest",
+      "value": 1,
+      "note": "Testing two messages, posters, prices, page designs or reminder texts."
      }
     ]
    },

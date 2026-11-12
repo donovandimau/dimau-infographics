@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2494,6 +2494,144 @@
       ],
       "demo": "/templates/leaderboard/",
       "sample": "A six-round quiz (example)",
+      "usedBy": []
+    },
+    {
+      "id": "cohortgrid",
+      "name": "Cohortgrid",
+      "global": "Cohortgrid",
+      "file": "metrics.js",
+      "status": "ready",
+      "shape": "cohort-retention",
+      "family": "metrics",
+      "bestFor": "Learners or members who keep coming back, customers who reorder, volunteers who stay.",
+      "mechanics": [
+        "Shade by share still active",
+        "Percent or people",
+        "Compared with the average",
+        "Arrow keys across the grid"
+      ],
+      "dataShape": "{ periodLabel?, cohorts:[{label,size,values:[...]}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/cohortgrid/",
+      "sample": "Learners by month joined (example)",
+      "usedBy": []
+    },
+    {
+      "id": "burndown",
+      "name": "Burndown",
+      "global": "Burndown",
+      "file": "metrics.js",
+      "status": "ready",
+      "shape": "burndown",
+      "family": "metrics",
+      "bestFor": "Projects and sprints, building works, fundraising to a deadline, exam revision.",
+      "mechanics": [
+        "Plan line and due date",
+        "Finish date at the recent pace",
+        "Ahead or behind on any day",
+        "Work added shows as a step up"
+      ],
+      "dataShape": "{ start, end, total, unit?, days:[{date,left}] }",
+      "events": [
+        "move"
+      ],
+      "demo": "/templates/burndown/",
+      "sample": "A three-week project (example)",
+      "usedBy": []
+    },
+    {
+      "id": "controlchart",
+      "name": "Controlchart",
+      "global": "Controlchart",
+      "file": "metrics.js",
+      "status": "ready",
+      "shape": "control-chart",
+      "family": "metrics",
+      "bestFor": "Waiting times, defects, daily sales, attendance: telling a real change from normal ups and downs.",
+      "mechanics": [
+        "Usual range from the data",
+        "Three common rules for unusual points",
+        "Range set from a starting period",
+        "Reasons on tap"
+      ],
+      "dataShape": "{ unit?, prefix?, decimals?, points:[{label,value,note?}], baseline? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/controlchart/",
+      "sample": "Clinic waiting times (example)",
+      "usedBy": []
+    },
+    {
+      "id": "cumflow",
+      "name": "Cumflow",
+      "global": "Cumflow",
+      "file": "metrics.js",
+      "status": "ready",
+      "shape": "cumulative-flow",
+      "family": "metrics",
+      "bestFor": "Help desks, applications and approvals, orders, repairs: spotting where work gets stuck.",
+      "mechanics": [
+        "Stacked stages over time",
+        "Work in progress on any day",
+        "Time to finish drawn across",
+        "Finished per day"
+      ],
+      "dataShape": "{ unit?, dates:[...], stages:[{id,label}], counts:[[per stage] per date] }",
+      "events": [
+        "move"
+      ],
+      "demo": "/templates/cumflow/",
+      "sample": "Requests through a team (example)",
+      "usedBy": []
+    },
+    {
+      "id": "kpitiles",
+      "name": "Kpitiles",
+      "global": "Kpitiles",
+      "file": "metrics.js",
+      "status": "ready",
+      "shape": "kpi-tiles",
+      "family": "metrics",
+      "bestFor": "Dashboards, monthly reports, app home screens, board papers.",
+      "mechanics": [
+        "Change in amount and percent",
+        "Good or bad by direction",
+        "Target met or to go",
+        "Trend line and range on tap"
+      ],
+      "dataShape": "{ period?, tiles:[{id,label,value,prev?,target?,unit?,prefix?,decimals?,better?,history?,note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/kpitiles/",
+      "sample": "This library, release on release (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "abtest",
+      "name": "Abtest",
+      "global": "Abtest",
+      "file": "metrics.js",
+      "status": "ready",
+      "shape": "ab-test",
+      "family": "metrics",
+      "bestFor": "Testing two messages, posters, prices, page designs or reminder texts.",
+      "mechanics": [
+        "Rates with 95% ranges",
+        "Chance one is better",
+        "Verdict in plain words",
+        "Visitors still needed"
+      ],
+      "dataShape": "{ goal?, a:{label,visitors,conversions}, b:{label,visitors,conversions} }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/abtest/",
+      "sample": "Two sign-up pages (example)",
       "usedBy": []
     },
     {

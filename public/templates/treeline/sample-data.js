@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.18.0), every family and template. */
+/* Real data: this library (catalog.json, v1.19.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.18.0",
+  "label": "Dimau Infographics 1.19.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -615,6 +615,41 @@ window.TREELINE_DATA = {
       "label": "Leaderboard",
       "sub": "Quizzes and competitions, school houses, sales teams, fundraising drives.",
       "link": "/templates/leaderboard/"
+     }
+    ]
+   },
+   {
+    "label": "Metrics",
+    "children": [
+     {
+      "label": "Cohortgrid",
+      "sub": "Learners or members who keep coming back, customers who reorder, volunteers who stay.",
+      "link": "/templates/cohortgrid/"
+     },
+     {
+      "label": "Burndown",
+      "sub": "Projects and sprints, building works, fundraising to a deadline, exam revision.",
+      "link": "/templates/burndown/"
+     },
+     {
+      "label": "Controlchart",
+      "sub": "Waiting times, defects, daily sales, attendance: telling a real change from normal ups and downs.",
+      "link": "/templates/controlchart/"
+     },
+     {
+      "label": "Cumflow",
+      "sub": "Help desks, applications and approvals, orders, repairs: spotting where work gets stuck.",
+      "link": "/templates/cumflow/"
+     },
+     {
+      "label": "Kpitiles",
+      "sub": "Dashboards, monthly reports, app home screens, board papers.",
+      "link": "/templates/kpitiles/"
+     },
+     {
+      "label": "Abtest",
+      "sub": "Testing two messages, posters, prices, page designs or reminder texts.",
+      "link": "/templates/abtest/"
      }
     ]
    },

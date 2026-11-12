@@ -77,6 +77,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.18",
    "value": 109
+  },
+  {
+   "label": "v1.19",
+   "value": 115
   }
  ],
  "notes": [
@@ -139,6 +143,11 @@ window.ANNOTLINE_DATA = {
    "at": 18,
    "title": "Tools",
    "text": "Time zones, a life in months, settling shared costs, best-value packs, seats and majorities, and standings."
+  },
+  {
+   "at": 19,
+   "title": "Metrics",
+   "text": "Retention, burndown, control charts, cumulative flow, headline numbers and A/B tests."
   }
  ]
 };

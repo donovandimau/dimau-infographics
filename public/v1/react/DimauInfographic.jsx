@@ -132,6 +132,13 @@ const LOADERS = {
   unitprice: () => import('../tools.js').then(m => ({ default: (m.default || m).Unitprice })),
   seatarc: () => import('../tools.js').then(m => ({ default: (m.default || m).Seatarc })),
   leaderboard: () => import('../tools.js').then(m => ({ default: (m.default || m).Leaderboard })),
+  // the six metrics formats share one file
+  cohortgrid: () => import('../metrics.js').then(m => ({ default: (m.default || m).Cohortgrid })),
+  burndown: () => import('../metrics.js').then(m => ({ default: (m.default || m).Burndown })),
+  controlchart: () => import('../metrics.js').then(m => ({ default: (m.default || m).Controlchart })),
+  cumflow: () => import('../metrics.js').then(m => ({ default: (m.default || m).Cumflow })),
+  kpitiles: () => import('../metrics.js').then(m => ({ default: (m.default || m).Kpitiles })),
+  abtest: () => import('../metrics.js').then(m => ({ default: (m.default || m).Abtest })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),

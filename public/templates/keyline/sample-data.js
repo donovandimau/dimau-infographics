@@ -1,4 +1,4 @@
-/* Real data: the "best for" line of every template in this library (catalog.json, v1.18.0). */
+/* Real data: the "best for" line of every template in this library (catalog.json, v1.19.0). */
 window.KEYLINE_DATA = {
  "word": "time",
  "texts": [
@@ -417,6 +417,30 @@ window.KEYLINE_DATA = {
   {
    "label": "Leaderboard",
    "text": "Quizzes and competitions, school houses, sales teams, fundraising drives."
+  },
+  {
+   "label": "Cohortgrid",
+   "text": "Learners or members who keep coming back, customers who reorder, volunteers who stay."
+  },
+  {
+   "label": "Burndown",
+   "text": "Projects and sprints, building works, fundraising to a deadline, exam revision."
+  },
+  {
+   "label": "Controlchart",
+   "text": "Waiting times, defects, daily sales, attendance: telling a real change from normal ups and downs."
+  },
+  {
+   "label": "Cumflow",
+   "text": "Help desks, applications and approvals, orders, repairs: spotting where work gets stuck."
+  },
+  {
+   "label": "Kpitiles",
+   "text": "Dashboards, monthly reports, app home screens, board papers."
+  },
+  {
+   "label": "Abtest",
+   "text": "Testing two messages, posters, prices, page designs or reminder texts."
   },
   {
    "label": "Settlement Flow",

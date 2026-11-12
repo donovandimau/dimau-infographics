@@ -147,6 +147,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Unitprice** | Best value | Shopping guides, budgeting lessons | Price per kilo, litre or item, units converted, cost for the amount you need |
 | **Seatarc** | Seats and majorities | Councils, boards, election results | Seats in a half circle, build a group, majority or seats short |
 | **Leaderboard** | Standings | Quizzes, competitions, fundraising | Round slider, rows slide to new places, ups and downs, places so far |
+| **Cohortgrid** | Who stays | Members, learners, repeat customers | Shade by share still active, percent or people, compared with the average, arrow keys |
+| **Burndown** | Work left | Projects, sprints, deadlines | Plan line, finish date at the recent pace, ahead or behind on any day |
+| **Controlchart** | Normal or unusual | Waiting times, defects, daily sales | Usual range from the data, three common rules, reasons in words |
+| **Cumflow** | Work in each stage | Help desks, approvals, orders | Stacked stages, work in progress, time to finish on any day |
+| **Kpitiles** | Headline numbers | Dashboards, reports, app home screens | Change in amount and percent, good or bad by direction, targets, trend |
+| **Abtest** | Which version works better | Messages, posters, prices, page designs | Rates with 95% ranges, chance one is better, visitors still needed |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -214,6 +220,7 @@ v1/structure.js              Sunburst, Circlepack, Icicle, Arcflow, Linkmatrix, 
 v1/analyse.js                Bubbletrail, Fanchart, Rangebars, Pareto, Parallelaxes, Radialbars (analyse)
 v1/words.js                  Wordbars, Tagcloud, Wordtree, Textdiff, Readscore, Keyline (words)
 v1/tools.js                  Worldclock, Lifegrid, Settleup, Unitprice, Seatarc, Leaderboard (tools)
+v1/metrics.js                Cohortgrid, Burndown, Controlchart, Cumflow, Kpitiles, Abtest (metrics)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

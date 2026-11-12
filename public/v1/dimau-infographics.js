@@ -114,13 +114,19 @@
     unitprice: { file: 'tools.js', global: 'Unitprice' },
     seatarc: { file: 'tools.js', global: 'Seatarc' },
     leaderboard: { file: 'tools.js', global: 'Leaderboard' },
+    cohortgrid: { file: 'metrics.js', global: 'Cohortgrid' },
+    burndown: { file: 'metrics.js', global: 'Burndown' },
+    controlchart: { file: 'metrics.js', global: 'Controlchart' },
+    cumflow: { file: 'metrics.js', global: 'Cumflow' },
+    kpitiles: { file: 'metrics.js', global: 'Kpitiles' },
+    abtest: { file: 'metrics.js', global: 'Abtest' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.18.0';
+  var VERSION = '1.19.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
