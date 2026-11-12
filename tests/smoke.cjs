@@ -1106,6 +1106,29 @@ const PAGES = [
       for (const s of ['cycle', 'steps', 'road']) { await p.click('[data-s="' + s + '"]'); if (await p.locator('.wp-stop').count() !== 6) throw new Error(s + ' lost stops'); }
       return 'reveal a stop, three shapes';
   } },
+  { url: '/templates/stagepath/', name: 'stagepath', check: async p => {
+      if (await p.locator('.sp-stage').count() !== 8) throw new Error('expected 8 stages');
+      if (await p.locator('.sp-seg').count() !== 6) throw new Error('the bar should have the 6 counted steps');
+      await p.waitForFunction(() => document.querySelector('.sp-num').textContent === '206', null, { timeout: 5000 });
+      await p.click('.sp-chip[data-holder="TLTB"]');
+      if (await p.getAttribute('.sp-chip[data-holder="TLTB"]', 'aria-pressed') !== 'true') throw new Error('holder chip not pressed');
+      if (await p.locator('.sp-stage.sp-on').count() !== 4) throw new Error('TLTB should hold 4 stages');
+      await p.waitForTimeout(350);
+      const dim = await p.evaluate(() => [...document.querySelectorAll('.sp-stage')].map(c => +getComputedStyle(c).opacity));
+      if (dim[2] > 0.5 || dim[1] < 0.99) throw new Error('stages of other holders did not dim: ' + dim.join(','));
+      if (!/TLTB.*holds 4 of 8/.test(await p.textContent('#out'))) throw new Error('filter event did not report');
+      await p.focus('.sp-chip[data-holder="TLTB"]'); await p.keyboard.press('Enter');
+      if (await p.locator('.sp-stage.sp-on').count() !== 0 || await p.getAttribute('.sp-chip[data-holder="TLTB"]', 'aria-pressed') !== 'false') throw new Error('pressing the chip again did not clear it');
+      await p.click('.sp-seg[data-go="survey"]');
+      if (!(await p.getAttribute('.sp-stage[data-id="survey"]', 'class')).includes('sp-flash')) throw new Error('bar segment did not go to its stage');
+      if (!/Survey.*usual 60 days/.test(await p.textContent('#out'))) throw new Error('open event did not report');
+      const same = await p.evaluate(async () => {
+        const css = (await (await fetch('/v1/stagepath.css')).text()).replace(/\r\n/g, '\n').replace(/^\/\*[\s\S]*?\*\/\n/, '').trim();
+        return css === window.Stagepath.css.replace(/\r\n/g, '\n').trim() && document.querySelectorAll('#sp-style').length === 1;
+      });
+      if (!same) throw new Error('v1/stagepath.css and the CSS inside stagepath.js differ');
+      return '8 stages, total 206, filter by holder (mouse and keyboard), bar jumps to a stage, CSS file matches';
+  } },
   { url: '/templates/rankrace/', name: 'rankrace', check: async p => {
       await p.evaluate(() => window.timeline.seek(7));
       const note = await p.textContent('.rr-note');
