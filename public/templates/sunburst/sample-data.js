@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.19.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.20.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -651,6 +651,41 @@ window.SUNBURST_DATA = {
       "label": "Abtest",
       "value": 1,
       "note": "Testing two messages, posters, prices, page designs or reminder texts."
+     }
+    ]
+   },
+   {
+    "label": "Basics",
+    "children": [
+     {
+      "label": "Donut",
+      "value": 1,
+      "note": "Budgets, survey answers, sources of income, anything that adds up to a whole."
+     },
+     {
+      "label": "Barchart",
+      "value": 1,
+      "note": "Comparing amounts across groups, places, products or years."
+     },
+     {
+      "label": "Linechart",
+      "value": 1,
+      "note": "Prices, temperatures, visitors, balances: anything measured again and again."
+     },
+     {
+      "label": "Areachart",
+      "value": 1,
+      "note": "Spending by category, energy by source, students by level, sales by product over time."
+     },
+     {
+      "label": "Combochart",
+      "value": 1,
+      "note": "Rainfall and temperature, sales and margin, visitors and spending per visitor."
+     },
+     {
+      "label": "Waffle",
+      "value": 1,
+      "note": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates."
      }
     ]
    },

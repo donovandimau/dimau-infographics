@@ -81,6 +81,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.19",
    "value": 115
+  },
+  {
+   "label": "v1.20",
+   "value": 121
   }
  ],
  "notes": [
@@ -148,6 +152,11 @@ window.ANNOTLINE_DATA = {
    "at": 19,
    "title": "Metrics",
    "text": "Retention, burndown, control charts, cumulative flow, headline numbers and A/B tests."
+  },
+  {
+   "at": 20,
+   "title": "Basics",
+   "text": "Donut, bar, line, area, combo and waffle charts, each with a table view."
   }
  ]
 };

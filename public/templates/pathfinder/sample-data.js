@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.19, 115 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.20, 121 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -86,6 +86,11 @@ window.PATHFINDER_DATA = {
      "label": "An everyday tool",
      "hint": "time zones, sharing costs, best value",
      "to": "tools"
+    },
+    {
+     "label": "Just a plain, clear chart",
+     "hint": "ring, bars, lines, areas",
+     "to": "basics"
     },
     {
      "label": "A few headline numbers",
@@ -1328,6 +1333,71 @@ window.PATHFINDER_DATA = {
    "text": "Which of two versions works better.",
    "link": "/templates/abtest/",
    "linkLabel": "Open Abtest"
+  },
+  "basics": {
+   "q": "Which plain chart?",
+   "options": [
+    {
+     "label": "Parts of a whole, as a ring",
+     "to": "r_donut"
+    },
+    {
+     "label": "Parts of a whole, as 100 squares",
+     "to": "r_waffle"
+    },
+    {
+     "label": "Amounts across groups",
+     "to": "r_barchart"
+    },
+    {
+     "label": "Change over time",
+     "to": "r_linechart"
+    },
+    {
+     "label": "Parts of a total over time",
+     "to": "r_areachart"
+    },
+    {
+     "label": "Two measures of the same periods",
+     "to": "r_combochart"
+    }
+   ]
+  },
+  "r_donut": {
+   "result": "Donut",
+   "text": "Parts of a whole as a ring.",
+   "link": "/templates/donut/",
+   "linkLabel": "Open Donut"
+  },
+  "r_barchart": {
+   "result": "Barchart",
+   "text": "Bars, side by side or stacked.",
+   "link": "/templates/barchart/",
+   "linkLabel": "Open Barchart"
+  },
+  "r_linechart": {
+   "result": "Linechart",
+   "text": "Lines over time; read every line at one point.",
+   "link": "/templates/linechart/",
+   "linkLabel": "Open Linechart"
+  },
+  "r_areachart": {
+   "result": "Areachart",
+   "text": "Piled-up amounts, as totals or shares.",
+   "link": "/templates/areachart/",
+   "linkLabel": "Open Areachart"
+  },
+  "r_combochart": {
+   "result": "Combochart",
+   "text": "Bars and a line on two scales.",
+   "link": "/templates/combochart/",
+   "linkLabel": "Open Combochart"
+  },
+  "r_waffle": {
+   "result": "Waffle",
+   "text": "100 squares, one per percent.",
+   "link": "/templates/waffle/",
+   "linkLabel": "Open Waffle"
   }
  }
 };

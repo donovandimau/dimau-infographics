@@ -1,4 +1,4 @@
-/* Real data: the "best for" line of every template in this library (catalog.json, v1.19.0). */
+/* Real data: the "best for" line of every template in this library (catalog.json, v1.20.0). */
 window.KEYLINE_DATA = {
  "word": "time",
  "texts": [
@@ -441,6 +441,30 @@ window.KEYLINE_DATA = {
   {
    "label": "Abtest",
    "text": "Testing two messages, posters, prices, page designs or reminder texts."
+  },
+  {
+   "label": "Donut",
+   "text": "Budgets, survey answers, sources of income, anything that adds up to a whole."
+  },
+  {
+   "label": "Barchart",
+   "text": "Comparing amounts across groups, places, products or years."
+  },
+  {
+   "label": "Linechart",
+   "text": "Prices, temperatures, visitors, balances: anything measured again and again."
+  },
+  {
+   "label": "Areachart",
+   "text": "Spending by category, energy by source, students by level, sales by product over time."
+  },
+  {
+   "label": "Combochart",
+   "text": "Rainfall and temperature, sales and margin, visitors and spending per visitor."
+  },
+  {
+   "label": "Waffle",
+   "text": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates."
   },
   {
    "label": "Settlement Flow",

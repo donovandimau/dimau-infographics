@@ -96,6 +96,7 @@
       <a href="/#words">Words</a>
       <a href="/#tools">Tools</a>
       <a href="/#metrics">Metrics</a>
+      <a href="/#basics">Basics</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -443,6 +444,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="basics" aria-labelledby="basics-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Basics · the everyday charts, done carefully</p><h2 id="basics-h">Basics</h2>
+      <p class="lede">A ring, bars, lines, piled-up areas, bars with a line, and 100 squares. Every one can be tapped for its numbers, read with the keyboard, and switched to a plain table.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-barchart"></div>
+    <ul class="family-list">
+      <li><a href="/templates/donut/"><b>Donut</b><span>Parts of a whole as a ring.</span></a></li>
+      <li><a href="/templates/barchart/"><b>Barchart</b><span>Bars, side by side or stacked.</span></a></li>
+      <li><a href="/templates/linechart/"><b>Linechart</b><span>Lines over time; read every line at one point.</span></a></li>
+      <li><a href="/templates/areachart/"><b>Areachart</b><span>Piled-up amounts, as totals or shares.</span></a></li>
+      <li><a href="/templates/combochart/"><b>Combochart</b><span>Bars and a line on two scales.</span></a></li>
+      <li><a href="/templates/waffle/"><b>Waffle</b><span>100 squares, one per percent.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -493,6 +510,7 @@
 <script src="/templates/wordtree/sample-data.js"></script>
 <script src="/templates/worldclock/sample-data.js"></script>
 <script src="/templates/kpitiles/sample-data.js"></script>
+<script src="/templates/barchart/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -518,6 +536,7 @@
   D.mount('#pv-wordtree', { template: 'wordtree', data: window.WORDTREE_DATA });
   D.mount('#pv-worldclock', { template: 'worldclock', data: window.WORLDCLOCK_DATA });
   D.mount('#pv-kpitiles', { template: 'kpitiles', data: window.KPITILES_DATA });
+  D.mount('#pv-barchart', { template: 'barchart', data: window.BARCHART_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

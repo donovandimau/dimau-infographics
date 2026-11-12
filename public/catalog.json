@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2632,6 +2632,159 @@
       ],
       "demo": "/templates/abtest/",
       "sample": "Two sign-up pages (example)",
+      "usedBy": []
+    },
+    {
+      "id": "donut",
+      "name": "Donut",
+      "global": "Donut",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "donut",
+      "family": "basics",
+      "bestFor": "Budgets, survey answers, sources of income, anything that adds up to a whole.",
+      "mechanics": [
+        "Shares on the ring",
+        "Hide parts",
+        "Total or share in the middle",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, items:[{id,label,value}], centre? }",
+      "events": [
+        "select",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/donut/",
+      "sample": "FijiLearn courses by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "barchart",
+      "name": "Barchart",
+      "global": "Barchart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "bar-chart",
+      "family": "basics",
+      "bestFor": "Comparing amounts across groups, places, products or years.",
+      "mechanics": [
+        "Side by side or stacked",
+        "Largest first",
+        "Sideways when labels are long",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, categories:[...], series:[{id,label,values:[]}] }",
+      "events": [
+        "select",
+        "mode",
+        "sort",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/barchart/",
+      "sample": "FijiLearn subjects (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "linechart",
+      "name": "Linechart",
+      "global": "Linechart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "line-chart",
+      "family": "basics",
+      "bestFor": "Prices, temperatures, visitors, balances: anything measured again and again.",
+      "mechanics": [
+        "Names at the line ends",
+        "Read every line at one point",
+        "Gaps allowed",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, decimals?, x:[...], series:[{id,label,values:[]}], zero? }",
+      "events": [
+        "move",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/linechart/",
+      "sample": "Daylight in three cities (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "areachart",
+      "name": "Areachart",
+      "global": "Areachart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "area-chart",
+      "family": "basics",
+      "bestFor": "Spending by category, energy by source, students by level, sales by product over time.",
+      "mechanics": [
+        "Totals or shares of 100%",
+        "Read any point",
+        "Hide parts",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, x:[...], series:[{id,label,values:[]}] }",
+      "events": [
+        "move",
+        "mode",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/areachart/",
+      "sample": "A household’s spending (example)",
+      "usedBy": []
+    },
+    {
+      "id": "combochart",
+      "name": "Combochart",
+      "global": "Combochart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "combo-chart",
+      "family": "basics",
+      "bestFor": "Rainfall and temperature, sales and margin, visitors and spending per visitor.",
+      "mechanics": [
+        "Two scales, coloured to match",
+        "Read any period",
+        "Whether they move together",
+        "Show as table"
+      ],
+      "dataShape": "{ x:[...], bars:{label,values,unit?,prefix?}, line:{label,values,unit?,prefix?,decimals?} }",
+      "events": [
+        "move",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/combochart/",
+      "sample": "Rain and temperature (example)",
+      "usedBy": []
+    },
+    {
+      "id": "waffle",
+      "name": "Waffle",
+      "global": "Waffle",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "waffle",
+      "family": "basics",
+      "bestFor": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates.",
+      "mechanics": [
+        "Rounded fairly to 100",
+        "“1 in N” in words",
+        "Hide parts",
+        "Show as table"
+      ],
+      "dataShape": "{ items:[{id,label,value}], unit?, label? }",
+      "events": [
+        "select",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/waffle/",
+      "sample": "This library’s sample data (real data)",
       "usedBy": []
     },
     {

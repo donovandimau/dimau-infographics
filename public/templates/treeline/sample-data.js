@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.19.0), every family and template. */
+/* Real data: this library (catalog.json, v1.20.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.19.0",
+  "label": "Dimau Infographics 1.20.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -650,6 +650,41 @@ window.TREELINE_DATA = {
       "label": "Abtest",
       "sub": "Testing two messages, posters, prices, page designs or reminder texts.",
       "link": "/templates/abtest/"
+     }
+    ]
+   },
+   {
+    "label": "Basics",
+    "children": [
+     {
+      "label": "Donut",
+      "sub": "Budgets, survey answers, sources of income, anything that adds up to a whole.",
+      "link": "/templates/donut/"
+     },
+     {
+      "label": "Barchart",
+      "sub": "Comparing amounts across groups, places, products or years.",
+      "link": "/templates/barchart/"
+     },
+     {
+      "label": "Linechart",
+      "sub": "Prices, temperatures, visitors, balances: anything measured again and again.",
+      "link": "/templates/linechart/"
+     },
+     {
+      "label": "Areachart",
+      "sub": "Spending by category, energy by source, students by level, sales by product over time.",
+      "link": "/templates/areachart/"
+     },
+     {
+      "label": "Combochart",
+      "sub": "Rainfall and temperature, sales and margin, visitors and spending per visitor.",
+      "link": "/templates/combochart/"
+     },
+     {
+      "label": "Waffle",
+      "sub": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates.",
+      "link": "/templates/waffle/"
      }
     ]
    },

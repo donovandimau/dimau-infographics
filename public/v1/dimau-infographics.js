@@ -120,13 +120,19 @@
     cumflow: { file: 'metrics.js', global: 'Cumflow' },
     kpitiles: { file: 'metrics.js', global: 'Kpitiles' },
     abtest: { file: 'metrics.js', global: 'Abtest' },
+    donut: { file: 'basics.js', global: 'Donut' },
+    barchart: { file: 'basics.js', global: 'Barchart' },
+    linechart: { file: 'basics.js', global: 'Linechart' },
+    areachart: { file: 'basics.js', global: 'Areachart' },
+    combochart: { file: 'basics.js', global: 'Combochart' },
+    waffle: { file: 'basics.js', global: 'Waffle' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.19.0';
+  var VERSION = '1.20.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
