@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.2.0",
+  "version": "1.7.0",
   "base": "/v1/",
   "templates": [
     {
@@ -214,6 +214,719 @@
       ],
       "demo": "/templates/waypath/",
       "sample": "How an app adopts a template (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "rankrace",
+      "name": "Rankrace",
+      "global": "Rankrace",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "ranking",
+      "family": "charts",
+      "bestFor": "Rankings that change over time: top products, busiest months, leading regions, league tables.",
+      "mechanics": [
+        "Bars overtake as time plays",
+        "Scrub to any moment",
+        "Leader and biggest climber in words",
+        "Values interpolate smoothly"
+      ],
+      "dataShape": "{ prefix?, suffix?, top?, items:[{id,label,color?}], frames:[{label, values:{id:number}}] }",
+      "events": [
+        "frame"
+      ],
+      "demo": "/templates/rankrace/",
+      "sample": "Market stall sales by product (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "peoplegrid",
+      "name": "Peoplegrid",
+      "global": "Peoplegrid",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "proportion",
+      "family": "charts",
+      "bestFor": "Showing a share as countable things: people, households, chapters, votes, out of 100.",
+      "mechanics": [
+        "One square per unit",
+        "Regroups between grid, blocks and bars",
+        "Highlight a group",
+        "Plain-language share"
+      ],
+      "dataShape": "{ unit, unitPlural?, groups:[{id,label,color?,count}] }",
+      "events": [
+        "view",
+        "select"
+      ],
+      "demo": "/templates/peoplegrid/",
+      "sample": "FijiLearn chapters by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "guessline",
+      "name": "Guessline",
+      "global": "Guessline",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "prediction",
+      "family": "charts",
+      "bestFor": "Surprising trends: growth, savings, prices, anything where intuition is usually wrong.",
+      "mechanics": [
+        "Draw the rest of the line",
+        "Animated reveal",
+        "Score and plain-language verdict",
+        "Skip-and-show for keyboard users"
+      ],
+      "dataShape": "{ question, prefix?, suffix?, known:index, points:[{x, y}], source? }",
+      "events": [
+        "reveal"
+      ],
+      "demo": "/templates/guessline/",
+      "sample": "Savings growth over 10 years (calculated)",
+      "usedBy": []
+    },
+    {
+      "id": "flowbank",
+      "name": "Flowbank",
+      "global": "Flowbank",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "flow",
+      "family": "charts",
+      "bestFor": "Money, people or energy moving from sources to destinations: budgets, funding, migration, supply chains.",
+      "mechanics": [
+        "Bands sized by amount",
+        "Tap to follow a flow",
+        "Share in plain words",
+        "Columns arranged automatically"
+      ],
+      "dataShape": "{ prefix?, nodes:[{id,label,color?}], links:[{source,target,value}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/flowbank/",
+      "sample": "Where a fortnight’s pay goes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "global": "Ledger",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "table",
+      "family": "charts",
+      "bestFor": "Anything people want to look up or compare item by item: price lists, directories, catalogues, results.",
+      "mechanics": [
+        "Sort any column",
+        "Search as you type",
+        "Bars, heat cells and sparklines",
+        "Tap a row for detail",
+        "Sticky header"
+      ],
+      "dataShape": "{ columns:[{id,label,type:text|number|bar|heat|spark|tag}], rows:[{…, detail?}], tags?:[{id,label,color?}] }",
+      "events": [
+        "sort",
+        "open"
+      ],
+      "demo": "/templates/ledger/",
+      "sample": "Every FijiLearn course (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "storyscroll",
+      "name": "Storyscroll",
+      "global": "Storyscroll",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "story",
+      "family": "charts",
+      "bestFor": "Explaining a finding step by step: reports, explainers, annual reviews, results pages.",
+      "mechanics": [
+        "Sticky chart",
+        "Each step re-sorts and highlights",
+        "Works on phones",
+        "Keyboard: tab through the steps"
+      ],
+      "dataShape": "{ items:[{id,label,value,group?}], groups?, steps:[{title?, text, highlight?:[ids], sort?:value|label|none, only?:[ids]}] }",
+      "events": [
+        "step"
+      ],
+      "demo": "/templates/storyscroll/",
+      "sample": "The FijiLearn catalogue in five steps (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "tilemap",
+      "name": "Tilemap",
+      "global": "Tilemap",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "map",
+      "family": "everyday",
+      "bestFor": "Results by province, district, island or region, where real map shapes would make small places impossible to see.",
+      "mechanics": [
+        "Equal tiles in map positions",
+        "Colour by group or by value",
+        "Tap a tile for detail and its neighbours in the group"
+      ],
+      "dataShape": "{ groups?:[{id,label,color?}], tiles:[{id,label,short?,row,col,group?,value?,note?}], valueLabel?, prefix?, suffix? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/tilemap/",
+      "sample": "Provinces of Fiji by division (real)",
+      "usedBy": []
+    },
+    {
+      "id": "mosaic",
+      "name": "Mosaic",
+      "global": "Mosaic",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "proportion",
+      "family": "everyday",
+      "bestFor": "Budgets, portfolios, catalogues and anything where the parts of the parts matter.",
+      "mechanics": [
+        "Blocks sized by value",
+        "Tap to zoom in",
+        "Path back out",
+        "Share of the whole in words"
+      ],
+      "dataShape": "{ unit?, unitSingular?, root:{label, children:[{label,value?,note?,children?}]} }",
+      "events": [
+        "zoom",
+        "select"
+      ],
+      "demo": "/templates/mosaic/",
+      "sample": "FijiLearn subjects and courses (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "duel",
+      "name": "Duel",
+      "global": "Duel",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "comparison",
+      "family": "everyday",
+      "bestFor": "Product or plan comparisons, before and after, this year versus last, one place against another.",
+      "mechanics": [
+        "Pick both sides",
+        "Swap",
+        "Leader marked on every row",
+        "Score in words",
+        "Lower-is-better measures supported"
+      ],
+      "dataShape": "{ items:[{id,label,values:{metricId:number}}], metrics:[{id,label,prefix?,suffix?,better?:higher|lower}], a?, b? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/duel/",
+      "sample": "FijiLearn subjects compared (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "almanac",
+      "name": "Almanac",
+      "global": "Almanac",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "calendar",
+      "family": "everyday",
+      "bestFor": "Habits, attendance, activity logs, sales by day: anything that happens (or doesn’t) day by day.",
+      "mechanics": [
+        "One square per day",
+        "Longest streak found and outlined",
+        "Active days and totals in words",
+        "Tap a day"
+      ],
+      "dataShape": "{ days:{ 'YYYY-MM-DD': number }, label?, unit?, goal?, from?, to? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/almanac/",
+      "sample": "Daily study minutes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "goalmeter",
+      "name": "Goalmeter",
+      "global": "Goalmeter",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "progress",
+      "family": "everyday",
+      "bestFor": "Fundraising, savings goals, project targets, community campaigns.",
+      "mechanics": [
+        "Built from each contribution",
+        "Milestones reached or still to go",
+        "Projected finish date at the current pace"
+      ],
+      "dataShape": "{ goal, prefix?, suffix?, label?, milestones?:[{at,label}], entries:[{date:'YYYY-MM-DD', amount, note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/goalmeter/",
+      "sample": "Village water tank fund (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "dayclock",
+      "name": "Dayclock",
+      "global": "Dayclock",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "day",
+      "family": "everyday",
+      "bestFor": "Daily routines, shift patterns, opening hours, how a service is used across the day.",
+      "mechanics": [
+        "24-hour clock face",
+        "Switch between days",
+        "Tap a slice for times and share",
+        "Time per activity in the legend"
+      ],
+      "dataShape": "{ activities:[{id,label,color?}], days:[{id,label,blocks:[{activity,from:'HH:MM',to:'HH:MM',note?}]}] }",
+      "events": [
+        "select",
+        "day"
+      ],
+      "demo": "/templates/dayclock/",
+      "sample": "A school day, a market day and a Sunday (example)",
+      "usedBy": []
+    },
+    {
+      "id": "dropoff",
+      "name": "Dropoff",
+      "global": "Dropoff",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "funnel",
+      "family": "compare",
+      "bestFor": "Sign-ups, applications, sales pipelines, course completion: any process people can leave part-way through.",
+      "mechanics": [
+        "Bars sized by how many are left",
+        "Loss between steps, biggest drop marked",
+        "Share of the start in words",
+        "Tap a step"
+      ],
+      "dataShape": "{ label?, prefix?, suffix?, stages:[{id,label,value,note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/dropoff/",
+      "sample": "Sign-ups to an app (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "quadrant",
+      "name": "Quadrant",
+      "global": "Quadrant",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "matrix",
+      "family": "compare",
+      "bestFor": "Prioritising projects, comparing options on cost and value, workshop sorting exercises.",
+      "mechanics": [
+        "Four named boxes",
+        "Drag or arrow keys to move an item",
+        "Counts per box",
+        "Saved positions (getState / setState)"
+      ],
+      "dataShape": "{ x:{label,low?,high?,min?,max?}, y:{label,low?,high?,min?,max?}, quadrants?:{tl,tr,bl,br}, groups?:[{id,label,color?}], items:[{id,label,x,y,group?,note?}] }",
+      "events": [
+        "select",
+        "move"
+      ],
+      "demo": "/templates/quadrant/",
+      "sample": "Village project ideas (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "slope",
+      "name": "Slope",
+      "global": "Slope",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "change",
+      "family": "compare",
+      "bestFor": "Prices then and now, results this year against last, before and after a change.",
+      "mechanics": [
+        "One line per item",
+        "Rises and falls coloured",
+        "Filter to risers or fallers",
+        "Biggest rise and fall in words"
+      ],
+      "dataShape": "{ from:{label}, to:{label}, prefix?, suffix?, decimals?, items:[{id,label,a,b,note?}] }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/slope/",
+      "sample": "Market prices, January and June (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "pathfinder",
+      "name": "Pathfinder",
+      "global": "Pathfinder",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "decision",
+      "family": "compare",
+      "bestFor": "Eligibility checkers, “which plan is right for me”, troubleshooting guides, choosing a course.",
+      "mechanics": [
+        "One question at a time",
+        "Change any earlier answer",
+        "Map of the whole path",
+        "Help in a tap pop-up",
+        "Saved answers (getState / setState)"
+      ],
+      "dataShape": "{ title?, start, nodes:{ id: { q, help?, options:[{label,hint?,to}] } | { result, text?, link?, linkLabel? } } }",
+      "events": [
+        "answer",
+        "result",
+        "back"
+      ],
+      "demo": "/templates/pathfinder/",
+      "sample": "Which template fits? (real: this library)",
+      "usedBy": []
+    },
+    {
+      "id": "radar",
+      "name": "Radar",
+      "global": "Radar",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "profile",
+      "family": "compare",
+      "bestFor": "Comparing subjects, products, places or skills across five to eight measures.",
+      "mechanics": [
+        "One shape per profile",
+        "Switch profiles on and off",
+        "Tap a measure to rank",
+        "Strongest measure in words"
+      ],
+      "dataShape": "{ axes:[{id,label,max?,prefix?,suffix?}], series:[{id,label,values:{axisId:number},color?}], show?:[seriesId] }",
+      "events": [
+        "select",
+        "change"
+      ],
+      "demo": "/templates/radar/",
+      "sample": "FijiLearn subjects (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "pyramid",
+      "name": "Pyramid",
+      "global": "Pyramid",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "two-sided",
+      "family": "compare",
+      "bestFor": "Population by age, staff by grade, students by year, any two groups across the same rows.",
+      "mechanics": [
+        "Back-to-back bars",
+        "Numbers or share of all",
+        "Tap a row",
+        "Totals in words"
+      ],
+      "dataShape": "{ left:{label,color?}, right:{label,color?}, rowLabel?, prefix?, suffix?, rows:[{label,left,right,note?}] }",
+      "events": [
+        "select",
+        "mode"
+      ],
+      "demo": "/templates/pyramid/",
+      "sample": "People by age group (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "factwall",
+      "name": "Factwall",
+      "global": "Factwall",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "headline",
+      "family": "insight",
+      "bestFor": "Impact reports, “at a glance” panels, annual summaries, the top of any dashboard.",
+      "mechanics": [
+        "Numbers count up when seen",
+        "Shares as ten dots",
+        "Compare with an earlier value",
+        "Tap for detail and source"
+      ],
+      "dataShape": "{ facts:[{id,value,label,prefix?,suffix?,decimals?,share?,compare?:{value,label},detail?,source?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/factwall/",
+      "sample": "FijiLearn and this library in numbers (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "swarm",
+      "name": "Swarm",
+      "global": "Swarm",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "distribution",
+      "family": "insight",
+      "bestFor": "Test scores, prices, waiting times, sizes: any time the spread matters as much as the average.",
+      "mechanics": [
+        "One dot per item, never overlapping",
+        "Split by group or together",
+        "Middle value per group",
+        "Marker line with count above it"
+      ],
+      "dataShape": "{ x:{label,prefix?,suffix?,min?,max?}, groups:[{id,label,color?}], items:[{id,label,value,group,note?}], marker?:{value,label} }",
+      "events": [
+        "select",
+        "layout"
+      ],
+      "demo": "/templates/swarm/",
+      "sample": "Test scores of three classes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "scatter",
+      "name": "Scatter",
+      "global": "Scatter",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "correlation",
+      "family": "insight",
+      "bestFor": "Distance against price, hours against results, size against cost.",
+      "mechanics": [
+        "Dots sized by a third measure",
+        "Trend line and strength in words",
+        "Show or hide groups",
+        "Above or below the trend for each dot"
+      ],
+      "dataShape": "{ x:{label,prefix?,suffix?}, y:{label,prefix?,suffix?}, size?:{label}, groups?:[{id,label,color?}], items:[{id,label,x,y,size?,group?,note?,show?}] }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/scatter/",
+      "sample": "Villages by distance and income (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "heatgrid",
+      "name": "Heatgrid",
+      "global": "Heatgrid",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "matrix",
+      "family": "insight",
+      "bestFor": "Use by day and hour, sales by product and month, attendance by class and week.",
+      "mechanics": [
+        "Cells coloured by size",
+        "Row totals",
+        "Sort rows by total",
+        "Arrow keys between cells",
+        "Compared with the average cell"
+      ],
+      "dataShape": "{ rows:[{id,label}], cols:[{id,label}], values:[[number]], prefix?, suffix?, label? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/heatgrid/",
+      "sample": "App use by day and hour (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge",
+      "global": "Bridge",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "waterfall",
+      "family": "insight",
+      "bestFor": "Monthly budgets, profit from revenue, how a population or stock changed over a year.",
+      "mechanics": [
+        "Floating bars for each rise and fall",
+        "Step through",
+        "Running total on every bar",
+        "Biggest addition and cost in words"
+      ],
+      "dataShape": "{ start:{label,value}, end?:{label}, prefix?, suffix?, steps:[{id,label,value,note?}] }",
+      "events": [
+        "select",
+        "step"
+      ],
+      "demo": "/templates/bridge/",
+      "sample": "A household’s month (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "overlap",
+      "name": "Overlap",
+      "global": "Overlap",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "sets",
+      "family": "insight",
+      "bestFor": "Survey answers that overlap, customers using several services, skills people share.",
+      "mechanics": [
+        "Two or three groups",
+        "Tap a region or its button",
+        "Totals per group",
+        "“In none” shown"
+      ],
+      "dataShape": "{ sets:[{id,label,color?}], regions:{ 'a':n, 'a&b':n, 'a&b&c':n, '':n }, unit?, label?, total? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/overlap/",
+      "sample": "How adults handle money (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "flashdeck",
+      "name": "Flashdeck",
+      "global": "Flashdeck",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "recall",
+      "family": "learn",
+      "bestFor": "Vocabulary, key terms, formulas, road signs: anything learned by recall.",
+      "mechanics": [
+        "Tap or Space to turn over",
+        "Mark known or still learning",
+        "Practise only the ones you are learning",
+        "Shuffle",
+        "Progress saved (storageKey or getState)"
+      ],
+      "dataShape": "{ cards:[{id,front,back,hint?,tag?}] }",
+      "events": [
+        "flip",
+        "mark",
+        "done"
+      ],
+      "demo": "/templates/flashdeck/",
+      "sample": "Everyday Fijian words (real vocabulary)",
+      "usedBy": []
+    },
+    {
+      "id": "quizline",
+      "name": "Quizline",
+      "global": "Quizline",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "quiz",
+      "family": "learn",
+      "bestFor": "End-of-lesson checks, safety training, onboarding, revision.",
+      "mechanics": [
+        "One question at a time",
+        "Explanation after every answer",
+        "Right and wrong marked with words, not just colour",
+        "Score with what to review"
+      ],
+      "dataShape": "{ title?, questions:[{id,q,options:[string],answer:index,explain?}] }",
+      "events": [
+        "answer",
+        "finish"
+      ],
+      "demo": "/templates/quizline/",
+      "sample": "Reading charts (example quiz)",
+      "usedBy": []
+    },
+    {
+      "id": "hotspot",
+      "name": "Hotspot",
+      "global": "Hotspot",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "diagram",
+      "family": "learn",
+      "bestFor": "How a machine, system or building works; parts of a plant or the body; a site map.",
+      "mechanics": [
+        "Numbered points on any drawing",
+        "Tour from part to part",
+        "List of parts as buttons",
+        "Drawing follows the theme, light or dark"
+      ],
+      "dataShape": "{ viewBox, shapes:[{type,tone?,fillTone?,...svg attributes}], spots:[{id,x,y,label,text}], title? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/hotspot/",
+      "sample": "Collecting rainwater (example diagram)",
+      "usedBy": []
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "global": "Checklist",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "how-to",
+      "family": "learn",
+      "bestFor": "Setup guides, applications, “getting started”, any task with several steps.",
+      "mechanics": [
+        "Real checkboxes",
+        "Next step highlighted",
+        "Time left",
+        "Show how for each step",
+        "Progress saved (storageKey or getState)"
+      ],
+      "dataShape": "{ title?, steps:[{id,label,detail?,minutes?,link?,linkLabel?}] }",
+      "events": [
+        "change",
+        "complete"
+      ],
+      "demo": "/templates/checklist/",
+      "sample": "Add a template to your app (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "scaleup",
+      "name": "Scaleup",
+      "global": "Scaleup",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "scale",
+      "family": "learn",
+      "bestFor": "Comparing sizes people find hard to picture: budgets, areas, populations, catalogues.",
+      "mechanics": [
+        "Circle area to scale",
+        "Pick two to compare",
+        "How many times bigger, in words",
+        "Share of the total"
+      ],
+      "dataShape": "{ unit?, unitSingular?, items:[{id,label,value,note?,color?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/scaleup/",
+      "sample": "FijiLearn chapters per subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "sorter",
+      "name": "Sorter",
+      "global": "Sorter",
+      "file": "learn.js",
+      "status": "ready",
+      "shape": "classify",
+      "family": "learn",
+      "bestFor": "Classifying exercises: words by meaning, waste by bin, foods by group, symptoms by cause.",
+      "mechanics": [
+        "Tap then tap, or drag",
+        "Works by keyboard",
+        "Check answers",
+        "Why each wrong answer is wrong"
+      ],
+      "dataShape": "{ prompt?, bins:[{id,label}], items:[{id,label,bin,why?}] }",
+      "events": [
+        "place",
+        "check"
+      ],
+      "demo": "/templates/sorter/",
+      "sample": "Fijian words by group (real vocabulary)",
       "usedBy": []
     },
     {

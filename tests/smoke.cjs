@@ -34,8 +34,224 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 9, null, { timeout: 8000 });
-      return '9 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 14, null, { timeout: 8000 });
+      return '14 live templates mounted';
+  } },
+  { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
+      if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
+      await p.click('.ds-hot[data-k="rewa"]');
+      const n = await p.textContent('.ds-note');
+      if (!/Rewa.*Central Division/.test(n) || !/Naitasiri/.test(n)) throw new Error('tile detail wrong: ' + n);
+      return '15 tiles, Rewa in Central with its neighbours';
+  } },
+  { url: '/templates/mosaic/', name: 'mosaic', check: async p => {
+      if (await p.locator('.mo-tile').count() !== 9) throw new Error('expected 9 subject blocks');
+      await p.click('.mo-tile[data-k] >> nth=0');
+      const n = await p.locator('.mo-tile').count();
+      if (n !== 12) throw new Error('zoomed into ' + n + ' blocks, expected 12 maths courses');
+      await p.keyboard.press('Escape');
+      if (await p.locator('.mo-tile').count() !== 9) throw new Error('Escape did not zoom out');
+      return 'zoom into Maths & Money (12 courses) and back';
+  } },
+  { url: '/templates/duel/', name: 'duel', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/Maths & Money<\/b>|Maths & Money/.test(n) || !/leads on/.test(n)) throw new Error('no score sentence: ' + n);
+      await p.selectOption('select[data-side="b"]', 'vosa');
+      if (!/Vosa Vakaviti/.test(await p.textContent('.ds-note'))) throw new Error('second side did not change');
+      await p.click('[data-swap]');
+      return 'score, change a side, swap';
+  } },
+  { url: '/templates/almanac/', name: 'almanac', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/Longest streak: \d+ days/.test(n)) throw new Error('no streak sentence: ' + n);
+      await p.click('.ds-hot[data-k="2026-08-10"]');
+      if (!/10 Aug 2026/.test(await p.textContent('.ds-note'))) throw new Error('day detail missing');
+      return 'streak found, tap a day';
+  } },
+  { url: '/templates/goalmeter/', name: 'goalmeter', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/to go\./.test(n) || !/reached around/.test(n)) throw new Error('no projection: ' + n);
+      await p.focus('.ds-hot[data-k="1"]'); await p.keyboard.press('Enter');
+      if (!/Tank base poured.*reached/.test(await p.textContent('.ds-note'))) throw new Error('milestone status wrong');
+      return 'projection, milestone reached';
+  } },
+  { url: '/templates/dayclock/', name: 'dayclock', check: async p => {
+      await p.click('[data-d="market"]');
+      await p.click('.ds-hot >> nth=3');
+      const n = await p.textContent('.ds-note');
+      if (!/Market.*06:00 to 14:00.*8h/.test(n)) throw new Error('slice detail wrong: ' + n);
+      return 'switch day, tap a slice';
+  } },
+  { url: '/templates/dropoff/', name: 'dropoff', check: async p => {
+      const n = await p.textContent('.dk-note');
+      if (!/13% made it/.test(n) || !/between “Took a first lesson” and “Came back the next week”: 48% left/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.click('.dk-hot[data-k="2"]');
+      if (!/Confirmed their phone number: 4,100, which is 41%.*2,100 \(34%\) dropped off/.test(await p.textContent('.dk-note'))) throw new Error('step detail wrong');
+      return 'biggest drop found, tap a step';
+  } },
+  { url: '/templates/quadrant/', name: 'quadrant', check: async p => {
+      if (await p.locator('.dk-hot').count() !== 10) throw new Error('expected 10 ideas');
+      if (!/Quick wins: 4/.test(await p.textContent('.dk-legend'))) throw new Error('quick wins count wrong');
+      await p.focus('.dk-hot[data-k="0"]');
+      for (let i = 0; i < 7; i++) await p.keyboard.press('ArrowRight');
+      if (!/Gutters on the hall is in Big projects/.test(await p.textContent('.dk-note'))) throw new Error('arrow keys did not move it');
+      const dot = await p.locator('.dk-hot[data-k="7"] circle >> nth=0').boundingBox(), box = await p.locator('.dk svg').boundingBox();
+      await p.mouse.move(dot.x + dot.width / 2, dot.y + dot.height / 2); await p.mouse.down();
+      await p.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.2, { steps: 6 }); await p.mouse.up();
+      if (!/Kava drying racks is in Quick wins/.test(await p.textContent('.dk-note'))) throw new Error('drag did not move it: ' + await p.textContent('.dk-note'));
+      const st = await p.evaluate(() => window.timeline.getState().items.find(i => i.id === 'racks'));
+      if (!(st.y > 5)) throw new Error('state not updated');
+      return 'counts, arrow keys, drag, state';
+  } },
+  { url: '/templates/slope/', name: 'slope', check: async p => {
+      const n = await p.textContent('.dk-note');
+      if (!/4 of 8 went up, 3 went down/.test(n) || !/Biggest rise: Breadfruit/.test(n) || !/Biggest fall: Tomatoes/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.click('[data-f="down"]');
+      await p.focus('.dk-hot[data-k="2"]'); await p.keyboard.press('Enter');
+      if (!/Tomatoes went from \$6 to \$3: down \$3 \(−50%\)/.test(await p.textContent('.dk-note'))) throw new Error('line detail wrong: ' + await p.textContent('.dk-note'));
+      return 'summary, filter, line detail';
+  } },
+  { url: '/templates/pathfinder/', name: 'pathfinder', check: async p => {
+      await p.click('[data-opt="5"]'); await p.click('[data-opt="1"]'); await p.click('[data-opt="1"]');
+      if ((await p.textContent('.pf-result')) !== 'Radar') throw new Error('expected Radar, got ' + await p.textContent('.pf-result'));
+      if (await p.locator('.pf-trail button').count() !== 3) throw new Error('trail should list 3 answers');
+      await p.click('[data-back="1"]');
+      if (!/How are you comparing\?/.test(await p.textContent('.pf-q'))) throw new Error('going back failed');
+      await p.click('[data-restart]');
+      if (!/mainly about/.test(await p.textContent('.pf-q'))) throw new Error('start again failed');
+      await p.click('[data-help]');
+      if (await p.isHidden('.pf-pop')) throw new Error('help pop-up did not open');
+      return 'three answers to Radar, change an answer, start again, help pop-up';
+  } },
+  { url: '/templates/radar/', name: 'radar', check: async p => {
+      if (await p.locator('[data-s]').count() !== 5) throw new Error('expected 5 subjects');
+      if (!/strongest on/.test(await p.textContent('.dk-note'))) throw new Error('no summary');
+      await p.click('[data-s="english"]');
+      if ((await p.getAttribute('[data-s="english"]', 'aria-pressed')) !== 'true') throw new Error('toggle failed');
+      await p.focus('.dk-hot[data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/Courses: Maths & Money 12, Coding & AI 7, English 4/.test(await p.textContent('.dk-note'))) throw new Error('axis ranking wrong: ' + await p.textContent('.dk-note'));
+      return 'switch a profile on, rank on a measure';
+  } },
+  { url: '/templates/pyramid/', name: 'pyramid', check: async p => {
+      if (await p.locator('.dk-hot').count() !== 16) throw new Error('expected 16 age groups');
+      if (!/Women 31,050/.test(await p.textContent('.dk-note'))) throw new Error('totals wrong: ' + await p.textContent('.dk-note'));
+      await p.click('[data-m="share"]');
+      await p.focus('.dk-hot[data-k="15"]'); await p.keyboard.press('Enter');
+      if (!/Age 0–4: Women 4\.\d%, Men 4\.\d%/.test(await p.textContent('.dk-note'))) throw new Error('row detail wrong: ' + await p.textContent('.dk-note'));
+      return 'totals, share mode, row detail';
+  } },
+  { url: '/templates/factwall/', name: 'factwall', check: async p => {
+      if (await p.locator('.fw-card').count() !== 6) throw new Error('expected 6 facts');
+      for (const id of ['courses', 'per', 'maths']) { await p.locator('.fw-card[data-id="' + id + '"]').scrollIntoViewIfNeeded(); await p.waitForTimeout(150); }
+      await p.waitForTimeout(1200);
+      const v = await p.evaluate(() => ['courses', 'per', 'maths'].map(id => document.querySelector('.fw-card[data-id="' + id + '"] .fw-num').textContent));
+      if (v.join('|') !== '40|2.7|30%') throw new Error('numbers did not finish counting: ' + v.join('|'));
+      await p.click('.fw-card[data-id="chapters"]');
+      if ((await p.getAttribute('.fw-card[data-id="chapters"]', 'aria-expanded')) !== 'true' || !/Source: FijiLearn/.test(await p.textContent('.fw-card[data-id="chapters"] .fw-more'))) throw new Error('detail did not open');
+      return 'count up to the real figures, open a source';
+  } },
+  { url: '/templates/swarm/', name: 'swarm', check: async p => {
+      if (await p.locator('.dn-hot').count() !== 84) throw new Error('expected 84 dots');
+      if (!/71 of 84 are at or above the pass mark/.test(await p.textContent('.dn-note'))) throw new Error('marker count wrong: ' + await p.textContent('.dn-note'));
+      await p.click('[data-l="all"]');
+      await p.focus('.dn-hot[data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/Student A1 \(Class 9A\): \d+\. Number \d+ of 84/.test(await p.textContent('.dn-note'))) throw new Error('dot detail wrong: ' + await p.textContent('.dn-note'));
+      return 'pass-mark count, all together, dot rank';
+  } },
+  { url: '/templates/scatter/', name: 'scatter', check: async p => {
+      if (!/a strong link: as distance to town goes up, weekly income tends to go down \(r = −0\.87\)/.test(await p.textContent('.dn-note'))) throw new Error('link sentence wrong: ' + await p.textContent('.dn-note'));
+      await p.click('[data-g="boat"]');
+      if (await p.locator('.dn-hot').count() !== 16) throw new Error('hiding boat villages failed');
+      await p.click('[data-t]');
+      await p.focus('.dn-hot >> nth=0'); await p.keyboard.press('Enter');
+      if (!/Village [A-X]: Distance to town \d+ km, Weekly income \$\d+/.test(await p.textContent('.dn-note'))) throw new Error('dot detail wrong');
+      return 'strength in words, hide a group, dot detail';
+  } },
+  { url: '/templates/heatgrid/', name: 'heatgrid', check: async p => {
+      if (await p.locator('.dn-hot').count() !== 126) throw new Error('expected 126 cells');
+      await p.focus('.dn-hot[tabindex="0"]'); await p.keyboard.press('ArrowRight'); await p.keyboard.press('ArrowDown');
+      if (!/Tue, 06:00: 20, /.test(await p.textContent('.dn-note'))) throw new Error('arrow keys did not move: ' + await p.textContent('.dn-note'));
+      await p.click('[data-s="total"]');
+      if ((await p.getAttribute('[data-s="total"]', 'aria-pressed')) !== 'true') throw new Error('sort failed');
+      return 'arrow keys between cells, sort rows';
+  } },
+  { url: '/templates/bridge/', name: 'bridge', check: async p => {
+      const n = await p.textContent('.dn-note');
+      if (!/From \$640 to \$1,039: \+\$399 overall/.test(n) || !/Biggest addition: Wages/.test(n) || !/Biggest cost: Food/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.click('[data-play]'); await p.click('[data-play]');
+      if (!/Wages: \+\$1,480, taking the running total from \$640 to \$2,120/.test(await p.textContent('.dn-note'))) throw new Error('step through wrong: ' + await p.textContent('.dn-note'));
+      return 'summary, step through';
+  } },
+  { url: '/templates/overlap/', name: 'overlap', check: async p => {
+      if (await p.locator('[data-r]').count() !== 8) throw new Error('expected 8 regions');
+      if (!/28 \(7%\) are in all three/.test(await p.textContent('.dn-note'))) throw new Error('summary wrong');
+      await p.click('[data-r="wallet&card"]');
+      if (!/Mobile wallet and Bank card only: 66 people, 17% of 400/.test(await p.textContent('.dn-note'))) throw new Error('chip wrong: ' + await p.textContent('.dn-note'));
+      const b = await p.locator('.dn svg').boundingBox();
+      await p.mouse.click(b.x + b.width / 2, b.y + b.height / 2 + 6);
+      if (!/Mobile wallet, Bank card and Savings group: 28/.test(await p.textContent('.dn-note'))) throw new Error('tap on the middle wrong: ' + await p.textContent('.dn-note'));
+      return 'regions, chip, tap the middle';
+  } },
+  { url: '/templates/flashdeck/', name: 'flashdeck', check: async p => {
+      if (!/Card 1 of 14 · you know 0 of 14/.test(await p.textContent('[data-count]'))) throw new Error('count wrong');
+      await p.click('.fd-card');
+      if (!(await p.getAttribute('.fd-card', 'class')).includes('flip')) throw new Error('card did not turn over');
+      await p.click('[data-know]');
+      if (!/Card 2 of 14 · you know 1 of 14/.test(await p.textContent('[data-count]'))) throw new Error('marking known failed');
+      await p.click('[data-only]');
+      if (!/of 13 · you know 1 of 14/.test(await p.textContent('[data-count]'))) throw new Error('practise-only failed: ' + await p.textContent('[data-count]'));
+      await p.focus('.fd-card'); await p.keyboard.press('ArrowRight');
+      return 'turn over, mark known, practise the rest';
+  } },
+  { url: '/templates/quizline/', name: 'quizline', check: async p => {
+      await p.click('[data-o="1"]');
+      if (!/^Correct\./.test(await p.textContent('.qz-why'))) throw new Error('right answer not marked');
+      await p.click('[data-next]'); await p.click('[data-o="0"]');
+      if (!/Not quite\. The answer is Nothing about cause/.test(await p.textContent('.qz-why'))) throw new Error('wrong answer not explained');
+      for (const o of [1, 1, 0, 0]) { await p.click('[data-next]'); await p.click('[data-o="' + o + '"]'); }
+      await p.click('[data-next]');
+      if (!/You scored 5 out of 6\./.test(await p.textContent('.qz-q'))) throw new Error('score wrong: ' + await p.textContent('.qz-q'));
+      await p.click('[data-again]');
+      return 'right and wrong explained, score 5 of 6, try again';
+  } },
+  { url: '/templates/hotspot/', name: 'hotspot', check: async p => {
+      if (await p.locator('.hs-list button').count() !== 7) throw new Error('expected 7 parts');
+      await p.click('svg .hs-pin[data-k="3"]');
+      if ((await p.textContent('.hs-panel h4')) !== 'First-flush pipe') throw new Error('pin did not open');
+      await p.click('[data-step="1"]');
+      if ((await p.textContent('.hs-panel h4')) !== 'Tank') throw new Error('tour did not move on');
+      return 'tap a part, tour to the next';
+  } },
+  { url: '/templates/checklist/', name: 'checklist', check: async p => {
+      if (await p.locator('.ck-item input').count() !== 6) throw new Error('expected 6 steps');
+      if (!/0 of 6 done · about 50 minutes left/.test(await p.textContent('[data-sum]'))) throw new Error('summary wrong');
+      await p.check('#ck-shape');
+      if (!/1 of 6 done · about 45 minutes left/.test(await p.textContent('[data-sum]'))) throw new Error('tick did not count');
+      if (!(await p.getAttribute('.ck-item >> nth=1', 'class')).includes('next')) throw new Error('next step not highlighted');
+      await p.click('[data-more="data"]');
+      if ((await p.getAttribute('[data-more="data"]', 'aria-expanded')) !== 'true') throw new Error('how-to did not open');
+      return 'tick a step, time left, next step, show how';
+  } },
+  { url: '/templates/scaleup/', name: 'scaleup', check: async p => {
+      if (await p.locator('[data-row] .hs-pin').count() !== 9) throw new Error('expected 9 circles');
+      if (!/Maths & Money is the biggest at 36 chapters/.test(await p.textContent('.dl-note'))) throw new Error('summary wrong');
+      await p.focus('[data-row] [data-k="0"]'); await p.keyboard.press('Enter');
+      await p.focus('[data-row] [data-k="1"]'); await p.keyboard.press('Enter');
+      if (!/Maths & Money \(36 chapters\) is 2 times the size of Coding & AI \(18 chapters\)/.test(await p.textContent('.dl-note'))) throw new Error('comparison wrong: ' + await p.textContent('.dl-note'));
+      if (await p.isHidden('[data-cmp]')) throw new Error('comparison drawing hidden');
+      return 'pick two, how many times bigger';
+  } },
+  { url: '/templates/sorter/', name: 'sorter', check: async p => {
+      if (await p.locator('.so-tray .so-chip').count() !== 10) throw new Error('expected 10 words');
+      await p.click('.so-chip[data-id="bula"]'); await p.click('.so-bin[data-bin="greet"]');
+      await p.click('.so-chip[data-id="kana"]'); await p.click('.so-bin[data-bin="home"]');
+      await p.focus('.so-chip[data-id="wai"]'); await p.keyboard.press('Enter'); await p.focus('.so-bin[data-bin="food"]'); await p.keyboard.press('Enter');
+      await p.click('[data-check]');
+      if (!/2 of 10 right\. 7 still to sort\./.test(await p.textContent('.dl-note'))) throw new Error('check wrong: ' + await p.textContent('.dl-note'));
+      if (!(await p.getAttribute('.so-chip[data-id="kana"]', 'class')).includes('no')) throw new Error('wrong answer not marked');
+      await p.click('.so-chip[data-id="kana"]');
+      if (!/Kana: Kana means to eat\./.test(await p.textContent('.dl-note'))) throw new Error('why not shown');
+      return 'tap and keyboard sorting, check, why it is wrong';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
@@ -130,6 +346,62 @@ const PAGES = [
       if (!/Stop 3 of 6/.test(await p.textContent('.wp-card'))) throw new Error('stop 3 did not open');
       for (const s of ['cycle', 'steps', 'road']) { await p.click('[data-s="' + s + '"]'); if (await p.locator('.wp-stop').count() !== 6) throw new Error(s + ' lost stops'); }
       return 'reveal a stop, three shapes';
+  } },
+  { url: '/templates/rankrace/', name: 'rankrace', check: async p => {
+      await p.evaluate(() => window.timeline.seek(7));
+      const note = await p.textContent('.rr-note');
+      if (!/leads in Week 8/.test(note)) throw new Error('no leader sentence: ' + note);
+      const first = await p.evaluate(() => [...document.querySelectorAll('.rr-row')].find(r => r.style.transform === 'translateY(0px)').textContent);
+      if (!/Yaqona/.test(first)) throw new Error('wrong leader at the end: ' + first);
+      await p.click('.rr-play'); await p.waitForTimeout(300); await p.click('.rr-play');
+      return 'scrub to the end, leader correct, play/pause';
+  } },
+  { url: '/templates/peoplegrid/', name: 'peoplegrid', check: async p => {
+      const n = await p.locator('.pg-u').count();
+      if (n !== 109) throw new Error(n + ' squares, expected 109');
+      const before = await p.evaluate(() => document.querySelectorAll('.pg-u')[108].style.transform);
+      await p.click('[data-v="bars"]');
+      const after = await p.evaluate(() => document.querySelectorAll('.pg-u')[108].style.transform);
+      if (before === after) throw new Error('squares did not move');
+      await p.click('.pg-key[data-g="maths"]');
+      if (!/36 chapters/.test(await p.textContent('.pg-note'))) throw new Error('maths share sentence missing');
+      return '109 squares regroup, highlight a group';
+  } },
+  { url: '/templates/guessline/', name: 'guessline', check: async p => {
+      const b = await p.locator('.gl-svg').boundingBox();
+      await p.mouse.move(b.x + b.width * 0.4, b.y + b.height * 0.6);
+      await p.mouse.down();
+      for (let k = 1; k <= 12; k++) await p.mouse.move(b.x + b.width * (0.4 + 0.6 * k / 12), b.y + b.height * (0.6 - 0.35 * k / 12));
+      await p.mouse.up();
+      if (await p.isDisabled('.gl-show')) throw new Error('drawing did not complete the guess');
+      await p.click('.gl-show');
+      await p.waitForFunction(() => /Score/.test(document.querySelector('.gl-note').textContent), null, { timeout: 4000 });
+      return 'draw a guess, reveal, score';
+  } },
+  { url: '/templates/flowbank/', name: 'flowbank', check: async p => {
+      const n = await p.locator('.fb-link').count();
+      if (n !== 9) throw new Error(n + ' flows, expected 9');
+      await p.focus('.fb-node[data-i="0"]'); await p.keyboard.press('Enter');
+      if (!/Biggest share goes to/.test(await p.textContent('.fb-note'))) throw new Error('node sentence missing');
+      return '9 flows, follow a node';
+  } },
+  { url: '/templates/ledger/', name: 'ledger', check: async p => {
+      if (await p.locator('tr.lg-row').count() !== 40) throw new Error('expected 40 courses');
+      await p.fill('.lg-tools input', 'money');
+      const m = await p.locator('tr.lg-row').count();
+      if (m < 2 || m >= 40) throw new Error('search returned ' + m);
+      await p.click('tr.lg-row >> nth=0');
+      if (await p.locator('tr.lg-detail').count() !== 1) throw new Error('row did not open');
+      await p.click('th button[data-c="course"]');
+      return 'search, open a row, sort';
+  } },
+  { url: '/templates/storyscroll/', name: 'storyscroll', check: async p => {
+      await p.locator('.ss-step[data-i="1"]').scrollIntoViewIfNeeded();
+      await p.evaluate(() => document.querySelector('.ss-step[data-i="1"]').scrollIntoView({ block: 'center' }));
+      await p.waitForFunction(() => document.querySelector('.ss-step.on') && +document.querySelector('.ss-step.on').dataset.i === 1, null, { timeout: 4000 });
+      const first = await p.evaluate(() => document.querySelector('.ss-graphic svg text').childNodes[0].nodeValue);
+      if (first !== 'Maths & Money') throw new Error('chart not re-sorted for step 2: ' + first);
+      return 'scroll to step 2, chart re-sorts';
   } },
   ...['rbf-sandbox-settlement-flow', 'sota-kece-community-pulse', 'pacific-backhaul-node-map', 'debt-freedom-trajectory'].map(id => ({
     url: '/templates/' + id + '/', name: id, check: async p => {

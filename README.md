@@ -51,11 +51,41 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Swimlane** | Time | Several threads side by side | One lane per theme, points and spans, zoom and pan, navigator strip with a draggable window, detail panel |
 | **Roadmap** | Time | Plans with dependencies | Gantt rows, milestones, dependency arrows, progress, today line, drag a task and its dependants follow |
 | **Waypath** | Steps | Processes, journeys, learning paths | Road, cycle or staircase; tap a stop to reveal it; play walks the path; works without dates |
+| **Rankrace** | Rankings over time | League tables, top products, busiest months | Bars overtake as time plays, scrub to any moment, leader and biggest climber in words |
+| **Peoplegrid** | Proportion | Shares shown as countable things | One square per unit, regroups between grid, blocks and bars, highlight a group |
+| **Guessline** | Prediction | Surprising trends | The reader draws their guess, the real line is revealed and scored |
+| **Flowbank** | Flow | Budgets, funding, supply chains | Bands sized by amount, tap to follow a flow, share in plain words |
+| **Ledger** | Table | Directories, price lists, catalogues | Sort, search, bars and heat in cells, sparklines, rows that open |
+| **Storyscroll** | Story | Explainers and reports | Sticky chart that re-sorts and highlights as the story scrolls |
+| **Tilemap** | Places | Provinces, districts, regions | Every place an equal tile set roughly where it sits, so small places are as easy to tap as big ones; colour by group or value |
+| **Mosaic** | Proportion inside proportion | Catalogues, budgets, storage | Treemap blocks sized by amount; tap to zoom into a block, a path (or Escape) to come back out |
+| **Duel** | Comparison | This versus that | Pick any two, one measure per row, a star on each row's leader, the score in a sentence |
+| **Almanac** | Day by day | Habits, attendance, activity | Calendar heatmap that finds and outlines the longest streak |
+| **Goalmeter** | Progress | Fundraising, savings, targets | Bar built from each contribution, milestones, and when the goal will be reached at the pace so far |
+| **Dayclock** | A day | Routines, opening hours, shifts | A whole day on a 24-hour clock face; switch between days to compare |
+| **Dropoff** | Steps people leave | Sign-ups, applications, pipelines | Funnel with the loss between steps and the biggest drop marked |
+| **Quadrant** | Two qualities | Prioritising ideas, cost against value | 2×2 matrix; drag items (or arrow keys) between named boxes, which recount |
+| **Slope** | Before and after | Prices then and now, this year against last | One line per item, rises and falls coloured, filter to risers or fallers |
+| **Pathfinder** | Decisions | Eligibility checkers, "which plan is right for me" | One question at a time, change any earlier answer, a map of the whole path |
+| **Radar** | Profiles | Comparing on five to eight measures | One shape per profile, switch profiles on and off, tap a measure to rank |
+| **Pyramid** | Two groups | Population by age, staff by grade | Back-to-back bars, numbers or share of all, tap a row |
+| **Factwall** | Headline numbers | Impact reports, “at a glance” panels | Numbers count up when seen, shares as ten dots, detail and source on tap |
+| **Swarm** | Spread | Scores, prices, waiting times | One dot per item on one scale, split by group, medians and a marker line |
+| **Scatter** | Links | Distance against price, hours against results | Dots sized by a third measure, trend line and strength of the link in words |
+| **Heatgrid** | Patterns in a table | Use by day and hour, sales by month | Cells coloured by size, row totals, sort, arrow keys between cells |
+| **Bridge** | Start to finish | Budgets, profit, stock over a year | Waterfall with running totals; step through one bar at a time |
+| **Overlap** | Groups | Survey answers, customers of several services | Venn diagram of two or three groups; tap any region |
+| **Flashdeck** | Learn by recall | Vocabulary, key terms | Flip cards, mark known, practise only the rest, progress saved |
+| **Quizline** | Check knowledge | Lesson checks, training | One question at a time, explanation after every answer, score with what to review |
+| **Hotspot** | Parts of a whole | How a system or machine works | Numbered points on any drawing, tour from part to part |
+| **Checklist** | Steps to do | Setup guides, applications | Real checkboxes, next step highlighted, time left, progress saved |
+| **Scaleup** | Sizes | Budgets, areas, catalogues | Circles with area to scale; pick two to see how many times bigger |
+| **Sorter** | Classify | Sorting exercises | Tap-then-tap or drag into groups, check answers, why each wrong one is wrong |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
 
-The library site shows every template live with sample data, and each template has a full demo page with its data shape, events and embed code.
+Not sure which template fits? Answer the questions in Pathfinder on the library home page. The library site shows every template live with sample data, and each template has a full demo page with its data shape, events and embed code.
 
 ## Use a template in an app
 
@@ -102,6 +132,11 @@ v1/dimau-infographics.css    shared --di-* theme tokens (light sky-blue brand + 
 v1/<template>.js             the templates; each file is self-contained, no dependencies
 v1/timelines.js              Switchback, Swimlane, Roadmap, Waypath (one shared timeline data shape)
 v1/signal-cards.js           the four signal cards
+v1/charts.js                 Rankrace, Peoplegrid, Guessline, Flowbank, Ledger, Storyscroll
+v1/showcase.js               Tilemap, Mosaic, Duel, Almanac, Goalmeter, Dayclock (everyday formats)
+v1/compare.js                Dropoff, Quadrant, Slope, Pathfinder, Radar, Pyramid (compare and decide)
+v1/insight.js                Factwall, Swarm, Scatter, Heatgrid, Bridge, Overlap (insight)
+v1/learn.js                  Flashdeck, Quizline, Hotspot, Checklist, Scaleup, Sorter (learn)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

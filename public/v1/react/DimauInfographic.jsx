@@ -20,6 +20,41 @@ const LOADERS = {
   swimlane: () => import('../timelines.js').then(m => ({ default: (m.default || m).Swimlane })),
   roadmap: () => import('../timelines.js').then(m => ({ default: (m.default || m).Roadmap })),
   waypath: () => import('../timelines.js').then(m => ({ default: (m.default || m).Waypath })),
+  // the six story charts share one file
+  rankrace: () => import('../charts.js').then(m => ({ default: (m.default || m).Rankrace })),
+  peoplegrid: () => import('../charts.js').then(m => ({ default: (m.default || m).Peoplegrid })),
+  guessline: () => import('../charts.js').then(m => ({ default: (m.default || m).Guessline })),
+  flowbank: () => import('../charts.js').then(m => ({ default: (m.default || m).Flowbank })),
+  ledger: () => import('../charts.js').then(m => ({ default: (m.default || m).Ledger })),
+  storyscroll: () => import('../charts.js').then(m => ({ default: (m.default || m).Storyscroll })),
+  // the six everyday formats share one file
+  tilemap: () => import('../showcase.js').then(m => ({ default: (m.default || m).Tilemap })),
+  mosaic: () => import('../showcase.js').then(m => ({ default: (m.default || m).Mosaic })),
+  duel: () => import('../showcase.js').then(m => ({ default: (m.default || m).Duel })),
+  almanac: () => import('../showcase.js').then(m => ({ default: (m.default || m).Almanac })),
+  goalmeter: () => import('../showcase.js').then(m => ({ default: (m.default || m).Goalmeter })),
+  dayclock: () => import('../showcase.js').then(m => ({ default: (m.default || m).Dayclock })),
+  // the six compare-and-decide formats share one file
+  dropoff: () => import('../compare.js').then(m => ({ default: (m.default || m).Dropoff })),
+  quadrant: () => import('../compare.js').then(m => ({ default: (m.default || m).Quadrant })),
+  slope: () => import('../compare.js').then(m => ({ default: (m.default || m).Slope })),
+  pathfinder: () => import('../compare.js').then(m => ({ default: (m.default || m).Pathfinder })),
+  radar: () => import('../compare.js').then(m => ({ default: (m.default || m).Radar })),
+  pyramid: () => import('../compare.js').then(m => ({ default: (m.default || m).Pyramid })),
+  // the six insight formats share one file
+  factwall: () => import('../insight.js').then(m => ({ default: (m.default || m).Factwall })),
+  swarm: () => import('../insight.js').then(m => ({ default: (m.default || m).Swarm })),
+  scatter: () => import('../insight.js').then(m => ({ default: (m.default || m).Scatter })),
+  heatgrid: () => import('../insight.js').then(m => ({ default: (m.default || m).Heatgrid })),
+  bridge: () => import('../insight.js').then(m => ({ default: (m.default || m).Bridge })),
+  overlap: () => import('../insight.js').then(m => ({ default: (m.default || m).Overlap })),
+  // the six learning formats share one file
+  flashdeck: () => import('../learn.js').then(m => ({ default: (m.default || m).Flashdeck })),
+  quizline: () => import('../learn.js').then(m => ({ default: (m.default || m).Quizline })),
+  hotspot: () => import('../learn.js').then(m => ({ default: (m.default || m).Hotspot })),
+  checklist: () => import('../learn.js').then(m => ({ default: (m.default || m).Checklist })),
+  scaleup: () => import('../learn.js').then(m => ({ default: (m.default || m).Scaleup })),
+  sorter: () => import('../learn.js').then(m => ({ default: (m.default || m).Sorter })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -50,7 +85,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);
