@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.12.0",
+  "version": "1.15.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1641,6 +1641,435 @@
       ],
       "demo": "/templates/flowchart/",
       "sample": "How a change reaches this library (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "daylight",
+      "name": "Daylight",
+      "global": "Daylight",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "sun-band",
+      "family": "places",
+      "bestFor": "Farming and fishing calendars, event planning, school terms, lighting and energy use.",
+      "mechanics": [
+        "Daylight band across the year",
+        "Tap or arrow keys for any day",
+        "Longest and shortest day",
+        "Change from the day before"
+      ],
+      "dataShape": "{ place, lat, lon, tz, year }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/daylight/",
+      "sample": "Suva, 2026 (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "moonmonth",
+      "name": "Moonmonth",
+      "global": "Moonmonth",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "moon-calendar",
+      "family": "places",
+      "bestFor": "Fishing and planting calendars, tides talk, night events, cultural dates.",
+      "mechanics": [
+        "Drawn moon for every day, as seen north or south of the equator",
+        "Full and new moon marked",
+        "Percent lit and age",
+        "Move month by month"
+      ],
+      "dataShape": "{ month:'YYYY-MM', tz?, south? }",
+      "events": [
+        "select",
+        "month"
+      ],
+      "demo": "/templates/moonmonth/",
+      "sample": "November 2026 in Fiji (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "windrose",
+      "name": "Windrose",
+      "global": "Windrose",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "wind-rose",
+      "family": "places",
+      "bestFor": "Weather and climate pages, sailing and fishing, airstrips, building and farm planning.",
+      "mechanics": [
+        "Petals by direction",
+        "Split by speed",
+        "Tap a petal for the breakdown",
+        "Most common direction in words"
+      ],
+      "dataShape": "{ dirs:[...], bands:[{id,label}], values:[[...]], calm? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/windrose/",
+      "sample": "A coastal weather station (example)",
+      "usedBy": []
+    },
+    {
+      "id": "reachrings",
+      "name": "Reachrings",
+      "global": "Reachrings",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "distance-rings",
+      "family": "places",
+      "bestFor": "Services near a village or school, delivery areas, evacuation centres, travel planning.",
+      "mechanics": [
+        "Distance rings and compass",
+        "Within-reach slider",
+        "Counts by group",
+        "Tap for distance and direction"
+      ],
+      "dataShape": "{ centre:{label}, unit?, rings:[...], groups:[{id,label}], places:[{id,label,dist,bearing,group}] }",
+      "events": [
+        "select",
+        "within"
+      ],
+      "demo": "/templates/reachrings/",
+      "sample": "Services around a village (example)",
+      "usedBy": []
+    },
+    {
+      "id": "profileline",
+      "name": "Profileline",
+      "global": "Profileline",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "elevation",
+      "family": "places",
+      "bestFor": "Walking and hiking guides, cycling routes, road and pipeline plans, school trips.",
+      "mechanics": [
+        "Drag or arrow keys along the route",
+        "Climb so far and distance left",
+        "Named stops",
+        "Total climb and descent"
+      ],
+      "dataShape": "{ points:[{d,h}], marks?:[{d,label}], unit?, hunit?, label? }",
+      "events": [
+        "move"
+      ],
+      "demo": "/templates/profileline/",
+      "sample": "Coast to ridge walk (example)",
+      "usedBy": []
+    },
+    {
+      "id": "floorplan",
+      "name": "Floorplan",
+      "global": "Floorplan",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "floor-plan",
+      "family": "places",
+      "bestFor": "Clinics, schools, offices, markets, event venues, evacuation plans.",
+      "mechanics": [
+        "Search by name or note",
+        "Tap a room for its note",
+        "Which way from “you are here”",
+        "Colour by room type"
+      ],
+      "dataShape": "{ cols, rows, groups:[{id,label}], rooms:[{id,label,x,y,w,h,group,note?}], you?:{x,y,label} }",
+      "events": [
+        "select",
+        "search"
+      ],
+      "demo": "/templates/floorplan/",
+      "sample": "A small health centre (example)",
+      "usedBy": []
+    },
+    {
+      "id": "histobins",
+      "name": "Histobins",
+      "global": "Histobins",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "histogram",
+      "family": "stats",
+      "bestFor": "Ages, prices, test scores, waiting times, sizes: anything where the spread matters more than the average.",
+      "mechanics": [
+        "Slider for how many ranges",
+        "Tap a bar for what is in it",
+        "Median and average marked",
+        "The middle half in words"
+      ],
+      "dataShape": "{ label?, unit?, prefix?, values:[number | {label,value}] }",
+      "events": [
+        "select",
+        "bins"
+      ],
+      "demo": "/templates/histobins/",
+      "sample": "FijiLearn description lengths (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "boxplot",
+      "name": "Boxplot",
+      "global": "Boxplot",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "box-plot",
+      "family": "stats",
+      "bestFor": "Comparing groups fairly: scores by school, prices by town, times by day, incomes by region.",
+      "mechanics": [
+        "Box, whiskers and median",
+        "Unusual values named",
+        "Show every point",
+        "Sort by median"
+      ],
+      "dataShape": "{ unit?, prefix?, groups:[{id,label,values:[number | {label,value}]}] }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/boxplot/",
+      "sample": "FijiLearn description lengths by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "dumbbell",
+      "name": "Dumbbell",
+      "global": "Dumbbell",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "dumbbell",
+      "family": "stats",
+      "bestFor": "Before and after, this year and last, women and men, plan and actual.",
+      "mechanics": [
+        "Ups and downs in different colours",
+        "Sort four ways",
+        "Change shown on each row",
+        "Better can be up or down"
+      ],
+      "dataShape": "{ a:{label}, b:{label}, unit?, prefix?, better?:'up'|'down', zero?, rows:[{id,label,a,b}] }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/dumbbell/",
+      "sample": "Reading scores, start and end of year (example)",
+      "usedBy": []
+    },
+    {
+      "id": "bulletbar",
+      "name": "Bulletbar",
+      "global": "Bulletbar",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "bullet-chart",
+      "family": "stats",
+      "bestFor": "Monthly reports, team dashboards, project health, service standards.",
+      "mechanics": [
+        "Result, target and bands in one line",
+        "Short of target in a warning colour",
+        "Lower can be better",
+        "Values or percent of target"
+      ],
+      "dataShape": "{ bandLabels?, rows:[{id,label,value,target,bands:[n,n,max],prefix?,suffix?,better?:'down'}] }",
+      "events": [
+        "select",
+        "mode"
+      ],
+      "demo": "/templates/bulletbar/",
+      "sample": "A month against targets (example)",
+      "usedBy": []
+    },
+    {
+      "id": "ridgeline",
+      "name": "Ridgeline",
+      "global": "Ridgeline",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "ridgeline",
+      "family": "stats",
+      "bestFor": "Waiting times by day, temperatures by month, scores by class, prices by year.",
+      "mechanics": [
+        "Smoothed shape per group",
+        "Drag or arrow keys to compare at one value",
+        "Median marked",
+        "Tap to bring a group forward"
+      ],
+      "dataShape": "{ unit?, prefix?, groups:[{id,label,values:[numbers]}] }",
+      "events": [
+        "select",
+        "move"
+      ],
+      "demo": "/templates/ridgeline/",
+      "sample": "Clinic waiting times by day (example)",
+      "usedBy": []
+    },
+    {
+      "id": "marimekko",
+      "name": "Marimekko",
+      "global": "Marimekko",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "marimekko",
+      "family": "stats",
+      "bestFor": "Market shares by region, transport by district, spending by group and category.",
+      "mechanics": [
+        "Width and height both mean something",
+        "Three shares for any block",
+        "Highlight one part everywhere",
+        "Totals in the key"
+      ],
+      "dataShape": "{ cols:[{id,label}], rows:[{id,label}], values:[[...] per column], unit?, prefix? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/marimekko/",
+      "sample": "Travel to work by district (example)",
+      "usedBy": []
+    },
+    {
+      "id": "sunburst",
+      "name": "Sunburst",
+      "global": "Sunburst",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "sunburst",
+      "family": "structure",
+      "bestFor": "Budgets by department and item, catalogues, course structures, file and folder sizes.",
+      "mechanics": [
+        "Up to three rings at a time",
+        "Zoom in and back up",
+        "Breadcrumbs",
+        "Shares of the part and of the whole"
+      ],
+      "dataShape": "{ unit?, prefix?, root:{label, children:[{id?,label,value?,children?,note?}]} }",
+      "events": [
+        "select",
+        "zoom"
+      ],
+      "demo": "/templates/sunburst/",
+      "sample": "This library, family by family (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "circlepack",
+      "name": "Circlepack",
+      "global": "Circlepack",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "circle-packing",
+      "family": "structure",
+      "bestFor": "Sizes within groups: spending, file sizes, populations by region and town, stock by category.",
+      "mechanics": [
+        "Circles packed by size",
+        "Zoom in and back up",
+        "Breadcrumbs",
+        "Shares of the part and of the whole"
+      ],
+      "dataShape": "{ unit?, prefix?, root:{label, children:[{id?,label,value?,children?}]} }",
+      "events": [
+        "select",
+        "zoom"
+      ],
+      "demo": "/templates/circlepack/",
+      "sample": "This library’s files by size (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "icicle",
+      "name": "Icicle",
+      "global": "Icicle",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "icicle",
+      "family": "structure",
+      "bestFor": "Course and chapter outlines, budgets, org structures by headcount, website sections.",
+      "mechanics": [
+        "Three levels at a time",
+        "Zoom in and back up",
+        "Names and amounts on blocks",
+        "Breadcrumbs"
+      ],
+      "dataShape": "{ unit?, prefix?, root:{label, children:[...]} }",
+      "events": [
+        "select",
+        "zoom"
+      ],
+      "demo": "/templates/icicle/",
+      "sample": "FijiLearn subjects, courses and chapters (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "arcflow",
+      "name": "Arcflow",
+      "global": "Arcflow",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "arc-diagram",
+      "family": "structure",
+      "bestFor": "Ferry and bus routes, trade between places, who works with whom, references between documents.",
+      "mechanics": [
+        "Arc thickness by amount",
+        "Tap for one item’s links",
+        "Sort four ways",
+        "Groups by colour"
+      ],
+      "dataShape": "{ nodes:[{id,label,group?}], groups?:[{id,label}], links:[{from,to,value}], unit? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/arcflow/",
+      "sample": "Ferry trips between islands (example)",
+      "usedBy": []
+    },
+    {
+      "id": "linkmatrix",
+      "name": "Linkmatrix",
+      "global": "Linkmatrix",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "adjacency-matrix",
+      "family": "structure",
+      "bestFor": "Messages between teams, trade between countries, referrals between services, travel between towns.",
+      "mechanics": [
+        "One way or both ways",
+        "Both directions for any pair",
+        "Arrow keys across the grid",
+        "Sort by total or name"
+      ],
+      "dataShape": "{ nodes:[{id,label}], links:[{from,to,value}], directed?, unit?, rowsLabel? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/linkmatrix/",
+      "sample": "Messages between teams (example)",
+      "usedBy": []
+    },
+    {
+      "id": "lifespans",
+      "name": "Lifespans",
+      "global": "Lifespans",
+      "file": "structure.js",
+      "status": "ready",
+      "shape": "lifespans",
+      "family": "structure",
+      "bestFor": "History lessons, leaders and terms of office, project and contract periods, family histories.",
+      "mechanics": [
+        "Year slider",
+        "Who overlapped with whom",
+        "Ages in any year",
+        "Show or hide groups"
+      ],
+      "dataShape": "{ groups?:[{id,label}], items:[{id,label,start,end?,group?,note?}], verb?, now? }",
+      "events": [
+        "select",
+        "year",
+        "filter"
+      ],
+      "demo": "/templates/lifespans/",
+      "sample": "Scientists, 1564–1958 (real data)",
       "usedBy": []
     },
     {

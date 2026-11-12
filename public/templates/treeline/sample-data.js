@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.12.0), every family and template. */
+/* Real data: this library (catalog.json, v1.15.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.12.0",
+  "label": "Dimau Infographics 1.15.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -405,6 +405,111 @@ window.TREELINE_DATA = {
       "label": "Archive Desk",
       "sub": "Histories, reports and case files where the text and its pictures should be read together.",
       "link": "/templates/archive-desk/"
+     }
+    ]
+   },
+   {
+    "label": "Places",
+    "children": [
+     {
+      "label": "Daylight",
+      "sub": "Farming and fishing calendars, event planning, school terms, lighting and energy use.",
+      "link": "/templates/daylight/"
+     },
+     {
+      "label": "Moonmonth",
+      "sub": "Fishing and planting calendars, tides talk, night events, cultural dates.",
+      "link": "/templates/moonmonth/"
+     },
+     {
+      "label": "Windrose",
+      "sub": "Weather and climate pages, sailing and fishing, airstrips, building and farm planning.",
+      "link": "/templates/windrose/"
+     },
+     {
+      "label": "Reachrings",
+      "sub": "Services near a village or school, delivery areas, evacuation centres, travel planning.",
+      "link": "/templates/reachrings/"
+     },
+     {
+      "label": "Profileline",
+      "sub": "Walking and hiking guides, cycling routes, road and pipeline plans, school trips.",
+      "link": "/templates/profileline/"
+     },
+     {
+      "label": "Floorplan",
+      "sub": "Clinics, schools, offices, markets, event venues, evacuation plans.",
+      "link": "/templates/floorplan/"
+     }
+    ]
+   },
+   {
+    "label": "Stats",
+    "children": [
+     {
+      "label": "Histobins",
+      "sub": "Ages, prices, test scores, waiting times, sizes: anything where the spread matters more than the average.",
+      "link": "/templates/histobins/"
+     },
+     {
+      "label": "Boxplot",
+      "sub": "Comparing groups fairly: scores by school, prices by town, times by day, incomes by region.",
+      "link": "/templates/boxplot/"
+     },
+     {
+      "label": "Dumbbell",
+      "sub": "Before and after, this year and last, women and men, plan and actual.",
+      "link": "/templates/dumbbell/"
+     },
+     {
+      "label": "Bulletbar",
+      "sub": "Monthly reports, team dashboards, project health, service standards.",
+      "link": "/templates/bulletbar/"
+     },
+     {
+      "label": "Ridgeline",
+      "sub": "Waiting times by day, temperatures by month, scores by class, prices by year.",
+      "link": "/templates/ridgeline/"
+     },
+     {
+      "label": "Marimekko",
+      "sub": "Market shares by region, transport by district, spending by group and category.",
+      "link": "/templates/marimekko/"
+     }
+    ]
+   },
+   {
+    "label": "Structure",
+    "children": [
+     {
+      "label": "Sunburst",
+      "sub": "Budgets by department and item, catalogues, course structures, file and folder sizes.",
+      "link": "/templates/sunburst/"
+     },
+     {
+      "label": "Circlepack",
+      "sub": "Sizes within groups: spending, file sizes, populations by region and town, stock by category.",
+      "link": "/templates/circlepack/"
+     },
+     {
+      "label": "Icicle",
+      "sub": "Course and chapter outlines, budgets, org structures by headcount, website sections.",
+      "link": "/templates/icicle/"
+     },
+     {
+      "label": "Arcflow",
+      "sub": "Ferry and bus routes, trade between places, who works with whom, references between documents.",
+      "link": "/templates/arcflow/"
+     },
+     {
+      "label": "Linkmatrix",
+      "sub": "Messages between teams, trade between countries, referrals between services, travel between towns.",
+      "link": "/templates/linkmatrix/"
+     },
+     {
+      "label": "Lifespans",
+      "sub": "History lessons, leaders and terms of office, project and contract periods, family histories.",
+      "link": "/templates/lifespans/"
      }
     ]
    },

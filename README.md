@@ -111,6 +111,24 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Annotline** | A chart with notes | Reports, project histories | Numbered notes on a line chart; step through or tap |
 | **Liveticker** | A rate made real | Births, rainfall, spending, distance | Counters running from page open, with rates and sources |
 | **Flowchart** | A process with decisions | Applications, approvals, procedures | Steps and diamonds, ways in and out of each box, walk the main path |
+| **Daylight** | Sunrise and sunset | Farming and fishing calendars, event planning | Daylight band across a year worked out from the sun, tap or arrow keys for any day, longest and shortest day |
+| **Moonmonth** | Moon phases | Fishing and planting calendars, night events | Month calendar with a drawn moon each day (north or south of the equator), new and full moon times, % lit |
+| **Windrose** | Wind directions | Weather pages, sailing, farm and building plans | Petals by direction split by speed, tap for the breakdown |
+| **Reachrings** | What is near | Services near a village, delivery areas | Distance rings and compass, within-reach slider, counts by group, labels that never overlap |
+| **Profileline** | A route's ups and downs | Walks, cycle routes, road plans | Drag or arrow keys along the route for height, climb so far and distance left |
+| **Floorplan** | Finding a room | Clinics, schools, venues | Search or tap, colour by room type, which way from "you are here" |
+| **Histobins** | How values spread | Ages, prices, scores, waiting times | Slider for the ranges, tap a bar for what is in it, median and average marked |
+| **Boxplot** | Groups side by side | Scores by school, prices by town | Box, whiskers and median, unusual values named, show every point, sort by median |
+| **Dumbbell** | Two values per row | Before and after, this year and last | Ups and downs coloured, sort four ways, better can be up or down |
+| **Bulletbar** | Against a target | Monthly reports, service standards | Result, target and poor-to-good bands in one line, percent of target |
+| **Ridgeline** | Shapes compared | Waiting times by day, temperatures by month | Smoothed shape per group, read every group at one value |
+| **Marimekko** | Shares two ways | Market shares by region, transport by district | Width and height both mean something, three shares for any block, highlight one part |
+| **Sunburst** | Rings to zoom into | Budgets, catalogues, course structures | Up to three rings, zoom in and back up, breadcrumbs, shares of the part and the whole |
+| **Circlepack** | Circles inside circles | Sizes within groups: spending, files, populations | Circles packed by size, zoom in and back up, breadcrumbs |
+| **Icicle** | Blocks left to right | Course outlines, budgets, site sections | Three levels at a time, names and amounts on blocks, zoom and breadcrumbs |
+| **Arcflow** | Links as arcs | Routes, trade, who works with whom | Arc thickness by amount, one item's links, sort four ways |
+| **Linkmatrix** | Who links to whom | Messages between teams, trade between places | Shaded grid, one way or both ways, arrow keys across cells, sort |
+| **Lifespans** | Who overlapped | History, terms of office, project periods | Year slider with ages, overlaps for any bar, show or hide groups |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -172,6 +190,9 @@ v1/track.js                  Dial, Statusboard, Sparkgrid, Treeline, Monthview, 
 v1/chartbook.js              Stackbar, Featuregrid, Ringflow, Bumpline, Spiral, Streamgraph (chartbook)
 v1/guides.js                 Weighscore, Routeline, Levelup, Orgchart, Numberline, Glossary (guides)
 v1/stories.js                Beforeafter, Slidestory, Verdict, Annotline, Liveticker, Flowchart (stories, with Archive Desk)
+v1/places.js                 Daylight, Moonmonth, Windrose, Reachrings, Profileline, Floorplan (places)
+v1/stats.js                  Histobins, Boxplot, Dumbbell, Bulletbar, Ridgeline, Marimekko (stats)
+v1/structure.js              Sunburst, Circlepack, Icicle, Arcflow, Linkmatrix, Lifespans (structure)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

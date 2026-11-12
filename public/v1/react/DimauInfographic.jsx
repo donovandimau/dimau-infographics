@@ -90,6 +90,27 @@ const LOADERS = {
   annotline: () => import('../stories.js').then(m => ({ default: (m.default || m).Annotline })),
   liveticker: () => import('../stories.js').then(m => ({ default: (m.default || m).Liveticker })),
   flowchart: () => import('../stories.js').then(m => ({ default: (m.default || m).Flowchart })),
+  // the six place formats share one file
+  daylight: () => import('../places.js').then(m => ({ default: (m.default || m).Daylight })),
+  moonmonth: () => import('../places.js').then(m => ({ default: (m.default || m).Moonmonth })),
+  windrose: () => import('../places.js').then(m => ({ default: (m.default || m).Windrose })),
+  reachrings: () => import('../places.js').then(m => ({ default: (m.default || m).Reachrings })),
+  profileline: () => import('../places.js').then(m => ({ default: (m.default || m).Profileline })),
+  floorplan: () => import('../places.js').then(m => ({ default: (m.default || m).Floorplan })),
+  // the six stats formats share one file
+  histobins: () => import('../stats.js').then(m => ({ default: (m.default || m).Histobins })),
+  boxplot: () => import('../stats.js').then(m => ({ default: (m.default || m).Boxplot })),
+  dumbbell: () => import('../stats.js').then(m => ({ default: (m.default || m).Dumbbell })),
+  bulletbar: () => import('../stats.js').then(m => ({ default: (m.default || m).Bulletbar })),
+  ridgeline: () => import('../stats.js').then(m => ({ default: (m.default || m).Ridgeline })),
+  marimekko: () => import('../stats.js').then(m => ({ default: (m.default || m).Marimekko })),
+  // the six structure formats share one file
+  sunburst: () => import('../structure.js').then(m => ({ default: (m.default || m).Sunburst })),
+  circlepack: () => import('../structure.js').then(m => ({ default: (m.default || m).Circlepack })),
+  icicle: () => import('../structure.js').then(m => ({ default: (m.default || m).Icicle })),
+  arcflow: () => import('../structure.js').then(m => ({ default: (m.default || m).Arcflow })),
+  linkmatrix: () => import('../structure.js').then(m => ({ default: (m.default || m).Linkmatrix })),
+  lifespans: () => import('../structure.js').then(m => ({ default: (m.default || m).Lifespans })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -120,7 +141,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote', 'toggle', 'search', 'month', 'pick', 'book', 'focus', 'levelup', 'slide', 'guess', 'note'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote', 'toggle', 'search', 'month', 'pick', 'book', 'focus', 'levelup', 'slide', 'guess', 'note', 'within', 'bins', 'year'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

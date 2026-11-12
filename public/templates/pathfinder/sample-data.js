@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.12, 73 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.15, 91 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -24,8 +24,8 @@ window.PATHFINDER_DATA = {
     },
     {
      "label": "Places",
-     "hint": "provinces, districts, islands",
-     "to": "r_tilemap"
+     "hint": "regions, distances, routes, the sky",
+     "to": "place"
     },
     {
      "label": "Steps in a process",
@@ -98,6 +98,29 @@ window.PATHFINDER_DATA = {
     {
      "label": "Blocks inside blocks, sized by amount",
      "to": "r_mosaic"
+    },
+    {
+     "label": "Rings inside rings, to zoom into",
+     "to": "r_sunburst"
+    },
+    {
+     "label": "Circles inside circles, sized by amount",
+     "to": "r_circlepack"
+    },
+    {
+     "label": "A list in levels, as blocks",
+     "to": "r_icicle",
+     "hint": "e.g. subjects, courses, chapters"
+    },
+    {
+     "label": "Links between places or people",
+     "to": "r_arcflow",
+     "hint": "e.g. routes, trade"
+    },
+    {
+     "label": "Who links to whom, as a grid",
+     "to": "r_linkmatrix",
+     "hint": "e.g. messages between teams"
     }
    ]
   },
@@ -133,6 +156,11 @@ window.PATHFINDER_DATA = {
      "label": "What several groups are made of",
      "hint": "e.g. spending by category, per year",
      "to": "r_stackbar"
+    },
+    {
+     "label": "Shares split two ways at once",
+     "to": "r_marimekko",
+     "hint": "e.g. transport by district"
     }
    ]
   },
@@ -188,6 +216,10 @@ window.PATHFINDER_DATA = {
     {
      "label": "Several layers growing and shrinking",
      "to": "r_streamgraph"
+    },
+    {
+     "label": "Lives, eras or terms that overlap",
+     "to": "r_lifespans"
     }
    ]
   },
@@ -224,6 +256,11 @@ window.PATHFINDER_DATA = {
      "label": "Sorting ideas by two qualities",
      "hint": "e.g. effort and impact",
      "to": "r_quadrant"
+    },
+    {
+     "label": "Before and after, row by row",
+     "to": "r_dumbbell",
+     "hint": "e.g. start and end of year"
     }
    ]
   },
@@ -441,6 +478,18 @@ window.PATHFINDER_DATA = {
     {
      "label": "How much moves between groups",
      "to": "r_ringflow"
+    },
+    {
+     "label": "How values spread out",
+     "to": "r_histobins"
+    },
+    {
+     "label": "Groups side by side, fairly",
+     "to": "r_boxplot"
+    },
+    {
+     "label": "The shapes of several groups",
+     "to": "r_ridgeline"
     }
    ]
   },
@@ -657,6 +706,10 @@ window.PATHFINDER_DATA = {
     {
      "label": "Free and booked times",
      "to": "r_slotgrid"
+    },
+    {
+     "label": "Results against targets",
+     "to": "r_bulletbar"
     }
    ]
   },
@@ -865,6 +918,147 @@ window.PATHFINDER_DATA = {
    "text": "Steps and decisions; walk the main path.",
    "link": "/templates/flowchart/",
    "linkLabel": "Open Flowchart"
+  },
+  "place": {
+   "q": "What about the places?",
+   "options": [
+    {
+     "label": "Comparing regions on a map",
+     "to": "r_tilemap"
+    },
+    {
+     "label": "What is near, and how far",
+     "to": "r_reachrings"
+    },
+    {
+     "label": "The ups and downs of a route",
+     "to": "r_profileline"
+    },
+    {
+     "label": "Finding a room in a building",
+     "to": "r_floorplan"
+    },
+    {
+     "label": "Sunrise, sunset and daylight",
+     "to": "r_daylight"
+    },
+    {
+     "label": "Moon phases",
+     "to": "r_moonmonth"
+    },
+    {
+     "label": "Which way the wind blows",
+     "to": "r_windrose"
+    }
+   ]
+  },
+  "r_daylight": {
+   "result": "Daylight",
+   "text": "Sunrise and sunset for every day of the year.",
+   "link": "/templates/daylight/",
+   "linkLabel": "Open Daylight"
+  },
+  "r_moonmonth": {
+   "result": "Moonmonth",
+   "text": "A month of moon phases; tap a day.",
+   "link": "/templates/moonmonth/",
+   "linkLabel": "Open Moonmonth"
+  },
+  "r_windrose": {
+   "result": "Windrose",
+   "text": "Where the wind comes from, and how strong.",
+   "link": "/templates/windrose/",
+   "linkLabel": "Open Windrose"
+  },
+  "r_reachrings": {
+   "result": "Reachrings",
+   "text": "What is within reach, by distance and direction.",
+   "link": "/templates/reachrings/",
+   "linkLabel": "Open Reachrings"
+  },
+  "r_profileline": {
+   "result": "Profileline",
+   "text": "The ups and downs of a route; drag along it.",
+   "link": "/templates/profileline/",
+   "linkLabel": "Open Profileline"
+  },
+  "r_floorplan": {
+   "result": "Floorplan",
+   "text": "Search or tap to find a room.",
+   "link": "/templates/floorplan/",
+   "linkLabel": "Open Floorplan"
+  },
+  "r_histobins": {
+   "result": "Histobins",
+   "text": "How many values fall in each range.",
+   "link": "/templates/histobins/",
+   "linkLabel": "Open Histobins"
+  },
+  "r_boxplot": {
+   "result": "Boxplot",
+   "text": "The middle half and the typical value, by group.",
+   "link": "/templates/boxplot/",
+   "linkLabel": "Open Boxplot"
+  },
+  "r_dumbbell": {
+   "result": "Dumbbell",
+   "text": "Before and after on one line per row.",
+   "link": "/templates/dumbbell/",
+   "linkLabel": "Open Dumbbell"
+  },
+  "r_bulletbar": {
+   "result": "Bulletbar",
+   "text": "Results against targets, poor to good.",
+   "link": "/templates/bulletbar/",
+   "linkLabel": "Open Bulletbar"
+  },
+  "r_ridgeline": {
+   "result": "Ridgeline",
+   "text": "The shape of each group, stacked like hills.",
+   "link": "/templates/ridgeline/",
+   "linkLabel": "Open Ridgeline"
+  },
+  "r_marimekko": {
+   "result": "Marimekko",
+   "text": "Shares by width and height at once.",
+   "link": "/templates/marimekko/",
+   "linkLabel": "Open Marimekko"
+  },
+  "r_sunburst": {
+   "result": "Sunburst",
+   "text": "Rings to zoom into, slice by slice.",
+   "link": "/templates/sunburst/",
+   "linkLabel": "Open Sunburst"
+  },
+  "r_circlepack": {
+   "result": "Circlepack",
+   "text": "Circles inside circles, sized by amount.",
+   "link": "/templates/circlepack/",
+   "linkLabel": "Open Circlepack"
+  },
+  "r_icicle": {
+   "result": "Icicle",
+   "text": "Stacked blocks, left to right.",
+   "link": "/templates/icicle/",
+   "linkLabel": "Open Icicle"
+  },
+  "r_arcflow": {
+   "result": "Arcflow",
+   "text": "Links as arcs; tap one to see its links.",
+   "link": "/templates/arcflow/",
+   "linkLabel": "Open Arcflow"
+  },
+  "r_linkmatrix": {
+   "result": "Linkmatrix",
+   "text": "Who links to whom, as a grid.",
+   "link": "/templates/linkmatrix/",
+   "linkLabel": "Open Linkmatrix"
+  },
+  "r_lifespans": {
+   "result": "Lifespans",
+   "text": "Who was around at the same time.",
+   "link": "/templates/lifespans/",
+   "linkLabel": "Open Lifespans"
   }
  }
 };
