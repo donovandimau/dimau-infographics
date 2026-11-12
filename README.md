@@ -14,6 +14,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Swimlane** | Time | Several threads side by side | One lane per theme, points and spans, zoom and pan, navigator strip with a draggable window, detail panel |
 | **Roadmap** | Time | Plans with dependencies | Gantt rows, milestones, dependency arrows, progress, today line, drag a task and its dependants follow |
 | **Waypath** | Steps | Processes, journeys, learning paths | Road, cycle or staircase; tap a stop to reveal it; play walks the path; works without dates |
+| **Rankrace** | Rankings over time | League tables, top products, busiest months | Bars overtake as time plays, scrub to any moment, leader and biggest climber in words |
+| **Peoplegrid** | Proportion | Shares shown as countable things | One square per unit, regroups between grid, blocks and bars, highlight a group |
+| **Guessline** | Prediction | Surprising trends | The reader draws their guess, the real line is revealed and scored |
+| **Flowbank** | Flow | Budgets, funding, supply chains | Bands sized by amount, tap to follow a flow, share in plain words |
+| **Ledger** | Table | Directories, price lists, catalogues | Sort, search, bars and heat in cells, sparklines, rows that open |
+| **Storyscroll** | Story | Explainers and reports | Sticky chart that re-sorts and highlights as the story scrolls |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -65,6 +71,7 @@ v1/dimau-infographics.css    shared --di-* theme tokens (light sky-blue brand + 
 v1/<template>.js             the templates; each file is self-contained, no dependencies
 v1/timelines.js              Switchback, Swimlane, Roadmap, Waypath (one shared timeline data shape)
 v1/signal-cards.js           the four signal cards
+v1/charts.js                 Rankrace, Peoplegrid, Guessline, Flowbank, Ledger, Storyscroll
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

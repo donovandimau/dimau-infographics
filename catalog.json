@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "base": "/v1/",
   "templates": [
     {
@@ -214,6 +214,147 @@
       ],
       "demo": "/templates/waypath/",
       "sample": "How an app adopts a template (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "rankrace",
+      "name": "Rankrace",
+      "global": "Rankrace",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "ranking",
+      "family": "charts",
+      "bestFor": "Rankings that change over time: top products, busiest months, leading regions, league tables.",
+      "mechanics": [
+        "Bars overtake as time plays",
+        "Scrub to any moment",
+        "Leader and biggest climber in words",
+        "Values interpolate smoothly"
+      ],
+      "dataShape": "{ prefix?, suffix?, top?, items:[{id,label,color?}], frames:[{label, values:{id:number}}] }",
+      "events": [
+        "frame"
+      ],
+      "demo": "/templates/rankrace/",
+      "sample": "Market stall sales by product (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "peoplegrid",
+      "name": "Peoplegrid",
+      "global": "Peoplegrid",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "proportion",
+      "family": "charts",
+      "bestFor": "Showing a share as countable things: people, households, chapters, votes, out of 100.",
+      "mechanics": [
+        "One square per unit",
+        "Regroups between grid, blocks and bars",
+        "Highlight a group",
+        "Plain-language share"
+      ],
+      "dataShape": "{ unit, unitPlural?, groups:[{id,label,color?,count}] }",
+      "events": [
+        "view",
+        "select"
+      ],
+      "demo": "/templates/peoplegrid/",
+      "sample": "FijiLearn chapters by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "guessline",
+      "name": "Guessline",
+      "global": "Guessline",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "prediction",
+      "family": "charts",
+      "bestFor": "Surprising trends: growth, savings, prices, anything where intuition is usually wrong.",
+      "mechanics": [
+        "Draw the rest of the line",
+        "Animated reveal",
+        "Score and plain-language verdict",
+        "Skip-and-show for keyboard users"
+      ],
+      "dataShape": "{ question, prefix?, suffix?, known:index, points:[{x, y}], source? }",
+      "events": [
+        "reveal"
+      ],
+      "demo": "/templates/guessline/",
+      "sample": "Savings growth over 10 years (calculated)",
+      "usedBy": []
+    },
+    {
+      "id": "flowbank",
+      "name": "Flowbank",
+      "global": "Flowbank",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "flow",
+      "family": "charts",
+      "bestFor": "Money, people or energy moving from sources to destinations: budgets, funding, migration, supply chains.",
+      "mechanics": [
+        "Bands sized by amount",
+        "Tap to follow a flow",
+        "Share in plain words",
+        "Columns arranged automatically"
+      ],
+      "dataShape": "{ prefix?, nodes:[{id,label,color?}], links:[{source,target,value}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/flowbank/",
+      "sample": "Where a fortnight’s pay goes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "global": "Ledger",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "table",
+      "family": "charts",
+      "bestFor": "Anything people want to look up or compare item by item: price lists, directories, catalogues, results.",
+      "mechanics": [
+        "Sort any column",
+        "Search as you type",
+        "Bars, heat cells and sparklines",
+        "Tap a row for detail",
+        "Sticky header"
+      ],
+      "dataShape": "{ columns:[{id,label,type:text|number|bar|heat|spark|tag}], rows:[{…, detail?}], tags?:[{id,label,color?}] }",
+      "events": [
+        "sort",
+        "open"
+      ],
+      "demo": "/templates/ledger/",
+      "sample": "Every FijiLearn course (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "storyscroll",
+      "name": "Storyscroll",
+      "global": "Storyscroll",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "story",
+      "family": "charts",
+      "bestFor": "Explaining a finding step by step: reports, explainers, annual reviews, results pages.",
+      "mechanics": [
+        "Sticky chart",
+        "Each step re-sorts and highlights",
+        "Works on phones",
+        "Keyboard: tab through the steps"
+      ],
+      "dataShape": "{ items:[{id,label,value,group?}], groups?, steps:[{title?, text, highlight?:[ids], sort?:value|label|none, only?:[ids]}] }",
+      "events": [
+        "step"
+      ],
+      "demo": "/templates/storyscroll/",
+      "sample": "The FijiLearn catalogue in five steps (real data)",
       "usedBy": []
     },
     {
