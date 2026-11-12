@@ -1,4 +1,4 @@
-/* Real data: the size of each file in this library's /v1/ folder at v1.18, in kilobytes (uncompressed). */
+/* Real data: the size of each file in this library's /v1/ folder at v1.22, in kilobytes (uncompressed). */
 window.CIRCLEPACK_DATA = {
  "unit": "KB",
  "root": {
@@ -81,6 +81,22 @@ window.CIRCLEPACK_DATA = {
       "value": 40.2
      },
      {
+      "label": "Metrics (metrics.js)",
+      "value": 41.3
+     },
+     {
+      "label": "Basics (basics.js)",
+      "value": 37.6
+     },
+     {
+      "label": "Practice (practice.js)",
+      "value": 31.6
+     },
+     {
+      "label": "Money (money.js)",
+      "value": 37.1
+     },
+     {
       "label": "Signal cards (signal-cards.js)",
       "value": 43.7
      }
@@ -114,7 +130,7 @@ window.CIRCLEPACK_DATA = {
     "children": [
      {
       "label": "dimau-infographics.js",
-      "value": 9.3
+      "value": 10.6
      },
      {
       "label": "dimau-infographics.css",
@@ -122,7 +138,7 @@ window.CIRCLEPACK_DATA = {
      },
      {
       "label": "DimauInfographic.jsx",
-      "value": 14.3
+      "value": 16.7
      }
     ]
    }

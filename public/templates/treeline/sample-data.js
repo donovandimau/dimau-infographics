@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.18.0), every family and template. */
+/* Real data: this library (catalog.json, v1.22.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.18.0",
+  "label": "Dimau Infographics 1.22.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -615,6 +615,146 @@ window.TREELINE_DATA = {
       "label": "Leaderboard",
       "sub": "Quizzes and competitions, school houses, sales teams, fundraising drives.",
       "link": "/templates/leaderboard/"
+     }
+    ]
+   },
+   {
+    "label": "Metrics",
+    "children": [
+     {
+      "label": "Cohortgrid",
+      "sub": "Learners or members who keep coming back, customers who reorder, volunteers who stay.",
+      "link": "/templates/cohortgrid/"
+     },
+     {
+      "label": "Burndown",
+      "sub": "Projects and sprints, building works, fundraising to a deadline, exam revision.",
+      "link": "/templates/burndown/"
+     },
+     {
+      "label": "Controlchart",
+      "sub": "Waiting times, defects, daily sales, attendance: telling a real change from normal ups and downs.",
+      "link": "/templates/controlchart/"
+     },
+     {
+      "label": "Cumflow",
+      "sub": "Help desks, applications and approvals, orders, repairs: spotting where work gets stuck.",
+      "link": "/templates/cumflow/"
+     },
+     {
+      "label": "Kpitiles",
+      "sub": "Dashboards, monthly reports, app home screens, board papers.",
+      "link": "/templates/kpitiles/"
+     },
+     {
+      "label": "Abtest",
+      "sub": "Testing two messages, posters, prices, page designs or reminder texts.",
+      "link": "/templates/abtest/"
+     }
+    ]
+   },
+   {
+    "label": "Basics",
+    "children": [
+     {
+      "label": "Donut",
+      "sub": "Budgets, survey answers, sources of income, anything that adds up to a whole.",
+      "link": "/templates/donut/"
+     },
+     {
+      "label": "Barchart",
+      "sub": "Comparing amounts across groups, places, products or years.",
+      "link": "/templates/barchart/"
+     },
+     {
+      "label": "Linechart",
+      "sub": "Prices, temperatures, visitors, balances: anything measured again and again.",
+      "link": "/templates/linechart/"
+     },
+     {
+      "label": "Areachart",
+      "sub": "Spending by category, energy by source, students by level, sales by product over time.",
+      "link": "/templates/areachart/"
+     },
+     {
+      "label": "Combochart",
+      "sub": "Rainfall and temperature, sales and margin, visitors and spending per visitor.",
+      "link": "/templates/combochart/"
+     },
+     {
+      "label": "Waffle",
+      "sub": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates.",
+      "link": "/templates/waffle/"
+     }
+    ]
+   },
+   {
+    "label": "Practice",
+    "children": [
+     {
+      "label": "Matchup",
+      "sub": "Words and meanings, places and capitals, terms and pictures, questions and answers.",
+      "link": "/templates/matchup/"
+     },
+     {
+      "label": "Sequence",
+      "sub": "History, steps of a process, life cycles, sizes from small to large.",
+      "link": "/templates/sequence/"
+     },
+     {
+      "label": "Fillgap",
+      "sub": "Reading and grammar, key terms, safety rules, money and health lessons.",
+      "link": "/templates/fillgap/"
+     },
+     {
+      "label": "Estimator",
+      "sub": "Numbers people get wrong: distances, populations, prices, how long things take.",
+      "link": "/templates/estimator/"
+     },
+     {
+      "label": "Masterygrid",
+      "sub": "Teachers, trainers and coaches planning small groups and catch-up sessions.",
+      "link": "/templates/masterygrid/"
+     },
+     {
+      "label": "Leitner",
+      "sub": "Vocabulary, facts, formulas, road signs: anything learned by repetition.",
+      "link": "/templates/leitner/"
+     }
+    ]
+   },
+   {
+    "label": "Money",
+    "children": [
+     {
+      "label": "Paysplit",
+      "sub": "Payslip explainers, budgeting lessons, job offers, household planning.",
+      "link": "/templates/paysplit/"
+     },
+     {
+      "label": "Budgetplan",
+      "sub": "Budgeting lessons, family money talks, financial literacy apps.",
+      "link": "/templates/budgetplan/"
+     },
+     {
+      "label": "Debtplan",
+      "sub": "Debt advice services, credit unions, budgeting lessons.",
+      "link": "/templates/debtplan/"
+     },
+     {
+      "label": "Sendmoney",
+      "sub": "Remittance comparisons, diaspora and family apps, money lessons.",
+      "link": "/templates/sendmoney/"
+     },
+     {
+      "label": "Cashcalendar",
+      "sub": "Planning around paydays, avoiding overdrafts, school fee and festive months.",
+      "link": "/templates/cashcalendar/"
+     },
+     {
+      "label": "Pricerise",
+      "sub": "Savings and pension talks, school economics, pay negotiations.",
+      "link": "/templates/pricerise/"
      }
     ]
    },

@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 25, null, { timeout: 8000 });
-      return '25 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 29, null, { timeout: 8000 });
+      return '29 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 20) throw new Error('expected root and 19 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 24) throw new Error('expected root and 23 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -396,9 +396,9 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 109 templates in v1\.18\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 133 templates in v1\.22\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.18 \(6% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.22 \(5% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
   } },
@@ -478,9 +478,9 @@ const PAGES = [
       return 'right and wrong guesses explained, score, reveal';
   } },
   { url: '/templates/annotline/', name: 'annotline', check: async p => {
-      if (!/From 4 in v1\.0 to 109 in v1\.18/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      if (!/From 4 in v1\.0 to 133 in v1\.22/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
       await p.click('[data-d="1"]');
-      if (!/Note 1 of 12 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
+      if (!/Note 1 of 16 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
       await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
       if (!/Infographics Fiji v2 lands/.test(await p.textContent('.dy-note'))) throw new Error('tap note wrong');
       return 'whole story, step, tap a note';
@@ -603,12 +603,12 @@ const PAGES = [
       return 'two-way shares, block detail, highlight a part';
   } },
   { url: '/templates/sunburst/', name: 'sunburst', check: async p => {
-      if (!/Dimau Infographics: 109 templates in 19 parts\. Biggest: Stories \(6%\)/.test(await p.textContent('.dx-note'))) throw new Error('summary wrong: ' + await p.textContent('.dx-note'));
+      if (!/Dimau Infographics: 133 templates in 23 parts\. Biggest: Stories \(5%\)/.test(await p.textContent('.dx-note'))) throw new Error('summary wrong: ' + await p.textContent('.dx-note'));
       const k = await p.evaluate(() => [...document.querySelectorAll('svg [data-k]')].find(g => /^Charts:/.test(g.getAttribute('aria-label'))).dataset.k);
       await p.focus('svg [data-k="' + k + '"]'); await p.keyboard.press('Enter');
-      if (!/Charts: 6 templates \(6% of everything\) in 6 parts, all the same size/.test(await p.textContent('.dx-note')) || !/DimauInfographics›Charts/.test((await p.textContent('.dx-crumbs')).replace(/\s/g, ''))) throw new Error('zoom wrong: ' + await p.textContent('.dx-note'));
+      if (!/Charts: 6 templates \(5% of everything\) in 6 parts, all the same size/.test(await p.textContent('.dx-note')) || !/DimauInfographics›Charts/.test((await p.textContent('.dx-crumbs')).replace(/\s/g, ''))) throw new Error('zoom wrong: ' + await p.textContent('.dx-note'));
       await p.keyboard.press('Escape');
-      if (!/^Dimau Infographics: 109/.test(await p.textContent('.dx-note'))) throw new Error('back up failed');
+      if (!/^Dimau Infographics: 133/.test(await p.textContent('.dx-note'))) throw new Error('back up failed');
       return 'summary, zoom into a family, Escape back up';
   } },
   { url: '/templates/circlepack/', name: 'circlepack', check: async p => {
@@ -703,11 +703,11 @@ const PAGES = [
       return 'better-half filters, ranks for one item';
   } },
   { url: '/templates/radialbars/', name: 'radialbars', check: async p => {
-      if (!/Largest: Stories \(7 templates\)\..*Total 109 templates/.test(await p.textContent('.du-note'))) throw new Error('summary wrong: ' + await p.textContent('.du-note'));
+      if (!/Largest: Stories \(7 templates\)\..*Total 133 templates/.test(await p.textContent('.du-note'))) throw new Error('summary wrong: ' + await p.textContent('.du-note'));
       await p.click('[data-sort="size"]');
       if (!/^Stories/.test(await p.getAttribute('svg g[data-k]:first-of-type', 'aria-label'))) throw new Error('sort failed');
       await p.focus('svg g[data-k]:first-of-type'); await p.keyboard.press('Enter');
-      if (!/Stories: 7 templates \(6% of the total\), number 1 of 19/.test(await p.textContent('.du-note'))) throw new Error('bar wrong: ' + await p.textContent('.du-note'));
+      if (!/Stories: 7 templates \(5% of the total\), number 1 of 23/.test(await p.textContent('.du-note'))) throw new Error('bar wrong: ' + await p.textContent('.du-note'));
       return 'largest and total, sort by size, share and rank';
   } },
   { url: '/templates/wordbars/', name: 'wordbars', check: async p => {
@@ -817,6 +817,200 @@ const PAGES = [
       await p.click('[data-id="a"]');
       if (!/Team A: 58 points, place 1 after Round 6\. Places so far: 2 → /.test(await p.textContent('.dj-note'))) throw new Error('story wrong: ' + await p.textContent('.dj-note'));
       return 'leader and climber, slide rounds, places so far';
+  } },
+  { url: '/templates/cohortgrid/', name: 'cohortgrid', check: async p => {
+      if (!/On average 64% are still active in month 1 and 27% by month 6\. Best start: May 2026 \(61% in month 2\)/.test(await p.textContent('.dm-note'))) throw new Error('summary wrong: ' + await p.textContent('.dm-note'));
+      await p.focus('svg [data-k="0:0"]'); await p.keyboard.press('ArrowDown'); await p.keyboard.press('ArrowRight');
+      if ((await p.evaluate(() => document.activeElement.dataset.k)) !== '1:1') throw new Error('arrow keys failed');
+      await p.focus('svg [data-k="0:0"]'); await p.keyboard.press('Enter');
+      if (!/Of the 410 who started in Jan 2026, 254 \(62%\) were still active in month 1/.test(await p.textContent('.dm-note'))) throw new Error('cell wrong: ' + await p.textContent('.dm-note'));
+      await p.click('[data-show="count"]');
+      if ((await p.textContent('svg [data-k="0:0"] text')) !== '254') throw new Error('people view failed');
+      return 'averages in words, arrow keys, a cell in words, people view';
+  } },
+  { url: '/templates/burndown/', name: 'burndown', check: async p => {
+      if (!/33 tasks left with 8 days to the due date \(20 Nov\)\. At the recent pace of 3\.2 a day, it finishes on 23 Nov — 3 days late/.test(await p.textContent('.dm-note'))) throw new Error('summary wrong: ' + await p.textContent('.dm-note'));
+      await p.focus('.dm svg'); await p.keyboard.press('Home');
+      if (!/^2 Nov: 60 tasks left; the plan said 60 — right on plan/.test(await p.textContent('.dm-note'))) throw new Error('first day wrong: ' + await p.textContent('.dm-note'));
+      await p.keyboard.press('End');
+      if (!/^12 Nov: 33 tasks left; the plan said 27 — 6 behind/.test(await p.textContent('.dm-note'))) throw new Error('last day wrong: ' + await p.textContent('.dm-note'));
+      return 'finish date at the pace, ahead or behind on any day';
+  } },
+  { url: '/templates/controlchart/', name: 'controlchart', check: async p => {
+      if (!/Average 23\.2 min; readings normally fall between [\d.]+ min and [\d.]+ min\. 4 unusual: 23 Oct, 8 Nov, 9 Nov, 10 Nov/.test(await p.textContent('.dm-note'))) throw new Error('summary wrong: ' + await p.textContent('.dm-note'));
+      await p.focus('svg [data-k="11"]'); await p.keyboard.press('Enter');
+      if (!/23 Oct: 34 min\. Unusual: above the usual range\. .*Two nurses were off sick/.test(await p.textContent('.dm-note'))) throw new Error('point wrong: ' + await p.textContent('.dm-note'));
+      await p.focus('svg [data-k="27"]'); await p.keyboard.press('Enter');
+      if (!/8 in a row on one side of the average/.test(await p.textContent('.dm-note'))) throw new Error('run rule wrong');
+      return 'usual range, unusual points with reasons, the run rule';
+  } },
+  { url: '/templates/cumflow/', name: 'cumflow', check: async p => {
+      if (!/59 requests done; 36 in progress \(up from 1 at the start\)/.test(await p.textContent('.dm-note'))) throw new Error('summary wrong: ' + await p.textContent('.dm-note'));
+      await p.focus('.dm svg'); await p.keyboard.press('Home');
+      if (!/^13 Oct: waiting 7, doing 1, checking 0, done 2\. Work in progress: 1\./.test(await p.textContent('.dm-note'))) throw new Error('first day wrong: ' + await p.textContent('.dm-note'));
+      return 'done and in progress, any day in words';
+  } },
+  { url: '/templates/kpitiles/', name: 'kpitiles', check: async p => {
+      if (!/3 of 4 moved the right way on the last release/.test(await p.textContent('.dm-note'))) throw new Error('summary wrong: ' + await p.textContent('.dm-note'));
+      await p.click('.kt [data-id="templates"]');
+      if ((await p.getAttribute('.kt [data-id="templates"]', 'aria-expanded')) !== 'true' || !/Templates: 133, up on the last release \(good\)/.test(await p.textContent('.dm-note'))) throw new Error('tile wrong: ' + await p.textContent('.dm-note'));
+      return 'right way in words, tile opens';
+  } },
+  { url: '/templates/abtest/', name: 'abtest', check: async p => {
+      if ((await p.textContent('.ab-verdict')) !== 'Version B is very likely better.' || !/Chance it is really better: 98%/.test(await p.textContent('.dm-note'))) throw new Error('verdict wrong: ' + await p.textContent('.dm-note'));
+      await p.fill('[data-f="b.conversions"]', '175');
+      if ((await p.textContent('.ab-verdict')) !== 'Not enough evidence yet to pick one.' || !/more visitors each would usually settle it/.test(await p.textContent('.dm-note'))) throw new Error('weak result wrong: ' + await p.textContent('.ab-verdict'));
+      return 'clear winner, weak result, visitors still needed';
+  } },
+  { url: '/templates/donut/', name: 'donut', check: async p => {
+      if (!/Total 40 courses\. Largest: Maths \(30%\), then Business \(20%\)/.test(await p.textContent('.db-note'))) throw new Error('summary wrong: ' + await p.textContent('.db-note'));
+      await p.focus('svg [data-k="coding"]'); await p.keyboard.press('Enter');
+      if (!/Coding: 7 courses, 18% of the total — number 3 of 9/.test(await p.textContent('.db-note'))) throw new Error('slice wrong: ' + await p.textContent('.db-note'));
+      await p.focus('svg [data-k="coding"]'); await p.keyboard.press('Enter');
+      await p.click('[data-key="maths"]');
+      if (!/Total 28 courses \(with 1 hidden\)\. Largest: Business \(29%\)/.test(await p.textContent('.db-note'))) throw new Error('hide wrong: ' + await p.textContent('.db-note'));
+      await p.click('[data-table]');
+      if ((await p.locator('.db-table tbody tr').count()) !== 8) throw new Error('table wrong');
+      return 'shares, a slice in words, hide a part, table view';
+  } },
+  { url: '/templates/barchart/', name: 'barchart', check: async p => {
+      if (!/Highest: Maths \(48 in all\)\. Lowest: Vosa \(language\) \(4\)\. Courses totals 40; Chapters totals 109/.test(await p.textContent('.db-note'))) throw new Error('summary wrong: ' + await p.textContent('.db-note'));
+      await p.focus('svg [data-k="0:1"]'); await p.keyboard.press('Enter');
+      if (!/Maths, Chapters: 36 \(75% of Maths’s total 48\)/.test(await p.textContent('.db-note'))) throw new Error('bar wrong: ' + await p.textContent('.db-note'));
+      await p.click('[data-mode="stacked"]');
+      if ((await p.getAttribute('[data-mode="stacked"]', 'aria-pressed')) !== 'true') throw new Error('stacked failed');
+      await p.click('[data-table]');
+      if (!/Total/.test(await p.textContent('.db-table thead')) || (await p.locator('.db-table tbody tr').count()) !== 9) throw new Error('table wrong');
+      return 'totals in words, a bar in words, stacked, table view';
+  } },
+  { url: '/templates/linechart/', name: 'linechart', check: async p => {
+      if (!/Suva: 11 h \(18 Jun\) to 13\.2 h \(24 Dec\); Auckland: .*London: 7\.8 h/.test(await p.textContent('.db-note'))) throw new Error('summary wrong: ' + await p.textContent('.db-note'));
+      await p.focus('.db-view svg'); await p.keyboard.press('Home');
+      if (!/^1 Jan: Suva 13\.\d h, Auckland 1\d\.\d h, London \d\.\d h/.test(await p.textContent('.db-note'))) throw new Error('first point wrong: ' + await p.textContent('.db-note'));
+      await p.click('[data-key="london"]');
+      if (/London/.test(await p.textContent('.db-note'))) throw new Error('hide failed');
+      return 'ranges in words, read every line at a point, hide a line';
+  } },
+  { url: '/templates/areachart/', name: 'areachart', check: async p => {
+      if (!/^Total \$[\d,]+ at Jan, \$[\d,]+ at Dec\. Biggest gain in share: /.test(await p.textContent('.db-note'))) throw new Error('summary wrong: ' + await p.textContent('.db-note'));
+      await p.click('[data-mode="share"]');
+      await p.focus('.db-view svg'); await p.keyboard.press('End');
+      if (!/^Dec: Food \d+%, Rent \d+%/.test(await p.textContent('.db-note'))) throw new Error('share wrong: ' + await p.textContent('.db-note'));
+      return 'totals in words, shares of 100%, read a point';
+  } },
+  { url: '/templates/combochart/', name: 'combochart', check: async p => {
+      if (!/Most rainfall in Mar \(360 mm\); highest average temperature in Feb \(27\.4 °C\)\. The two tend to rise and fall together/.test(await p.textContent('.db-note'))) throw new Error('summary wrong: ' + await p.textContent('.db-note'));
+      await p.focus('.db-view svg'); await p.keyboard.press('End');
+      if (!/^Dec: rainfall 290 mm, average temperature 26\.6 °C/.test(await p.textContent('.db-note'))) throw new Error('point wrong: ' + await p.textContent('.db-note'));
+      return 'peaks and link in words, read a period';
+  } },
+  { url: '/templates/waffle/', name: 'waffle', check: async p => {
+      if ((await p.locator('.db-view svg rect').count()) !== 100) throw new Error('expected 100 squares');
+      if (!/Each square is 1% of 133 templates\. Marked example figures \d+, Real data \d+, Worked out from real formulas \d+ squares/.test(await p.textContent('.db-note'))) throw new Error('summary wrong: ' + await p.textContent('.db-note'));
+      await p.focus('svg [data-k="real"]'); await p.keyboard.press('Enter');
+      if (!/Real data: \d+ templates — \d+ in every 100/.test(await p.textContent('.db-note'))) throw new Error('part wrong: ' + await p.textContent('.db-note'));
+      return '100 squares rounded fairly, a part in words';
+  } },
+  { url: '/templates/matchup/', name: 'matchup', check: async p => {
+      await p.click('[data-side="a"][data-id="fj"]'); await p.click('[data-side="b"][data-id="fj"]');
+      if (!/Right: Fiji goes with Suva\. 1 of 8 matched/.test(await p.textContent('.de-note'))) throw new Error('right match wrong: ' + await p.textContent('.de-note'));
+      await p.click('[data-side="a"][data-id="ws"]'); await p.click('[data-side="b"][data-id="to"]');
+      if (!/Not quite: Samoa does not go with Nukuʻalofa\. 1 of 8 matched, 1 miss/.test(await p.textContent('.de-note'))) throw new Error('miss wrong: ' + await p.textContent('.de-note'));
+      for (const id of ['ws', 'to', 'vu', 'sb', 'pg', 'tv', 'ki']) { await p.click('[data-side="a"][data-id="' + id + '"]'); await p.click('[data-side="b"][data-id="' + id + '"]'); }
+      if (!/All 8 matched with 1 miss/.test(await p.textContent('.de-note'))) throw new Error('finish wrong: ' + await p.textContent('.de-note'));
+      return 'right match, a miss, all matched';
+  } },
+  { url: '/templates/sequence/', name: 'sequence', check: async p => {
+      const first = await p.textContent('.sq li:first-child .t');
+      await p.click('.sq li:first-child [aria-label^="Move"][aria-label$="down"]');
+      if ((await p.textContent('.sq li:first-child .t')) === first) throw new Error('move failed');
+      await p.click('[data-check]');
+      if (!/\d of 7 in the right place|All 7 in the right place/.test(await p.textContent('.de-note'))) throw new Error('check wrong: ' + await p.textContent('.de-note'));
+      await p.click('[data-show]');
+      if (!/^Lapita voyagers/.test(await p.textContent('.sq li:first-child .t')) || !/about 1000 BCE/.test(await p.textContent('.sq li:first-child .t')) || (await p.locator('.sq li.ok').count()) !== 7) throw new Error('answer wrong');
+      return 'move with buttons, check, show the answer with dates';
+  } },
+  { url: '/templates/fillgap/', name: 'fillgap', check: async p => {
+      const right = ['savings', 'interest', 'cost of the loan', 'budget', 'kilo'];
+      for (let i = 0; i < 5; i++) await p.selectOption('select[data-g="' + i + '.0"]', right[i]);
+      await p.click('[data-check]');
+      if (!/All 5 right\./.test(await p.textContent('.de-note'))) throw new Error('all right wrong: ' + await p.textContent('.de-note'));
+      await p.selectOption('select[data-g="0.0"]', 'interest'); await p.click('[data-check]');
+      if (!/4 of 5 right\./.test(await p.textContent('.de-note')) || await p.isHidden('[data-why="0"]')) throw new Error('hint wrong: ' + await p.textContent('.de-note'));
+      return 'all right, one wrong with a hint';
+  } },
+  { url: '/templates/estimator/', name: 'estimator', check: async p => {
+      await p.$eval('.es input[type=range]', i => { i.value = 13.2; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      await p.click('[data-lock]');
+      if (!/The answer is 13\.2 hours; you said 13\.2 hours — spot on\. 100 points\./.test(await p.textContent('.de-note'))) throw new Error('first answer wrong: ' + await p.textContent('.de-note'));
+      await p.click('[data-next]');
+      await p.$eval('.es input[type=range]', i => { i.value = 1000; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      await p.click('[data-lock]');
+      if (!/The answer is 2,110 km; you said 1,000 km — 1,110 km too low/.test(await p.textContent('.de-note'))) throw new Error('second answer wrong: ' + await p.textContent('.de-note'));
+      for (let i = 0; i < 3; i++) { await p.click('[data-next]'); await p.click('[data-lock]'); }
+      await p.click('[data-next]');
+      if (!/Your score: \d+ out of 100/.test(await p.textContent('.es'))) throw new Error('score page wrong');
+      return 'spot on, too low, final score';
+  } },
+  { url: '/templates/masterygrid/', name: 'masterygrid', check: async p => {
+      if (!/27% of skills are “got it”\. Most help needed with fractions \(4 of 8\), then measuring \(3\)/.test(await p.textContent('.de-note'))) throw new Error('summary wrong: ' + await p.textContent('.de-note'));
+      await p.click('[data-cell="1:5"]');
+      if (!/Learner B, money: not started\. 2 others also need help with this: Learner C, Learner E/.test(await p.textContent('.de-note'))) throw new Error('cell wrong: ' + await p.textContent('.de-note'));
+      await p.click('[data-help]');
+      if ((await p.locator('.mg tbody tr').count()) !== 7) throw new Error('help filter wrong: ' + await p.locator('.mg tbody tr').count());
+      return 'summary, who else needs the same help, only who needs help';
+  } },
+  { url: '/templates/leitner/', name: 'leitner', check: async p => {
+      await p.click('.lt-card');
+      if (!/Suva/.test(await p.textContent('.lt-card'))) throw new Error('flip failed');
+      await p.click('[data-knew="0"]');
+      if ((await p.textContent('.lt-box:first-child b')) !== '8') throw new Error('did not stay in box 1');
+      for (let i = 0; i < 16; i++) { await p.click('.lt-card'); await p.click('[data-knew="1"]'); }
+      if (!/All 8 cards are in the last box/.test(await p.textContent('.de'))) throw new Error('finish wrong: ' + await p.textContent('.de-note'));
+      return 'flip, back to box 1, all cards known';
+  } },
+  { url: '/templates/paysplit/', name: 'paysplit', check: async p => {
+      if (!/Of \$2,400 a month: 18% is taken off, 38% goes on bills and 8% is saved, leaving \$848 to spend/.test(await p.textContent('.df-note'))) throw new Error('summary wrong: ' + await p.textContent('.df-note'));
+      await p.click('[data-per="week"]');
+      if (!/Of \$554 a week/.test(await p.textContent('.df-note'))) throw new Error('per week wrong: ' + await p.textContent('.df-note'));
+      await p.click('[data-per="month"]');
+      await p.focus('svg [data-k="rent"]'); await p.keyboard.press('Enter');
+      if (!/Rent: \$650 a month \(27% of pay\)/.test(await p.textContent('.df-note'))) throw new Error('part wrong: ' + await p.textContent('.df-note'));
+      return 'shares in words, per week, a part in words';
+  } },
+  { url: '/templates/budgetplan/', name: 'budgetplan', check: async p => {
+      if (!/needs are \$170 over the plan; savings are \$160 short of the plan\. \$130 of income is not yet given a job/.test(await p.textContent('.df-note'))) throw new Error('summary wrong: ' + await p.textContent('.df-note'));
+      await p.fill('[data-i="5"]', '360');
+      if (/savings are/.test(await p.textContent('.df-note')) || !/\$30 more is planned than comes in/.test(await p.textContent('.df-note'))) throw new Error('edit wrong: ' + await p.textContent('.df-note'));
+      return 'over and short in words, live editing';
+  } },
+  { url: '/templates/debtplan/', name: 'debtplan', check: async p => {
+      if (!/Paying \$290 a month on \$6,300 of debt\. Highest interest first saves \$65 in interest; smallest first clears the first debt sooner \(month 5\)/.test(await p.textContent('.df-note'))) throw new Error('summary wrong: ' + await p.textContent('.df-note'));
+      if ((await p.locator('.df-card').count()) !== 2 || !/2 yr 2 mo/.test(await p.textContent('.df-cards'))) throw new Error('cards wrong: ' + await p.textContent('.df-cards'));
+      await p.$eval('.df-range input', i => { i.value = 300; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/Paying \$490 a month/.test(await p.textContent('.df-note'))) throw new Error('extra wrong');
+      return 'both methods compared, extra payment';
+  } },
+  { url: '/templates/sendmoney/', name: 'sendmoney', check: async p => {
+      if (!/most arrives with Provider A — 383\.50 FJD\. Lost: 6\.65 FJD to the fee and 8\.85 FJD to the exchange rate \(3\.9% in all\)/.test(await p.textContent('.df-note'))) throw new Error('summary wrong: ' + await p.textContent('.df-note'));
+      await p.fill('.df-field input', '50');
+      if (!/most arrives with Provider B — 63\.50 FJD/.test(await p.textContent('.df-note'))) throw new Error('small amount wrong: ' + await p.textContent('.df-note'));
+      return 'best provider, losses split, fixed fees on small sends';
+  } },
+  { url: '/templates/cashcalendar/', name: 'cashcalendar', check: async p => {
+      if (!/Starts at \$180, ends at \$470\. Lowest: −\$420 on 1 Dec — the account goes below zero/.test(await p.textContent('.df-note'))) throw new Error('summary wrong: ' + await p.textContent('.df-note'));
+      await p.uncheck('[data-e="1"]');
+      if (!/Lowest: \$180 on 1 Dec\./.test(await p.textContent('.df-note'))) throw new Error('untick wrong: ' + await p.textContent('.df-note'));
+      await p.focus('.df svg'); await p.keyboard.press('End');
+      if (!/^31 Dec: balance \$1,070/.test(await p.textContent('.df-note'))) throw new Error('day wrong: ' + await p.textContent('.df-note'));
+      return 'below zero warning, bill off, any day';
+  } },
+  { url: '/templates/pricerise/', name: 'pricerise', check: async p => {
+      if (!/If prices rise 4% a year, \$100 kept as cash buys only what \$68 buys today after 10 years/.test(await p.textContent('.df-note'))) throw new Error('summary wrong: ' + await p.textContent('.df-note'));
+      if (!/\$148/.test(await p.textContent('.df-cards')) || !/18 years/.test(await p.textContent('.df-cards'))) throw new Error('cards wrong: ' + await p.textContent('.df-cards'));
+      await p.$eval('[data-r]', i => { i.value = 0; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/never/.test(await p.textContent('.df-cards'))) throw new Error('zero rate wrong');
+      return 'what money buys, needed to keep up, doubling time';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

@@ -1,4 +1,4 @@
-/* Real data: the published FijiLearn catalogue (exported 11 Nov 2026) and this library (v1.18). */
+/* Real data: the published FijiLearn catalogue (exported 11 Nov 2026) and this library (v1.22). */
 window.FACTWALL_DATA = {
  "facts": [
   {
@@ -10,7 +10,7 @@ window.FACTWALL_DATA = {
   },
   {
    "id": "chapters",
-   "value": 109,
+   "value": 133,
    "label": "chapters to work through",
    "detail": "Each course has between one and four chapters.",
    "source": "FijiLearn published catalogue, exported 11 Nov 2026"
@@ -40,10 +40,10 @@ window.FACTWALL_DATA = {
   },
   {
    "id": "templates",
-   "value": 109,
+   "value": 133,
    "label": "templates in Dimau Infographics with this release",
    "detail": "Every one is listed in catalog.json and has a demo page.",
-   "source": "This library, v1.18"
+   "source": "This library, v1.22"
   }
  ]
 };

@@ -77,6 +77,22 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.18",
    "value": 109
+  },
+  {
+   "label": "v1.19",
+   "value": 115
+  },
+  {
+   "label": "v1.20",
+   "value": 121
+  },
+  {
+   "label": "v1.21",
+   "value": 127
+  },
+  {
+   "label": "v1.22",
+   "value": 133
   }
  ],
  "notes": [
@@ -139,6 +155,26 @@ window.ANNOTLINE_DATA = {
    "at": 18,
    "title": "Tools",
    "text": "Time zones, a life in months, settling shared costs, best-value packs, seats and majorities, and standings."
+  },
+  {
+   "at": 19,
+   "title": "Metrics",
+   "text": "Retention, burndown, control charts, cumulative flow, headline numbers and A/B tests."
+  },
+  {
+   "at": 20,
+   "title": "Basics",
+   "text": "Donut, bar, line, area, combo and waffle charts, each with a table view."
+  },
+  {
+   "at": 21,
+   "title": "Practice",
+   "text": "Matching, ordering, gap-fill, estimating, a mastery grid and flash cards in boxes."
+  },
+  {
+   "at": 22,
+   "title": "Money",
+   "text": "Pay, budgets, debts, sending money home, the month ahead and rising prices."
   }
  ]
 };
