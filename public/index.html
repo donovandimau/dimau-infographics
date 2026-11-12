@@ -87,6 +87,7 @@
       <a href="/#plan">Plan</a>
       <a href="/#track">Track</a>
       <a href="/#chartbook">Chartbook</a>
+      <a href="/#guides">Guides</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -289,6 +290,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="guides" aria-labelledby="guides-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Guides · decide, find your way, understand</p><h2 id="guides-h">Guides</h2>
+      <p class="lede">Choose by what matters to you, see where the bus is now, climb a ladder of levels, open an organisation chart, line up amounts from tiny to huge, and look up a term.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-weighscore"></div>
+    <ul class="family-list">
+      <li><a href="/templates/weighscore/"><b>Weighscore</b><span>Set what matters; the options re-rank.</span></a></li>
+      <li><a href="/templates/routeline/"><b>Routeline</b><span>Stops, times and where it is now.</span></a></li>
+      <li><a href="/templates/levelup/"><b>Levelup</b><span>Levels, progress and what each unlocks.</span></a></li>
+      <li><a href="/templates/orgchart/"><b>Orgchart</b><span>Teams and roles; open and close.</span></a></li>
+      <li><a href="/templates/numberline/"><b>Numberline</b><span>From tiny to huge on one line.</span></a></li>
+      <li><a href="/templates/glossary/"><b>Glossary</b><span>Terms A to Z with search and links.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -330,6 +347,7 @@
 <script src="/templates/loanpath/sample-data.js"></script>
 <script src="/templates/treeline/sample-data.js"></script>
 <script src="/templates/streamgraph/sample-data.js"></script>
+<script src="/templates/weighscore/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -346,6 +364,7 @@
   D.mount('#pv-loanpath', { template: 'loanpath', data: window.LOANPATH_DATA });
   D.mount('#pv-treeline', { template: 'treeline', data: window.TREELINE_DATA });
   D.mount('#pv-streamgraph', { template: 'streamgraph', data: window.STREAMGRAPH_DATA });
+  D.mount('#pv-weighscore', { template: 'weighscore', data: window.WEIGHSCORE_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

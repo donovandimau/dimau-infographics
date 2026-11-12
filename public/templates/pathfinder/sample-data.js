@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.10, 61 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.11, 67 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -61,6 +61,11 @@ window.PATHFINDER_DATA = {
      "label": "Keeping track of something",
      "hint": "readings, status, events, bookings",
      "to": "track"
+    },
+    {
+     "label": "Helping someone choose or find their way",
+     "hint": "decisions, routes, levels, terms",
+     "to": "guide"
     },
     {
      "label": "An explainer told as a story",
@@ -725,6 +730,71 @@ window.PATHFINDER_DATA = {
    "text": "Layers over time as a flowing stream.",
    "link": "/templates/streamgraph/",
    "linkLabel": "Open Streamgraph"
+  },
+  "guide": {
+   "q": "What should the reader be able to do?",
+   "options": [
+    {
+     "label": "Choose by what matters to them",
+     "to": "r_weighscore"
+    },
+    {
+     "label": "See where a bus or boat is now",
+     "to": "r_routeline"
+    },
+    {
+     "label": "See their level and what is next",
+     "to": "r_levelup"
+    },
+    {
+     "label": "See who is in which team",
+     "to": "r_orgchart"
+    },
+    {
+     "label": "Picture amounts from tiny to huge",
+     "to": "r_numberline"
+    },
+    {
+     "label": "Look up what a term means",
+     "to": "r_glossary"
+    }
+   ]
+  },
+  "r_weighscore": {
+   "result": "Weighscore",
+   "text": "Set what matters; the options re-rank.",
+   "link": "/templates/weighscore/",
+   "linkLabel": "Open Weighscore"
+  },
+  "r_routeline": {
+   "result": "Routeline",
+   "text": "Stops, times and where it is now.",
+   "link": "/templates/routeline/",
+   "linkLabel": "Open Routeline"
+  },
+  "r_levelup": {
+   "result": "Levelup",
+   "text": "A ladder of levels and what each unlocks.",
+   "link": "/templates/levelup/",
+   "linkLabel": "Open Levelup"
+  },
+  "r_orgchart": {
+   "result": "Orgchart",
+   "text": "Teams and roles, open and close.",
+   "link": "/templates/orgchart/",
+   "linkLabel": "Open Orgchart"
+  },
+  "r_numberline": {
+   "result": "Numberline",
+   "text": "Amounts from tiny to huge on one line.",
+   "link": "/templates/numberline/",
+   "linkLabel": "Open Numberline"
+  },
+  "r_glossary": {
+   "result": "Glossary",
+   "text": "An A–Z of terms with search and links.",
+   "link": "/templates/glossary/",
+   "linkLabel": "Open Glossary"
   }
  }
 };

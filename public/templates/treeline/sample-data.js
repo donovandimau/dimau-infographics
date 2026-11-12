@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.10.0), every family and template. */
+/* Real data: this library (catalog.json, v1.11.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.10.0",
+  "label": "Dimau Infographics 1.11.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -330,6 +330,41 @@ window.TREELINE_DATA = {
       "label": "Streamgraph",
       "sub": "Topics over time, sales by product line, visitors by source, how a collection grew.",
       "link": "/templates/streamgraph/"
+     }
+    ]
+   },
+   {
+    "label": "Guides",
+    "children": [
+     {
+      "label": "Weighscore",
+      "sub": "Choosing a plan, a supplier, a school, a site, a candidate: any choice with several things to weigh.",
+      "link": "/templates/weighscore/"
+     },
+     {
+      "label": "Routeline",
+      "sub": "Bus and ferry runs, delivery rounds, school pick-ups, tours.",
+      "link": "/templates/routeline/"
+     },
+     {
+      "label": "Levelup",
+      "sub": "Learning apps, loyalty schemes, savings stages, training paths.",
+      "link": "/templates/levelup/"
+     },
+     {
+      "label": "Orgchart",
+      "sub": "Committees, organisations, clubs, government departments, project teams.",
+      "link": "/templates/orgchart/"
+     },
+     {
+      "label": "Numberline",
+      "sub": "Prices, budgets, distances, populations: anything that spans many sizes.",
+      "link": "/templates/numberline/"
+     },
+     {
+      "label": "Glossary",
+      "sub": "Course glossaries, policy terms, medical or legal words, app help pages.",
+      "link": "/templates/glossary/"
      }
     ]
    },

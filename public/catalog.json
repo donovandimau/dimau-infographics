@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1357,6 +1357,150 @@
       ],
       "demo": "/templates/streamgraph/",
       "sample": "This library, release by release (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "weighscore",
+      "name": "Weighscore",
+      "global": "Weighscore",
+      "file": "guides.js",
+      "status": "ready",
+      "shape": "decision",
+      "family": "guides",
+      "bestFor": "Choosing a plan, a supplier, a school, a site, a candidate: any choice with several things to weigh.",
+      "mechanics": [
+        "A slider per criterion",
+        "Live re-ranking",
+        "Score made of coloured parts",
+        "Lower-is-better measures",
+        "Weights saved (getState)"
+      ],
+      "dataShape": "{ criteria:[{id,label,weight,better:'high'|'low',prefix?,suffix?}], options:[{id,label,values:{critId:number}}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/weighscore/",
+      "sample": "Choosing a data plan (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "routeline",
+      "name": "Routeline",
+      "global": "Routeline",
+      "file": "guides.js",
+      "status": "ready",
+      "shape": "route",
+      "family": "guides",
+      "bestFor": "Bus and ferry runs, delivery rounds, school pick-ups, tours.",
+      "mechanics": [
+        "Stops and times along a line",
+        "Where it is now, updated every 30 seconds",
+        "Minutes until each stop",
+        "Up and down on phones"
+      ],
+      "dataShape": "{ label?, stops:[{id,label,time:'HH:MM',note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/routeline/",
+      "sample": "A morning bus run (example)",
+      "usedBy": []
+    },
+    {
+      "id": "levelup",
+      "name": "Levelup",
+      "global": "Levelup",
+      "file": "guides.js",
+      "status": "ready",
+      "shape": "progress",
+      "family": "guides",
+      "bestFor": "Learning apps, loyalty schemes, savings stages, training paths.",
+      "mechanics": [
+        "Levels with what each unlocks",
+        "You are here",
+        "Progress to the next level",
+        "setValue() raises a levelup event"
+      ],
+      "dataShape": "{ unit?, current, levels:[{id,label,need,perks?}] }",
+      "events": [
+        "select",
+        "change",
+        "levelup"
+      ],
+      "demo": "/templates/levelup/",
+      "sample": "Learner levels (example)",
+      "usedBy": []
+    },
+    {
+      "id": "orgchart",
+      "name": "Orgchart",
+      "global": "Orgchart",
+      "file": "guides.js",
+      "status": "ready",
+      "shape": "hierarchy",
+      "family": "guides",
+      "bestFor": "Committees, organisations, clubs, government departments, project teams.",
+      "mechanics": [
+        "Boxes and connectors",
+        "Open and close teams",
+        "Counts below each box",
+        "Outline when space is short"
+      ],
+      "dataShape": "{ root:{id,label,role?,children?} }",
+      "events": [
+        "select",
+        "toggle"
+      ],
+      "demo": "/templates/orgchart/",
+      "sample": "A school committee (example)",
+      "usedBy": []
+    },
+    {
+      "id": "numberline",
+      "name": "Numberline",
+      "global": "Numberline",
+      "file": "guides.js",
+      "status": "ready",
+      "shape": "magnitude",
+      "family": "guides",
+      "bestFor": "Prices, budgets, distances, populations: anything that spans many sizes.",
+      "mechanics": [
+        "Even steps per ×10 or true to scale",
+        "How many times bigger, in words",
+        "Labels kept apart",
+        "Up and down on phones"
+      ],
+      "dataShape": "{ items:[{id,label,value,note?}], prefix?, suffix? }",
+      "events": [
+        "select",
+        "mode"
+      ],
+      "demo": "/templates/numberline/",
+      "sample": "From a cup of tea to a school (example)",
+      "usedBy": []
+    },
+    {
+      "id": "glossary",
+      "name": "Glossary",
+      "global": "Glossary",
+      "file": "guides.js",
+      "status": "ready",
+      "shape": "reference",
+      "family": "guides",
+      "bestFor": "Course glossaries, policy terms, medical or legal words, app help pages.",
+      "mechanics": [
+        "Search with highlights",
+        "A–Z jump",
+        "See-also links",
+        "Letters with no terms switched off"
+      ],
+      "dataShape": "{ terms:[{id,term,def,see?:[ids]}] }",
+      "events": [
+        "select",
+        "search"
+      ],
+      "demo": "/templates/glossary/",
+      "sample": "Chart and number terms (real reference)",
       "usedBy": []
     },
     {
