@@ -88,6 +88,7 @@
       <a href="/#track">Track</a>
       <a href="/#chartbook">Chartbook</a>
       <a href="/#guides">Guides</a>
+      <a href="/#stories">Stories</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -306,6 +307,23 @@
     </ul>
   </section>
 
+  <section class="panel family" id="stories" aria-labelledby="stories-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Stories · tell it so it sticks</p><h2 id="stories-h">Stories</h2>
+      <p class="lede">Before and after, a story one card at a time, true or false, a chart with notes, counters running since you arrived, a process with decisions, and a story beside its pictures.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-slidestory"></div>
+    <ul class="family-list">
+      <li><a href="/templates/beforeafter/"><b>Beforeafter</b><span>Drag between two pictures.</span></a></li>
+      <li><a href="/templates/slidestory/"><b>Slidestory</b><span>One card at a time; swipe or play.</span></a></li>
+      <li><a href="/templates/verdict/"><b>Verdict</b><span>True, false or partly? Guess, then see why.</span></a></li>
+      <li><a href="/templates/annotline/"><b>Annotline</b><span>A line chart with notes to step through.</span></a></li>
+      <li><a href="/templates/liveticker/"><b>Liveticker</b><span>Counters running since you opened the page.</span></a></li>
+      <li><a href="/templates/flowchart/"><b>Flowchart</b><span>Steps and decisions; walk the main path.</span></a></li>
+      <li><a href="/templates/archive-desk/"><b>Archive Desk</b><span>A story and its pictures, side by side.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -348,6 +366,7 @@
 <script src="/templates/treeline/sample-data.js"></script>
 <script src="/templates/streamgraph/sample-data.js"></script>
 <script src="/templates/weighscore/sample-data.js"></script>
+<script src="/templates/slidestory/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -365,6 +384,7 @@
   D.mount('#pv-treeline', { template: 'treeline', data: window.TREELINE_DATA });
   D.mount('#pv-streamgraph', { template: 'streamgraph', data: window.STREAMGRAPH_DATA });
   D.mount('#pv-weighscore', { template: 'weighscore', data: window.WEIGHSCORE_DATA });
+  D.mount('#pv-slidestory', { template: 'slidestory', data: window.SLIDESTORY_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

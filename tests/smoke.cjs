@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 18, null, { timeout: 8000 });
-      return '18 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 19, null, { timeout: 8000 });
+      return '19 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -396,9 +396,9 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 67 templates in v1\.11\. Biggest layer now: Charts/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 73 templates in v1\.12\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.11 \(9% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.12 \(8% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
   } },
@@ -448,6 +448,59 @@ const PAGES = [
       await p.click('[data-id="median"] [data-see="average"]');
       if (!(await p.getAttribute('[data-id="average"]', 'class')).includes('hl')) throw new Error('see-also did not highlight');
       return 'search, see-also jump';
+  } },
+  { url: '/templates/beforeafter/', name: 'beforeafter', check: async p => {
+      if (!/Light theme on the left, Dark theme on the right/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong');
+      await p.waitForFunction(() => [...document.querySelectorAll('.ba-frame img')].every(i => i.complete && i.naturalWidth > 0));
+      await p.focus('.ba-handle'); await p.keyboard.press('End');
+      if (!/Showing all of Light theme/.test(await p.textContent('.dy-note')) || (await p.getAttribute('.ba-handle', 'aria-valuenow')) !== '100') throw new Error('keyboard failed');
+      await p.click('[data-go="0"]');
+      if (!/Showing all of Dark theme/.test(await p.textContent('.dy-note'))) throw new Error('jump failed');
+      return 'pictures load, keyboard slider, jump to a side';
+  } },
+  { url: '/templates/slidestory/', name: 'slidestory', check: async p => {
+      if (!/1 \/ 7/.test(await p.textContent('.ss-card'))) throw new Error('first slide wrong');
+      await p.click('[data-d="1"]');
+      await p.focus('.ss-card'); await p.keyboard.press('ArrowRight');
+      if (!/3 \/ 7/.test(await p.textContent('.ss-card'))) throw new Error('next/arrow failed: ' + await p.textContent('.ss-num'));
+      await p.click('.ss-dots [data-i="6"]');
+      if (!/7 \/ 7/.test(await p.textContent('.ss-card')) || !(await p.isDisabled('[data-d="1"]'))) throw new Error('last slide wrong');
+      return 'next, arrow key, jump to the end';
+  } },
+  { url: '/templates/verdict/', name: 'verdict', check: async p => {
+      await p.click('[data-id="avg"] [data-v="true"]');
+      if (!/You got it\./.test(await p.textContent('[data-id="avg"] .vd-res'))) throw new Error('right guess not confirmed');
+      await p.click('[data-id="zero"] [data-v="false"]');
+      if (!/Not quite\./.test(await p.textContent('[data-id="zero"] .vd-res')) || !/PARTLY TRUE/.test(await p.textContent('[data-id="zero"] .vd-res'))) throw new Error('wrong guess not explained');
+      if (!/1 of 2 right so far/.test(await p.textContent('.dy-note'))) throw new Error('score wrong');
+      await p.click('[data-reveal]');
+      if (await p.locator('.vd-stamp').count() !== 6) throw new Error('reveal failed');
+      return 'right and wrong guesses explained, score, reveal';
+  } },
+  { url: '/templates/annotline/', name: 'annotline', check: async p => {
+      if (!/From 4 in v1\.0 to 73 in v1\.12/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      await p.click('[data-d="1"]');
+      if (!/Note 1 of 6 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
+      await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
+      if (!/Infographics Fiji v2 lands/.test(await p.textContent('.dy-note'))) throw new Error('tap note wrong');
+      return 'whole story, step, tap a note';
+  } },
+  { url: '/templates/liveticker/', name: 'liveticker', check: async p => {
+      await p.waitForTimeout(1200);
+      if (!/Since you opened this page \d+ seconds? ago/.test(await p.textContent('[data-head]'))) throw new Error('heading wrong');
+      const v = await p.evaluate(() => window.timeline.value('light'));
+      if (!(v > 100000)) throw new Error('light counter not running: ' + v);
+      await p.click('[data-pause]'); const a = await p.textContent('[data-v="light"]'); await p.waitForTimeout(400);
+      if (a !== await p.textContent('[data-v="light"]')) throw new Error('pause failed');
+      return 'counters run from real rates, pause';
+  } },
+  { url: '/templates/flowchart/', name: 'flowchart', check: async p => {
+      if (!/10 boxes, 2 of them decisions \(diamonds\)\. The main path has 8 stops/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      for (let i = 0; i < 3; i++) await p.click('[data-walk]');
+      if (!/Run the tests\. Comes from: Build it on a branch; Find the cause and fix it; Make the changes asked for\. Leads to: All checks pass\?/.test(await p.textContent('.dy-note'))) throw new Error('walk wrong: ' + await p.textContent('.dy-note'));
+      await p.focus('svg [data-k="pass"]'); await p.keyboard.press('Enter');
+      if (!/Leads to: Yes: Open a pull request; No: Find the cause and fix it/.test(await p.textContent('.dy-note'))) throw new Error('decision wrong');
+      return 'walk the main path, ways in and out of a decision';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

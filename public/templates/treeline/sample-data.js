@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.11.0), every family and template. */
+/* Real data: this library (catalog.json, v1.12.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.11.0",
+  "label": "Dimau Infographics 1.12.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -371,6 +371,36 @@ window.TREELINE_DATA = {
    {
     "label": "Stories",
     "children": [
+     {
+      "label": "Beforeafter",
+      "sub": "Before and after works, then and now photos, old and new designs, light and dark themes.",
+      "link": "/templates/beforeafter/"
+     },
+     {
+      "label": "Slidestory",
+      "sub": "How something works, onboarding, a report’s key points, a project’s story.",
+      "link": "/templates/slidestory/"
+     },
+     {
+      "label": "Verdict",
+      "sub": "Myth-busting, health and money facts, misinformation checks, training.",
+      "link": "/templates/verdict/"
+     },
+     {
+      "label": "Annotline",
+      "sub": "Annual reports, project histories, prices or cases over time with the events that moved them.",
+      "link": "/templates/annotline/"
+     },
+     {
+      "label": "Liveticker",
+      "sub": "Making a rate feel real: births, rainfall, money spent, distance travelled, data used.",
+      "link": "/templates/liveticker/"
+     },
+     {
+      "label": "Flowchart",
+      "sub": "How to apply, how a complaint is handled, how a change is approved, safety procedures.",
+      "link": "/templates/flowchart/"
+     },
      {
       "label": "Archive Desk",
       "sub": "Histories, reports and case files where the text and its pictures should be read together.",

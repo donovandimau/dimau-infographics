@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.11, 67 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.12, 73 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -68,8 +68,9 @@ window.PATHFINDER_DATA = {
      "to": "guide"
     },
     {
-     "label": "An explainer told as a story",
-     "to": "r_storyscroll"
+     "label": "A story or an explainer",
+     "to": "story",
+     "hint": "step by step, before and after, myths"
     },
     {
      "label": "A story with its pictures",
@@ -795,6 +796,75 @@ window.PATHFINDER_DATA = {
    "text": "An A–Z of terms with search and links.",
    "link": "/templates/glossary/",
    "linkLabel": "Open Glossary"
+  },
+  "story": {
+   "q": "How should the story be told?",
+   "options": [
+    {
+     "label": "Scrolling, with the chart changing",
+     "to": "r_storyscroll"
+    },
+    {
+     "label": "One card at a time",
+     "to": "r_slidestory"
+    },
+    {
+     "label": "Before and after pictures",
+     "to": "r_beforeafter"
+    },
+    {
+     "label": "A chart with notes on it",
+     "to": "r_annotline"
+    },
+    {
+     "label": "True or false claims",
+     "to": "r_verdict"
+    },
+    {
+     "label": "A process with decisions",
+     "to": "r_flowchart"
+    },
+    {
+     "label": "Counters since the page opened",
+     "to": "r_liveticker"
+    }
+   ]
+  },
+  "r_beforeafter": {
+   "result": "Beforeafter",
+   "text": "Drag between two pictures.",
+   "link": "/templates/beforeafter/",
+   "linkLabel": "Open Beforeafter"
+  },
+  "r_slidestory": {
+   "result": "Slidestory",
+   "text": "A story one card at a time.",
+   "link": "/templates/slidestory/",
+   "linkLabel": "Open Slidestory"
+  },
+  "r_verdict": {
+   "result": "Verdict",
+   "text": "True, false or partly: guess, then see why.",
+   "link": "/templates/verdict/",
+   "linkLabel": "Open Verdict"
+  },
+  "r_annotline": {
+   "result": "Annotline",
+   "text": "A line chart with notes to step through.",
+   "link": "/templates/annotline/",
+   "linkLabel": "Open Annotline"
+  },
+  "r_liveticker": {
+   "result": "Liveticker",
+   "text": "Counters running since the page opened.",
+   "link": "/templates/liveticker/",
+   "linkLabel": "Open Liveticker"
+  },
+  "r_flowchart": {
+   "result": "Flowchart",
+   "text": "Steps and decisions; walk the main path.",
+   "link": "/templates/flowchart/",
+   "linkLabel": "Open Flowchart"
   }
  }
 };

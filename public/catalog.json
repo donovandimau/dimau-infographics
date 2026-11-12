@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1501,6 +1501,146 @@
       ],
       "demo": "/templates/glossary/",
       "sample": "Chart and number terms (real reference)",
+      "usedBy": []
+    },
+    {
+      "id": "beforeafter",
+      "name": "Beforeafter",
+      "global": "Beforeafter",
+      "file": "stories.js",
+      "status": "ready",
+      "shape": "comparison",
+      "family": "stories",
+      "bestFor": "Before and after works, then and now photos, old and new designs, light and dark themes.",
+      "mechanics": [
+        "Drag, tap or arrow keys",
+        "Jump to either side",
+        "A real slider for screen readers",
+        "Labels on both pictures"
+      ],
+      "dataShape": "{ before:{src,label,alt}, after:{src,label,alt}, caption? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/beforeafter/",
+      "sample": "Light and dark themes (real screenshots)",
+      "usedBy": []
+    },
+    {
+      "id": "slidestory",
+      "name": "Slidestory",
+      "global": "Slidestory",
+      "file": "stories.js",
+      "status": "ready",
+      "shape": "slides",
+      "family": "stories",
+      "bestFor": "How something works, onboarding, a report’s key points, a project’s story.",
+      "mechanics": [
+        "Swipe, tap or arrow keys",
+        "Play and pause",
+        "Progress dots to jump",
+        "Slower autoplay when motion is reduced"
+      ],
+      "dataShape": "{ title?, slides:[{id,title,text,big?,kicker?}] }",
+      "events": [
+        "slide"
+      ],
+      "demo": "/templates/slidestory/",
+      "sample": "How a template is made (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "verdict",
+      "name": "Verdict",
+      "global": "Verdict",
+      "file": "stories.js",
+      "status": "ready",
+      "shape": "quiz",
+      "family": "stories",
+      "bestFor": "Myth-busting, health and money facts, misinformation checks, training.",
+      "mechanics": [
+        "Three-way verdicts",
+        "Answer and reason after each guess",
+        "Score as you go",
+        "Show all answers"
+      ],
+      "dataShape": "{ claims:[{id,claim,verdict:'true'|'false'|'partly',why}] }",
+      "events": [
+        "guess",
+        "finish"
+      ],
+      "demo": "/templates/verdict/",
+      "sample": "Claims about charts (real reference)",
+      "usedBy": []
+    },
+    {
+      "id": "annotline",
+      "name": "Annotline",
+      "global": "Annotline",
+      "file": "stories.js",
+      "status": "ready",
+      "shape": "annotated-line",
+      "family": "stories",
+      "bestFor": "Annual reports, project histories, prices or cases over time with the events that moved them.",
+      "mechanics": [
+        "Numbered notes on the line",
+        "Step through or tap",
+        "The moment is highlighted",
+        "Whole story view"
+      ],
+      "dataShape": "{ points:[{label,value}], notes:[{at,title,text}], prefix?, suffix?, unit? }",
+      "events": [
+        "note"
+      ],
+      "demo": "/templates/annotline/",
+      "sample": "This library, release by release (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "liveticker",
+      "name": "Liveticker",
+      "global": "Liveticker",
+      "file": "stories.js",
+      "status": "ready",
+      "shape": "counter",
+      "family": "stories",
+      "bestFor": "Making a rate feel real: births, rainfall, money spent, distance travelled, data used.",
+      "mechanics": [
+        "Counts from page open",
+        "Pause and start again",
+        "Rate shown on every counter",
+        "Sources listed"
+      ],
+      "dataShape": "{ items:[{id,label,perSecond,unit,decimals?,source?}] }",
+      "events": [
+        "reset"
+      ],
+      "demo": "/templates/liveticker/",
+      "sample": "Heartbeats to the speed of light (real rates)",
+      "usedBy": []
+    },
+    {
+      "id": "flowchart",
+      "name": "Flowchart",
+      "global": "Flowchart",
+      "file": "stories.js",
+      "status": "ready",
+      "shape": "process",
+      "family": "stories",
+      "bestFor": "How to apply, how a complaint is handled, how a change is approved, safety procedures.",
+      "mechanics": [
+        "Steps and decision diamonds",
+        "Ways in and out of any box",
+        "Walk the main path",
+        "Loops drawn back up the side"
+      ],
+      "dataShape": "{ nodes:[{id,label,type,row,col,note?}], edges:[{from,to,label?,main?}] }",
+      "events": [
+        "select",
+        "step"
+      ],
+      "demo": "/templates/flowchart/",
+      "sample": "How a change reaches this library (real process)",
       "usedBy": []
     },
     {
