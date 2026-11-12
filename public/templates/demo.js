@@ -1,5 +1,8 @@
 /* Shared helpers for template demo pages: the "Use it in an app" panel and tap/hover help. */
 (function () {
+  // phones: the nav is one sideways-scrolling row; bring the current page's link into view
+  var nav = document.querySelector('.site-nav'), cur = nav && nav.querySelector('[aria-current="page"]');
+  if (nav && cur && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = Math.max(0, cur.offsetLeft - (nav.clientWidth - cur.offsetWidth) / 2);
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   window.DIDemo = {
     usePanel: function (el, id) {

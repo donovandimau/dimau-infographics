@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 17, null, { timeout: 8000 });
-      return '17 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 18, null, { timeout: 8000 });
+      return '18 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 13) throw new Error('expected root and 12 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 14) throw new Error('expected root and 13 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -396,11 +396,58 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 61 templates in v1\.10\. Biggest layer now: Charts/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 67 templates in v1\.11\. Biggest layer now: Charts/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.10 \(10% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.11 \(9% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
+  } },
+  { url: '/templates/weighscore/', name: 'weighscore', check: async p => {
+      if (!/Plan D comes first, 4 points ahead of Plan B\. Most of its score comes from village coverage/.test(await p.textContent('.dg-note'))) throw new Error('ranking wrong: ' + await p.textContent('.dg-note'));
+      await p.focus('input[data-c="coverage"]'); for (let i = 0; i < 5; i++) await p.keyboard.press('ArrowLeft');
+      if (!/Plan C comes first, 8 points ahead of Plan A/.test(await p.textContent('.dg-note'))) throw new Error('re-rank wrong: ' + await p.textContent('.dg-note'));
+      if (await p.evaluate(() => window.timeline.getState().weights.coverage) !== 0) throw new Error('state wrong');
+      return 'ranking, re-rank by slider, state';
+  } },
+  { url: '/templates/routeline/', name: 'routeline', check: async p => {
+      await p.evaluate(() => { window.timeline.o.now = '06:52'; window.timeline.render(); });
+      if (!/Now between School and Health centre\. Next stop: Health centre at 07:00, in 8 minutes/.test(await p.textContent('.dg-note'))) throw new Error('position wrong: ' + await p.textContent('.dg-note'));
+      await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
+      if (!/Market at 07:20: in 28 minutes/.test(await p.textContent('.dg-note'))) throw new Error('stop wrong');
+      return 'where it is now, minutes to a stop';
+  } },
+  { url: '/templates/levelup/', name: 'levelup', check: async p => {
+      if (!/420 points, level Builder\. 180 more to reach Navigator/.test(await p.textContent('.dg-note'))) throw new Error('summary wrong: ' + await p.textContent('.dg-note'));
+      await p.click('[data-k="4"]');
+      if (!/Mentor: 1,000 points, 580 to go\. Unlocks: Help other learners/.test(await p.textContent('.dg-note'))) throw new Error('level detail wrong');
+      const ev = await p.evaluate(() => { let got = null; window.timeline.on('levelup', e => { got = e.label; }); window.timeline.setValue(650); return got; });
+      if (ev !== 'Navigator') throw new Error('levelup event missing: ' + ev);
+      return 'where you are, what a level unlocks, levelup event';
+  } },
+  { url: '/templates/orgchart/', name: 'orgchart', check: async p => {
+      if (!/14 in all/.test(await p.textContent('.dg-note'))) throw new Error('count wrong');
+      await p.click('[data-k="o4"]');
+      if (!/Learning \(Head teacher\), part of School committee\. 3 directly below, 3 in all\./.test(await p.textContent('.dg-note'))) throw new Error('detail wrong: ' + await p.textContent('.dg-note'));
+      if (!(await p.locator('[data-k="o6"]').count())) throw new Error('team did not open');
+      await p.click('[data-all]');
+      if (await p.locator('[data-k]').count() !== 14) throw new Error('open all failed');
+      return 'open a team, detail, open all';
+  } },
+  { url: '/templates/numberline/', name: 'numberline', check: async p => {
+      if (!/From A cup of tea \(\$2\) to A new school building \(\$2,000,000\): 1,000,000 times bigger/.test(await p.textContent('.dg-note'))) throw new Error('summary wrong: ' + await p.textContent('.dg-note'));
+      await p.focus('svg [data-k="5"]'); await p.keyboard.press('Enter');
+      if (!/A second-hand car: \$15,000\. That is 37\.5 times a month’s rent for a room\. It would take 7,500 × a cup of tea/.test(await p.textContent('.dg-note'))) throw new Error('compare wrong: ' + await p.textContent('.dg-note'));
+      await p.click('[data-s="linear"]');
+      return 'span in words, compare with the one below, true to scale';
+  } },
+  { url: '/templates/glossary/', name: 'glossary', check: async p => {
+      if (!/20 terms/.test(await p.textContent('.dg-note'))) throw new Error('count wrong');
+      await p.fill('.gl-tools input', 'causes');
+      if (!/1 of 20 terms match/.test(await p.textContent('.dg-note')) || (await p.locator('.gl-term').count()) !== 1) throw new Error('search wrong');
+      await p.fill('.gl-tools input', '');
+      await p.click('[data-id="median"] [data-see="average"]');
+      if (!(await p.getAttribute('[data-id="average"]', 'class')).includes('hl')) throw new Error('see-also did not highlight');
+      return 'search, see-also jump';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
