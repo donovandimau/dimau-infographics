@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.19.0",
+  "version": "1.22.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2632,6 +2632,442 @@
       ],
       "demo": "/templates/abtest/",
       "sample": "Two sign-up pages (example)",
+      "usedBy": []
+    },
+    {
+      "id": "donut",
+      "name": "Donut",
+      "global": "Donut",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "donut",
+      "family": "basics",
+      "bestFor": "Budgets, survey answers, sources of income, anything that adds up to a whole.",
+      "mechanics": [
+        "Shares on the ring",
+        "Hide parts",
+        "Total or share in the middle",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, items:[{id,label,value}], centre? }",
+      "events": [
+        "select",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/donut/",
+      "sample": "FijiLearn courses by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "barchart",
+      "name": "Barchart",
+      "global": "Barchart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "bar-chart",
+      "family": "basics",
+      "bestFor": "Comparing amounts across groups, places, products or years.",
+      "mechanics": [
+        "Side by side or stacked",
+        "Largest first",
+        "Sideways when labels are long",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, categories:[...], series:[{id,label,values:[]}] }",
+      "events": [
+        "select",
+        "mode",
+        "sort",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/barchart/",
+      "sample": "FijiLearn subjects (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "linechart",
+      "name": "Linechart",
+      "global": "Linechart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "line-chart",
+      "family": "basics",
+      "bestFor": "Prices, temperatures, visitors, balances: anything measured again and again.",
+      "mechanics": [
+        "Names at the line ends",
+        "Read every line at one point",
+        "Gaps allowed",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, decimals?, x:[...], series:[{id,label,values:[]}], zero? }",
+      "events": [
+        "move",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/linechart/",
+      "sample": "Daylight in three cities (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "areachart",
+      "name": "Areachart",
+      "global": "Areachart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "area-chart",
+      "family": "basics",
+      "bestFor": "Spending by category, energy by source, students by level, sales by product over time.",
+      "mechanics": [
+        "Totals or shares of 100%",
+        "Read any point",
+        "Hide parts",
+        "Show as table"
+      ],
+      "dataShape": "{ unit?, prefix?, x:[...], series:[{id,label,values:[]}] }",
+      "events": [
+        "move",
+        "mode",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/areachart/",
+      "sample": "A household’s spending (example)",
+      "usedBy": []
+    },
+    {
+      "id": "combochart",
+      "name": "Combochart",
+      "global": "Combochart",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "combo-chart",
+      "family": "basics",
+      "bestFor": "Rainfall and temperature, sales and margin, visitors and spending per visitor.",
+      "mechanics": [
+        "Two scales, coloured to match",
+        "Read any period",
+        "Whether they move together",
+        "Show as table"
+      ],
+      "dataShape": "{ x:[...], bars:{label,values,unit?,prefix?}, line:{label,values,unit?,prefix?,decimals?} }",
+      "events": [
+        "move",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/combochart/",
+      "sample": "Rain and temperature (example)",
+      "usedBy": []
+    },
+    {
+      "id": "waffle",
+      "name": "Waffle",
+      "global": "Waffle",
+      "file": "basics.js",
+      "status": "ready",
+      "shape": "waffle",
+      "family": "basics",
+      "bestFor": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates.",
+      "mechanics": [
+        "Rounded fairly to 100",
+        "“1 in N” in words",
+        "Hide parts",
+        "Show as table"
+      ],
+      "dataShape": "{ items:[{id,label,value}], unit?, label? }",
+      "events": [
+        "select",
+        "toggle",
+        "view"
+      ],
+      "demo": "/templates/waffle/",
+      "sample": "This library’s sample data (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "matchup",
+      "name": "Matchup",
+      "global": "Matchup",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "matching",
+      "family": "practice",
+      "bestFor": "Words and meanings, places and capitals, terms and pictures, questions and answers.",
+      "mechanics": [
+        "Tap one on each side",
+        "Right matches lock in",
+        "Misses counted",
+        "Same starting order every time"
+      ],
+      "dataShape": "{ left?:{label}, right?:{label}, pairs:[{id,a,b}] }",
+      "events": [
+        "match",
+        "finish"
+      ],
+      "demo": "/templates/matchup/",
+      "sample": "Pacific capitals (real reference)",
+      "usedBy": []
+    },
+    {
+      "id": "sequence",
+      "name": "Sequence",
+      "global": "Sequence",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "ordering",
+      "family": "practice",
+      "bestFor": "History, steps of a process, life cycles, sizes from small to large.",
+      "mechanics": [
+        "Up and down buttons, keyboard friendly",
+        "Check as often as you like",
+        "Dates shown after checking",
+        "Show the answer"
+      ],
+      "dataShape": "{ prompt?, items:[{id,label,order,when?,note?}] }",
+      "events": [
+        "move",
+        "check"
+      ],
+      "demo": "/templates/sequence/",
+      "sample": "Events in Fiji’s history (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "fillgap",
+      "name": "Fillgap",
+      "global": "Fillgap",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "cloze",
+      "family": "practice",
+      "bestFor": "Reading and grammar, key terms, safety rules, money and health lessons.",
+      "mechanics": [
+        "Any number of gaps per sentence",
+        "Choices shuffled",
+        "Hints after checking",
+        "Plain dropdowns for screen readers"
+      ],
+      "dataShape": "{ sentences:[{id,text:'… [right|wrong|wrong] …',why?}] }",
+      "events": [
+        "answer",
+        "check"
+      ],
+      "demo": "/templates/fillgap/",
+      "sample": "A money lesson (example)",
+      "usedBy": []
+    },
+    {
+      "id": "estimator",
+      "name": "Estimator",
+      "global": "Estimator",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "estimation",
+      "family": "practice",
+      "bestFor": "Numbers people get wrong: distances, populations, prices, how long things take.",
+      "mechanics": [
+        "Slider guess",
+        "Guess and answer shown together",
+        "Points for closeness",
+        "Sources for every answer"
+      ],
+      "dataShape": "{ questions:[{id,q,min,max,step?,answer,unit?,prefix?,decimals?,source?}] }",
+      "events": [
+        "guess",
+        "finish"
+      ],
+      "demo": "/templates/estimator/",
+      "sample": "Five Fiji questions (real figures)",
+      "usedBy": []
+    },
+    {
+      "id": "masterygrid",
+      "name": "Masterygrid",
+      "global": "Masterygrid",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "mastery-grid",
+      "family": "practice",
+      "bestFor": "Teachers, trainers and coaches planning small groups and catch-up sessions.",
+      "mechanics": [
+        "Four levels, colour and number",
+        "Who else needs the same help",
+        "Most help needed first",
+        "Arrow keys across the grid"
+      ],
+      "dataShape": "{ levels:[4 labels], skills:[{id,label}], learners:[{id,label,scores:[...]}] }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/masterygrid/",
+      "sample": "A class of eight (example)",
+      "usedBy": []
+    },
+    {
+      "id": "leitner",
+      "name": "Leitner",
+      "global": "Leitner",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "spaced-repetition",
+      "family": "practice",
+      "bestFor": "Vocabulary, facts, formulas, road signs: anything learned by repetition.",
+      "mechanics": [
+        "Tap to flip",
+        "Knew it or didn’t",
+        "Boxes show progress",
+        "Hard cards come round sooner"
+      ],
+      "dataShape": "{ cards:[{id,front,back,hint?}], boxes? }",
+      "events": [
+        "answer",
+        "finish"
+      ],
+      "demo": "/templates/leitner/",
+      "sample": "Pacific capitals (real reference)",
+      "usedBy": []
+    },
+    {
+      "id": "paysplit",
+      "name": "Paysplit",
+      "global": "Paysplit",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "pay-split",
+      "family": "money",
+      "bestFor": "Payslip explainers, budgeting lessons, job offers, household planning.",
+      "mechanics": [
+        "Per week, fortnight, month or year",
+        "Amounts or percentages of pay",
+        "Warns when more goes out than in",
+        "Tap a part"
+      ],
+      "dataShape": "{ prefix?, gross, per, items:[{id,label,kind:'deduction'|'bill'|'saving',amount?|percent?}] }",
+      "events": [
+        "per"
+      ],
+      "demo": "/templates/paysplit/",
+      "sample": "A monthly pay (example)",
+      "usedBy": []
+    },
+    {
+      "id": "budgetplan",
+      "name": "Budgetplan",
+      "global": "Budgetplan",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "budget-plan",
+      "family": "money",
+      "bestFor": "Budgeting lessons, family money talks, financial literacy apps.",
+      "mechanics": [
+        "Editable amounts and income",
+        "Shares against the plan",
+        "Over or short in plain words",
+        "Any plan split"
+      ],
+      "dataShape": "{ prefix?, income, plan:{needs,wants,savings}, items:[{id,label,kind,amount}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/budgetplan/",
+      "sample": "A household budget (example)",
+      "usedBy": []
+    },
+    {
+      "id": "debtplan",
+      "name": "Debtplan",
+      "global": "Debtplan",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "debt-payoff",
+      "family": "money",
+      "bestFor": "Debt advice services, credit unions, budgeting lessons.",
+      "mechanics": [
+        "Both methods worked out month by month",
+        "Extra payment slider",
+        "Order and first win shown",
+        "Warns when debts never clear"
+      ],
+      "dataShape": "{ prefix?, debts:[{id,label,balance,rate,min}], extra, maxExtra? }",
+      "events": [
+        "extra"
+      ],
+      "demo": "/templates/debtplan/",
+      "sample": "Three debts (example)",
+      "usedBy": []
+    },
+    {
+      "id": "sendmoney",
+      "name": "Sendmoney",
+      "global": "Sendmoney",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "remittance",
+      "family": "money",
+      "bestFor": "Remittance comparisons, diaspora and family apps, money lessons.",
+      "mechanics": [
+        "Amount arriving, best first",
+        "Fee and rate losses split out",
+        "Any amount: fixed fees hurt small sends",
+        "Tap a provider"
+      ],
+      "dataShape": "{ send, from, to, mid, providers:[{id,label,fee,rate,speed?}] }",
+      "events": [
+        "amount"
+      ],
+      "demo": "/templates/sendmoney/",
+      "sample": "Sending NZD to Fiji (example)",
+      "usedBy": []
+    },
+    {
+      "id": "cashcalendar",
+      "name": "Cashcalendar",
+      "global": "Cashcalendar",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "cash-flow",
+      "family": "money",
+      "bestFor": "Planning around paydays, avoiding overdrafts, school fee and festive months.",
+      "mechanics": [
+        "Day-by-day balance",
+        "Lowest point marked",
+        "Below-zero warning",
+        "Bills on and off"
+      ],
+      "dataShape": "{ prefix?, month:'YYYY-MM', start, events:[{id,label,day,amount}] }",
+      "events": [
+        "day",
+        "change"
+      ],
+      "demo": "/templates/cashcalendar/",
+      "sample": "A December budget (example)",
+      "usedBy": []
+    },
+    {
+      "id": "pricerise",
+      "name": "Pricerise",
+      "global": "Pricerise",
+      "file": "money.js",
+      "status": "ready",
+      "shape": "inflation",
+      "family": "money",
+      "bestFor": "Savings and pension talks, school economics, pay negotiations.",
+      "mechanics": [
+        "Rate and years sliders",
+        "What it buys and what is needed",
+        "When prices double",
+        "Both lines together"
+      ],
+      "dataShape": "{ prefix?, amount, rate, years }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/pricerise/",
+      "sample": "$100 over ten years (example)",
       "usedBy": []
     },
     {

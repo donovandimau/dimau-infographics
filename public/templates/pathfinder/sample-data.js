@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.19, 115 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.22, 133 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -86,6 +86,11 @@ window.PATHFINDER_DATA = {
      "label": "An everyday tool",
      "hint": "time zones, sharing costs, best value",
      "to": "tools"
+    },
+    {
+     "label": "Just a plain, clear chart",
+     "hint": "ring, bars, lines, areas",
+     "to": "basics"
     },
     {
      "label": "A few headline numbers",
@@ -611,6 +616,34 @@ window.PATHFINDER_DATA = {
     {
      "label": "Sort things into groups",
      "to": "r_sorter"
+    },
+    {
+     "label": "Matching pairs",
+     "to": "r_matchup",
+     "hint": "e.g. words and meanings"
+    },
+    {
+     "label": "Putting things in order",
+     "to": "r_sequence",
+     "hint": "e.g. history, steps"
+    },
+    {
+     "label": "Filling gaps in sentences",
+     "to": "r_fillgap"
+    },
+    {
+     "label": "Guessing numbers",
+     "to": "r_estimator"
+    },
+    {
+     "label": "Seeing who needs help with what",
+     "to": "r_masterygrid",
+     "hint": "for teachers"
+    },
+    {
+     "label": "Learning by repetition",
+     "to": "r_leitner",
+     "hint": "flash cards in boxes"
     }
    ]
   },
@@ -664,6 +697,33 @@ window.PATHFINDER_DATA = {
     {
      "label": "Counting down to a date",
      "to": "r_countdown"
+    },
+    {
+     "label": "Where pay goes",
+     "to": "r_paysplit"
+    },
+    {
+     "label": "Spending against a plan",
+     "to": "r_budgetplan",
+     "hint": "needs, wants, savings"
+    },
+    {
+     "label": "Paying off several debts",
+     "to": "r_debtplan"
+    },
+    {
+     "label": "Sending money home",
+     "to": "r_sendmoney",
+     "hint": "fees and rates"
+    },
+    {
+     "label": "Getting through the month",
+     "to": "r_cashcalendar",
+     "hint": "paydays and bills"
+    },
+    {
+     "label": "What rising prices do",
+     "to": "r_pricerise"
     }
    ]
   },
@@ -1328,6 +1388,143 @@ window.PATHFINDER_DATA = {
    "text": "Which of two versions works better.",
    "link": "/templates/abtest/",
    "linkLabel": "Open Abtest"
+  },
+  "basics": {
+   "q": "Which plain chart?",
+   "options": [
+    {
+     "label": "Parts of a whole, as a ring",
+     "to": "r_donut"
+    },
+    {
+     "label": "Parts of a whole, as 100 squares",
+     "to": "r_waffle"
+    },
+    {
+     "label": "Amounts across groups",
+     "to": "r_barchart"
+    },
+    {
+     "label": "Change over time",
+     "to": "r_linechart"
+    },
+    {
+     "label": "Parts of a total over time",
+     "to": "r_areachart"
+    },
+    {
+     "label": "Two measures of the same periods",
+     "to": "r_combochart"
+    }
+   ]
+  },
+  "r_donut": {
+   "result": "Donut",
+   "text": "Parts of a whole as a ring.",
+   "link": "/templates/donut/",
+   "linkLabel": "Open Donut"
+  },
+  "r_barchart": {
+   "result": "Barchart",
+   "text": "Bars, side by side or stacked.",
+   "link": "/templates/barchart/",
+   "linkLabel": "Open Barchart"
+  },
+  "r_linechart": {
+   "result": "Linechart",
+   "text": "Lines over time; read every line at one point.",
+   "link": "/templates/linechart/",
+   "linkLabel": "Open Linechart"
+  },
+  "r_areachart": {
+   "result": "Areachart",
+   "text": "Piled-up amounts, as totals or shares.",
+   "link": "/templates/areachart/",
+   "linkLabel": "Open Areachart"
+  },
+  "r_combochart": {
+   "result": "Combochart",
+   "text": "Bars and a line on two scales.",
+   "link": "/templates/combochart/",
+   "linkLabel": "Open Combochart"
+  },
+  "r_waffle": {
+   "result": "Waffle",
+   "text": "100 squares, one per percent.",
+   "link": "/templates/waffle/",
+   "linkLabel": "Open Waffle"
+  },
+  "r_matchup": {
+   "result": "Matchup",
+   "text": "Match each item with its partner.",
+   "link": "/templates/matchup/",
+   "linkLabel": "Open Matchup"
+  },
+  "r_sequence": {
+   "result": "Sequence",
+   "text": "Put things in the right order.",
+   "link": "/templates/sequence/",
+   "linkLabel": "Open Sequence"
+  },
+  "r_fillgap": {
+   "result": "Fillgap",
+   "text": "Choose the word for each gap.",
+   "link": "/templates/fillgap/",
+   "linkLabel": "Open Fillgap"
+  },
+  "r_estimator": {
+   "result": "Estimator",
+   "text": "Guess a number; see how close you were.",
+   "link": "/templates/estimator/",
+   "linkLabel": "Open Estimator"
+  },
+  "r_masterygrid": {
+   "result": "Masterygrid",
+   "text": "Learners by skills; who needs help.",
+   "link": "/templates/masterygrid/",
+   "linkLabel": "Open Masterygrid"
+  },
+  "r_leitner": {
+   "result": "Leitner",
+   "text": "Flash cards in boxes.",
+   "link": "/templates/leitner/",
+   "linkLabel": "Open Leitner"
+  },
+  "r_paysplit": {
+   "result": "Paysplit",
+   "text": "Where a pay packet goes.",
+   "link": "/templates/paysplit/",
+   "linkLabel": "Open Paysplit"
+  },
+  "r_budgetplan": {
+   "result": "Budgetplan",
+   "text": "Needs, wants and savings against a plan.",
+   "link": "/templates/budgetplan/",
+   "linkLabel": "Open Budgetplan"
+  },
+  "r_debtplan": {
+   "result": "Debtplan",
+   "text": "Two ways to clear debts, compared.",
+   "link": "/templates/debtplan/",
+   "linkLabel": "Open Debtplan"
+  },
+  "r_sendmoney": {
+   "result": "Sendmoney",
+   "text": "How much arrives with each provider.",
+   "link": "/templates/sendmoney/",
+   "linkLabel": "Open Sendmoney"
+  },
+  "r_cashcalendar": {
+   "result": "Cashcalendar",
+   "text": "The balance through a month.",
+   "link": "/templates/cashcalendar/",
+   "linkLabel": "Open Cashcalendar"
+  },
+  "r_pricerise": {
+   "result": "Pricerise",
+   "text": "What rising prices do to money.",
+   "link": "/templates/pricerise/",
+   "linkLabel": "Open Pricerise"
   }
  }
 };

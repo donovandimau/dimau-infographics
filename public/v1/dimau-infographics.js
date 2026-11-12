@@ -120,13 +120,31 @@
     cumflow: { file: 'metrics.js', global: 'Cumflow' },
     kpitiles: { file: 'metrics.js', global: 'Kpitiles' },
     abtest: { file: 'metrics.js', global: 'Abtest' },
+    donut: { file: 'basics.js', global: 'Donut' },
+    barchart: { file: 'basics.js', global: 'Barchart' },
+    linechart: { file: 'basics.js', global: 'Linechart' },
+    areachart: { file: 'basics.js', global: 'Areachart' },
+    combochart: { file: 'basics.js', global: 'Combochart' },
+    waffle: { file: 'basics.js', global: 'Waffle' },
+    matchup: { file: 'practice.js', global: 'Matchup' },
+    sequence: { file: 'practice.js', global: 'Sequence' },
+    fillgap: { file: 'practice.js', global: 'Fillgap' },
+    estimator: { file: 'practice.js', global: 'Estimator' },
+    masterygrid: { file: 'practice.js', global: 'Masterygrid' },
+    leitner: { file: 'practice.js', global: 'Leitner' },
+    paysplit: { file: 'money.js', global: 'Paysplit' },
+    budgetplan: { file: 'money.js', global: 'Budgetplan' },
+    debtplan: { file: 'money.js', global: 'Debtplan' },
+    sendmoney: { file: 'money.js', global: 'Sendmoney' },
+    cashcalendar: { file: 'money.js', global: 'Cashcalendar' },
+    pricerise: { file: 'money.js', global: 'Pricerise' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.19.0';
+  var VERSION = '1.22.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};

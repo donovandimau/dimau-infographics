@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.19.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.22.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -651,6 +651,111 @@ window.SUNBURST_DATA = {
       "label": "Abtest",
       "value": 1,
       "note": "Testing two messages, posters, prices, page designs or reminder texts."
+     }
+    ]
+   },
+   {
+    "label": "Basics",
+    "children": [
+     {
+      "label": "Donut",
+      "value": 1,
+      "note": "Budgets, survey answers, sources of income, anything that adds up to a whole."
+     },
+     {
+      "label": "Barchart",
+      "value": 1,
+      "note": "Comparing amounts across groups, places, products or years."
+     },
+     {
+      "label": "Linechart",
+      "value": 1,
+      "note": "Prices, temperatures, visitors, balances: anything measured again and again."
+     },
+     {
+      "label": "Areachart",
+      "value": 1,
+      "note": "Spending by category, energy by source, students by level, sales by product over time."
+     },
+     {
+      "label": "Combochart",
+      "value": 1,
+      "note": "Rainfall and temperature, sales and margin, visitors and spending per visitor."
+     },
+     {
+      "label": "Waffle",
+      "value": 1,
+      "note": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates."
+     }
+    ]
+   },
+   {
+    "label": "Practice",
+    "children": [
+     {
+      "label": "Matchup",
+      "value": 1,
+      "note": "Words and meanings, places and capitals, terms and pictures, questions and answers."
+     },
+     {
+      "label": "Sequence",
+      "value": 1,
+      "note": "History, steps of a process, life cycles, sizes from small to large."
+     },
+     {
+      "label": "Fillgap",
+      "value": 1,
+      "note": "Reading and grammar, key terms, safety rules, money and health lessons."
+     },
+     {
+      "label": "Estimator",
+      "value": 1,
+      "note": "Numbers people get wrong: distances, populations, prices, how long things take."
+     },
+     {
+      "label": "Masterygrid",
+      "value": 1,
+      "note": "Teachers, trainers and coaches planning small groups and catch-up sessions."
+     },
+     {
+      "label": "Leitner",
+      "value": 1,
+      "note": "Vocabulary, facts, formulas, road signs: anything learned by repetition."
+     }
+    ]
+   },
+   {
+    "label": "Money",
+    "children": [
+     {
+      "label": "Paysplit",
+      "value": 1,
+      "note": "Payslip explainers, budgeting lessons, job offers, household planning."
+     },
+     {
+      "label": "Budgetplan",
+      "value": 1,
+      "note": "Budgeting lessons, family money talks, financial literacy apps."
+     },
+     {
+      "label": "Debtplan",
+      "value": 1,
+      "note": "Debt advice services, credit unions, budgeting lessons."
+     },
+     {
+      "label": "Sendmoney",
+      "value": 1,
+      "note": "Remittance comparisons, diaspora and family apps, money lessons."
+     },
+     {
+      "label": "Cashcalendar",
+      "value": 1,
+      "note": "Planning around paydays, avoiding overdrafts, school fee and festive months."
+     },
+     {
+      "label": "Pricerise",
+      "value": 1,
+      "note": "Savings and pension talks, school economics, pay negotiations."
      }
     ]
    },

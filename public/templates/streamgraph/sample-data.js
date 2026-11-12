@@ -21,13 +21,19 @@ window.STREAMGRAPH_DATA = {
   "v1.16",
   "v1.17",
   "v1.18",
-  "v1.19"
+  "v1.19",
+  "v1.20",
+  "v1.21",
+  "v1.22"
  ],
  "series": [
   {
    "id": "explore",
    "label": "Explore",
    "values": [
+    4,
+    4,
+    4,
     4,
     4,
     4,
@@ -73,6 +79,9 @@ window.STREAMGRAPH_DATA = {
     4,
     4,
     4,
+    4,
+    4,
+    4,
     4
    ]
   },
@@ -81,6 +90,9 @@ window.STREAMGRAPH_DATA = {
    "label": "Signal cards",
    "values": [
     0,
+    4,
+    4,
+    4,
     4,
     4,
     4,
@@ -125,6 +137,9 @@ window.STREAMGRAPH_DATA = {
     7,
     7,
     7,
+    7,
+    7,
+    7,
     7
    ]
   },
@@ -135,6 +150,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -177,6 +195,9 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -189,6 +210,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -229,6 +253,9 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -243,6 +270,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -281,6 +311,9 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -297,6 +330,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -333,6 +369,9 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -351,6 +390,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -385,6 +427,9 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -406,6 +451,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -437,6 +485,9 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -460,6 +511,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
+    6,
+    6,
     6,
     6,
     6,
@@ -489,6 +543,9 @@ window.STREAMGRAPH_DATA = {
     0,
     6,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -515,6 +572,9 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     6,
+    6,
+    6,
+    6,
     6
    ]
   },
@@ -522,6 +582,96 @@ window.STREAMGRAPH_DATA = {
    "id": "metrics",
    "label": "Metrics",
    "values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "basics",
+   "label": "Basics",
+   "values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "practice",
+   "label": "Practice",
+   "values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "money",
+   "label": "Money",
+   "values": [
+    0,
+    0,
+    0,
     0,
     0,
     0,

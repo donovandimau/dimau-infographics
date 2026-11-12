@@ -1,4 +1,4 @@
-/* Real data: the "best for" line of every template in this library (catalog.json, v1.19.0). */
+/* Real data: the "best for" line of every template in this library (catalog.json, v1.22.0). */
 window.WORDBARS_DATA = {
  "texts": [
   {
@@ -440,6 +440,78 @@ window.WORDBARS_DATA = {
   {
    "label": "Abtest",
    "text": "Testing two messages, posters, prices, page designs or reminder texts."
+  },
+  {
+   "label": "Donut",
+   "text": "Budgets, survey answers, sources of income, anything that adds up to a whole."
+  },
+  {
+   "label": "Barchart",
+   "text": "Comparing amounts across groups, places, products or years."
+  },
+  {
+   "label": "Linechart",
+   "text": "Prices, temperatures, visitors, balances: anything measured again and again."
+  },
+  {
+   "label": "Areachart",
+   "text": "Spending by category, energy by source, students by level, sales by product over time."
+  },
+  {
+   "label": "Combochart",
+   "text": "Rainfall and temperature, sales and margin, visitors and spending per visitor."
+  },
+  {
+   "label": "Waffle",
+   "text": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates."
+  },
+  {
+   "label": "Matchup",
+   "text": "Words and meanings, places and capitals, terms and pictures, questions and answers."
+  },
+  {
+   "label": "Sequence",
+   "text": "History, steps of a process, life cycles, sizes from small to large."
+  },
+  {
+   "label": "Fillgap",
+   "text": "Reading and grammar, key terms, safety rules, money and health lessons."
+  },
+  {
+   "label": "Estimator",
+   "text": "Numbers people get wrong: distances, populations, prices, how long things take."
+  },
+  {
+   "label": "Masterygrid",
+   "text": "Teachers, trainers and coaches planning small groups and catch-up sessions."
+  },
+  {
+   "label": "Leitner",
+   "text": "Vocabulary, facts, formulas, road signs: anything learned by repetition."
+  },
+  {
+   "label": "Paysplit",
+   "text": "Payslip explainers, budgeting lessons, job offers, household planning."
+  },
+  {
+   "label": "Budgetplan",
+   "text": "Budgeting lessons, family money talks, financial literacy apps."
+  },
+  {
+   "label": "Debtplan",
+   "text": "Debt advice services, credit unions, budgeting lessons."
+  },
+  {
+   "label": "Sendmoney",
+   "text": "Remittance comparisons, diaspora and family apps, money lessons."
+  },
+  {
+   "label": "Cashcalendar",
+   "text": "Planning around paydays, avoiding overdrafts, school fee and festive months."
+  },
+  {
+   "label": "Pricerise",
+   "text": "Savings and pension talks, school economics, pay negotiations."
   },
   {
    "label": "Settlement Flow",
