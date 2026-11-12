@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.7, 43 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.8, 49 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -46,6 +46,16 @@ window.PATHFINDER_DATA = {
      "label": "Something people should learn or practise",
      "hint": "lessons, training, guides",
      "to": "learn"
+    },
+    {
+     "label": "Planning money or time",
+     "hint": "loans, savings, deadlines",
+     "to": "plan"
+    },
+    {
+     "label": "Asking people what they think",
+     "hint": "polls, priorities, surveys",
+     "to": "ask"
     },
     {
      "label": "An explainer told as a story",
@@ -511,6 +521,78 @@ window.PATHFINDER_DATA = {
    "text": "Sort items into groups, then check the answers.",
    "link": "/templates/sorter/",
    "linkLabel": "Open Sorter"
+  },
+  "plan": {
+   "q": "What are you planning?",
+   "options": [
+    {
+     "label": "Paying back a loan",
+     "to": "r_loanpath"
+    },
+    {
+     "label": "Saving toward a goal",
+     "to": "r_savegrow"
+    },
+    {
+     "label": "Counting down to a date",
+     "to": "r_countdown"
+    }
+   ]
+  },
+  "ask": {
+   "q": "What do you want to ask?",
+   "options": [
+    {
+     "label": "Pick one option",
+     "hint": "a poll",
+     "to": "r_pollbar"
+    },
+    {
+     "label": "Put options in order",
+     "to": "r_rankit"
+    },
+    {
+     "label": "How much people agree",
+     "hint": "survey results",
+     "to": "r_opinion"
+    }
+   ]
+  },
+  "r_loanpath": {
+   "result": "Loanpath",
+   "text": "What a loan costs each month and in all, and what paying extra saves.",
+   "link": "/templates/loanpath/",
+   "linkLabel": "Open Loanpath"
+  },
+  "r_savegrow": {
+   "result": "Savegrow",
+   "text": "Savings growing year by year, and when a goal is reached.",
+   "link": "/templates/savegrow/",
+   "linkLabel": "Open Savegrow"
+  },
+  "r_countdown": {
+   "result": "Countdown",
+   "text": "Time left until a date, with milestones.",
+   "link": "/templates/countdown/",
+   "linkLabel": "Open Countdown"
+  },
+  "r_pollbar": {
+   "result": "Pollbar",
+   "text": "A poll people can vote in.",
+   "link": "/templates/pollbar/",
+   "linkLabel": "Open Pollbar"
+  },
+  "r_rankit": {
+   "result": "Rankit",
+   "text": "Put items in order and compare with the group.",
+   "link": "/templates/rankit/",
+   "linkLabel": "Open Rankit"
+  },
+  "r_opinion": {
+   "result": "Opinion",
+   "text": "Agree–disagree survey answers centred on neutral.",
+   "link": "/templates/opinion/",
+   "linkLabel": "Open Opinion"
   }
  }
 };
