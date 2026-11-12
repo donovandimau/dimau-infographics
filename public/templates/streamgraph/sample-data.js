@@ -18,13 +18,15 @@ window.STREAMGRAPH_DATA = {
   "v1.13",
   "v1.14",
   "v1.15",
-  "v1.16"
+  "v1.16",
+  "v1.17"
  ],
  "series": [
   {
    "id": "explore",
    "label": "Explore",
    "values": [
+    4,
     4,
     4,
     4,
@@ -64,6 +66,7 @@ window.STREAMGRAPH_DATA = {
     4,
     4,
     4,
+    4,
     4
    ]
   },
@@ -72,6 +75,7 @@ window.STREAMGRAPH_DATA = {
    "label": "Signal cards",
    "values": [
     0,
+    4,
     4,
     4,
     4,
@@ -110,6 +114,7 @@ window.STREAMGRAPH_DATA = {
     7,
     7,
     7,
+    7,
     7
    ]
   },
@@ -120,6 +125,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -156,6 +162,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -168,6 +175,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -202,6 +210,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -216,6 +225,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -248,6 +258,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -264,6 +275,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -294,6 +306,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -312,6 +325,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -340,6 +354,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -361,6 +376,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6
@@ -386,6 +402,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     6,
+    6,
     6
    ]
   },
@@ -393,6 +410,31 @@ window.STREAMGRAPH_DATA = {
    "id": "analyse",
    "label": "Analyse",
    "values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "words",
+   "label": "Words",
+   "values": [
+    0,
     0,
     0,
     0,

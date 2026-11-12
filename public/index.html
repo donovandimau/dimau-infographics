@@ -93,6 +93,7 @@
       <a href="/#stats">Stats</a>
       <a href="/#structure">Structure</a>
       <a href="/#analyse">Analyse</a>
+      <a href="/#words">Words</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -392,6 +393,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="words" aria-labelledby="words-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Words · making sense of text</p><h2 id="words-h">Words</h2>
+      <p class="lede">The words used most, a word cloud, what follows a word, what changed between two versions, how easy a text is to read, and every use of a word lined up.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-wordtree"></div>
+    <ul class="family-list">
+      <li><a href="/templates/wordbars/"><b>Wordbars</b><span>The words used most, with examples.</span></a></li>
+      <li><a href="/templates/tagcloud/"><b>Tagcloud</b><span>Words sized by how often they are used.</span></a></li>
+      <li><a href="/templates/wordtree/"><b>Wordtree</b><span>What follows a word, as branches.</span></a></li>
+      <li><a href="/templates/textdiff/"><b>Textdiff</b><span>What changed between two versions.</span></a></li>
+      <li><a href="/templates/readscore/"><b>Readscore</b><span>How easy a text is to read, as you type.</span></a></li>
+      <li><a href="/templates/keyline/"><b>Keyline</b><span>Every use of a word, lined up.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -439,6 +456,7 @@
 <script src="/templates/boxplot/sample-data.js"></script>
 <script src="/templates/sunburst/sample-data.js"></script>
 <script src="/templates/pareto/sample-data.js"></script>
+<script src="/templates/wordtree/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -461,6 +479,7 @@
   D.mount('#pv-boxplot', { template: 'boxplot', data: window.BOXPLOT_DATA });
   D.mount('#pv-sunburst', { template: 'sunburst', data: window.SUNBURST_DATA });
   D.mount('#pv-pareto', { template: 'pareto', data: window.PARETO_DATA });
+  D.mount('#pv-wordtree', { template: 'wordtree', data: window.WORDTREE_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.16, 97 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.17, 103 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -76,6 +76,11 @@ window.PATHFINDER_DATA = {
      "label": "A story with its pictures",
      "hint": "archives, histories, reports",
      "to": "r_archive-desk"
+    },
+    {
+     "label": "Text: comments, documents, wording",
+     "hint": "feedback, policies, notices",
+     "to": "words"
     },
     {
      "label": "A few headline numbers",
@@ -1122,6 +1127,72 @@ window.PATHFINDER_DATA = {
    "text": "Bars around a circle.",
    "link": "/templates/radialbars/",
    "linkLabel": "Open Radialbars"
+  },
+  "words": {
+   "q": "What do you want to know about the text?",
+   "options": [
+    {
+     "label": "Which words come up most",
+     "to": "r_wordbars"
+    },
+    {
+     "label": "A quick picture of the words",
+     "to": "r_tagcloud"
+    },
+    {
+     "label": "What people say after a word",
+     "hint": "e.g. “I would like…”",
+     "to": "r_wordtree"
+    },
+    {
+     "label": "What changed between two versions",
+     "to": "r_textdiff"
+    },
+    {
+     "label": "How easy it is to read",
+     "to": "r_readscore"
+    },
+    {
+     "label": "How one word is used",
+     "to": "r_keyline"
+    }
+   ]
+  },
+  "r_wordbars": {
+   "result": "Wordbars",
+   "text": "The words used most, with examples.",
+   "link": "/templates/wordbars/",
+   "linkLabel": "Open Wordbars"
+  },
+  "r_tagcloud": {
+   "result": "Tagcloud",
+   "text": "Words sized by how often they are used.",
+   "link": "/templates/tagcloud/",
+   "linkLabel": "Open Tagcloud"
+  },
+  "r_wordtree": {
+   "result": "Wordtree",
+   "text": "What follows a word, as branches.",
+   "link": "/templates/wordtree/",
+   "linkLabel": "Open Wordtree"
+  },
+  "r_textdiff": {
+   "result": "Textdiff",
+   "text": "What changed between two versions.",
+   "link": "/templates/textdiff/",
+   "linkLabel": "Open Textdiff"
+  },
+  "r_readscore": {
+   "result": "Readscore",
+   "text": "How easy a text is to read, as you type.",
+   "link": "/templates/readscore/",
+   "linkLabel": "Open Readscore"
+  },
+  "r_keyline": {
+   "result": "Keyline",
+   "text": "Every use of a word, lined up.",
+   "link": "/templates/keyline/",
+   "linkLabel": "Open Keyline"
   }
  }
 };

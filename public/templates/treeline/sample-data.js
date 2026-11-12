@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.16.0), every family and template. */
+/* Real data: this library (catalog.json, v1.17.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.16.0",
+  "label": "Dimau Infographics 1.17.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -545,6 +545,41 @@ window.TREELINE_DATA = {
       "label": "Radialbars",
       "sub": "Categories that come round in a cycle, many small categories, a compact headline graphic.",
       "link": "/templates/radialbars/"
+     }
+    ]
+   },
+   {
+    "label": "Words",
+    "children": [
+     {
+      "label": "Wordbars",
+      "sub": "Survey comments, feedback forms, speeches, reports, course or product descriptions.",
+      "link": "/templates/wordbars/"
+     },
+     {
+      "label": "Tagcloud",
+      "sub": "A quick picture of open answers, event feedback, topics in a course, tags on posts.",
+      "link": "/templates/tagcloud/"
+     },
+     {
+      "label": "Wordtree",
+      "sub": "Open answers (“I would like…”), interviews, speeches, policies, help requests.",
+      "link": "/templates/wordtree/"
+     },
+     {
+      "label": "Textdiff",
+      "sub": "Policy and terms updates, draft and final notices, before-and-after wording.",
+      "link": "/templates/textdiff/"
+     },
+     {
+      "label": "Readscore",
+      "sub": "Writing notices, letters, help pages and lessons that everyone can follow.",
+      "link": "/templates/readscore/"
+     },
+     {
+      "label": "Keyline",
+      "sub": "Checking how a term is used in reports, policies, interviews and course material.",
+      "link": "/templates/keyline/"
      }
     ]
    },

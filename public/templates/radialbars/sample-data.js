@@ -1,4 +1,4 @@
-/* Real data: templates in each family of this library (catalog.json, v1.16.0). */
+/* Real data: templates in each family of this library (catalog.json, v1.17.0). */
 window.RADIALBARS_DATA = {
  "unit": "templates",
  "items": [
@@ -84,6 +84,11 @@ window.RADIALBARS_DATA = {
   },
   {
    "id": "f16",
+   "label": "Words",
+   "value": 6
+  },
+  {
+   "id": "f17",
    "label": "Signal cards",
    "value": 4
   }

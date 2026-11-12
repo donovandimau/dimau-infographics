@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2212,6 +2212,146 @@
       ],
       "demo": "/templates/radialbars/",
       "sample": "This library’s families (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "wordbars",
+      "name": "Wordbars",
+      "global": "Wordbars",
+      "file": "words.js",
+      "status": "ready",
+      "shape": "word-frequency",
+      "family": "words",
+      "bestFor": "Survey comments, feedback forms, speeches, reports, course or product descriptions.",
+      "mechanics": [
+        "Counts in any language with letters",
+        "Hide common words",
+        "Search",
+        "Examples of a word in use"
+      ],
+      "dataShape": "{ texts:[{label,text}] | text, stop?:[words] }",
+      "events": [
+        "select",
+        "search"
+      ],
+      "demo": "/templates/wordbars/",
+      "sample": "What this library’s templates are for (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "tagcloud",
+      "name": "Tagcloud",
+      "global": "Tagcloud",
+      "file": "words.js",
+      "status": "ready",
+      "shape": "word-cloud",
+      "family": "words",
+      "bestFor": "A quick picture of open answers, event feedback, topics in a course, tags on posts.",
+      "mechanics": [
+        "Size by count",
+        "Packed on a spiral",
+        "Tap for count and rank",
+        "Counts words or takes your own weights"
+      ],
+      "dataShape": "{ words:[{text,weight}] } | { texts | text, stop? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/tagcloud/",
+      "sample": "FijiLearn chapter titles (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "wordtree",
+      "name": "Wordtree",
+      "global": "Wordtree",
+      "file": "words.js",
+      "status": "ready",
+      "shape": "word-tree",
+      "family": "words",
+      "bestFor": "Open answers (“I would like…”), interviews, speeches, policies, help requests.",
+      "mechanics": [
+        "Three words deep",
+        "Follow a phrase and go back",
+        "Type any start word",
+        "Example sentences"
+      ],
+      "dataShape": "{ texts:[{label,text}] | text, root }",
+      "events": [
+        "phrase"
+      ],
+      "demo": "/templates/wordtree/",
+      "sample": "FijiLearn course descriptions (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "textdiff",
+      "name": "Textdiff",
+      "global": "Textdiff",
+      "file": "words.js",
+      "status": "ready",
+      "shape": "text-diff",
+      "family": "words",
+      "bestFor": "Policy and terms updates, draft and final notices, before-and-after wording.",
+      "mechanics": [
+        "Word by word",
+        "Marked or side by side",
+        "Step through changes",
+        "Words added, removed and kept"
+      ],
+      "dataShape": "{ before:{label,text}, after:{label,text} }",
+      "events": [
+        "step"
+      ],
+      "demo": "/templates/textdiff/",
+      "sample": "Two drafts of a notice (example)",
+      "usedBy": []
+    },
+    {
+      "id": "readscore",
+      "name": "Readscore",
+      "global": "Readscore",
+      "file": "words.js",
+      "status": "ready",
+      "shape": "readability",
+      "family": "words",
+      "bestFor": "Writing notices, letters, help pages and lessons that everyone can follow.",
+      "mechanics": [
+        "Reading ease from 0 to 100",
+        "Words per sentence",
+        "Long words counted",
+        "Longest sentences listed"
+      ],
+      "dataShape": "{ text, label? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/readscore/",
+      "sample": "This library’s own text (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "keyline",
+      "name": "Keyline",
+      "global": "Keyline",
+      "file": "words.js",
+      "status": "ready",
+      "shape": "keyword-in-context",
+      "family": "words",
+      "bestFor": "Checking how a term is used in reports, policies, interviews and course material.",
+      "mechanics": [
+        "Lined up on the word",
+        "Sort by the word before or after",
+        "Common neighbours named",
+        "Full text on tap"
+      ],
+      "dataShape": "{ texts:[{label,text}] | text, word }",
+      "events": [
+        "select",
+        "search"
+      ],
+      "demo": "/templates/keyline/",
+      "sample": "What this library’s templates are for (real data)",
       "usedBy": []
     },
     {

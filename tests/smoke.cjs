@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 23, null, { timeout: 8000 });
-      return '23 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 24, null, { timeout: 8000 });
+      return '24 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 18) throw new Error('expected root and 17 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 19) throw new Error('expected root and 18 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -396,9 +396,9 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 97 templates in v1\.16\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 103 templates in v1\.17\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.16 \(6% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.17 \(6% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
   } },
@@ -478,9 +478,9 @@ const PAGES = [
       return 'right and wrong guesses explained, score, reveal';
   } },
   { url: '/templates/annotline/', name: 'annotline', check: async p => {
-      if (!/From 4 in v1\.0 to 97 in v1\.16/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      if (!/From 4 in v1\.0 to 103 in v1\.17/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
       await p.click('[data-d="1"]');
-      if (!/Note 1 of 10 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
+      if (!/Note 1 of 11 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
       await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
       if (!/Infographics Fiji v2 lands/.test(await p.textContent('.dy-note'))) throw new Error('tap note wrong');
       return 'whole story, step, tap a note';
@@ -603,12 +603,12 @@ const PAGES = [
       return 'two-way shares, block detail, highlight a part';
   } },
   { url: '/templates/sunburst/', name: 'sunburst', check: async p => {
-      if (!/Dimau Infographics: 97 templates in 17 parts\. Biggest: Stories \(7%\)/.test(await p.textContent('.dx-note'))) throw new Error('summary wrong: ' + await p.textContent('.dx-note'));
+      if (!/Dimau Infographics: 103 templates in 18 parts\. Biggest: Stories \(7%\)/.test(await p.textContent('.dx-note'))) throw new Error('summary wrong: ' + await p.textContent('.dx-note'));
       const k = await p.evaluate(() => [...document.querySelectorAll('svg [data-k]')].find(g => /^Charts:/.test(g.getAttribute('aria-label'))).dataset.k);
       await p.focus('svg [data-k="' + k + '"]'); await p.keyboard.press('Enter');
       if (!/Charts: 6 templates \(6% of everything\) in 6 parts, all the same size/.test(await p.textContent('.dx-note')) || !/DimauInfographics›Charts/.test((await p.textContent('.dx-crumbs')).replace(/\s/g, ''))) throw new Error('zoom wrong: ' + await p.textContent('.dx-note'));
       await p.keyboard.press('Escape');
-      if (!/^Dimau Infographics: 97/.test(await p.textContent('.dx-note'))) throw new Error('back up failed');
+      if (!/^Dimau Infographics: 103/.test(await p.textContent('.dx-note'))) throw new Error('back up failed');
       return 'summary, zoom into a family, Escape back up';
   } },
   { url: '/templates/circlepack/', name: 'circlepack', check: async p => {
@@ -703,12 +703,70 @@ const PAGES = [
       return 'better-half filters, ranks for one item';
   } },
   { url: '/templates/radialbars/', name: 'radialbars', check: async p => {
-      if (!/Largest: Stories \(7 templates\)\..*Total 97 templates/.test(await p.textContent('.du-note'))) throw new Error('summary wrong: ' + await p.textContent('.du-note'));
+      if (!/Largest: Stories \(7 templates\)\..*Total 103 templates/.test(await p.textContent('.du-note'))) throw new Error('summary wrong: ' + await p.textContent('.du-note'));
       await p.click('[data-sort="size"]');
       if (!/^Stories/.test(await p.getAttribute('svg g[data-k]:first-of-type', 'aria-label'))) throw new Error('sort failed');
       await p.focus('svg g[data-k]:first-of-type'); await p.keyboard.press('Enter');
-      if (!/Stories: 7 templates \(7% of the total\), number 1 of 17/.test(await p.textContent('.du-note'))) throw new Error('bar wrong: ' + await p.textContent('.du-note'));
+      if (!/Stories: 7 templates \(7% of the total\), number 1 of 18/.test(await p.textContent('.du-note'))) throw new Error('bar wrong: ' + await p.textContent('.du-note'));
       return 'largest and total, sort by size, share and rank';
+  } },
+  { url: '/templates/wordbars/', name: 'wordbars', check: async p => {
+      if (!/^[\d,]+ words in \d+ texts, [\d,]+ different \(leaving out common words/.test(await p.textContent('.dr-note'))) throw new Error('summary wrong: ' + await p.textContent('.dr-note'));
+      await p.click('[data-hide]');
+      if (!/^the$|^and$|^a$/.test(await p.evaluate(() => document.querySelector('svg [data-k]').dataset.k))) throw new Error('common words not shown');
+      await p.click('[data-hide]');
+      await p.fill('.dr-bar input', 'budget');
+      await p.focus('svg [data-k="budgets"]'); await p.keyboard.press('Enter');
+      if (!/budgets: used \d+ times, in \d+ of \d+ texts/.test(await p.textContent('.dr-note')) || (await p.locator('.dr-quotes li mark').count()) < 1) throw new Error('word detail wrong: ' + await p.textContent('.dr-note'));
+      return 'counts, common words on and off, search, examples in use';
+  } },
+  { url: '/templates/tagcloud/', name: 'tagcloud', check: async p => {
+      if (!/\d+ words; the bigger the word, the more it is used\. Biggest: money, build, fiji/.test(await p.textContent('.dr-note'))) throw new Error('summary wrong: ' + await p.textContent('.dr-note'));
+      await p.focus('svg [data-k="money"]'); await p.keyboard.press('Enter');
+      if (!/money: \d+ times?, number 1 of/.test(await p.textContent('.dr-note'))) throw new Error('word wrong: ' + await p.textContent('.dr-note'));
+      const ov = await p.evaluate(() => { const r = [...document.querySelectorAll('svg [data-k] text')].map(t => t.getBBox()); let n = 0; for (let i = 0; i < r.length; i++) for (let j = i + 1; j < r.length; j++) { const a = r[i], b = r[j]; if (a.x < b.x + b.width - 3 && b.x < a.x + a.width - 3 && a.y < b.y + b.height - 3 && b.y < a.y + a.height - 3) n++; } return n; });
+      if (ov) throw new Error(ov + ' words overlap');
+      return 'real chapter titles, count and rank, no overlaps';
+  } },
+  { url: '/templates/wordtree/', name: 'wordtree', check: async p => {
+      if (!/“a” appears 38 times; most often followed by “small” \(2\)/.test(await p.textContent('.dr-note'))) throw new Error('summary wrong: ' + await p.textContent('.dr-note'));
+      await p.focus('svg [data-k="small"]'); await p.keyboard.press('Enter');
+      if (!/“a small” appears 2 times/.test(await p.textContent('.dr-note')) || (await p.inputValue('.dr-bar input')) !== 'a small') throw new Error('follow failed: ' + await p.textContent('.dr-note'));
+      await p.click('[data-back]');
+      await p.fill('.dr-bar input', 'not'); await p.press('.dr-bar input', 'Enter');
+      if (!/“not” appears \d+ times/.test(await p.textContent('.dr-note'))) throw new Error('new start word failed');
+      return 'branches, follow a phrase, back, new start word';
+  } },
+  { url: '/templates/textdiff/', name: 'textdiff', check: async p => {
+      if (!/9 changes: 19 words added, 16 removed, 19 kept/.test(await p.textContent('.dr-note'))) throw new Error('summary wrong: ' + await p.textContent('.dr-note'));
+      await p.click('[data-step="1"]'); await p.click('[data-step="1"]');
+      if (!/Change 2 of 9: “16 November” was added/.test(await p.textContent('.dr-note')) || (await p.locator('.td-text .on').count()) !== 1) throw new Error('step wrong: ' + await p.textContent('.dr-note'));
+      await p.click('[data-step="1"]');
+      if (!/Change 3 of 9: “Patients who” became “If you”/.test(await p.textContent('.dr-note'))) throw new Error('replace wrong: ' + await p.textContent('.dr-note'));
+      await p.click('[data-view="side"]');
+      if ((await p.locator('.td-cols .td-text').count()) !== 2) throw new Error('side by side failed');
+      return 'summary, step through, phrase replaced, side by side';
+  } },
+  { url: '/templates/readscore/', name: 'readscore', check: async p => {
+      if (!/Reading ease \d+ out of 100/.test(await p.textContent('.dr-note'))) throw new Error('summary wrong: ' + await p.textContent('.dr-note'));
+      await p.fill('.rs-box', 'Notwithstanding the aforementioned considerations, the organisational infrastructure necessitates comprehensive reconsideration of administrative responsibilities, institutional accountability mechanisms and interdepartmental communication procedures before implementation.');
+      await p.waitForTimeout(300);
+      if (!/very hard|hard/.test(await p.textContent('.dr-note')) || (await p.locator('.rs-long li').count()) !== 1) throw new Error('hard text not caught: ' + await p.textContent('.dr-note'));
+      await p.fill('.rs-box', 'The shop is open. Come in. We have fish and bread.');
+      await p.waitForTimeout(300);
+      if (!/very easy|easy/.test(await p.textContent('.dr-note'))) throw new Error('easy text not caught: ' + await p.textContent('.dr-note'));
+      return 'score as you type, hard and easy text, long sentences listed';
+  } },
+  { url: '/templates/keyline/', name: 'keyline', check: async p => {
+      if (!/“time” is used \d+ times, in \d+ of \d+ texts\. Often after “waiting”/.test(await p.textContent('.dr-note'))) throw new Error('summary wrong: ' + await p.textContent('.dr-note'));
+      await p.click('[data-sort="before"]');
+      const firsts = await p.$$eval('.kl .l', ls => ls.map(l => l.textContent.trim().split(' ').pop().toLowerCase()));
+      if (firsts.join('|') !== firsts.slice().sort((a, b) => a.localeCompare(b)).join('|')) throw new Error('sort by word before failed: ' + firsts.join('|'));
+      await p.click('.kl button:first-child');
+      if ((await p.locator('.dr-quotes li mark').count()) !== 1) throw new Error('full line not shown');
+      await p.fill('.dr-bar input', 'zzzz');
+      if (!/No text uses “zzzz”/.test(await p.textContent('.dr-note'))) throw new Error('no-match wrong');
+      return 'uses counted, sort by word before, full line, no match';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
