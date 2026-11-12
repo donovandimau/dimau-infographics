@@ -1,0 +1,66 @@
+name: Sync Infographic Types Across Ecosystem
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/lib/starter-templates.ts'
+      - 'src/lib/sdk.ts'
+      - 'supabase/seed.sql'
+      - 'scripts/generate-sdk-types.ts'
+  workflow_dispatch:
+
+concurrency:
+  group: sync-sdk
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npx tsx scripts/generate-sdk-types.ts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk
+          path: dist-sdk/infographics-fiji.ts
+
+  sync:
+    needs: generate
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target_repo:
+          - donovandimau/SotaKece
+          - donovandimau/mydebtcalculator
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk
+          path: sdk
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.target_repo }}
+          token: ${{ secrets.ECOSYSTEM_PAT }}
+          path: target-repo
+      - name: Copy, commit and push to the app's default branch
+        working-directory: target-repo
+        run: |
+          mkdir -p src/lib
+          cp ../sdk/infographics-fiji.ts src/lib/infographics-fiji.ts
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain src/lib/infographics-fiji.ts) ]]; then
+            git add src/lib/infographics-fiji.ts
+            git commit -m "chore(infographics): sync Infographics Fiji SDK"
+            git pull --rebase
+            git push
+          else
+            echo "SDK unchanged"
+          fi

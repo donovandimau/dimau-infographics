@@ -1,4 +1,41 @@
-# Dimau Infographics
+# Infographics Fiji (dimau-infographics)
+
+Two things live in this repo:
+
+1. **Infographics Fiji** — a template registry, visual studio and render API. Apps ask for a template by its slug, send their own numbers, and get back an SVG or PNG.
+2. **The v1 interactive library** — the four explorable templates below, loaded with one script. Unchanged; still served from `/v1/`.
+
+## Render API (v1)
+
+| Call | What it does |
+|---|---|
+| `GET /api/v1/templates` | Public template catalogue with variable definitions |
+| `GET /api/v1/templates/<slug>` | Raw template (antv options, variables, theme tokens) for client-side rendering |
+| `GET /api/v1/render/<slug>?<var>=<value>&format=png&theme=dark&variant=card` | Public, cacheable image for `<img src>` and link previews (public templates only) |
+| `POST /api/v1/render/<slug>` + header `x-api-key` | `{ "data": {...}, "format": "svg"\|"png", "theme": "dark"\|"light", "variant"?: "main"\|"card" }` — keyed render, works for private templates |
+| `GET /api/v1/sdk` | Live typed client file covering every public template |
+
+Variables left out fall back to their defaults. A wrong type returns 422 naming the field.
+
+```ts
+import { getInfographicUrl } from '@/lib/infographics-fiji'; // synced into each app by .github/workflows/sync-sdk.yml
+const url = getInfographicUrl('debt-freedom-trajectory', { months_shaved: '24 Months Faster' }, { format: 'png' });
+```
+
+## Run it
+
+```bash
+npm install
+cp .env.example .env.local   # all optional: with no database it serves the four starter templates
+npm run dev                  # /vault, /studio/<slug>, /api/v1/...
+npm test                     # v1 library smoke test + server render tests
+```
+
+Database: run `supabase/migrations/001_infographics_fiji.sql`, then `supabase/seed.sql` (generated from `src/lib/starter-templates.ts`; regenerate with `npm run build:seed`).
+
+---
+
+# Dimau Infographics v1 library
 
 Live: https://dimau-infographics.vercel.app/
 

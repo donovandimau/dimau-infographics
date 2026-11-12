@@ -1,11 +1,39 @@
 {
   "name": "dimau-infographics",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Dimau Infographics: the central library of interactive infographic templates for every Dimau app.",
+  "description": "Infographics Fiji: the central infographic template registry, studio and render API for every Dimau app, plus the v1 interactive template library.",
   "scripts": {
-    "serve": "python3 -m http.server 8790",
-    "test": "node tests/smoke.cjs"
+    "dev": "next dev",
+    "build:seed": "tsx scripts/build-seed.ts",
+    "build:sdk": "tsx scripts/generate-sdk-types.ts",
+    "prebuild": "npm run build:seed && npm run build:sdk",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/smoke.cjs && tsx tests/render.test.ts"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@antv/infographic": "^0.2.20",
+    "@resvg/resvg-js": "^2.6.2",
+    "@supabase/supabase-js": "^2.119.0",
+    "linkedom": "^0.18.15",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "satori": "^0.63.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "5.9"
+  },
+  "engines": {
+    "node": "24.x"
+  }
 }
