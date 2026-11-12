@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "base": "/v1/",
   "templates": [
     {
@@ -119,9 +119,15 @@
         "Year rail",
         "Category filters",
         "Read more",
-        "Story mode"
+        "Story mode",
+        "Time-gap markers on the spine (+N years)",
+        "Spans drawn as era bars beside the spine",
+        "Spotlight on the card crossing the reading line",
+        "Milestone rings, big tabular dates, connector ticks",
+        "Event-density bars on the year rail",
+        "Optional picture and place on a card"
       ],
-      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?, media?:{src,caption?,alt?}, location?:{label}}] } (shared by every timeline view; Riverline data works too). Switchback options: gapYears (50, 0 = off), spotlight (true), spanBars (true)",
       "events": [
         "open",
         "filter",
@@ -325,6 +331,39 @@
       "sample": "Example values from the Infographics Fiji spec",
       "dataShape": "{ <variable>: string, … } — every variable optional; see the template page for the list and defaults",
       "demo": "/templates/debt-freedom-trajectory/"
+    },
+    {
+      "id": "archive-desk",
+      "name": "Archive Desk",
+      "global": "ArchiveDesk",
+      "file": "archive-desk.js",
+      "status": "ready",
+      "shape": "story",
+      "family": "stories",
+      "bestFor": "Histories, reports and case files where the text and its pictures should be read together.",
+      "mechanics": [
+        "3D open book with page turns (CSS 3D, no libraries)",
+        "Picture stack synced both ways with the book",
+        "Lightbox: spinning picture ring, magnifying loupe, self-playing visual story",
+        "Read mode: page or scroll view, text size, parchment or sepia",
+        "Plate badges open a picture card beside the text",
+        "Phone layout: single page, stacked pictures"
+      ],
+      "dataShape": "{ title?, threads:[{ id, date?, title, pages:[{ kicker?, heading, body:[string], plates?:[imageId], href? }], sources?:[{title,href}] }], images:{ [id]:{ src, fallback?, caption, credit?, sourceHref? } } } · options: mode ('split'|'watch'|'read'), thread, page, autoplayMs",
+      "events": [
+        "turn",
+        "thread",
+        "mode",
+        "plate"
+      ],
+      "demo": "/templates/archive-desk/",
+      "sample": "Real: four moments from the Fiji History Museum's Archive Desk (11 Nov 2026)",
+      "usedBy": [
+        {
+          "app": "platform-fiji-museum",
+          "since": "2026-11-11"
+        }
+      ]
     }
   ]
 }
