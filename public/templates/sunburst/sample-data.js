@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.15.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.17.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -511,6 +511,76 @@ window.SUNBURST_DATA = {
       "label": "Lifespans",
       "value": 1,
       "note": "History lessons, leaders and terms of office, project and contract periods, family histories."
+     }
+    ]
+   },
+   {
+    "label": "Analyse",
+    "children": [
+     {
+      "label": "Bubbletrail",
+      "value": 1,
+      "note": "Development and health indicators, sales against margin by product, regions over time."
+     },
+     {
+      "label": "Fanchart",
+      "value": 1,
+      "note": "Savings and budgets, visitor and sales forecasts, population and demand projections."
+     },
+     {
+      "label": "Rangebars",
+      "value": 1,
+      "note": "Temperatures and rainfall by month, prices through the day, waiting times by week."
+     },
+     {
+      "label": "Pareto",
+      "value": 1,
+      "note": "Complaints by cause, sales by product, costs by line, time by task."
+     },
+     {
+      "label": "Parallelaxes",
+      "value": 1,
+      "note": "Choosing plans, products, sites or suppliers on several measures at once."
+     },
+     {
+      "label": "Radialbars",
+      "value": 1,
+      "note": "Categories that come round in a cycle, many small categories, a compact headline graphic."
+     }
+    ]
+   },
+   {
+    "label": "Words",
+    "children": [
+     {
+      "label": "Wordbars",
+      "value": 1,
+      "note": "Survey comments, feedback forms, speeches, reports, course or product descriptions."
+     },
+     {
+      "label": "Tagcloud",
+      "value": 1,
+      "note": "A quick picture of open answers, event feedback, topics in a course, tags on posts."
+     },
+     {
+      "label": "Wordtree",
+      "value": 1,
+      "note": "Open answers (“I would like…”), interviews, speeches, policies, help requests."
+     },
+     {
+      "label": "Textdiff",
+      "value": 1,
+      "note": "Policy and terms updates, draft and final notices, before-and-after wording."
+     },
+     {
+      "label": "Readscore",
+      "value": 1,
+      "note": "Writing notices, letters, help pages and lessons that everyone can follow."
+     },
+     {
+      "label": "Keyline",
+      "value": 1,
+      "note": "Checking how a term is used in reports, policies, interviews and course material."
      }
     ]
    },

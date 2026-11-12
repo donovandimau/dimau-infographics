@@ -65,6 +65,14 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.15",
    "value": 91
+  },
+  {
+   "label": "v1.16",
+   "value": 97
+  },
+  {
+   "label": "v1.17",
+   "value": 103
   }
  ],
  "notes": [
@@ -112,6 +120,16 @@ window.ANNOTLINE_DATA = {
    "at": 15,
    "title": "Structure",
    "text": "Rings, circles and blocks to zoom into, links as arcs or a grid, and overlapping lifespans."
+  },
+  {
+   "at": 16,
+   "title": "Analyse",
+   "text": "Moving bubbles, forecasts with ranges, low-to-high bars, the few that matter most, parallel measures and radial bars."
+  },
+  {
+   "at": 17,
+   "title": "Words",
+   "text": "Word counts, a word cloud, a word tree, text changes, reading ease and keywords in context."
   }
  ]
 };
