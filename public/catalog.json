@@ -136,7 +136,9 @@
       ],
       "demo": "/templates/switchback/",
       "sample": "Fiji through time: dated events plus spans",
-      "usedBy": []
+      "usedBy": [
+        { "app": "platform-fiji-museum", "since": "2026-11-12" }
+      ]
     },
     {
       "id": "swimlane",
