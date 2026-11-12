@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.12.0), every family and template. */
+/* Real data: this library (catalog.json, v1.13.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.12.0",
+  "label": "Dimau Infographics 1.13.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -405,6 +405,41 @@ window.TREELINE_DATA = {
       "label": "Archive Desk",
       "sub": "Histories, reports and case files where the text and its pictures should be read together.",
       "link": "/templates/archive-desk/"
+     }
+    ]
+   },
+   {
+    "label": "Places",
+    "children": [
+     {
+      "label": "Daylight",
+      "sub": "Farming and fishing calendars, event planning, school terms, lighting and energy use.",
+      "link": "/templates/daylight/"
+     },
+     {
+      "label": "Moonmonth",
+      "sub": "Fishing and planting calendars, tides talk, night events, cultural dates.",
+      "link": "/templates/moonmonth/"
+     },
+     {
+      "label": "Windrose",
+      "sub": "Weather and climate pages, sailing and fishing, airstrips, building and farm planning.",
+      "link": "/templates/windrose/"
+     },
+     {
+      "label": "Reachrings",
+      "sub": "Services near a village or school, delivery areas, evacuation centres, travel planning.",
+      "link": "/templates/reachrings/"
+     },
+     {
+      "label": "Profileline",
+      "sub": "Walking and hiking guides, cycling routes, road and pipeline plans, school trips.",
+      "link": "/templates/profileline/"
+     },
+     {
+      "label": "Floorplan",
+      "sub": "Clinics, schools, offices, markets, event venues, evacuation plans.",
+      "link": "/templates/floorplan/"
      }
     ]
    },

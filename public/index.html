@@ -89,6 +89,7 @@
       <a href="/#chartbook">Chartbook</a>
       <a href="/#guides">Guides</a>
       <a href="/#stories">Stories</a>
+      <a href="/#places">Places</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -324,6 +325,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="places" aria-labelledby="places-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Places · maps, the sky and getting around</p><h2 id="places-h">Places</h2>
+      <p class="lede">Sunrise and sunset through the year, moon phases, wind directions, what is within reach, the ups and downs of a route, and a plan to find a room.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-daylight"></div>
+    <ul class="family-list">
+      <li><a href="/templates/daylight/"><b>Daylight</b><span>Sunrise and sunset for every day of the year.</span></a></li>
+      <li><a href="/templates/moonmonth/"><b>Moonmonth</b><span>A month of moon phases; tap a day.</span></a></li>
+      <li><a href="/templates/windrose/"><b>Windrose</b><span>Where the wind comes from, and how strong.</span></a></li>
+      <li><a href="/templates/reachrings/"><b>Reachrings</b><span>What is within reach, by distance and direction.</span></a></li>
+      <li><a href="/templates/profileline/"><b>Profileline</b><span>The ups and downs of a route; drag along it.</span></a></li>
+      <li><a href="/templates/floorplan/"><b>Floorplan</b><span>Search or tap to find a room.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -367,6 +384,7 @@
 <script src="/templates/streamgraph/sample-data.js"></script>
 <script src="/templates/weighscore/sample-data.js"></script>
 <script src="/templates/slidestory/sample-data.js"></script>
+<script src="/templates/daylight/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -385,6 +403,7 @@
   D.mount('#pv-streamgraph', { template: 'streamgraph', data: window.STREAMGRAPH_DATA });
   D.mount('#pv-weighscore', { template: 'weighscore', data: window.WEIGHSCORE_DATA });
   D.mount('#pv-slidestory', { template: 'slidestory', data: window.SLIDESTORY_DATA });
+  D.mount('#pv-daylight', { template: 'daylight', data: window.DAYLIGHT_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

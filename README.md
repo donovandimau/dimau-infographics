@@ -111,6 +111,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Annotline** | A chart with notes | Reports, project histories | Numbered notes on a line chart; step through or tap |
 | **Liveticker** | A rate made real | Births, rainfall, spending, distance | Counters running from page open, with rates and sources |
 | **Flowchart** | A process with decisions | Applications, approvals, procedures | Steps and diamonds, ways in and out of each box, walk the main path |
+| **Daylight** | Sunrise and sunset | Farming and fishing calendars, event planning | Daylight band across a year worked out from the sun, tap or arrow keys for any day, longest and shortest day |
+| **Moonmonth** | Moon phases | Fishing and planting calendars, night events | Month calendar with a drawn moon each day (north or south of the equator), new and full moon times, % lit |
+| **Windrose** | Wind directions | Weather pages, sailing, farm and building plans | Petals by direction split by speed, tap for the breakdown |
+| **Reachrings** | What is near | Services near a village, delivery areas | Distance rings and compass, within-reach slider, counts by group, labels that never overlap |
+| **Profileline** | A route's ups and downs | Walks, cycle routes, road plans | Drag or arrow keys along the route for height, climb so far and distance left |
+| **Floorplan** | Finding a room | Clinics, schools, venues | Search or tap, colour by room type, which way from "you are here" |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -172,6 +178,7 @@ v1/track.js                  Dial, Statusboard, Sparkgrid, Treeline, Monthview, 
 v1/chartbook.js              Stackbar, Featuregrid, Ringflow, Bumpline, Spiral, Streamgraph (chartbook)
 v1/guides.js                 Weighscore, Routeline, Levelup, Orgchart, Numberline, Glossary (guides)
 v1/stories.js                Beforeafter, Slidestory, Verdict, Annotline, Liveticker, Flowchart (stories, with Archive Desk)
+v1/places.js                 Daylight, Moonmonth, Windrose, Reachrings, Profileline, Floorplan (places)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

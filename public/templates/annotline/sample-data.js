@@ -53,6 +53,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.12",
    "value": 73
+  },
+  {
+   "label": "v1.13",
+   "value": 79
   }
  ],
  "notes": [
@@ -85,6 +89,11 @@ window.ANNOTLINE_DATA = {
    "at": 12,
    "title": "Stories",
    "text": "Six ways to tell a story with information, including this chart."
+  },
+  {
+   "at": 13,
+   "title": "Places",
+   "text": "Sunrise and sunset, moon phases, wind, what is near, a route’s ups and downs, and finding a room."
   }
  ]
 };

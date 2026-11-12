@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 19, null, { timeout: 8000 });
-      return '19 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 20, null, { timeout: 8000 });
+      return '20 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 14) throw new Error('expected root and 13 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 15) throw new Error('expected root and 14 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -396,9 +396,9 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 73 templates in v1\.12\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 79 templates in v1\.13\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.12 \(8% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.13 \(8% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
   } },
@@ -478,9 +478,9 @@ const PAGES = [
       return 'right and wrong guesses explained, score, reveal';
   } },
   { url: '/templates/annotline/', name: 'annotline', check: async p => {
-      if (!/From 4 in v1\.0 to 73 in v1\.12/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      if (!/From 4 in v1\.0 to 79 in v1\.13/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
       await p.click('[data-d="1"]');
-      if (!/Note 1 of 6 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
+      if (!/Note 1 of 7 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
       await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
       if (!/Infographics Fiji v2 lands/.test(await p.textContent('.dy-note'))) throw new Error('tap note wrong');
       return 'whole story, step, tap a note';
@@ -501,6 +501,55 @@ const PAGES = [
       await p.focus('svg [data-k="pass"]'); await p.keyboard.press('Enter');
       if (!/Leads to: Yes: Open a pull request; No: Find the cause and fix it/.test(await p.textContent('.dy-note'))) throw new Error('decision wrong');
       return 'walk the main path, ways in and out of a decision';
+  } },
+  { url: '/templates/daylight/', name: 'daylight', check: async p => {
+      await p.focus('.dz svg'); await p.keyboard.press('Home');
+      const n = await p.textContent('.dz-note');
+      if (!/1 Jan 2026 in Suva: sunrise 0[56]:\d\d, sunset 1[89]:\d\d/.test(n)) throw new Error('first day wrong: ' + n);
+      if (!/Longest day 2[12] Dec \(13 h 1\d min\), shortest 2[012] Jun \(11 h 0\d min\)/.test(n)) throw new Error('extremes wrong: ' + n);
+      await p.keyboard.press('End');
+      if (!/31 Dec 2026/.test(await p.textContent('.dz-note'))) throw new Error('end key failed');
+      return 'real sun times for Suva, keyboard, longest and shortest day';
+  } },
+  { url: '/templates/moonmonth/', name: 'moonmonth', check: async p => {
+      const n = await p.textContent('.dz-note');
+      if (!/New moon on 9 November at about 19:\d\d; Full moon on 25 November at about 0[23]:\d\d/.test(n)) throw new Error('key days wrong: ' + n);
+      await p.click('[data-k="2026-11-17"]');
+      if (!/first quarter, \d\d% lit/.test(await p.textContent('.dz-note'))) throw new Error('day detail wrong: ' + await p.textContent('.dz-note'));
+      await p.click('[data-n]');
+      if ((await p.textContent('.mm-head h4')) !== 'December 2026') throw new Error('next month failed');
+      return 'new and full moon from the sky, day detail, next month';
+  } },
+  { url: '/templates/windrose/', name: 'windrose', check: async p => {
+      if (!/Most often from the south-east \(17% of the time\)/.test(await p.textContent('.dz-note'))) throw new Error('summary wrong: ' + await p.textContent('.dz-note'));
+      await p.focus('svg [data-k="4"]'); await p.keyboard.press('Enter');
+      if (!/From the east: 9% of the time \(Light/.test(await p.textContent('.dz-note'))) throw new Error('petal wrong: ' + await p.textContent('.dz-note'));
+      return 'most common direction, petal breakdown';
+  } },
+  { url: '/templates/reachrings/', name: 'reachrings', check: async p => {
+      if (!/13 of 13 places within 20 km of Village\. Nearest: Village store \(0\.3 km\)/.test(await p.textContent('.dz-note'))) throw new Error('summary wrong');
+      await p.$eval('.dz-range input', i => { i.value = 5; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/5 of 13 places within 5 km/.test(await p.textContent('.dz-note'))) throw new Error('slider wrong: ' + await p.textContent('.dz-note'));
+      const k = await p.evaluate(() => [...document.querySelectorAll('svg [data-k]')].findIndex(g => /^Hospital/.test(g.getAttribute('aria-label'))));
+      await p.focus('svg [data-k="' + k + '"]'); await p.keyboard.press('Enter');
+      if (!/Hospital \(health\): 14 km to the west of Village/.test(await p.textContent('.dz-note'))) throw new Error('place wrong: ' + await p.textContent('.dz-note'));
+      return 'within-reach slider, distance and direction';
+  } },
+  { url: '/templates/profileline/', name: 'profileline', check: async p => {
+      if (!/12 km with \d+ m of climbing/.test(await p.textContent('.dz-note'))) throw new Error('summary wrong');
+      await p.focus('.dz svg'); await p.keyboard.press('End');
+      if (!/At 12 km: \d+ m up, \d+ m climbed so far, 0 km to go/.test(await p.textContent('.dz-note'))) throw new Error('end wrong: ' + await p.textContent('.dz-note'));
+      await p.keyboard.press('Home'); for (let i = 0; i < 20; i++) await p.keyboard.press('ArrowRight');
+      if (!/At 4\.8 km/.test(await p.textContent('.dz-note'))) throw new Error('arrow wrong: ' + await p.textContent('.dz-note'));
+      return 'totals, keyboard along the route';
+  } },
+  { url: '/templates/floorplan/', name: 'floorplan', check: async p => {
+      await p.fill('.fp-tools input', 'blood');
+      if (!/Blood tests \(care\)\. Go in the morning.*it is ahead and to the left\./.test(await p.textContent('.dz-note'))) throw new Error('search wrong: ' + await p.textContent('.dz-note'));
+      await p.fill('.fp-tools input', 'room');
+      if (!/4 rooms match/.test(await p.textContent('.dz-note'))) throw new Error('multi match wrong: ' + await p.textContent('.dz-note'));
+      await p.fill('.fp-tools input', '');
+      return 'search, which way from you are here';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1641,6 +1641,147 @@
       ],
       "demo": "/templates/flowchart/",
       "sample": "How a change reaches this library (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "daylight",
+      "name": "Daylight",
+      "global": "Daylight",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "sun-band",
+      "family": "places",
+      "bestFor": "Farming and fishing calendars, event planning, school terms, lighting and energy use.",
+      "mechanics": [
+        "Daylight band across the year",
+        "Tap or arrow keys for any day",
+        "Longest and shortest day",
+        "Change from the day before"
+      ],
+      "dataShape": "{ place, lat, lon, tz, year }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/daylight/",
+      "sample": "Suva, 2026 (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "moonmonth",
+      "name": "Moonmonth",
+      "global": "Moonmonth",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "moon-calendar",
+      "family": "places",
+      "bestFor": "Fishing and planting calendars, tides talk, night events, cultural dates.",
+      "mechanics": [
+        "Drawn moon for every day, as seen north or south of the equator",
+        "Full and new moon marked",
+        "Percent lit and age",
+        "Move month by month"
+      ],
+      "dataShape": "{ month:'YYYY-MM', tz?, south? }",
+      "events": [
+        "select",
+        "month"
+      ],
+      "demo": "/templates/moonmonth/",
+      "sample": "November 2026 in Fiji (real, worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "windrose",
+      "name": "Windrose",
+      "global": "Windrose",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "wind-rose",
+      "family": "places",
+      "bestFor": "Weather and climate pages, sailing and fishing, airstrips, building and farm planning.",
+      "mechanics": [
+        "Petals by direction",
+        "Split by speed",
+        "Tap a petal for the breakdown",
+        "Most common direction in words"
+      ],
+      "dataShape": "{ dirs:[...], bands:[{id,label}], values:[[...]], calm? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/windrose/",
+      "sample": "A coastal weather station (example)",
+      "usedBy": []
+    },
+    {
+      "id": "reachrings",
+      "name": "Reachrings",
+      "global": "Reachrings",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "distance-rings",
+      "family": "places",
+      "bestFor": "Services near a village or school, delivery areas, evacuation centres, travel planning.",
+      "mechanics": [
+        "Distance rings and compass",
+        "Within-reach slider",
+        "Counts by group",
+        "Tap for distance and direction"
+      ],
+      "dataShape": "{ centre:{label}, unit?, rings:[...], groups:[{id,label}], places:[{id,label,dist,bearing,group}] }",
+      "events": [
+        "select",
+        "within"
+      ],
+      "demo": "/templates/reachrings/",
+      "sample": "Services around a village (example)",
+      "usedBy": []
+    },
+    {
+      "id": "profileline",
+      "name": "Profileline",
+      "global": "Profileline",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "elevation",
+      "family": "places",
+      "bestFor": "Walking and hiking guides, cycling routes, road and pipeline plans, school trips.",
+      "mechanics": [
+        "Drag or arrow keys along the route",
+        "Climb so far and distance left",
+        "Named stops",
+        "Total climb and descent"
+      ],
+      "dataShape": "{ points:[{d,h}], marks?:[{d,label}], unit?, hunit?, label? }",
+      "events": [
+        "move"
+      ],
+      "demo": "/templates/profileline/",
+      "sample": "Coast to ridge walk (example)",
+      "usedBy": []
+    },
+    {
+      "id": "floorplan",
+      "name": "Floorplan",
+      "global": "Floorplan",
+      "file": "places.js",
+      "status": "ready",
+      "shape": "floor-plan",
+      "family": "places",
+      "bestFor": "Clinics, schools, offices, markets, event venues, evacuation plans.",
+      "mechanics": [
+        "Search by name or note",
+        "Tap a room for its note",
+        "Which way from “you are here”",
+        "Colour by room type"
+      ],
+      "dataShape": "{ cols, rows, groups:[{id,label}], rooms:[{id,label,x,y,w,h,group,note?}], you?:{x,y,label} }",
+      "events": [
+        "select",
+        "search"
+      ],
+      "demo": "/templates/floorplan/",
+      "sample": "A small health centre (example)",
       "usedBy": []
     },
     {

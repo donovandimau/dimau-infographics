@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.12, 73 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.13, 79 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -24,8 +24,8 @@ window.PATHFINDER_DATA = {
     },
     {
      "label": "Places",
-     "hint": "provinces, districts, islands",
-     "to": "r_tilemap"
+     "hint": "regions, distances, routes, the sky",
+     "to": "place"
     },
     {
      "label": "Steps in a process",
@@ -865,6 +865,75 @@ window.PATHFINDER_DATA = {
    "text": "Steps and decisions; walk the main path.",
    "link": "/templates/flowchart/",
    "linkLabel": "Open Flowchart"
+  },
+  "place": {
+   "q": "What about the places?",
+   "options": [
+    {
+     "label": "Comparing regions on a map",
+     "to": "r_tilemap"
+    },
+    {
+     "label": "What is near, and how far",
+     "to": "r_reachrings"
+    },
+    {
+     "label": "The ups and downs of a route",
+     "to": "r_profileline"
+    },
+    {
+     "label": "Finding a room in a building",
+     "to": "r_floorplan"
+    },
+    {
+     "label": "Sunrise, sunset and daylight",
+     "to": "r_daylight"
+    },
+    {
+     "label": "Moon phases",
+     "to": "r_moonmonth"
+    },
+    {
+     "label": "Which way the wind blows",
+     "to": "r_windrose"
+    }
+   ]
+  },
+  "r_daylight": {
+   "result": "Daylight",
+   "text": "Sunrise and sunset for every day of the year.",
+   "link": "/templates/daylight/",
+   "linkLabel": "Open Daylight"
+  },
+  "r_moonmonth": {
+   "result": "Moonmonth",
+   "text": "A month of moon phases; tap a day.",
+   "link": "/templates/moonmonth/",
+   "linkLabel": "Open Moonmonth"
+  },
+  "r_windrose": {
+   "result": "Windrose",
+   "text": "Where the wind comes from, and how strong.",
+   "link": "/templates/windrose/",
+   "linkLabel": "Open Windrose"
+  },
+  "r_reachrings": {
+   "result": "Reachrings",
+   "text": "What is within reach, by distance and direction.",
+   "link": "/templates/reachrings/",
+   "linkLabel": "Open Reachrings"
+  },
+  "r_profileline": {
+   "result": "Profileline",
+   "text": "The ups and downs of a route; drag along it.",
+   "link": "/templates/profileline/",
+   "linkLabel": "Open Profileline"
+  },
+  "r_floorplan": {
+   "result": "Floorplan",
+   "text": "Search or tap to find a room.",
+   "link": "/templates/floorplan/",
+   "linkLabel": "Open Floorplan"
   }
  }
 };
