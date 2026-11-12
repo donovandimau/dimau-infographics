@@ -69,6 +69,13 @@ const LOADERS = {
   treeline: () => import('../track.js').then(m => ({ default: (m.default || m).Treeline })),
   monthview: () => import('../track.js').then(m => ({ default: (m.default || m).Monthview })),
   slotgrid: () => import('../track.js').then(m => ({ default: (m.default || m).Slotgrid })),
+  // the six chartbook formats share one file
+  stackbar: () => import('../chartbook.js').then(m => ({ default: (m.default || m).Stackbar })),
+  featuregrid: () => import('../chartbook.js').then(m => ({ default: (m.default || m).Featuregrid })),
+  ringflow: () => import('../chartbook.js').then(m => ({ default: (m.default || m).Ringflow })),
+  bumpline: () => import('../chartbook.js').then(m => ({ default: (m.default || m).Bumpline })),
+  spiral: () => import('../chartbook.js').then(m => ({ default: (m.default || m).Spiral })),
+  streamgraph: () => import('../chartbook.js').then(m => ({ default: (m.default || m).Streamgraph })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -99,7 +106,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote', 'toggle', 'search', 'month', 'pick', 'book'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote', 'toggle', 'search', 'month', 'pick', 'book', 'focus'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

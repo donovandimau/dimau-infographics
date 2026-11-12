@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.9, 55 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.10, 61 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -122,6 +122,11 @@ window.PATHFINDER_DATA = {
     {
      "label": "How a start amount became an end amount",
      "to": "r_bridge"
+    },
+    {
+     "label": "What several groups are made of",
+     "hint": "e.g. spending by category, per year",
+     "to": "r_stackbar"
     }
    ]
   },
@@ -150,6 +155,10 @@ window.PATHFINDER_DATA = {
      "to": "r_rankrace"
     },
     {
+     "label": "Rankings, as a still picture",
+     "to": "r_bumpline"
+    },
+    {
      "label": "A trend readers should guess first",
      "to": "r_guessline"
     },
@@ -165,6 +174,14 @@ window.PATHFINDER_DATA = {
     {
      "label": "Just before and after",
      "to": "r_slope"
+    },
+    {
+     "label": "Seasons, year after year",
+     "to": "r_spiral"
+    },
+    {
+     "label": "Several layers growing and shrinking",
+     "to": "r_streamgraph"
     }
    ]
   },
@@ -214,6 +231,11 @@ window.PATHFINDER_DATA = {
     {
      "label": "See the shape of each one at a glance",
      "to": "r_radar"
+    },
+    {
+     "label": "Which has which feature",
+     "hint": "a comparison table",
+     "to": "r_featuregrid"
     }
    ]
   },
@@ -409,6 +431,10 @@ window.PATHFINDER_DATA = {
     {
      "label": "Who belongs to more than one group",
      "to": "r_overlap"
+    },
+    {
+     "label": "How much moves between groups",
+     "to": "r_ringflow"
     }
    ]
   },
@@ -663,6 +689,42 @@ window.PATHFINDER_DATA = {
    "text": "A booking grid of free and booked times.",
    "link": "/templates/slotgrid/",
    "linkLabel": "Open Slotgrid"
+  },
+  "r_stackbar": {
+   "result": "Stackbar",
+   "text": "What each group is made of, as 100% bars.",
+   "link": "/templates/stackbar/",
+   "linkLabel": "Open Stackbar"
+  },
+  "r_featuregrid": {
+   "result": "Featuregrid",
+   "text": "Options and features side by side.",
+   "link": "/templates/featuregrid/",
+   "linkLabel": "Open Featuregrid"
+  },
+  "r_ringflow": {
+   "result": "Ringflow",
+   "text": "Flows between groups around a ring.",
+   "link": "/templates/ringflow/",
+   "linkLabel": "Open Ringflow"
+  },
+  "r_bumpline": {
+   "result": "Bumpline",
+   "text": "Rankings over time as crossing lines.",
+   "link": "/templates/bumpline/",
+   "linkLabel": "Open Bumpline"
+  },
+  "r_spiral": {
+   "result": "Spiral",
+   "text": "Months in a spiral, one turn a year.",
+   "link": "/templates/spiral/",
+   "linkLabel": "Open Spiral"
+  },
+  "r_streamgraph": {
+   "result": "Streamgraph",
+   "text": "Layers over time as a flowing stream.",
+   "link": "/templates/streamgraph/",
+   "linkLabel": "Open Streamgraph"
   }
  }
 };

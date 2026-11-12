@@ -86,6 +86,7 @@
       <a href="/#learn">Learn</a>
       <a href="/#plan">Plan</a>
       <a href="/#track">Track</a>
+      <a href="/#chartbook">Chartbook</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -272,6 +273,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="chartbook" aria-labelledby="chartbook-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Chartbook · classic charts, made explorable</p><h2 id="chartbook-h">Chartbook</h2>
+      <p class="lede">What groups are made of, features side by side, flows around a ring, rankings over time, seasons in a spiral, and layers in a stream.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-streamgraph"></div>
+    <ul class="family-list">
+      <li><a href="/templates/stackbar/"><b>Stackbar</b><span>What each group is made of, as 100% bars.</span></a></li>
+      <li><a href="/templates/featuregrid/"><b>Featuregrid</b><span>Options and features; show only differences.</span></a></li>
+      <li><a href="/templates/ringflow/"><b>Ringflow</b><span>Flows between groups around a ring.</span></a></li>
+      <li><a href="/templates/bumpline/"><b>Bumpline</b><span>Rankings over time; follow one line.</span></a></li>
+      <li><a href="/templates/spiral/"><b>Spiral</b><span>One turn a year, so seasons line up.</span></a></li>
+      <li><a href="/templates/streamgraph/"><b>Streamgraph</b><span>Layers over time as a flowing stream.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -312,6 +329,7 @@
 <script src="/templates/flashdeck/sample-data.js"></script>
 <script src="/templates/loanpath/sample-data.js"></script>
 <script src="/templates/treeline/sample-data.js"></script>
+<script src="/templates/streamgraph/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -327,6 +345,7 @@
   D.mount('#pv-flashdeck', { template: 'flashdeck', data: window.FLASHDECK_DATA });
   D.mount('#pv-loanpath', { template: 'loanpath', data: window.LOANPATH_DATA });
   D.mount('#pv-treeline', { template: 'treeline', data: window.TREELINE_DATA });
+  D.mount('#pv-streamgraph', { template: 'streamgraph', data: window.STREAMGRAPH_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

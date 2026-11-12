@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 16, null, { timeout: 8000 });
-      return '16 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 17, null, { timeout: 8000 });
+      return '17 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 12) throw new Error('expected root and 11 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 13) throw new Error('expected root and 12 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -357,6 +357,50 @@ const PAGES = [
       await p.click('[data-book]');
       if (!/Booked: Mon 16 at 15:00/.test(await p.textContent('.dt-note')) || !(await p.isDisabled('[data-k="mon|7"]'))) throw new Error('book failed');
       return 'free count, pick, book';
+  } },
+  { url: '/templates/stackbar/', name: 'stackbar', check: async p => {
+      await p.click('[data-p="c4"]');
+      if (!/Sorted by 4 chapters\. The biggest share is in Other subjects \(40%\)/.test(await p.textContent('.dv-note'))) throw new Error('focus sort wrong: ' + await p.textContent('.dv-note'));
+      await p.click('[data-p="c4"]');
+      await p.focus('svg [data-k="maths|c3"]'); await p.keyboard.press('Enter');
+      if (!/Maths & Money: 3 chapters is 8 of 12 \(67%\)/.test(await p.textContent('.dv-note'))) throw new Error('piece detail wrong: ' + await p.textContent('.dv-note'));
+      await p.click('[data-m="count"]');
+      return 'focus and sort by a part, piece detail, numbers mode';
+  } },
+  { url: '/templates/featuregrid/', name: 'featuregrid', check: async p => {
+      if (!/9 of 10 features differ/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      await p.click('[data-diff]');
+      if (await p.locator('tbody tr:not(.grp)').count() !== 9) throw new Error('differences filter wrong');
+      await p.click('[data-o="render"]');
+      if (!/Render API has 5 of 10, and 1 partly\. It does not have: interactive in the page, tells the app what the reader did, saves the reader’s progress, downloads only the template you use\./.test(await p.textContent('.dv-note'))) throw new Error('pick wrong: ' + await p.textContent('.dv-note'));
+      return 'only differences, pick an option';
+  } },
+  { url: '/templates/ringflow/', name: 'ringflow', check: async p => {
+      if (!/The biggest: Outer islands → Suva \(140 people\)/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong');
+      await p.click('.dv-legend [data-g="suva"]');
+      if (!/Suva: 175 people out, most to Overseas \(51%\); 285 people in, most from Outer islands \(49%\)/.test(await p.textContent('.dv-note'))) throw new Error('group wrong: ' + await p.textContent('.dv-note'));
+      return 'biggest flow, follow a group';
+  } },
+  { url: '/templates/bumpline/', name: 'bumpline', check: async p => {
+      if (!/Top in Aug: Dalo\. Biggest climber: Crafts \(up 5\); biggest drop: Kava \(down 3\)/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
+      if (!/Crafts went from 7th in Jan to 2nd in Aug \(up 5 places\)/.test(await p.textContent('.dv-note'))) throw new Error('line detail wrong: ' + await p.textContent('.dv-note'));
+      return 'ranks from values, follow a line';
+  } },
+  { url: '/templates/spiral/', name: 'spiral', check: async p => {
+      if (await p.locator('svg [data-k]').count() !== 48) throw new Error('expected 48 months');
+      await p.click('[data-m="0"]');
+      if (!/Jan each year: 2022 [\d,]+ mm, 2023 [\d,]+ mm, 2024 [\d,]+ mm, 2025 [\d,]+ mm\./.test(await p.textContent('.dv-note'))) throw new Error('month compare wrong: ' + await p.textContent('.dv-note'));
+      await p.focus('svg [data-k="6"]'); await p.keyboard.press('Enter');
+      if (!/Jul 2022: [\d,]+ mm\. The average Jul is/.test(await p.textContent('.dv-note'))) throw new Error('segment detail wrong');
+      return 'one month across years, one segment';
+  } },
+  { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
+      if (!/From 4 templates in v1\.0 to 61 templates in v1\.10\. Biggest layer now: Charts/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      await p.click('.dv-legend [data-s="learn"]');
+      if (!/Learn: 6 templates in v1\.10 \(10% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      await p.click('[data-m="stack"]');
+      return 'growth in words, follow a layer, stacked mode';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
