@@ -137,7 +137,7 @@
       "demo": "/templates/switchback/",
       "sample": "Fiji through time: dated events plus spans",
       "usedBy": [
-        "fiji-history-museum"
+        { "app": "platform-fiji-museum", "since": "2026-11-12" }
       ]
     },
     {
