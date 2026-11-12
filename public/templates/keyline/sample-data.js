@@ -1,4 +1,4 @@
-/* Real data: the "best for" line of every template in this library (catalog.json, v1.17.0). */
+/* Real data: the "best for" line of every template in this library (catalog.json, v1.18.0). */
 window.KEYLINE_DATA = {
  "word": "time",
  "texts": [
@@ -393,6 +393,30 @@ window.KEYLINE_DATA = {
   {
    "label": "Keyline",
    "text": "Checking how a term is used in reports, policies, interviews and course material."
+  },
+  {
+   "label": "Worldclock",
+   "text": "Calling family overseas, planning meetings across countries, support hours, live events."
+  },
+  {
+   "label": "Lifegrid",
+   "text": "Pensions and savings, health and education talks, planning projects in years, personal reflection."
+  },
+  {
+   "label": "Settleup",
+   "text": "Group trips, shared houses, clubs and committees, family events."
+  },
+  {
+   "label": "Unitprice",
+   "text": "Shopping guides, market price boards, school and household budgeting lessons."
+  },
+  {
+   "label": "Seatarc",
+   "text": "Councils, boards and parliaments, election results, committee votes."
+  },
+  {
+   "label": "Leaderboard",
+   "text": "Quizzes and competitions, school houses, sales teams, fundraising drives."
   },
   {
    "label": "Settlement Flow",

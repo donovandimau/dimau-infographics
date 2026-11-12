@@ -125,6 +125,13 @@ const LOADERS = {
   textdiff: () => import('../words.js').then(m => ({ default: (m.default || m).Textdiff })),
   readscore: () => import('../words.js').then(m => ({ default: (m.default || m).Readscore })),
   keyline: () => import('../words.js').then(m => ({ default: (m.default || m).Keyline })),
+  // the six tools formats share one file
+  worldclock: () => import('../tools.js').then(m => ({ default: (m.default || m).Worldclock })),
+  lifegrid: () => import('../tools.js').then(m => ({ default: (m.default || m).Lifegrid })),
+  settleup: () => import('../tools.js').then(m => ({ default: (m.default || m).Settleup })),
+  unitprice: () => import('../tools.js').then(m => ({ default: (m.default || m).Unitprice })),
+  seatarc: () => import('../tools.js').then(m => ({ default: (m.default || m).Seatarc })),
+  leaderboard: () => import('../tools.js').then(m => ({ default: (m.default || m).Leaderboard })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -155,7 +162,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote', 'toggle', 'search', 'month', 'pick', 'book', 'focus', 'levelup', 'slide', 'guess', 'note', 'within', 'bins', 'year', 'period', 'share', 'phrase'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout', 'flip', 'mark', 'done', 'finish', 'complete', 'place', 'check', 'vote', 'toggle', 'search', 'month', 'pick', 'book', 'focus', 'levelup', 'slide', 'guess', 'note', 'within', 'bins', 'year', 'period', 'share', 'phrase', 'time', 'home', 'need', 'group', 'round'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.17.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.18.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -581,6 +581,41 @@ window.SUNBURST_DATA = {
       "label": "Keyline",
       "value": 1,
       "note": "Checking how a term is used in reports, policies, interviews and course material."
+     }
+    ]
+   },
+   {
+    "label": "Tools",
+    "children": [
+     {
+      "label": "Worldclock",
+      "value": 1,
+      "note": "Calling family overseas, planning meetings across countries, support hours, live events."
+     },
+     {
+      "label": "Lifegrid",
+      "value": 1,
+      "note": "Pensions and savings, health and education talks, planning projects in years, personal reflection."
+     },
+     {
+      "label": "Settleup",
+      "value": 1,
+      "note": "Group trips, shared houses, clubs and committees, family events."
+     },
+     {
+      "label": "Unitprice",
+      "value": 1,
+      "note": "Shopping guides, market price boards, school and household budgeting lessons."
+     },
+     {
+      "label": "Seatarc",
+      "value": 1,
+      "note": "Councils, boards and parliaments, election results, committee votes."
+     },
+     {
+      "label": "Leaderboard",
+      "value": 1,
+      "note": "Quizzes and competitions, school houses, sales teams, fundraising drives."
      }
     ]
    },

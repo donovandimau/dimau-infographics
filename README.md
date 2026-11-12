@@ -141,6 +141,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Textdiff** | What changed | Policy updates, draft and final notices | Phrase-level changes, marked or side by side, step through |
 | **Readscore** | How easy to read | Notices, letters, help pages, lessons | Reading ease as you type, words per sentence, longest sentences |
 | **Keyline** | Every use of a word | Checking how a term is used | Lined up on the word, sort by the word before or after, full line on tap |
+| **Worldclock** | Time zones | Calling family overseas, meetings across countries | Live local times on one 24-hour line, shared working hours in words, line up on any place |
+| **Lifegrid** | A life in months | Pensions, health and education talks, long plans | One square per month, stages coloured, filled to today |
+| **Settleup** | Who owes whom | Group trips, shared houses, clubs | Fewest payments to settle, costs shared by some, tick costs on and off |
+| **Unitprice** | Best value | Shopping guides, budgeting lessons | Price per kilo, litre or item, units converted, cost for the amount you need |
+| **Seatarc** | Seats and majorities | Councils, boards, election results | Seats in a half circle, build a group, majority or seats short |
+| **Leaderboard** | Standings | Quizzes, competitions, fundraising | Round slider, rows slide to new places, ups and downs, places so far |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -207,6 +213,7 @@ v1/stats.js                  Histobins, Boxplot, Dumbbell, Bulletbar, Ridgeline,
 v1/structure.js              Sunburst, Circlepack, Icicle, Arcflow, Linkmatrix, Lifespans (structure)
 v1/analyse.js                Bubbletrail, Fanchart, Rangebars, Pareto, Parallelaxes, Radialbars (analyse)
 v1/words.js                  Wordbars, Tagcloud, Wordtree, Textdiff, Readscore, Keyline (words)
+v1/tools.js                  Worldclock, Lifegrid, Settleup, Unitprice, Seatarc, Leaderboard (tools)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

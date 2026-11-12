@@ -108,13 +108,19 @@
     textdiff: { file: 'words.js', global: 'Textdiff' },
     readscore: { file: 'words.js', global: 'Readscore' },
     keyline: { file: 'words.js', global: 'Keyline' },
+    worldclock: { file: 'tools.js', global: 'Worldclock' },
+    lifegrid: { file: 'tools.js', global: 'Lifegrid' },
+    settleup: { file: 'tools.js', global: 'Settleup' },
+    unitprice: { file: 'tools.js', global: 'Unitprice' },
+    seatarc: { file: 'tools.js', global: 'Seatarc' },
+    leaderboard: { file: 'tools.js', global: 'Leaderboard' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.17.0';
+  var VERSION = '1.18.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
