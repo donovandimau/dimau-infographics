@@ -77,7 +77,10 @@
       <a href="/templates/tidepool/">Tidepool</a>
       <a href="/templates/strata/">Strata</a>
       <a href="/templates/riverline/">Riverline</a>
+      <a href="/templates/archive-desk/">Archive Desk</a>
       <a href="/#timelines">Timelines</a>
+      <a href="/#charts">Charts</a>
+      <a href="/#everyday">Everyday</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -96,6 +99,8 @@
         <li><a href="#timelines"><b>Time</b><span>Riverline, Switchback, Swimlane and Roadmap</span></a></li>
         <li><a href="/templates/waypath/"><b>Steps</b><span>Waypath: journeys and processes</span></a></li>
         <li><a href="#cards"><b>Headline numbers</b><span>Signal cards with share images</span></a></li>
+        <li><a href="#charts"><b>Rankings and flows</b><span>Rankrace, Flowbank, Peoplegrid</span></a></li>
+        <li><a href="#charts"><b>Tables and stories</b><span>Ledger, Storyscroll, Guessline</span></a></li>
       </ul>
     </div>
     <div class="panel hero-live di-theme" aria-label="Live Lanternfield">
@@ -146,6 +151,39 @@
       <li><a href="/templates/roadmap/"><b>Roadmap</b><span>Gantt plan with milestones and dependencies. Drag a task and see what moves.</span></a></li>
       <li><a href="/templates/waypath/"><b>Waypath</b><span>Stops on a road, cycle or staircase. Tap to reveal, press play to walk it.</span></a></li>
       <li><a href="/templates/riverline/"><b>Riverline</b><span>Time as a river that widens where more happened.</span></a></li>
+      <li><a href="/templates/archive-desk/"><b>Archive Desk</b><span>Read a story and see its pictures together: a 3D book beside a picture stack, lightbox and loupe.</span></a></li>
+    </ul>
+  </section>
+
+  <section class="panel family" id="charts" aria-labelledby="charts-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Charts · the formats the best data sites use</p><h2 id="charts-h">Charts</h2>
+      <p class="lede">Original versions of the formats the leading data-journalism and chart sites are known for: rankings that race, unit charts, draw-your-guess, flows, living tables and scroll-driven stories.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-rankrace"></div>
+    <ul class="family-list">
+      <li><a href="/templates/rankrace/"><b>Rankrace</b><span>Bars overtake each other as time plays; scrub to any moment.</span></a></li>
+      <li><a href="/templates/peoplegrid/"><b>Peoplegrid</b><span>One square per thing; regroup and watch the squares move.</span></a></li>
+      <li><a href="/templates/guessline/"><b>Guessline</b><span>Draw your guess, then see the real line and your score.</span></a></li>
+      <li><a href="/templates/flowbank/"><b>Flowbank</b><span>Flows sized by amount; tap one to follow it.</span></a></li>
+      <li><a href="/templates/ledger/"><b>Ledger</b><span>Sort, search, bars in cells, rows that open.</span></a></li>
+      <li><a href="/templates/storyscroll/"><b>Storyscroll</b><span>The chart stays put while the story scrolls past.</span></a></li>
+    </ul>
+  </section>
+
+  <section class="panel family" id="everyday" aria-labelledby="everyday-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Everyday · the infographics people meet most</p><h2 id="everyday-h">Everyday</h2>
+      <p class="lede">Maps of places, blocks inside blocks, this-versus-that, habits by the day, progress to a goal and a day on a clock face.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-tilemap"></div>
+    <ul class="family-list">
+      <li><a href="/templates/tilemap/"><b>Tilemap</b><span>Places as equal tiles laid out like the map.</span></a></li>
+      <li><a href="/templates/mosaic/"><b>Mosaic</b><span>Blocks sized by value; tap to zoom inside.</span></a></li>
+      <li><a href="/templates/duel/"><b>Duel</b><span>Pick two and compare them row by row.</span></a></li>
+      <li><a href="/templates/almanac/"><b>Almanac</b><span>One square per day, with streaks found.</span></a></li>
+      <li><a href="/templates/goalmeter/"><b>Goalmeter</b><span>Progress, milestones and a finish-date projection.</span></a></li>
+      <li><a href="/templates/dayclock/"><b>Dayclock</b><span>A day on a 24-hour clock; compare days.</span></a></li>
     </ul>
   </section>
 
@@ -182,6 +220,8 @@
 <script src="/templates/strata/sample-data.js"></script>
 <script src="/templates/riverline/sample-data.js"></script>
 <script src="/templates/timelines-fiji.js"></script>
+<script src="/templates/rankrace/sample-data.js"></script>
+<script src="/templates/tilemap/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -191,6 +231,8 @@
   D.mount('#pv-tidepool', { template: 'tidepool', data: window.TIDEPOOL_DATA });
   D.mount('#pv-strata', { template: 'strata', data: window.STRATA_DATA, options: { info: false, height: 300 } });
   D.mount('#pv-riverline', { template: 'riverline', data: window.RIVERLINE_DATA, options: { height: 230 } });
+  D.mount('#pv-tilemap', { template: 'tilemap', data: window.TILEMAP_DATA });
+  D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {
     D.mount(c[0], { template: c[1], data: {}, options: { variant: 'card', animate: false }, theme: false });

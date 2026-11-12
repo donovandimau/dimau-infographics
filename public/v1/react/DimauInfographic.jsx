@@ -20,11 +20,26 @@ const LOADERS = {
   swimlane: () => import('../timelines.js').then(m => ({ default: (m.default || m).Swimlane })),
   roadmap: () => import('../timelines.js').then(m => ({ default: (m.default || m).Roadmap })),
   waypath: () => import('../timelines.js').then(m => ({ default: (m.default || m).Waypath })),
+  // the six story charts share one file
+  rankrace: () => import('../charts.js').then(m => ({ default: (m.default || m).Rankrace })),
+  peoplegrid: () => import('../charts.js').then(m => ({ default: (m.default || m).Peoplegrid })),
+  guessline: () => import('../charts.js').then(m => ({ default: (m.default || m).Guessline })),
+  flowbank: () => import('../charts.js').then(m => ({ default: (m.default || m).Flowbank })),
+  ledger: () => import('../charts.js').then(m => ({ default: (m.default || m).Ledger })),
+  storyscroll: () => import('../charts.js').then(m => ({ default: (m.default || m).Storyscroll })),
+  // the six everyday formats share one file
+  tilemap: () => import('../showcase.js').then(m => ({ default: (m.default || m).Tilemap })),
+  mosaic: () => import('../showcase.js').then(m => ({ default: (m.default || m).Mosaic })),
+  duel: () => import('../showcase.js').then(m => ({ default: (m.default || m).Duel })),
+  almanac: () => import('../showcase.js').then(m => ({ default: (m.default || m).Almanac })),
+  goalmeter: () => import('../showcase.js').then(m => ({ default: (m.default || m).Goalmeter })),
+  dayclock: () => import('../showcase.js').then(m => ({ default: (m.default || m).Dayclock })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
   'pacific-backhaul-node-map': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).BackhaulMap })),
-  'debt-freedom-trajectory': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).DebtTrajectory }))
+  'debt-freedom-trajectory': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).DebtTrajectory })),
+  'archive-desk': () => import('../archive-desk.js').then(m => ({ default: (m.default || m).ArchiveDesk }))
 };
 
 const read = key => { try { return JSON.parse(localStorage.getItem('dimau-infographics:' + key) || 'null'); } catch (_) { return null; } };
@@ -49,7 +64,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

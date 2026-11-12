@@ -34,8 +34,53 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 9, null, { timeout: 8000 });
-      return '9 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 11, null, { timeout: 8000 });
+      return '11 live templates mounted';
+  } },
+  { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
+      if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
+      await p.click('.ds-hot[data-k="rewa"]');
+      const n = await p.textContent('.ds-note');
+      if (!/Rewa.*Central Division/.test(n) || !/Naitasiri/.test(n)) throw new Error('tile detail wrong: ' + n);
+      return '15 tiles, Rewa in Central with its neighbours';
+  } },
+  { url: '/templates/mosaic/', name: 'mosaic', check: async p => {
+      if (await p.locator('.mo-tile').count() !== 9) throw new Error('expected 9 subject blocks');
+      await p.click('.mo-tile[data-k] >> nth=0');
+      const n = await p.locator('.mo-tile').count();
+      if (n !== 12) throw new Error('zoomed into ' + n + ' blocks, expected 12 maths courses');
+      await p.keyboard.press('Escape');
+      if (await p.locator('.mo-tile').count() !== 9) throw new Error('Escape did not zoom out');
+      return 'zoom into Maths & Money (12 courses) and back';
+  } },
+  { url: '/templates/duel/', name: 'duel', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/Maths & Money<\/b>|Maths & Money/.test(n) || !/leads on/.test(n)) throw new Error('no score sentence: ' + n);
+      await p.selectOption('select[data-side="b"]', 'vosa');
+      if (!/Vosa Vakaviti/.test(await p.textContent('.ds-note'))) throw new Error('second side did not change');
+      await p.click('[data-swap]');
+      return 'score, change a side, swap';
+  } },
+  { url: '/templates/almanac/', name: 'almanac', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/Longest streak: \d+ days/.test(n)) throw new Error('no streak sentence: ' + n);
+      await p.click('.ds-hot[data-k="2026-08-10"]');
+      if (!/10 Aug 2026/.test(await p.textContent('.ds-note'))) throw new Error('day detail missing');
+      return 'streak found, tap a day';
+  } },
+  { url: '/templates/goalmeter/', name: 'goalmeter', check: async p => {
+      const n = await p.textContent('.ds-note');
+      if (!/to go\./.test(n) || !/reached around/.test(n)) throw new Error('no projection: ' + n);
+      await p.focus('.ds-hot[data-k="1"]'); await p.keyboard.press('Enter');
+      if (!/Tank base poured.*reached/.test(await p.textContent('.ds-note'))) throw new Error('milestone status wrong');
+      return 'projection, milestone reached';
+  } },
+  { url: '/templates/dayclock/', name: 'dayclock', check: async p => {
+      await p.click('[data-d="market"]');
+      await p.click('.ds-hot >> nth=3');
+      const n = await p.textContent('.ds-note');
+      if (!/Market.*06:00 to 14:00.*8h/.test(n)) throw new Error('slice detail wrong: ' + n);
+      return 'switch day, tap a slice';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
@@ -78,6 +123,20 @@ const PAGES = [
       if (on !== 1) throw new Error('no selected event card');
       return 'step to an event';
   } },
+  { url: '/templates/archive-desk/', name: 'archive-desk', check: async p => {
+      const before = await p.textContent('.ad-folio');
+      await p.click('.ad-next');
+      await p.waitForTimeout(1200);
+      const after = await p.textContent('.ad-folio');
+      if (before === after) throw new Error('page did not turn');
+      await p.click('.ad-hud button[data-mode="watch"]');
+      await p.waitForTimeout(400);
+      if (await p.isHidden('.ad-frame')) throw new Error('lightbox did not open');
+      await p.click('.ad-hud button[data-mode="read"]');
+      await p.click('.ad-badge >> nth=0');
+      if (await p.isHidden('.ad-card')) throw new Error('picture card did not open');
+      return 'turn a page, lightbox, picture card';
+  } },
   { url: '/templates/switchback/', name: 'switchback', check: async p => {
       const n = await p.locator('.sb-item').count();
       if (n < 20) throw new Error('only ' + n + ' events');
@@ -117,6 +176,62 @@ const PAGES = [
       for (const s of ['cycle', 'steps', 'road']) { await p.click('[data-s="' + s + '"]'); if (await p.locator('.wp-stop').count() !== 6) throw new Error(s + ' lost stops'); }
       return 'reveal a stop, three shapes';
   } },
+  { url: '/templates/rankrace/', name: 'rankrace', check: async p => {
+      await p.evaluate(() => window.timeline.seek(7));
+      const note = await p.textContent('.rr-note');
+      if (!/leads in Week 8/.test(note)) throw new Error('no leader sentence: ' + note);
+      const first = await p.evaluate(() => [...document.querySelectorAll('.rr-row')].find(r => r.style.transform === 'translateY(0px)').textContent);
+      if (!/Yaqona/.test(first)) throw new Error('wrong leader at the end: ' + first);
+      await p.click('.rr-play'); await p.waitForTimeout(300); await p.click('.rr-play');
+      return 'scrub to the end, leader correct, play/pause';
+  } },
+  { url: '/templates/peoplegrid/', name: 'peoplegrid', check: async p => {
+      const n = await p.locator('.pg-u').count();
+      if (n !== 109) throw new Error(n + ' squares, expected 109');
+      const before = await p.evaluate(() => document.querySelectorAll('.pg-u')[108].style.transform);
+      await p.click('[data-v="bars"]');
+      const after = await p.evaluate(() => document.querySelectorAll('.pg-u')[108].style.transform);
+      if (before === after) throw new Error('squares did not move');
+      await p.click('.pg-key[data-g="maths"]');
+      if (!/36 chapters/.test(await p.textContent('.pg-note'))) throw new Error('maths share sentence missing');
+      return '109 squares regroup, highlight a group';
+  } },
+  { url: '/templates/guessline/', name: 'guessline', check: async p => {
+      const b = await p.locator('.gl-svg').boundingBox();
+      await p.mouse.move(b.x + b.width * 0.4, b.y + b.height * 0.6);
+      await p.mouse.down();
+      for (let k = 1; k <= 12; k++) await p.mouse.move(b.x + b.width * (0.4 + 0.6 * k / 12), b.y + b.height * (0.6 - 0.35 * k / 12));
+      await p.mouse.up();
+      if (await p.isDisabled('.gl-show')) throw new Error('drawing did not complete the guess');
+      await p.click('.gl-show');
+      await p.waitForFunction(() => /Score/.test(document.querySelector('.gl-note').textContent), null, { timeout: 4000 });
+      return 'draw a guess, reveal, score';
+  } },
+  { url: '/templates/flowbank/', name: 'flowbank', check: async p => {
+      const n = await p.locator('.fb-link').count();
+      if (n !== 9) throw new Error(n + ' flows, expected 9');
+      await p.focus('.fb-node[data-i="0"]'); await p.keyboard.press('Enter');
+      if (!/Biggest share goes to/.test(await p.textContent('.fb-note'))) throw new Error('node sentence missing');
+      return '9 flows, follow a node';
+  } },
+  { url: '/templates/ledger/', name: 'ledger', check: async p => {
+      if (await p.locator('tr.lg-row').count() !== 40) throw new Error('expected 40 courses');
+      await p.fill('.lg-tools input', 'money');
+      const m = await p.locator('tr.lg-row').count();
+      if (m < 2 || m >= 40) throw new Error('search returned ' + m);
+      await p.click('tr.lg-row >> nth=0');
+      if (await p.locator('tr.lg-detail').count() !== 1) throw new Error('row did not open');
+      await p.click('th button[data-c="course"]');
+      return 'search, open a row, sort';
+  } },
+  { url: '/templates/storyscroll/', name: 'storyscroll', check: async p => {
+      await p.locator('.ss-step[data-i="1"]').scrollIntoViewIfNeeded();
+      await p.evaluate(() => document.querySelector('.ss-step[data-i="1"]').scrollIntoView({ block: 'center' }));
+      await p.waitForFunction(() => document.querySelector('.ss-step.on') && +document.querySelector('.ss-step.on').dataset.i === 1, null, { timeout: 4000 });
+      const first = await p.evaluate(() => document.querySelector('.ss-graphic svg text').childNodes[0].nodeValue);
+      if (first !== 'Maths & Money') throw new Error('chart not re-sorted for step 2: ' + first);
+      return 'scroll to step 2, chart re-sorts';
+  } },
   ...['rbf-sandbox-settlement-flow', 'sota-kece-community-pulse', 'pacific-backhaul-node-map', 'debt-freedom-trajectory'].map(id => ({
     url: '/templates/' + id + '/', name: id, check: async p => {
       await p.waitForSelector('#stage svg');
@@ -152,7 +267,7 @@ const server = http.createServer((req, res) => {
   for (const vp of [{ name: 'desktop', width: 1360, height: 860 }, { name: 'phone', width: 390, height: 844, isMobile: true, hasTouch: true }]) {
     console.log('\n' + vp.name);
     for (const pg of PAGES) {
-      const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch, deviceScaleFactor: 1 });
+      const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch, deviceScaleFactor: 1, serviceWorkers: 'block' });
       const p = await ctx.newPage();
       const errs = [];
       p.on('pageerror', e => errs.push(e.message));

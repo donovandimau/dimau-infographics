@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "base": "/v1/",
   "templates": [
     {
@@ -119,9 +119,15 @@
         "Year rail",
         "Category filters",
         "Read more",
-        "Story mode"
+        "Story mode",
+        "Time-gap markers on the spine (+N years)",
+        "Spans drawn as era bars beside the spine",
+        "Spotlight on the card crossing the reading line",
+        "Milestone rings, big tabular dates, connector ticks",
+        "Event-density bars on the year rail",
+        "Optional picture and place on a card"
       ],
-      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?}] } (shared by every timeline view; Riverline data works too)",
+      "dataShape": "{ categories|lanes:[{id,label}], eras?, events:[{date|start, end?, when?, title, summary?, category|lane, status?, progress?, depends?, milestone?, media?:{src,caption?,alt?}, location?:{label}}] } (shared by every timeline view; Riverline data works too). Switchback options: gapYears (50, 0 = off), spotlight (true), spanBars (true)",
       "events": [
         "open",
         "filter",
@@ -208,6 +214,286 @@
       ],
       "demo": "/templates/waypath/",
       "sample": "How an app adopts a template (real process)",
+      "usedBy": []
+    },
+    {
+      "id": "rankrace",
+      "name": "Rankrace",
+      "global": "Rankrace",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "ranking",
+      "family": "charts",
+      "bestFor": "Rankings that change over time: top products, busiest months, leading regions, league tables.",
+      "mechanics": [
+        "Bars overtake as time plays",
+        "Scrub to any moment",
+        "Leader and biggest climber in words",
+        "Values interpolate smoothly"
+      ],
+      "dataShape": "{ prefix?, suffix?, top?, items:[{id,label,color?}], frames:[{label, values:{id:number}}] }",
+      "events": [
+        "frame"
+      ],
+      "demo": "/templates/rankrace/",
+      "sample": "Market stall sales by product (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "peoplegrid",
+      "name": "Peoplegrid",
+      "global": "Peoplegrid",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "proportion",
+      "family": "charts",
+      "bestFor": "Showing a share as countable things: people, households, chapters, votes, out of 100.",
+      "mechanics": [
+        "One square per unit",
+        "Regroups between grid, blocks and bars",
+        "Highlight a group",
+        "Plain-language share"
+      ],
+      "dataShape": "{ unit, unitPlural?, groups:[{id,label,color?,count}] }",
+      "events": [
+        "view",
+        "select"
+      ],
+      "demo": "/templates/peoplegrid/",
+      "sample": "FijiLearn chapters by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "guessline",
+      "name": "Guessline",
+      "global": "Guessline",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "prediction",
+      "family": "charts",
+      "bestFor": "Surprising trends: growth, savings, prices, anything where intuition is usually wrong.",
+      "mechanics": [
+        "Draw the rest of the line",
+        "Animated reveal",
+        "Score and plain-language verdict",
+        "Skip-and-show for keyboard users"
+      ],
+      "dataShape": "{ question, prefix?, suffix?, known:index, points:[{x, y}], source? }",
+      "events": [
+        "reveal"
+      ],
+      "demo": "/templates/guessline/",
+      "sample": "Savings growth over 10 years (calculated)",
+      "usedBy": []
+    },
+    {
+      "id": "flowbank",
+      "name": "Flowbank",
+      "global": "Flowbank",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "flow",
+      "family": "charts",
+      "bestFor": "Money, people or energy moving from sources to destinations: budgets, funding, migration, supply chains.",
+      "mechanics": [
+        "Bands sized by amount",
+        "Tap to follow a flow",
+        "Share in plain words",
+        "Columns arranged automatically"
+      ],
+      "dataShape": "{ prefix?, nodes:[{id,label,color?}], links:[{source,target,value}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/flowbank/",
+      "sample": "Where a fortnight’s pay goes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "global": "Ledger",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "table",
+      "family": "charts",
+      "bestFor": "Anything people want to look up or compare item by item: price lists, directories, catalogues, results.",
+      "mechanics": [
+        "Sort any column",
+        "Search as you type",
+        "Bars, heat cells and sparklines",
+        "Tap a row for detail",
+        "Sticky header"
+      ],
+      "dataShape": "{ columns:[{id,label,type:text|number|bar|heat|spark|tag}], rows:[{…, detail?}], tags?:[{id,label,color?}] }",
+      "events": [
+        "sort",
+        "open"
+      ],
+      "demo": "/templates/ledger/",
+      "sample": "Every FijiLearn course (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "storyscroll",
+      "name": "Storyscroll",
+      "global": "Storyscroll",
+      "file": "charts.js",
+      "status": "ready",
+      "shape": "story",
+      "family": "charts",
+      "bestFor": "Explaining a finding step by step: reports, explainers, annual reviews, results pages.",
+      "mechanics": [
+        "Sticky chart",
+        "Each step re-sorts and highlights",
+        "Works on phones",
+        "Keyboard: tab through the steps"
+      ],
+      "dataShape": "{ items:[{id,label,value,group?}], groups?, steps:[{title?, text, highlight?:[ids], sort?:value|label|none, only?:[ids]}] }",
+      "events": [
+        "step"
+      ],
+      "demo": "/templates/storyscroll/",
+      "sample": "The FijiLearn catalogue in five steps (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "tilemap",
+      "name": "Tilemap",
+      "global": "Tilemap",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "map",
+      "family": "everyday",
+      "bestFor": "Results by province, district, island or region, where real map shapes would make small places impossible to see.",
+      "mechanics": [
+        "Equal tiles in map positions",
+        "Colour by group or by value",
+        "Tap a tile for detail and its neighbours in the group"
+      ],
+      "dataShape": "{ groups?:[{id,label,color?}], tiles:[{id,label,short?,row,col,group?,value?,note?}], valueLabel?, prefix?, suffix? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/tilemap/",
+      "sample": "Provinces of Fiji by division (real)",
+      "usedBy": []
+    },
+    {
+      "id": "mosaic",
+      "name": "Mosaic",
+      "global": "Mosaic",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "proportion",
+      "family": "everyday",
+      "bestFor": "Budgets, portfolios, catalogues and anything where the parts of the parts matter.",
+      "mechanics": [
+        "Blocks sized by value",
+        "Tap to zoom in",
+        "Path back out",
+        "Share of the whole in words"
+      ],
+      "dataShape": "{ unit?, unitSingular?, root:{label, children:[{label,value?,note?,children?}]} }",
+      "events": [
+        "zoom",
+        "select"
+      ],
+      "demo": "/templates/mosaic/",
+      "sample": "FijiLearn subjects and courses (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "duel",
+      "name": "Duel",
+      "global": "Duel",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "comparison",
+      "family": "everyday",
+      "bestFor": "Product or plan comparisons, before and after, this year versus last, one place against another.",
+      "mechanics": [
+        "Pick both sides",
+        "Swap",
+        "Leader marked on every row",
+        "Score in words",
+        "Lower-is-better measures supported"
+      ],
+      "dataShape": "{ items:[{id,label,values:{metricId:number}}], metrics:[{id,label,prefix?,suffix?,better?:higher|lower}], a?, b? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/duel/",
+      "sample": "FijiLearn subjects compared (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "almanac",
+      "name": "Almanac",
+      "global": "Almanac",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "calendar",
+      "family": "everyday",
+      "bestFor": "Habits, attendance, activity logs, sales by day: anything that happens (or doesn’t) day by day.",
+      "mechanics": [
+        "One square per day",
+        "Longest streak found and outlined",
+        "Active days and totals in words",
+        "Tap a day"
+      ],
+      "dataShape": "{ days:{ 'YYYY-MM-DD': number }, label?, unit?, goal?, from?, to? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/almanac/",
+      "sample": "Daily study minutes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "goalmeter",
+      "name": "Goalmeter",
+      "global": "Goalmeter",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "progress",
+      "family": "everyday",
+      "bestFor": "Fundraising, savings goals, project targets, community campaigns.",
+      "mechanics": [
+        "Built from each contribution",
+        "Milestones reached or still to go",
+        "Projected finish date at the current pace"
+      ],
+      "dataShape": "{ goal, prefix?, suffix?, label?, milestones?:[{at,label}], entries:[{date:'YYYY-MM-DD', amount, note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/goalmeter/",
+      "sample": "Village water tank fund (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "dayclock",
+      "name": "Dayclock",
+      "global": "Dayclock",
+      "file": "showcase.js",
+      "status": "ready",
+      "shape": "day",
+      "family": "everyday",
+      "bestFor": "Daily routines, shift patterns, opening hours, how a service is used across the day.",
+      "mechanics": [
+        "24-hour clock face",
+        "Switch between days",
+        "Tap a slice for times and share",
+        "Time per activity in the legend"
+      ],
+      "dataShape": "{ activities:[{id,label,color?}], days:[{id,label,blocks:[{activity,from:'HH:MM',to:'HH:MM',note?}]}] }",
+      "events": [
+        "select",
+        "day"
+      ],
+      "demo": "/templates/dayclock/",
+      "sample": "A school day, a market day and a Sunday (example)",
       "usedBy": []
     },
     {
@@ -325,6 +611,39 @@
       "sample": "Example values from the Infographics Fiji spec",
       "dataShape": "{ <variable>: string, … } — every variable optional; see the template page for the list and defaults",
       "demo": "/templates/debt-freedom-trajectory/"
+    },
+    {
+      "id": "archive-desk",
+      "name": "Archive Desk",
+      "global": "ArchiveDesk",
+      "file": "archive-desk.js",
+      "status": "ready",
+      "shape": "story",
+      "family": "stories",
+      "bestFor": "Histories, reports and case files where the text and its pictures should be read together.",
+      "mechanics": [
+        "3D open book with page turns (CSS 3D, no libraries)",
+        "Picture stack synced both ways with the book",
+        "Lightbox: spinning picture ring, magnifying loupe, self-playing visual story",
+        "Read mode: page or scroll view, text size, parchment or sepia",
+        "Plate badges open a picture card beside the text",
+        "Phone layout: single page, stacked pictures"
+      ],
+      "dataShape": "{ title?, threads:[{ id, date?, title, pages:[{ kicker?, heading, body:[string], plates?:[imageId], href? }], sources?:[{title,href}] }], images:{ [id]:{ src, fallback?, caption, credit?, sourceHref? } } } · options: mode ('split'|'watch'|'read'), thread, page, autoplayMs",
+      "events": [
+        "turn",
+        "thread",
+        "mode",
+        "plate"
+      ],
+      "demo": "/templates/archive-desk/",
+      "sample": "Real: four moments from the Fiji History Museum's Archive Desk (11 Nov 2026)",
+      "usedBy": [
+        {
+          "app": "platform-fiji-museum",
+          "since": "2026-11-11"
+        }
+      ]
     }
   ]
 }
