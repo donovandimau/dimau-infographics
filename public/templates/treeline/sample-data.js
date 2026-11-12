@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.20.0), every family and template. */
+/* Real data: this library (catalog.json, v1.21.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.20.0",
+  "label": "Dimau Infographics 1.21.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -685,6 +685,41 @@ window.TREELINE_DATA = {
       "label": "Waffle",
       "sub": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates.",
       "link": "/templates/waffle/"
+     }
+    ]
+   },
+   {
+    "label": "Practice",
+    "children": [
+     {
+      "label": "Matchup",
+      "sub": "Words and meanings, places and capitals, terms and pictures, questions and answers.",
+      "link": "/templates/matchup/"
+     },
+     {
+      "label": "Sequence",
+      "sub": "History, steps of a process, life cycles, sizes from small to large.",
+      "link": "/templates/sequence/"
+     },
+     {
+      "label": "Fillgap",
+      "sub": "Reading and grammar, key terms, safety rules, money and health lessons.",
+      "link": "/templates/fillgap/"
+     },
+     {
+      "label": "Estimator",
+      "sub": "Numbers people get wrong: distances, populations, prices, how long things take.",
+      "link": "/templates/estimator/"
+     },
+     {
+      "label": "Masterygrid",
+      "sub": "Teachers, trainers and coaches planning small groups and catch-up sessions.",
+      "link": "/templates/masterygrid/"
+     },
+     {
+      "label": "Leitner",
+      "sub": "Vocabulary, facts, formulas, road signs: anything learned by repetition.",
+      "link": "/templates/leitner/"
      }
     ]
    },

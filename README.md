@@ -159,6 +159,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Areachart** | Piled-up amounts | Spending by category, students by level | Totals or shares of 100%, read any point, table view |
 | **Combochart** | Bars and a line | Rain and temperature, sales and margin | Two scales coloured to match, whether they move together, table view |
 | **Waffle** | 100 squares | Survey results, pass rates, budget shares | Fair rounding to 100, "1 in N" in words, table view |
+| **Matchup** | Match the pairs | Words and meanings, places and capitals | Tap one on each side, right matches lock in, misses counted |
+| **Sequence** | Put in order | History, process steps, life cycles | Up and down buttons, check any time, dates after checking, show the answer |
+| **Fillgap** | Fill the gaps | Reading, key terms, safety and money lessons | Choices per gap, hints after checking, plain dropdowns |
+| **Estimator** | Guess a number | Distances, populations, prices | Slider guess, guess and answer side by side, points for closeness, sources |
+| **Masterygrid** | Who needs help | Teachers and trainers planning groups | Learners by skills, who else needs the same help, filter and sort, arrow keys |
+| **Leitner** | Flash cards in boxes | Vocabulary, facts, road signs | Flip, knew it or not, hard cards come round sooner |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -228,6 +234,7 @@ v1/words.js                  Wordbars, Tagcloud, Wordtree, Textdiff, Readscore, 
 v1/tools.js                  Worldclock, Lifegrid, Settleup, Unitprice, Seatarc, Leaderboard (tools)
 v1/metrics.js                Cohortgrid, Burndown, Controlchart, Cumflow, Kpitiles, Abtest (metrics)
 v1/basics.js                 Donut, Barchart, Linechart, Areachart, Combochart, Waffle (basics)
+v1/practice.js               Matchup, Sequence, Fillgap, Estimator, Masterygrid, Leitner (practice)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

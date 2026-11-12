@@ -97,6 +97,7 @@
       <a href="/#tools">Tools</a>
       <a href="/#metrics">Metrics</a>
       <a href="/#basics">Basics</a>
+      <a href="/#practice">Practice</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -460,6 +461,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="practice" aria-labelledby="practice-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Practice · learn by doing</p><h2 id="practice-h">Practice</h2>
+      <p class="lede">Match the pairs, put things in order, fill the gaps, guess a number, see who needs help with what, and flash cards that come round until you know them.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-estimator"></div>
+    <ul class="family-list">
+      <li><a href="/templates/matchup/"><b>Matchup</b><span>Match each item with its partner.</span></a></li>
+      <li><a href="/templates/sequence/"><b>Sequence</b><span>Put things in the right order.</span></a></li>
+      <li><a href="/templates/fillgap/"><b>Fillgap</b><span>Choose the word for each gap.</span></a></li>
+      <li><a href="/templates/estimator/"><b>Estimator</b><span>Guess a number; see how close you were.</span></a></li>
+      <li><a href="/templates/masterygrid/"><b>Masterygrid</b><span>Learners by skills; who needs help.</span></a></li>
+      <li><a href="/templates/leitner/"><b>Leitner</b><span>Flash cards in boxes.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -511,6 +528,7 @@
 <script src="/templates/worldclock/sample-data.js"></script>
 <script src="/templates/kpitiles/sample-data.js"></script>
 <script src="/templates/barchart/sample-data.js"></script>
+<script src="/templates/estimator/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -537,6 +555,7 @@
   D.mount('#pv-worldclock', { template: 'worldclock', data: window.WORLDCLOCK_DATA });
   D.mount('#pv-kpitiles', { template: 'kpitiles', data: window.KPITILES_DATA });
   D.mount('#pv-barchart', { template: 'barchart', data: window.BARCHART_DATA });
+  D.mount('#pv-estimator', { template: 'estimator', data: window.ESTIMATOR_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

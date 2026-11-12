@@ -1,4 +1,4 @@
-/* Real data: the "best for" line of every template in this library (catalog.json, v1.20.0). */
+/* Real data: the "best for" line of every template in this library (catalog.json, v1.21.0). */
 window.KEYLINE_DATA = {
  "word": "time",
  "texts": [
@@ -465,6 +465,30 @@ window.KEYLINE_DATA = {
   {
    "label": "Waffle",
    "text": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates."
+  },
+  {
+   "label": "Matchup",
+   "text": "Words and meanings, places and capitals, terms and pictures, questions and answers."
+  },
+  {
+   "label": "Sequence",
+   "text": "History, steps of a process, life cycles, sizes from small to large."
+  },
+  {
+   "label": "Fillgap",
+   "text": "Reading and grammar, key terms, safety rules, money and health lessons."
+  },
+  {
+   "label": "Estimator",
+   "text": "Numbers people get wrong: distances, populations, prices, how long things take."
+  },
+  {
+   "label": "Masterygrid",
+   "text": "Teachers, trainers and coaches planning small groups and catch-up sessions."
+  },
+  {
+   "label": "Leitner",
+   "text": "Vocabulary, facts, formulas, road signs: anything learned by repetition."
   },
   {
    "label": "Settlement Flow",

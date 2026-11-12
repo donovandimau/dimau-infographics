@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2785,6 +2785,150 @@
       ],
       "demo": "/templates/waffle/",
       "sample": "This library’s sample data (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "matchup",
+      "name": "Matchup",
+      "global": "Matchup",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "matching",
+      "family": "practice",
+      "bestFor": "Words and meanings, places and capitals, terms and pictures, questions and answers.",
+      "mechanics": [
+        "Tap one on each side",
+        "Right matches lock in",
+        "Misses counted",
+        "Same starting order every time"
+      ],
+      "dataShape": "{ left?:{label}, right?:{label}, pairs:[{id,a,b}] }",
+      "events": [
+        "match",
+        "finish"
+      ],
+      "demo": "/templates/matchup/",
+      "sample": "Pacific capitals (real reference)",
+      "usedBy": []
+    },
+    {
+      "id": "sequence",
+      "name": "Sequence",
+      "global": "Sequence",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "ordering",
+      "family": "practice",
+      "bestFor": "History, steps of a process, life cycles, sizes from small to large.",
+      "mechanics": [
+        "Up and down buttons, keyboard friendly",
+        "Check as often as you like",
+        "Dates shown after checking",
+        "Show the answer"
+      ],
+      "dataShape": "{ prompt?, items:[{id,label,order,when?,note?}] }",
+      "events": [
+        "move",
+        "check"
+      ],
+      "demo": "/templates/sequence/",
+      "sample": "Events in Fiji’s history (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "fillgap",
+      "name": "Fillgap",
+      "global": "Fillgap",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "cloze",
+      "family": "practice",
+      "bestFor": "Reading and grammar, key terms, safety rules, money and health lessons.",
+      "mechanics": [
+        "Any number of gaps per sentence",
+        "Choices shuffled",
+        "Hints after checking",
+        "Plain dropdowns for screen readers"
+      ],
+      "dataShape": "{ sentences:[{id,text:'… [right|wrong|wrong] …',why?}] }",
+      "events": [
+        "answer",
+        "check"
+      ],
+      "demo": "/templates/fillgap/",
+      "sample": "A money lesson (example)",
+      "usedBy": []
+    },
+    {
+      "id": "estimator",
+      "name": "Estimator",
+      "global": "Estimator",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "estimation",
+      "family": "practice",
+      "bestFor": "Numbers people get wrong: distances, populations, prices, how long things take.",
+      "mechanics": [
+        "Slider guess",
+        "Guess and answer shown together",
+        "Points for closeness",
+        "Sources for every answer"
+      ],
+      "dataShape": "{ questions:[{id,q,min,max,step?,answer,unit?,prefix?,decimals?,source?}] }",
+      "events": [
+        "guess",
+        "finish"
+      ],
+      "demo": "/templates/estimator/",
+      "sample": "Five Fiji questions (real figures)",
+      "usedBy": []
+    },
+    {
+      "id": "masterygrid",
+      "name": "Masterygrid",
+      "global": "Masterygrid",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "mastery-grid",
+      "family": "practice",
+      "bestFor": "Teachers, trainers and coaches planning small groups and catch-up sessions.",
+      "mechanics": [
+        "Four levels, colour and number",
+        "Who else needs the same help",
+        "Most help needed first",
+        "Arrow keys across the grid"
+      ],
+      "dataShape": "{ levels:[4 labels], skills:[{id,label}], learners:[{id,label,scores:[...]}] }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/masterygrid/",
+      "sample": "A class of eight (example)",
+      "usedBy": []
+    },
+    {
+      "id": "leitner",
+      "name": "Leitner",
+      "global": "Leitner",
+      "file": "practice.js",
+      "status": "ready",
+      "shape": "spaced-repetition",
+      "family": "practice",
+      "bestFor": "Vocabulary, facts, formulas, road signs: anything learned by repetition.",
+      "mechanics": [
+        "Tap to flip",
+        "Knew it or didn’t",
+        "Boxes show progress",
+        "Hard cards come round sooner"
+      ],
+      "dataShape": "{ cards:[{id,front,back,hint?}], boxes? }",
+      "events": [
+        "answer",
+        "finish"
+      ],
+      "demo": "/templates/leitner/",
+      "sample": "Pacific capitals (real reference)",
       "usedBy": []
     },
     {

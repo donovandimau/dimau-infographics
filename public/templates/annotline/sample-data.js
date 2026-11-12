@@ -85,6 +85,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.20",
    "value": 121
+  },
+  {
+   "label": "v1.21",
+   "value": 127
   }
  ],
  "notes": [
@@ -157,6 +161,11 @@ window.ANNOTLINE_DATA = {
    "at": 20,
    "title": "Basics",
    "text": "Donut, bar, line, area, combo and waffle charts, each with a table view."
+  },
+  {
+   "at": 21,
+   "title": "Practice",
+   "text": "Matching, ordering, gap-fill, estimating, a mastery grid and flash cards in boxes."
   }
  ]
 };

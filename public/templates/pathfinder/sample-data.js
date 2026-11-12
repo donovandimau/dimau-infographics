@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.20, 121 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.21, 127 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -616,6 +616,34 @@ window.PATHFINDER_DATA = {
     {
      "label": "Sort things into groups",
      "to": "r_sorter"
+    },
+    {
+     "label": "Matching pairs",
+     "to": "r_matchup",
+     "hint": "e.g. words and meanings"
+    },
+    {
+     "label": "Putting things in order",
+     "to": "r_sequence",
+     "hint": "e.g. history, steps"
+    },
+    {
+     "label": "Filling gaps in sentences",
+     "to": "r_fillgap"
+    },
+    {
+     "label": "Guessing numbers",
+     "to": "r_estimator"
+    },
+    {
+     "label": "Seeing who needs help with what",
+     "to": "r_masterygrid",
+     "hint": "for teachers"
+    },
+    {
+     "label": "Learning by repetition",
+     "to": "r_leitner",
+     "hint": "flash cards in boxes"
     }
    ]
   },
@@ -1398,6 +1426,42 @@ window.PATHFINDER_DATA = {
    "text": "100 squares, one per percent.",
    "link": "/templates/waffle/",
    "linkLabel": "Open Waffle"
+  },
+  "r_matchup": {
+   "result": "Matchup",
+   "text": "Match each item with its partner.",
+   "link": "/templates/matchup/",
+   "linkLabel": "Open Matchup"
+  },
+  "r_sequence": {
+   "result": "Sequence",
+   "text": "Put things in the right order.",
+   "link": "/templates/sequence/",
+   "linkLabel": "Open Sequence"
+  },
+  "r_fillgap": {
+   "result": "Fillgap",
+   "text": "Choose the word for each gap.",
+   "link": "/templates/fillgap/",
+   "linkLabel": "Open Fillgap"
+  },
+  "r_estimator": {
+   "result": "Estimator",
+   "text": "Guess a number; see how close you were.",
+   "link": "/templates/estimator/",
+   "linkLabel": "Open Estimator"
+  },
+  "r_masterygrid": {
+   "result": "Masterygrid",
+   "text": "Learners by skills; who needs help.",
+   "link": "/templates/masterygrid/",
+   "linkLabel": "Open Masterygrid"
+  },
+  "r_leitner": {
+   "result": "Leitner",
+   "text": "Flash cards in boxes.",
+   "link": "/templates/leitner/",
+   "linkLabel": "Open Leitner"
   }
  }
 };

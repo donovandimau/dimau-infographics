@@ -1,4 +1,4 @@
-/* Real data: this library (catalog.json, v1.20.0), each family and its templates, one slice per template. */
+/* Real data: this library (catalog.json, v1.21.0), each family and its templates, one slice per template. */
 window.SUNBURST_DATA = {
  "unit": "templates",
  "root": {
@@ -686,6 +686,41 @@ window.SUNBURST_DATA = {
       "label": "Waffle",
       "value": 1,
       "note": "Shares people grasp at a glance: survey results, vaccination, budget shares, pass rates."
+     }
+    ]
+   },
+   {
+    "label": "Practice",
+    "children": [
+     {
+      "label": "Matchup",
+      "value": 1,
+      "note": "Words and meanings, places and capitals, terms and pictures, questions and answers."
+     },
+     {
+      "label": "Sequence",
+      "value": 1,
+      "note": "History, steps of a process, life cycles, sizes from small to large."
+     },
+     {
+      "label": "Fillgap",
+      "value": 1,
+      "note": "Reading and grammar, key terms, safety rules, money and health lessons."
+     },
+     {
+      "label": "Estimator",
+      "value": 1,
+      "note": "Numbers people get wrong: distances, populations, prices, how long things take."
+     },
+     {
+      "label": "Masterygrid",
+      "value": 1,
+      "note": "Teachers, trainers and coaches planning small groups and catch-up sessions."
+     },
+     {
+      "label": "Leitner",
+      "value": 1,
+      "note": "Vocabulary, facts, formulas, road signs: anything learned by repetition."
      }
     ]
    },
