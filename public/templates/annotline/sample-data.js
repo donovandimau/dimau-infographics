@@ -73,6 +73,10 @@ window.ANNOTLINE_DATA = {
   {
    "label": "v1.17",
    "value": 103
+  },
+  {
+   "label": "v1.18",
+   "value": 109
   }
  ],
  "notes": [
@@ -130,6 +134,11 @@ window.ANNOTLINE_DATA = {
    "at": 17,
    "title": "Words",
    "text": "Word counts, a word cloud, a word tree, text changes, reading ease and keywords in context."
+  },
+  {
+   "at": 18,
+   "title": "Tools",
+   "text": "Time zones, a life in months, settling shared costs, best-value packs, seats and majorities, and standings."
   }
  ]
 };

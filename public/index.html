@@ -94,6 +94,7 @@
       <a href="/#structure">Structure</a>
       <a href="/#analyse">Analyse</a>
       <a href="/#words">Words</a>
+      <a href="/#tools">Tools</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -409,6 +410,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="tools" aria-labelledby="tools-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Tools · everyday helpers</p><h2 id="tools-h">Tools</h2>
+      <p class="lede">Time zones and shared working hours, a life in months, who owes whom, the best-value pack, seats and majorities, and standings round by round.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-worldclock"></div>
+    <ul class="family-list">
+      <li><a href="/templates/worldclock/"><b>Worldclock</b><span>Local times side by side; when is everyone at work?</span></a></li>
+      <li><a href="/templates/lifegrid/"><b>Lifegrid</b><span>A life as a grid of months.</span></a></li>
+      <li><a href="/templates/settleup/"><b>Settleup</b><span>Shared costs and the fewest payments.</span></a></li>
+      <li><a href="/templates/unitprice/"><b>Unitprice</b><span>Which pack is the best value.</span></a></li>
+      <li><a href="/templates/seatarc/"><b>Seatarc</b><span>Seats in a half circle; build a majority.</span></a></li>
+      <li><a href="/templates/leaderboard/"><b>Leaderboard</b><span>Standings round by round.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -457,6 +474,7 @@
 <script src="/templates/sunburst/sample-data.js"></script>
 <script src="/templates/pareto/sample-data.js"></script>
 <script src="/templates/wordtree/sample-data.js"></script>
+<script src="/templates/worldclock/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -480,6 +498,7 @@
   D.mount('#pv-sunburst', { template: 'sunburst', data: window.SUNBURST_DATA });
   D.mount('#pv-pareto', { template: 'pareto', data: window.PARETO_DATA });
   D.mount('#pv-wordtree', { template: 'wordtree', data: window.WORDTREE_DATA });
+  D.mount('#pv-worldclock', { template: 'worldclock', data: window.WORLDCLOCK_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

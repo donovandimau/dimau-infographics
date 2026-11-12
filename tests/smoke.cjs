@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 24, null, { timeout: 8000 });
-      return '24 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 25, null, { timeout: 8000 });
+      return '25 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 19) throw new Error('expected root and 18 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 20) throw new Error('expected root and 19 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -396,9 +396,9 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 103 templates in v1\.17\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 109 templates in v1\.18\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.17 \(6% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.18 \(6% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
   } },
@@ -478,9 +478,9 @@ const PAGES = [
       return 'right and wrong guesses explained, score, reveal';
   } },
   { url: '/templates/annotline/', name: 'annotline', check: async p => {
-      if (!/From 4 in v1\.0 to 103 in v1\.17/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      if (!/From 4 in v1\.0 to 109 in v1\.18/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
       await p.click('[data-d="1"]');
-      if (!/Note 1 of 11 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
+      if (!/Note 1 of 12 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
       await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
       if (!/Infographics Fiji v2 lands/.test(await p.textContent('.dy-note'))) throw new Error('tap note wrong');
       return 'whole story, step, tap a note';
@@ -603,12 +603,12 @@ const PAGES = [
       return 'two-way shares, block detail, highlight a part';
   } },
   { url: '/templates/sunburst/', name: 'sunburst', check: async p => {
-      if (!/Dimau Infographics: 103 templates in 18 parts\. Biggest: Stories \(7%\)/.test(await p.textContent('.dx-note'))) throw new Error('summary wrong: ' + await p.textContent('.dx-note'));
+      if (!/Dimau Infographics: 109 templates in 19 parts\. Biggest: Stories \(6%\)/.test(await p.textContent('.dx-note'))) throw new Error('summary wrong: ' + await p.textContent('.dx-note'));
       const k = await p.evaluate(() => [...document.querySelectorAll('svg [data-k]')].find(g => /^Charts:/.test(g.getAttribute('aria-label'))).dataset.k);
       await p.focus('svg [data-k="' + k + '"]'); await p.keyboard.press('Enter');
       if (!/Charts: 6 templates \(6% of everything\) in 6 parts, all the same size/.test(await p.textContent('.dx-note')) || !/DimauInfographics›Charts/.test((await p.textContent('.dx-crumbs')).replace(/\s/g, ''))) throw new Error('zoom wrong: ' + await p.textContent('.dx-note'));
       await p.keyboard.press('Escape');
-      if (!/^Dimau Infographics: 103/.test(await p.textContent('.dx-note'))) throw new Error('back up failed');
+      if (!/^Dimau Infographics: 109/.test(await p.textContent('.dx-note'))) throw new Error('back up failed');
       return 'summary, zoom into a family, Escape back up';
   } },
   { url: '/templates/circlepack/', name: 'circlepack', check: async p => {
@@ -703,11 +703,11 @@ const PAGES = [
       return 'better-half filters, ranks for one item';
   } },
   { url: '/templates/radialbars/', name: 'radialbars', check: async p => {
-      if (!/Largest: Stories \(7 templates\)\..*Total 103 templates/.test(await p.textContent('.du-note'))) throw new Error('summary wrong: ' + await p.textContent('.du-note'));
+      if (!/Largest: Stories \(7 templates\)\..*Total 109 templates/.test(await p.textContent('.du-note'))) throw new Error('summary wrong: ' + await p.textContent('.du-note'));
       await p.click('[data-sort="size"]');
       if (!/^Stories/.test(await p.getAttribute('svg g[data-k]:first-of-type', 'aria-label'))) throw new Error('sort failed');
       await p.focus('svg g[data-k]:first-of-type'); await p.keyboard.press('Enter');
-      if (!/Stories: 7 templates \(7% of the total\), number 1 of 18/.test(await p.textContent('.du-note'))) throw new Error('bar wrong: ' + await p.textContent('.du-note'));
+      if (!/Stories: 7 templates \(6% of the total\), number 1 of 19/.test(await p.textContent('.du-note'))) throw new Error('bar wrong: ' + await p.textContent('.du-note'));
       return 'largest and total, sort by size, share and rank';
   } },
   { url: '/templates/wordbars/', name: 'wordbars', check: async p => {
@@ -767,6 +767,56 @@ const PAGES = [
       await p.fill('.dr-bar input', 'zzzz');
       if (!/No text uses “zzzz”/.test(await p.textContent('.dr-note'))) throw new Error('no-match wrong');
       return 'uses counted, sort by word before, full line, no match';
+  } },
+  { url: '/templates/worldclock/', name: 'worldclock', check: async p => {
+      if (!/^\d\d:\d\d in Suva is Auckland \d\d:\d\d, Sydney \d\d:\d\d, Brisbane \d\d:\d\d, Los Angeles/.test(await p.textContent('.dj-note'))) throw new Error('summary wrong: ' + await p.textContent('.dj-note'));
+      await p.$eval('.dj-range input', i => { i.value = 36; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/^09:00 in Suva is Auckland 1\d:00/.test(await p.textContent('.dj-note')) || !/^Suva: 09:00/.test(await p.textContent('.dj-range output'))) throw new Error('slider wrong: ' + await p.textContent('.dj-note'));
+      await p.focus('svg [data-k="london"]'); await p.keyboard.press('Enter');
+      if (!/in London is Suva/.test(await p.textContent('.dj-note'))) throw new Error('home change failed: ' + await p.textContent('.dj-note'));
+      return 'live local times, slide to 9:00, line up on London';
+  } },
+  { url: '/templates/lifegrid/', name: 'lifegrid', check: async p => {
+      if (!/Someone born in March 1990: [\d,]+ of 960 months \(\d+% of 80 years\)\. Age \d+, /.test(await p.textContent('.dj-note'))) throw new Error('summary wrong: ' + await p.textContent('.dj-note'));
+      if ((await p.locator('svg rect[rx="2"]').count()) !== 960) throw new Error('expected 960 months');
+      await p.focus('svg [data-k="30"]'); await p.keyboard.press('Enter');
+      if (!/Age 30 \(2020–2021\): working life\. Lived\./.test(await p.textContent('.dj-note'))) throw new Error('year wrong: ' + await p.textContent('.dj-note'));
+      return 'months lived to today, 960 squares, a year in words';
+  } },
+  { url: '/templates/settleup/', name: 'settleup', check: async p => {
+      if (!/\$441\.00 spent by 4 people\. 3 payments settle everything/.test(await p.textContent('.dj-note'))) throw new Error('summary wrong: ' + await p.textContent('.dj-note'));
+      if (!/Friend D pays Friend A \$69\.00/.test(await p.textContent('.su-pay'))) throw new Error('payments wrong: ' + await p.textContent('.su-pay'));
+      await p.focus('svg [data-k="a"]'); await p.keyboard.press('Enter');
+      if (!/Friend A paid \$240\.00 and their share is \$114\.00, so they are owed \$126\.00/.test(await p.textContent('.dj-note'))) throw new Error('person wrong: ' + await p.textContent('.dj-note'));
+      await p.uncheck('[data-e="3"]');
+      if (!/Friend D pays Friend A \$99\.00/.test(await p.textContent('.su-pay'))) throw new Error('untick failed: ' + await p.textContent('.su-pay'));
+      return 'fewest payments, a person in words, leave a cost out';
+  } },
+  { url: '/templates/unitprice/', name: 'unitprice', check: async p => {
+      if (!/For 12 kg, the cheapest way is 6 × Rice 2 kg for \$35\.40\. Most expensive: Rice 10 kg \(\$56\.00\)/.test(await p.textContent('.dj-note'))) throw new Error('need wrong: ' + await p.textContent('.dj-note'));
+      await p.fill('.dj-field input', '');
+      if (!/Best value: Rice 5 kg at \$2\.70 per kg\. Rice 500 g costs 30% more per kg/.test(await p.textContent('.dj-note'))) throw new Error('best wrong: ' + await p.textContent('.dj-note'));
+      await p.focus('svg [data-k="4"]'); await p.keyboard.press('Enter');
+      if (!/Rice 10 kg: \$28\.00 for 10 kg = \$2\.80 per kg, 4% more per kg than Rice 5 kg/.test(await p.textContent('.dj-note'))) throw new Error('item wrong: ' + await p.textContent('.dj-note'));
+      return 'cheapest for 12 kg, best per kilo, grams converted, bigger is not always cheaper';
+  } },
+  { url: '/templates/seatarc/', name: 'seatarc', check: async p => {
+      if ((await p.locator('svg circle').count()) !== 31) throw new Error('expected 31 seats, got ' + await p.locator('svg circle').count());
+      if (!/31 seats; 16 make a majority\. Largest: Party A \(12\), 4 short on its own/.test(await p.textContent('.dj-note'))) throw new Error('summary wrong');
+      await p.click('[data-p="a"]'); await p.click('[data-p="b"]');
+      if (!/Together: 21 seats\. That is a majority \(5 to spare\)/.test(await p.textContent('.dj-note'))) throw new Error('majority wrong: ' + await p.textContent('.dj-note'));
+      await p.click('[data-p="b"]'); await p.click('[data-p="d"]');
+      if (!/Together: 15 seats\. 1 short of the 16 needed/.test(await p.textContent('.dj-note'))) throw new Error('short wrong: ' + await p.textContent('.dj-note'));
+      return '31 seats drawn, build a majority, seats short';
+  } },
+  { url: '/templates/leaderboard/', name: 'leaderboard', check: async p => {
+      if (!/After Round 6, Team A leads with 58 points, 5 ahead of Team E\. Biggest climb: Team D \(up 1\)/.test(await p.textContent('.dj-note'))) throw new Error('summary wrong: ' + await p.textContent('.dj-note'));
+      await p.$eval('.dj-range input', i => { i.value = 0; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/After Round 1, Team E leads with 11 points, 3 ahead of Team A/.test(await p.textContent('.dj-note')) || !/^Team E/.test(await p.textContent('.lb li:first-child button span:nth-child(2)'))) throw new Error('round 1 wrong: ' + await p.textContent('.dj-note'));
+      await p.$eval('.dj-range input', i => { i.value = 5; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      await p.click('[data-id="a"]');
+      if (!/Team A: 58 points, place 1 after Round 6\. Places so far: 2 → /.test(await p.textContent('.dj-note'))) throw new Error('story wrong: ' + await p.textContent('.dj-note'));
+      return 'leader and climber, slide rounds, places so far';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

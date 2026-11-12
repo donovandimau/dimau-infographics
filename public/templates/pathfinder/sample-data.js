@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.17, 103 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.18, 109 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -81,6 +81,11 @@ window.PATHFINDER_DATA = {
      "label": "Text: comments, documents, wording",
      "hint": "feedback, policies, notices",
      "to": "words"
+    },
+    {
+     "label": "An everyday tool",
+     "hint": "time zones, sharing costs, best value",
+     "to": "tools"
     },
     {
      "label": "A few headline numbers",
@@ -1193,6 +1198,71 @@ window.PATHFINDER_DATA = {
    "text": "Every use of a word, lined up.",
    "link": "/templates/keyline/",
    "linkLabel": "Open Keyline"
+  },
+  "tools": {
+   "q": "Which tool?",
+   "options": [
+    {
+     "label": "Times in other countries",
+     "to": "r_worldclock"
+    },
+    {
+     "label": "A life or a plan in months",
+     "to": "r_lifegrid"
+    },
+    {
+     "label": "Sharing costs in a group",
+     "to": "r_settleup"
+    },
+    {
+     "label": "Comparing pack sizes and prices",
+     "to": "r_unitprice"
+    },
+    {
+     "label": "Seats and majorities",
+     "to": "r_seatarc"
+    },
+    {
+     "label": "Scores round by round",
+     "to": "r_leaderboard"
+    }
+   ]
+  },
+  "r_worldclock": {
+   "result": "Worldclock",
+   "text": "Local times side by side; when is everyone at work?",
+   "link": "/templates/worldclock/",
+   "linkLabel": "Open Worldclock"
+  },
+  "r_lifegrid": {
+   "result": "Lifegrid",
+   "text": "A life as a grid of months.",
+   "link": "/templates/lifegrid/",
+   "linkLabel": "Open Lifegrid"
+  },
+  "r_settleup": {
+   "result": "Settleup",
+   "text": "Shared costs and the fewest payments.",
+   "link": "/templates/settleup/",
+   "linkLabel": "Open Settleup"
+  },
+  "r_unitprice": {
+   "result": "Unitprice",
+   "text": "Which pack is the best value.",
+   "link": "/templates/unitprice/",
+   "linkLabel": "Open Unitprice"
+  },
+  "r_seatarc": {
+   "result": "Seatarc",
+   "text": "Seats in a half circle; build a majority.",
+   "link": "/templates/seatarc/",
+   "linkLabel": "Open Seatarc"
+  },
+  "r_leaderboard": {
+   "result": "Leaderboard",
+   "text": "Standings round by round.",
+   "link": "/templates/leaderboard/",
+   "linkLabel": "Open Leaderboard"
   }
  }
 };

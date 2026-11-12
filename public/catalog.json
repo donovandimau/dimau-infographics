@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "base": "/v1/",
   "templates": [
     {
@@ -2352,6 +2352,148 @@
       ],
       "demo": "/templates/keyline/",
       "sample": "What this library’s templates are for (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "worldclock",
+      "name": "Worldclock",
+      "global": "Worldclock",
+      "file": "tools.js",
+      "status": "ready",
+      "shape": "time-zones",
+      "family": "tools",
+      "bestFor": "Calling family overseas, planning meetings across countries, support hours, live events.",
+      "mechanics": [
+        "Live now line",
+        "Slide to any hour",
+        "Shared working hours in words",
+        "Tap a place to line up on it"
+      ],
+      "dataShape": "{ places:[{id,label,tz}], home?, work?:[9,17] }",
+      "events": [
+        "time",
+        "home"
+      ],
+      "demo": "/templates/worldclock/",
+      "sample": "Suva and six cities (real, live)",
+      "usedBy": []
+    },
+    {
+      "id": "lifegrid",
+      "name": "Lifegrid",
+      "global": "Lifegrid",
+      "file": "tools.js",
+      "status": "ready",
+      "shape": "life-grid",
+      "family": "tools",
+      "bestFor": "Pensions and savings, health and education talks, planning projects in years, personal reflection.",
+      "mechanics": [
+        "One square per month",
+        "Stages coloured",
+        "Filled to today",
+        "Tap a year"
+      ],
+      "dataShape": "{ born:'YYYY-MM-DD', years?, stages:[{id,label,from,to}], today?, label? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/lifegrid/",
+      "sample": "Someone born in 1990 (example)",
+      "usedBy": []
+    },
+    {
+      "id": "settleup",
+      "name": "Settleup",
+      "global": "Settleup",
+      "file": "tools.js",
+      "status": "ready",
+      "shape": "settle-up",
+      "family": "tools",
+      "bestFor": "Group trips, shared houses, clubs and committees, family events.",
+      "mechanics": [
+        "Owed and owing bars",
+        "Fewest payments listed",
+        "Costs shared by some, not all",
+        "Tick costs on and off"
+      ],
+      "dataShape": "{ prefix?, people:[{id,label}], expenses:[{id,label,by,amount,for?:[ids]}] }",
+      "events": [
+        "select",
+        "change"
+      ],
+      "demo": "/templates/settleup/",
+      "sample": "A day trip for four (example)",
+      "usedBy": []
+    },
+    {
+      "id": "unitprice",
+      "name": "Unitprice",
+      "global": "Unitprice",
+      "file": "tools.js",
+      "status": "ready",
+      "shape": "unit-price",
+      "family": "tools",
+      "bestFor": "Shopping guides, market price boards, school and household budgeting lessons.",
+      "mechanics": [
+        "Price per kilo, litre or item",
+        "Grams and millilitres converted",
+        "Packs needed for any amount",
+        "Best value marked"
+      ],
+      "dataShape": "{ prefix?, unit:'kg'|'l'|'item', items:[{id,label,price,size,unit?}], need? }",
+      "events": [
+        "select",
+        "need"
+      ],
+      "demo": "/templates/unitprice/",
+      "sample": "Five bags of rice (example)",
+      "usedBy": []
+    },
+    {
+      "id": "seatarc",
+      "name": "Seatarc",
+      "global": "Seatarc",
+      "file": "tools.js",
+      "status": "ready",
+      "shape": "parliament",
+      "family": "tools",
+      "bestFor": "Councils, boards and parliaments, election results, committee votes.",
+      "mechanics": [
+        "Seats as dots in rows",
+        "Build a group",
+        "Majority or seats short",
+        "Any number of seats"
+      ],
+      "dataShape": "{ parties:[{id,label,seats}], majority?, label? }",
+      "events": [
+        "group"
+      ],
+      "demo": "/templates/seatarc/",
+      "sample": "A council of 31 seats (example)",
+      "usedBy": []
+    },
+    {
+      "id": "leaderboard",
+      "name": "Leaderboard",
+      "global": "Leaderboard",
+      "file": "tools.js",
+      "status": "ready",
+      "shape": "leaderboard",
+      "family": "tools",
+      "bestFor": "Quizzes and competitions, school houses, sales teams, fundraising drives.",
+      "mechanics": [
+        "Round slider",
+        "Rows slide to new places",
+        "Ups and downs marked",
+        "Places so far for any entry"
+      ],
+      "dataShape": "{ rounds:[...], entries:[{id,label,scores:[...]}], unit? }",
+      "events": [
+        "round",
+        "select"
+      ],
+      "demo": "/templates/leaderboard/",
+      "sample": "A six-round quiz (example)",
       "usedBy": []
     },
     {

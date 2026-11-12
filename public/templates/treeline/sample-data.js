@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.17.0), every family and template. */
+/* Real data: this library (catalog.json, v1.18.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.17.0",
+  "label": "Dimau Infographics 1.18.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -580,6 +580,41 @@ window.TREELINE_DATA = {
       "label": "Keyline",
       "sub": "Checking how a term is used in reports, policies, interviews and course material.",
       "link": "/templates/keyline/"
+     }
+    ]
+   },
+   {
+    "label": "Tools",
+    "children": [
+     {
+      "label": "Worldclock",
+      "sub": "Calling family overseas, planning meetings across countries, support hours, live events.",
+      "link": "/templates/worldclock/"
+     },
+     {
+      "label": "Lifegrid",
+      "sub": "Pensions and savings, health and education talks, planning projects in years, personal reflection.",
+      "link": "/templates/lifegrid/"
+     },
+     {
+      "label": "Settleup",
+      "sub": "Group trips, shared houses, clubs and committees, family events.",
+      "link": "/templates/settleup/"
+     },
+     {
+      "label": "Unitprice",
+      "sub": "Shopping guides, market price boards, school and household budgeting lessons.",
+      "link": "/templates/unitprice/"
+     },
+     {
+      "label": "Seatarc",
+      "sub": "Councils, boards and parliaments, election results, committee votes.",
+      "link": "/templates/seatarc/"
+     },
+     {
+      "label": "Leaderboard",
+      "sub": "Quizzes and competitions, school houses, sales teams, fundraising drives.",
+      "link": "/templates/leaderboard/"
      }
     ]
    },
