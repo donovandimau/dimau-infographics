@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "base": "/v1/",
   "templates": [
     {
@@ -639,6 +639,149 @@
       ],
       "demo": "/templates/pyramid/",
       "sample": "People by age group (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "factwall",
+      "name": "Factwall",
+      "global": "Factwall",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "headline",
+      "family": "insight",
+      "bestFor": "Impact reports, “at a glance” panels, annual summaries, the top of any dashboard.",
+      "mechanics": [
+        "Numbers count up when seen",
+        "Shares as ten dots",
+        "Compare with an earlier value",
+        "Tap for detail and source"
+      ],
+      "dataShape": "{ facts:[{id,value,label,prefix?,suffix?,decimals?,share?,compare?:{value,label},detail?,source?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/factwall/",
+      "sample": "FijiLearn and this library in numbers (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "swarm",
+      "name": "Swarm",
+      "global": "Swarm",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "distribution",
+      "family": "insight",
+      "bestFor": "Test scores, prices, waiting times, sizes: any time the spread matters as much as the average.",
+      "mechanics": [
+        "One dot per item, never overlapping",
+        "Split by group or together",
+        "Middle value per group",
+        "Marker line with count above it"
+      ],
+      "dataShape": "{ x:{label,prefix?,suffix?,min?,max?}, groups:[{id,label,color?}], items:[{id,label,value,group,note?}], marker?:{value,label} }",
+      "events": [
+        "select",
+        "layout"
+      ],
+      "demo": "/templates/swarm/",
+      "sample": "Test scores of three classes (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "scatter",
+      "name": "Scatter",
+      "global": "Scatter",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "correlation",
+      "family": "insight",
+      "bestFor": "Distance against price, hours against results, size against cost.",
+      "mechanics": [
+        "Dots sized by a third measure",
+        "Trend line and strength in words",
+        "Show or hide groups",
+        "Above or below the trend for each dot"
+      ],
+      "dataShape": "{ x:{label,prefix?,suffix?}, y:{label,prefix?,suffix?}, size?:{label}, groups?:[{id,label,color?}], items:[{id,label,x,y,size?,group?,note?,show?}] }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/scatter/",
+      "sample": "Villages by distance and income (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "heatgrid",
+      "name": "Heatgrid",
+      "global": "Heatgrid",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "matrix",
+      "family": "insight",
+      "bestFor": "Use by day and hour, sales by product and month, attendance by class and week.",
+      "mechanics": [
+        "Cells coloured by size",
+        "Row totals",
+        "Sort rows by total",
+        "Arrow keys between cells",
+        "Compared with the average cell"
+      ],
+      "dataShape": "{ rows:[{id,label}], cols:[{id,label}], values:[[number]], prefix?, suffix?, label? }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/heatgrid/",
+      "sample": "App use by day and hour (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge",
+      "global": "Bridge",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "waterfall",
+      "family": "insight",
+      "bestFor": "Monthly budgets, profit from revenue, how a population or stock changed over a year.",
+      "mechanics": [
+        "Floating bars for each rise and fall",
+        "Step through",
+        "Running total on every bar",
+        "Biggest addition and cost in words"
+      ],
+      "dataShape": "{ start:{label,value}, end?:{label}, prefix?, suffix?, steps:[{id,label,value,note?}] }",
+      "events": [
+        "select",
+        "step"
+      ],
+      "demo": "/templates/bridge/",
+      "sample": "A household’s month (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "overlap",
+      "name": "Overlap",
+      "global": "Overlap",
+      "file": "insight.js",
+      "status": "ready",
+      "shape": "sets",
+      "family": "insight",
+      "bestFor": "Survey answers that overlap, customers using several services, skills people share.",
+      "mechanics": [
+        "Two or three groups",
+        "Tap a region or its button",
+        "Totals per group",
+        "“In none” shown"
+      ],
+      "dataShape": "{ sets:[{id,label,color?}], regions:{ 'a':n, 'a&b':n, 'a&b&c':n, '':n }, unit?, label?, total? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/overlap/",
+      "sample": "How adults handle money (example figures)",
       "usedBy": []
     },
     {
