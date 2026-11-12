@@ -216,7 +216,10 @@
       ],
       "demo": "/templates/waypath/",
       "sample": "How an app adopts a template (real process)",
-      "usedBy": []
+      "usedBy": [
+        { "app": "platform-viti-market", "since": "2026-11-12" },
+        { "app": "platform-qele", "since": "2026-11-12" }
+      ]
     },
     {
       "id": "rankrace",
@@ -593,7 +596,10 @@
       ],
       "demo": "/templates/pathfinder/",
       "sample": "Which template fits? (real: this library)",
-      "usedBy": []
+      "usedBy": [
+        { "app": "platform-dimau-homes", "since": "2026-11-12" },
+        { "app": "platform-qele", "since": "2026-11-12" }
+      ]
     },
     {
       "id": "radar",
@@ -664,7 +670,9 @@
       ],
       "demo": "/templates/factwall/",
       "sample": "FijiLearn and this library in numbers (real data)",
-      "usedBy": []
+      "usedBy": [
+        { "app": "platform-qele", "since": "2026-11-12" }
+      ]
     },
     {
       "id": "swarm",
@@ -882,7 +890,9 @@
       ],
       "demo": "/templates/checklist/",
       "sample": "Add a template to your app (real process)",
-      "usedBy": []
+      "usedBy": [
+        { "app": "platform-bulacars", "since": "2026-11-12" }
+      ]
     },
     {
       "id": "scaleup",
@@ -1166,7 +1176,10 @@
       ],
       "demo": "/templates/treeline/",
       "sample": "This library by family (real data)",
-      "usedBy": []
+      "usedBy": [
+        { "app": "platform-myfiji", "since": "2026-11-12" },
+        { "app": "platform-qele", "since": "2026-11-12" }
+      ]
     },
     {
       "id": "monthview",
