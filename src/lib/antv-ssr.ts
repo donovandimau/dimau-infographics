@@ -1,0 +1,89 @@
+import { Worker } from 'worker_threads';
+import { createRequire } from 'module';
+import path from 'path';
+import { pathToFileURL } from 'url';
+
+/**
+ * @antv/infographic's server renderer installs a fake browser (window, document, ...) on the global
+ * object and never removes it. Inside a Next.js server that breaks every other request, because
+ * Next then believes it is running in a browser. So the renderer runs in its own worker thread,
+ * whose globals are separate from the server's.
+ */
+
+const WORKER_CODE = `
+const { parentPort, workerData } = require('worker_threads');
+const ready = import(workerData.entry);
+parentPort.on('message', async ({ id, options }) => {
+  try {
+    const { renderToString } = await ready;
+    const svg = await renderToString(options);
+    parentPort.postMessage({ id, svg });
+  } catch (e) {
+    parentPort.postMessage({ id, error: (e && e.message) || String(e) });
+  }
+});
+`;
+
+type Pending = { resolve: (svg: string) => void; reject: (e: Error) => void; timer: NodeJS.Timeout };
+
+let worker: Worker | null = null;
+let seq = 0;
+const pending = new Map<number, Pending>();
+
+function entryPath(): string {
+  // Resolved here (not in the worker) so it works wherever the server's node_modules live.
+  // The ES module build is loaded: the CommonJS build require()s ES-only packages (lodash-es),
+  // which the Vercel runtime refuses. next.config.ts ships the package and all its dependencies.
+  const req = createRequire(/*turbopackIgnore: true*/ `${process.cwd()}/package.json`);
+  const cjsEntry = req.resolve('@antv/infographic/ssr'); // <pkg>/lib/ssr/index.js
+  return pathToFileURL(path.resolve(path.dirname(cjsEntry), '..', '..', 'esm', 'ssr', 'index.js')).href;
+}
+
+function getWorker(): Worker {
+  if (worker) return worker;
+  // antv depends on packages that ship ES module code in plain .js files (e.g. @antv/layout) and
+  // on ES-only packages (lodash-es). Some hosts start Node with module detection switched off, so
+  // the worker turns it back on explicitly.
+  // (The parent's own flags are not passed on: memory/GC flags are not allowed in workers.)
+  const execArgv = ['--experimental-detect-module', '--experimental-require-module'];
+  const env = { ...process.env, NODE_OPTIONS: (process.env.NODE_OPTIONS ?? '').replace(/--no-experimental-(detect|require)-module/g, '').trim() };
+  const w = new Worker(WORKER_CODE, { eval: true, workerData: { entry: entryPath() }, execArgv, env });
+  w.unref();
+  w.on('message', (msg: { id: number; svg?: string; error?: string }) => {
+    const p = pending.get(msg.id);
+    if (!p) return;
+    pending.delete(msg.id);
+    clearTimeout(p.timer);
+    if (msg.error !== undefined) p.reject(new Error(msg.error));
+    else p.resolve(msg.svg ?? '');
+  });
+  const fail = (err: Error) => {
+    for (const p of pending.values()) {
+      clearTimeout(p.timer);
+      p.reject(err);
+    }
+    pending.clear();
+    worker = null;
+  };
+  w.on('error', fail);
+  w.on('exit', (code) => code !== 0 && fail(new Error(`Renderer stopped (${code})`)));
+  worker = w;
+  return w;
+}
+
+/** Render @antv/infographic options to an SVG string, isolated from the server's globals. */
+export function renderAntvToString(options: Record<string, unknown>, timeoutMs = 20_000): Promise<string> {
+  const id = ++seq;
+  const w = getWorker();
+  return new Promise<string>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      pending.delete(id);
+      reject(new Error('Render timed out'));
+    }, timeoutMs);
+    pending.set(id, { resolve, reject, timer });
+    w.postMessage({ id, options: JSON.parse(JSON.stringify(options)) });
+  });
+}
+
+/** Never called: keeps the renderer package (and its dependencies) in the deployed function bundle. */
+export const keepRendererInBundle = () => import('@antv/infographic/ssr');

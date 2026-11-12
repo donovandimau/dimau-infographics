@@ -8,13 +8,15 @@
 - Ops Room card: `platform-dimau-infographics` (created 11 Nov 2026)
 - Code: https://github.com/donovandimau/dimau-infographics
 - Live: https://dimau-infographics.vercel.app/ (Vercel project `dimau-infographics`, team donovandimau-3468s-projects; every merge to `main` deploys)
-- What it is: the one central library of interactive infographic templates. Apps load `/v1/dimau-infographics.js` from the live address and pick a template by name. Related but separate: Dimau Visuals (`platform-dimau-visuals`) is a finished product; this is the shared component library apps build with.
+- What it is: **Infographics Fiji** — the template registry, studio and render API (`/vault`, `/studio/[slug]`, `/api/v1/*`) plus the v1 interactive template library (`/v1/`, unchanged, served from `public/`). Apps load `/v1/dimau-infographics.js` from the live address and pick a template by name, or call the render API. Related but separate: Dimau Visuals (`platform-dimau-visuals`) is a finished product; this is the shared library apps build with.
 
 ## Current state
-- Status: v1 live since 11 Nov 2026
-- Templates (49): Loanpath, Savegrow, Countdown, Pollbar, Rankit and Opinion (plan and ask), Flashdeck, Quizline, Hotspot, Checklist, Scaleup and Sorter (learn), Factwall, Swarm, Scatter, Heatgrid, Bridge and Overlap (insight), Dropoff, Quadrant, Slope, Pathfinder, Radar and Pyramid (compare), Tilemap, Mosaic, Duel, Almanac, Goalmeter and Dayclock (everyday), Rankrace, Peoplegrid, Guessline, Flowbank, Ledger and Storyscroll (charts), plus Archive Desk (stories), Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline, Switchback, Swimlane, Roadmap (time), Waypath (steps), and four signal cards from the Infographics Fiji spec
-- Next action: apps adopt templates; record each in `catalog.json` `usedBy`
-- Blocker: none
+- Status: v1 live since 11 Nov 2026 (43 templates); Infographics Fiji v2 (Next.js app + render API) merged as PR #4; v1.8 (+6, 49 templates) in PR #13
+- Templates, v1 interactive (49 with PR #13): Loanpath, Savegrow, Countdown, Pollbar, Rankit and Opinion (plan and ask), Flashdeck, Quizline, Hotspot, Checklist, Scaleup and Sorter (learn), Factwall, Swarm, Scatter, Heatgrid, Bridge and Overlap (insight), Dropoff, Quadrant, Slope, Pathfinder, Radar and Pyramid (compare), Tilemap, Mosaic, Duel, Almanac, Goalmeter and Dayclock (everyday), Rankrace, Peoplegrid, Guessline, Flowbank, Ledger and Storyscroll (charts), plus Archive Desk (stories), Lanternfield (connections), Tidepool (amounts), Strata (levels), Riverline, Switchback, Swimlane, Roadmap (time), Waypath (steps), and four signal cards from the Infographics Fiji spec (browser-drawn)
+- Templates, v2 render API (4, same slugs as the signal cards): rbf-sandbox-settlement-flow, sota-kece-community-pulse (+ 1200x630 share card), pacific-backhaul-node-map, debt-freedom-trajectory — server-rendered SVG/PNG at `/api/v1/render/<slug>` for img tags, link previews, emails and server code
+- Next action: review and merge PR #13; set env vars from `.env.example`; run `supabase/migrations/001_infographics_fiji.sql` then `supabase/seed.sql`; apps adopt templates and record each in `catalog.json` `usedBy`
+- Blocker: none for the render API (works with no database); saving from the studio needs the Supabase env vars
+- Note for every AI adding v1 templates: since PR #4 the static library lives in `public/` (`public/v1/`, `public/templates/`, `public/catalog.json`). Put new files there — URLs are unchanged.
 
 ## Rules for this library
 - Each template file uses its own CSS class prefix (`ds-`, `dk-`, `dn-`, `dl-`, `dq-` …). Never use `dp-`: the shared `dimau-pwa.js` already uses it, and the clash broke Opinion's buttons during v1.8.
@@ -30,9 +32,13 @@
 | — | — | nothing claimed | — |
 
 ## Do not change
+- `/api/v1/*` request and response shapes: sister apps call them. Breaking changes go to `/api/v2/`.
+- `src/lib/starter-templates.ts` is the one source for `supabase/seed.sql` and the SDK: edit it, then `npm run build:seed && npm run build:sdk`. Never hand-edit `seed.sql`.
+- The antv server renderer must stay inside its worker thread (`src/lib/antv-ssr.ts`): run in the main thread it installs a fake `window` that breaks every other Next.js request.
 - The `--di-*` theme token names and the template ids: apps depend on them.
 
 ## Last handover
+- 2026-11-11 — Claude — Built Infographics Fiji v2 in this repo: Next.js app (vault, studio, render/templates/sdk/preview/ai APIs), Supabase migration + generated seed, 4 starter templates (RBF sandbox flow, Sota Kece pulse + share card, backhaul node map, debt trajectory), typed SDK generator, sync workflow to SotaKece and mydebtcalculator. Static v1 files moved to `public/` (URLs unchanged; smoke test points there). `npm test` passes (v1 smoke + server render tests). Works with no database: falls back to the starter templates. Outstanding for Donovan: Vercel import + env vars, run the migration and seed, `ECOSYSTEM_PAT` secret for the sync workflow.
 - 2026-11-11 — Claude — v1 built on `build-v1` and merged by Donovan as PR #1; `npm test` passes at 1360px and 390px. Ops card, room artifact and Command Room post recorded. Rollout row added via Dimau-Ops-Room PR #429. Vercel project NOT created: the automated setup was refused by a permission check, so after approval someone imports this repo in Vercel (team donovandimau-3468s-projects, no build step) and sets the live address on the card. `dimau-pwa.js` was copied unchanged from fiji-planner (md5 cd3f4845…).
 
 ## Done — newest first
