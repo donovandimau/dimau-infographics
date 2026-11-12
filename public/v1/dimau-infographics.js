@@ -18,6 +18,7 @@
     swimlane: { file: 'timelines.js', global: 'Swimlane' },
     roadmap: { file: 'timelines.js', global: 'Roadmap' },
     waypath: { file: 'timelines.js', global: 'Waypath' },
+    stagepath: { file: 'stagepath.js', global: 'Stagepath' },
     rankrace: { file: 'charts.js', global: 'Rankrace' },
     peoplegrid: { file: 'charts.js', global: 'Peoplegrid' },
     guessline: { file: 'charts.js', global: 'Guessline' },
@@ -144,7 +145,7 @@
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.22.0';
+  var VERSION = '1.23.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};

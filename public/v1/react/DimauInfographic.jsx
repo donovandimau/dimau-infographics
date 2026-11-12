@@ -20,6 +20,7 @@ const LOADERS = {
   swimlane: () => import('../timelines.js').then(m => ({ default: (m.default || m).Swimlane })),
   roadmap: () => import('../timelines.js').then(m => ({ default: (m.default || m).Roadmap })),
   waypath: () => import('../timelines.js').then(m => ({ default: (m.default || m).Waypath })),
+  stagepath: () => import('../stagepath.js'),
   // the six story charts share one file
   rankrace: () => import('../charts.js').then(m => ({ default: (m.default || m).Rankrace })),
   peoplegrid: () => import('../charts.js').then(m => ({ default: (m.default || m).Peoplegrid })),

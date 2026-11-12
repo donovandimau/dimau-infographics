@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.22, 133 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.23, 134 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -273,6 +273,11 @@ window.PATHFINDER_DATA = {
      "to": "r_waypath"
     },
     {
+     "label": "Who holds each step, and for how long",
+     "hint": "a lease, an application, an approval",
+     "to": "r_stagepath"
+    },
+    {
      "label": "The next step depends on the reader’s answers",
      "to": "r_pathfinder"
     }
@@ -442,6 +447,12 @@ window.PATHFINDER_DATA = {
    "text": "A road, cycle or staircase of steps; play walks the path.",
    "link": "/templates/waypath/",
    "linkLabel": "Open Waypath"
+  },
+  "r_stagepath": {
+   "result": "Stagepath",
+   "text": "Steps as cards showing who holds each one and how long it usually takes.",
+   "link": "/templates/stagepath/",
+   "linkLabel": "Open Stagepath"
   },
   "r_pathfinder": {
    "result": "Pathfinder",
