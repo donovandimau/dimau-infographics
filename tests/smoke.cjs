@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 11, null, { timeout: 8000 });
-      return '11 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 12, null, { timeout: 8000 });
+      return '12 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -81,6 +81,64 @@ const PAGES = [
       const n = await p.textContent('.ds-note');
       if (!/Market.*06:00 to 14:00.*8h/.test(n)) throw new Error('slice detail wrong: ' + n);
       return 'switch day, tap a slice';
+  } },
+  { url: '/templates/dropoff/', name: 'dropoff', check: async p => {
+      const n = await p.textContent('.dk-note');
+      if (!/13% made it/.test(n) || !/between “Took a first lesson” and “Came back the next week”: 48% left/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.click('.dk-hot[data-k="2"]');
+      if (!/Confirmed their phone number: 4,100, which is 41%.*2,100 \(34%\) dropped off/.test(await p.textContent('.dk-note'))) throw new Error('step detail wrong');
+      return 'biggest drop found, tap a step';
+  } },
+  { url: '/templates/quadrant/', name: 'quadrant', check: async p => {
+      if (await p.locator('.dk-hot').count() !== 10) throw new Error('expected 10 ideas');
+      if (!/Quick wins: 4/.test(await p.textContent('.dk-legend'))) throw new Error('quick wins count wrong');
+      await p.focus('.dk-hot[data-k="0"]');
+      for (let i = 0; i < 7; i++) await p.keyboard.press('ArrowRight');
+      if (!/Gutters on the hall is in Big projects/.test(await p.textContent('.dk-note'))) throw new Error('arrow keys did not move it');
+      const dot = await p.locator('.dk-hot[data-k="7"] circle >> nth=0').boundingBox(), box = await p.locator('.dk svg').boundingBox();
+      await p.mouse.move(dot.x + dot.width / 2, dot.y + dot.height / 2); await p.mouse.down();
+      await p.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.2, { steps: 6 }); await p.mouse.up();
+      if (!/Kava drying racks is in Quick wins/.test(await p.textContent('.dk-note'))) throw new Error('drag did not move it: ' + await p.textContent('.dk-note'));
+      const st = await p.evaluate(() => window.timeline.getState().items.find(i => i.id === 'racks'));
+      if (!(st.y > 5)) throw new Error('state not updated');
+      return 'counts, arrow keys, drag, state';
+  } },
+  { url: '/templates/slope/', name: 'slope', check: async p => {
+      const n = await p.textContent('.dk-note');
+      if (!/4 of 8 went up, 3 went down/.test(n) || !/Biggest rise: Breadfruit/.test(n) || !/Biggest fall: Tomatoes/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.click('[data-f="down"]');
+      await p.focus('.dk-hot[data-k="2"]'); await p.keyboard.press('Enter');
+      if (!/Tomatoes went from \$6 to \$3: down \$3 \(−50%\)/.test(await p.textContent('.dk-note'))) throw new Error('line detail wrong: ' + await p.textContent('.dk-note'));
+      return 'summary, filter, line detail';
+  } },
+  { url: '/templates/pathfinder/', name: 'pathfinder', check: async p => {
+      await p.click('[data-opt="5"]'); await p.click('[data-opt="1"]'); await p.click('[data-opt="1"]');
+      if ((await p.textContent('.pf-result')) !== 'Radar') throw new Error('expected Radar, got ' + await p.textContent('.pf-result'));
+      if (await p.locator('.pf-trail button').count() !== 3) throw new Error('trail should list 3 answers');
+      await p.click('[data-back="1"]');
+      if (!/How are you comparing\?/.test(await p.textContent('.pf-q'))) throw new Error('going back failed');
+      await p.click('[data-restart]');
+      if (!/mainly about/.test(await p.textContent('.pf-q'))) throw new Error('start again failed');
+      await p.click('[data-help]');
+      if (await p.isHidden('.pf-pop')) throw new Error('help pop-up did not open');
+      return 'three answers to Radar, change an answer, start again, help pop-up';
+  } },
+  { url: '/templates/radar/', name: 'radar', check: async p => {
+      if (await p.locator('[data-s]').count() !== 5) throw new Error('expected 5 subjects');
+      if (!/strongest on/.test(await p.textContent('.dk-note'))) throw new Error('no summary');
+      await p.click('[data-s="english"]');
+      if ((await p.getAttribute('[data-s="english"]', 'aria-pressed')) !== 'true') throw new Error('toggle failed');
+      await p.focus('.dk-hot[data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/Courses: Maths & Money 12, Coding & AI 7, English 4/.test(await p.textContent('.dk-note'))) throw new Error('axis ranking wrong: ' + await p.textContent('.dk-note'));
+      return 'switch a profile on, rank on a measure';
+  } },
+  { url: '/templates/pyramid/', name: 'pyramid', check: async p => {
+      if (await p.locator('.dk-hot').count() !== 16) throw new Error('expected 16 age groups');
+      if (!/Women 31,050/.test(await p.textContent('.dk-note'))) throw new Error('totals wrong: ' + await p.textContent('.dk-note'));
+      await p.click('[data-m="share"]');
+      await p.focus('.dk-hot[data-k="15"]'); await p.keyboard.press('Enter');
+      if (!/Age 0–4: Women 4\.\d%, Men 4\.\d%/.test(await p.textContent('.dk-note'))) throw new Error('row detail wrong: ' + await p.textContent('.dk-note'));
+      return 'totals, share mode, row detail';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

@@ -26,11 +26,17 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Almanac** | Day by day | Habits, attendance, activity | Calendar heatmap that finds and outlines the longest streak |
 | **Goalmeter** | Progress | Fundraising, savings, targets | Bar built from each contribution, milestones, and when the goal will be reached at the pace so far |
 | **Dayclock** | A day | Routines, opening hours, shifts | A whole day on a 24-hour clock face; switch between days to compare |
+| **Dropoff** | Steps people leave | Sign-ups, applications, pipelines | Funnel with the loss between steps and the biggest drop marked |
+| **Quadrant** | Two qualities | Prioritising ideas, cost against value | 2×2 matrix; drag items (or arrow keys) between named boxes, which recount |
+| **Slope** | Before and after | Prices then and now, this year against last | One line per item, rises and falls coloured, filter to risers or fallers |
+| **Pathfinder** | Decisions | Eligibility checkers, "which plan is right for me" | One question at a time, change any earlier answer, a map of the whole path |
+| **Radar** | Profiles | Comparing on five to eight measures | One shape per profile, switch profiles on and off, tap a measure to rank |
+| **Pyramid** | Two groups | Population by age, staff by grade | Back-to-back bars, numbers or share of all, tap a row |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
 
-The library site shows every template live with sample data, and each template has a full demo page with its data shape, events and embed code.
+Not sure which template fits? Answer the questions in Pathfinder on the library home page. The library site shows every template live with sample data, and each template has a full demo page with its data shape, events and embed code.
 
 ## Use a template in an app
 
@@ -79,6 +85,7 @@ v1/timelines.js              Switchback, Swimlane, Roadmap, Waypath (one shared 
 v1/signal-cards.js           the four signal cards
 v1/charts.js                 Rankrace, Peoplegrid, Guessline, Flowbank, Ledger, Storyscroll
 v1/showcase.js               Tilemap, Mosaic, Duel, Almanac, Goalmeter, Dayclock (everyday formats)
+v1/compare.js                Dropoff, Quadrant, Slope, Pathfinder, Radar, Pyramid (compare and decide)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

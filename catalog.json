@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "base": "/v1/",
   "templates": [
     {
@@ -494,6 +494,151 @@
       ],
       "demo": "/templates/dayclock/",
       "sample": "A school day, a market day and a Sunday (example)",
+      "usedBy": []
+    },
+    {
+      "id": "dropoff",
+      "name": "Dropoff",
+      "global": "Dropoff",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "funnel",
+      "family": "compare",
+      "bestFor": "Sign-ups, applications, sales pipelines, course completion: any process people can leave part-way through.",
+      "mechanics": [
+        "Bars sized by how many are left",
+        "Loss between steps, biggest drop marked",
+        "Share of the start in words",
+        "Tap a step"
+      ],
+      "dataShape": "{ label?, prefix?, suffix?, stages:[{id,label,value,note?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/dropoff/",
+      "sample": "Sign-ups to an app (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "quadrant",
+      "name": "Quadrant",
+      "global": "Quadrant",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "matrix",
+      "family": "compare",
+      "bestFor": "Prioritising projects, comparing options on cost and value, workshop sorting exercises.",
+      "mechanics": [
+        "Four named boxes",
+        "Drag or arrow keys to move an item",
+        "Counts per box",
+        "Saved positions (getState / setState)"
+      ],
+      "dataShape": "{ x:{label,low?,high?,min?,max?}, y:{label,low?,high?,min?,max?}, quadrants?:{tl,tr,bl,br}, groups?:[{id,label,color?}], items:[{id,label,x,y,group?,note?}] }",
+      "events": [
+        "select",
+        "move"
+      ],
+      "demo": "/templates/quadrant/",
+      "sample": "Village project ideas (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "slope",
+      "name": "Slope",
+      "global": "Slope",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "change",
+      "family": "compare",
+      "bestFor": "Prices then and now, results this year against last, before and after a change.",
+      "mechanics": [
+        "One line per item",
+        "Rises and falls coloured",
+        "Filter to risers or fallers",
+        "Biggest rise and fall in words"
+      ],
+      "dataShape": "{ from:{label}, to:{label}, prefix?, suffix?, decimals?, items:[{id,label,a,b,note?}] }",
+      "events": [
+        "select",
+        "filter"
+      ],
+      "demo": "/templates/slope/",
+      "sample": "Market prices, January and June (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "pathfinder",
+      "name": "Pathfinder",
+      "global": "Pathfinder",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "decision",
+      "family": "compare",
+      "bestFor": "Eligibility checkers, “which plan is right for me”, troubleshooting guides, choosing a course.",
+      "mechanics": [
+        "One question at a time",
+        "Change any earlier answer",
+        "Map of the whole path",
+        "Help in a tap pop-up",
+        "Saved answers (getState / setState)"
+      ],
+      "dataShape": "{ title?, start, nodes:{ id: { q, help?, options:[{label,hint?,to}] } | { result, text?, link?, linkLabel? } } }",
+      "events": [
+        "answer",
+        "result",
+        "back"
+      ],
+      "demo": "/templates/pathfinder/",
+      "sample": "Which template fits? (real: this library)",
+      "usedBy": []
+    },
+    {
+      "id": "radar",
+      "name": "Radar",
+      "global": "Radar",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "profile",
+      "family": "compare",
+      "bestFor": "Comparing subjects, products, places or skills across five to eight measures.",
+      "mechanics": [
+        "One shape per profile",
+        "Switch profiles on and off",
+        "Tap a measure to rank",
+        "Strongest measure in words"
+      ],
+      "dataShape": "{ axes:[{id,label,max?,prefix?,suffix?}], series:[{id,label,values:{axisId:number},color?}], show?:[seriesId] }",
+      "events": [
+        "select",
+        "change"
+      ],
+      "demo": "/templates/radar/",
+      "sample": "FijiLearn subjects (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "pyramid",
+      "name": "Pyramid",
+      "global": "Pyramid",
+      "file": "compare.js",
+      "status": "ready",
+      "shape": "two-sided",
+      "family": "compare",
+      "bestFor": "Population by age, staff by grade, students by year, any two groups across the same rows.",
+      "mechanics": [
+        "Back-to-back bars",
+        "Numbers or share of all",
+        "Tap a row",
+        "Totals in words"
+      ],
+      "dataShape": "{ left:{label,color?}, right:{label,color?}, rowLabel?, prefix?, suffix?, rows:[{label,left,right,note?}] }",
+      "events": [
+        "select",
+        "mode"
+      ],
+      "demo": "/templates/pyramid/",
+      "sample": "People by age group (example figures)",
       "usedBy": []
     },
     {
