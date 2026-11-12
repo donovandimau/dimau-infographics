@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1067,6 +1067,152 @@
       ],
       "demo": "/templates/opinion/",
       "sample": "Learner survey (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "dial",
+      "name": "Dial",
+      "global": "Dial",
+      "file": "track.js",
+      "status": "ready",
+      "shape": "gauge",
+      "family": "track",
+      "bestFor": "Water tank levels, stock on hand, budgets used, air quality, any reading with safe and unsafe ranges.",
+      "mechanics": [
+        "Coloured zones with advice",
+        "Needle and target",
+        "History with each reading coloured by zone",
+        "setValue() for live readings"
+      ],
+      "dataShape": "{ label, value, min, max, prefix?, suffix?, zones:[{to,label,tone,note?}], target?, history?:[{label,value}] }",
+      "events": [
+        "select",
+        "change"
+      ],
+      "demo": "/templates/dial/",
+      "sample": "Water tank level (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "statusboard",
+      "name": "Statusboard",
+      "global": "Statusboard",
+      "file": "track.js",
+      "status": "ready",
+      "shape": "status",
+      "family": "track",
+      "bestFor": "App and service status pages, water or power supply, bus or ferry running days.",
+      "mechanics": [
+        "One bar per day per service",
+        "Uptime per service",
+        "Notes on bad days",
+        "Status in words, not just colour",
+        "Arrow keys between days"
+      ],
+      "dataShape": "{ end:'YYYY-MM-DD', services:[{id,label,days:['ok'|'slow'|'down'|'none'],notes?:{date:text}}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/statusboard/",
+      "sample": "A learning service, 30 days (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "sparkgrid",
+      "name": "Sparkgrid",
+      "global": "Sparkgrid",
+      "file": "track.js",
+      "status": "ready",
+      "shape": "small-multiples",
+      "family": "track",
+      "bestFor": "Prices, sales by product, attendance by class, any set of numbers tracked over time.",
+      "mechanics": [
+        "One small line per item",
+        "Change with an arrow and words",
+        "Sort by rise or fall",
+        "Same scale for all, on request"
+      ],
+      "dataShape": "{ periods:[labels], items:[{id,label,values:[]}], prefix?, suffix?, better?:'up'|'down' }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/sparkgrid/",
+      "sample": "Market stall sales (example figures)",
+      "usedBy": []
+    },
+    {
+      "id": "treeline",
+      "name": "Treeline",
+      "global": "Treeline",
+      "file": "track.js",
+      "status": "ready",
+      "shape": "tree",
+      "family": "track",
+      "bestFor": "Site maps, catalogues, organisation charts, policies, course outlines.",
+      "mechanics": [
+        "Open and close branches",
+        "Counts on every branch",
+        "Search with highlights",
+        "Arrow keys, Home and End (ARIA tree)"
+      ],
+      "dataShape": "{ root:{label, sub?, children:[{label, sub?, link?, children?}]} }",
+      "events": [
+        "select",
+        "toggle",
+        "search"
+      ],
+      "demo": "/templates/treeline/",
+      "sample": "This library by family (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "monthview",
+      "name": "Monthview",
+      "global": "Monthview",
+      "file": "track.js",
+      "status": "ready",
+      "shape": "calendar",
+      "family": "track",
+      "bestFor": "Community events, class timetables, market days, bookings, school terms.",
+      "mechanics": [
+        "Month grid starting Monday",
+        "Events coloured by kind",
+        "Tap a day for the list",
+        "Previous and next month",
+        "Dots on small screens"
+      ],
+      "dataShape": "{ month?:'YYYY-MM', cats?:[{id,label,color?}], events:[{date,title,time?,place?,cat?,note?}] }",
+      "events": [
+        "select",
+        "month"
+      ],
+      "demo": "/templates/monthview/",
+      "sample": "Community events (example)",
+      "usedBy": []
+    },
+    {
+      "id": "slotgrid",
+      "name": "Slotgrid",
+      "global": "Slotgrid",
+      "file": "track.js",
+      "status": "ready",
+      "shape": "booking",
+      "family": "track",
+      "bestFor": "Clinic appointments, room bookings, ferry seats, tutoring sessions.",
+      "mechanics": [
+        "Free, booked and closed in words and pattern",
+        "Pick and book",
+        "First free slot in words",
+        "Real buttons in a table"
+      ],
+      "dataShape": "{ days:[{id,label}], times:[labels], slots:{ dayId:['free'|'booked'|'closed'] }, label? }",
+      "events": [
+        "pick",
+        "book"
+      ],
+      "demo": "/templates/slotgrid/",
+      "sample": "Clinic appointments (example)",
       "usedBy": []
     },
     {

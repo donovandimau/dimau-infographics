@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.8, 49 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.9, 55 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -56,6 +56,11 @@ window.PATHFINDER_DATA = {
      "label": "Asking people what they think",
      "hint": "polls, priorities, surveys",
      "to": "ask"
+    },
+    {
+     "label": "Keeping track of something",
+     "hint": "readings, status, events, bookings",
+     "to": "track"
     },
     {
      "label": "An explainer told as a story",
@@ -593,6 +598,71 @@ window.PATHFINDER_DATA = {
    "text": "Agree–disagree survey answers centred on neutral.",
    "link": "/templates/opinion/",
    "linkLabel": "Open Opinion"
+  },
+  "track": {
+   "q": "What are you keeping track of?",
+   "options": [
+    {
+     "label": "One reading against safe ranges",
+     "to": "r_dial"
+    },
+    {
+     "label": "Whether services are working",
+     "to": "r_statusboard"
+    },
+    {
+     "label": "Many numbers over time",
+     "to": "r_sparkgrid"
+    },
+    {
+     "label": "A big list in branches",
+     "to": "r_treeline"
+    },
+    {
+     "label": "Events in a month",
+     "to": "r_monthview"
+    },
+    {
+     "label": "Free and booked times",
+     "to": "r_slotgrid"
+    }
+   ]
+  },
+  "r_dial": {
+   "result": "Dial",
+   "text": "A gauge with zones: low, fine or high.",
+   "link": "/templates/dial/",
+   "linkLabel": "Open Dial"
+  },
+  "r_statusboard": {
+   "result": "Statusboard",
+   "text": "Working, slow or down, day by day.",
+   "link": "/templates/statusboard/",
+   "linkLabel": "Open Statusboard"
+  },
+  "r_sparkgrid": {
+   "result": "Sparkgrid",
+   "text": "Small trend lines side by side.",
+   "link": "/templates/sparkgrid/",
+   "linkLabel": "Open Sparkgrid"
+  },
+  "r_treeline": {
+   "result": "Treeline",
+   "text": "An outline to open, close and search.",
+   "link": "/templates/treeline/",
+   "linkLabel": "Open Treeline"
+  },
+  "r_monthview": {
+   "result": "Monthview",
+   "text": "A month calendar of events.",
+   "link": "/templates/monthview/",
+   "linkLabel": "Open Monthview"
+  },
+  "r_slotgrid": {
+   "result": "Slotgrid",
+   "text": "A booking grid of free and booked times.",
+   "link": "/templates/slotgrid/",
+   "linkLabel": "Open Slotgrid"
   }
  }
 };

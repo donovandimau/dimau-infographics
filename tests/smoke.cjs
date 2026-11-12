@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 15, null, { timeout: 8000 });
-      return '15 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 16, null, { timeout: 8000 });
+      return '16 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -299,6 +299,64 @@ const PAGES = [
       await p.focus('svg [data-k="0"]'); await p.keyboard.press('Enter');
       if (!/The lessons are easy to follow.*In all, 77% agree and 9% disagree \(220 answers\)/.test(await p.textContent('.dq-note'))) throw new Error('detail wrong: ' + await p.textContent('.dq-note'));
       return 'most and least agreed, sort, full split';
+  } },
+  { url: '/templates/dial/', name: 'dial', check: async p => {
+      if (!/Water tank level: 38%, which is getting low\. Cut back on washing and garden water\. Down from 41% last time\. Target: 60%\./.test(await p.textContent('.dt-note'))) throw new Error('summary wrong: ' + await p.textContent('.dt-note'));
+      await p.focus('[data-dial] [data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/Low: 0% to 20%\. Keep the water for drinking and cooking\./.test(await p.textContent('.dt-note'))) throw new Error('zone detail wrong');
+      await p.keyboard.press('Enter');
+      await p.evaluate(() => window.timeline.setValue(15));
+      if (!/15%, which is low/.test(await p.textContent('.dt-note'))) throw new Error('setValue failed');
+      return 'zone in words, zone range, live value';
+  } },
+  { url: '/templates/statusboard/', name: 'statusboard', check: async p => {
+      if (await p.locator('svg [data-k]').count() !== 120) throw new Error('expected 4 services x 30 days');
+      const n = await p.textContent('.dt-note');
+      if (!/Today: Text messages is slow\./.test(n) || !/Lowest over 30 days: Payments \(96\.7% up\)/.test(n)) throw new Error('summary wrong: ' + n);
+      await p.focus('svg [tabindex="0"]'); await p.keyboard.press('ArrowDown');
+      if (!/Payments, \w{3} 11 Nov 2026: Working\./.test(await p.textContent('.dt-note'))) throw new Error('arrow down wrong: ' + await p.textContent('.dt-note'));
+      for (let i = 0; i < 9; i++) await p.keyboard.press('ArrowLeft');
+      if (!/Payments, \w{3} 2 Nov 2026: Down\. The payment provider was down/.test(await p.textContent('.dt-note'))) throw new Error('note not shown: ' + await p.textContent('.dt-note'));
+      return 'today in words, uptime, arrow keys, day notes';
+  } },
+  { url: '/templates/sparkgrid/', name: 'sparkgrid', check: async p => {
+      if (await p.locator('.sg-card').count() !== 8) throw new Error('expected 8 cards');
+      if (!/Biggest rise: Dalo; biggest fall: Bele and greens/.test(await p.textContent('.dt-note'))) throw new Error('summary wrong: ' + await p.textContent('.dt-note'));
+      await p.click('[data-s="up"]');
+      if ((await p.textContent('.sg-card >> nth=0 >> b')) !== 'Dalo') throw new Error('sort by rise failed');
+      await p.click('[data-same]');
+      if ((await p.getAttribute('[data-same]', 'aria-pressed')) !== 'true') throw new Error('same scale toggle failed');
+      await p.click('.sg-card >> nth=1');
+      if (!/in Week 1, .* in Week 12/.test(await p.textContent('.dt-note'))) throw new Error('card detail wrong');
+      return 'rise and fall, sort, same scale, card detail';
+  } },
+  { url: '/templates/treeline/', name: 'treeline', check: async p => {
+      if (await p.locator('.tl-row').count() !== 12) throw new Error('expected root and 11 families: ' + await p.locator('.tl-row').count());
+      await p.fill('.tl-tools input', 'loan');
+      if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
+      await p.fill('.tl-tools input', '');
+      await p.focus('.tl-row[tabindex="0"]'); await p.keyboard.press('ArrowDown'); await p.keyboard.press('ArrowRight');
+      if ((await p.getAttribute('.tl-row[tabindex="0"]', 'aria-expanded')) !== 'true') throw new Error('arrow right did not open');
+      await p.keyboard.press('ArrowRight');
+      if (!/Explore: the first four › Lanternfield/.test(await p.textContent('.dt-note'))) throw new Error('arrow into branch failed: ' + await p.textContent('.dt-note'));
+      return 'families, search, arrow keys open and enter';
+  } },
+  { url: '/templates/monthview/', name: 'monthview', check: async p => {
+      if ((await p.textContent('.mv-head h4')) !== 'November 2026') throw new Error('wrong month');
+      if (!/10 events in November/.test(await p.textContent('[data-day]'))) throw new Error('count wrong');
+      await p.click('[data-k="2026-11-14"]');
+      if (await p.locator('.mv-list li').count() !== 2) throw new Error('day list wrong');
+      await p.click('[data-next]');
+      if ((await p.textContent('.mv-head h4')) !== 'December 2026') throw new Error('next month failed');
+      return 'month, tap a day, next month';
+  } },
+  { url: '/templates/slotgrid/', name: 'slotgrid', check: async p => {
+      if (!/12 free slots\. The first is Mon 16 at 15:00/.test(await p.textContent('.dt-note'))) throw new Error('summary wrong: ' + await p.textContent('.dt-note'));
+      await p.click('[data-k="mon|7"]');
+      if (!/You picked Mon 16 at 15:00/.test(await p.textContent('.dt-note'))) throw new Error('pick failed');
+      await p.click('[data-book]');
+      if (!/Booked: Mon 16 at 15:00/.test(await p.textContent('.dt-note')) || !(await p.isDisabled('[data-k="mon|7"]'))) throw new Error('book failed');
+      return 'free count, pick, book';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });
