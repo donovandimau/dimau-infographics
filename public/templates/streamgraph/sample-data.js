@@ -15,13 +15,15 @@ window.STREAMGRAPH_DATA = {
   "v1.10",
   "v1.11",
   "v1.12",
-  "v1.13"
+  "v1.13",
+  "v1.14"
  ],
  "series": [
   {
    "id": "explore",
    "label": "Explore",
    "values": [
+    4,
     4,
     4,
     4,
@@ -55,6 +57,7 @@ window.STREAMGRAPH_DATA = {
     4,
     4,
     4,
+    4,
     4
    ]
   },
@@ -63,6 +66,7 @@ window.STREAMGRAPH_DATA = {
    "label": "Signal cards",
    "values": [
     0,
+    4,
     4,
     4,
     4,
@@ -95,6 +99,7 @@ window.STREAMGRAPH_DATA = {
     1,
     1,
     7,
+    7,
     7
    ]
   },
@@ -105,6 +110,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -135,6 +141,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -147,6 +154,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -175,6 +183,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -189,6 +198,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -215,6 +225,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -231,6 +242,7 @@ window.STREAMGRAPH_DATA = {
     0,
     0,
     0,
+    6,
     6,
     6,
     6,
@@ -255,6 +267,7 @@ window.STREAMGRAPH_DATA = {
     6,
     6,
     6,
+    6,
     6
    ]
   },
@@ -275,6 +288,7 @@ window.STREAMGRAPH_DATA = {
     0,
     6,
     6,
+    6,
     6
    ]
   },
@@ -282,6 +296,28 @@ window.STREAMGRAPH_DATA = {
    "id": "places",
    "label": "Places",
    "values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "stats",
+   "label": "Stats",
+   "values": [
+    0,
     0,
     0,
     0,

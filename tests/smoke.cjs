@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 20, null, { timeout: 8000 });
-      return '20 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 21, null, { timeout: 8000 });
+      return '21 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -331,7 +331,7 @@ const PAGES = [
       return 'rise and fall, sort, same scale, card detail';
   } },
   { url: '/templates/treeline/', name: 'treeline', check: async p => {
-      if (await p.locator('.tl-row').count() !== 15) throw new Error('expected root and 14 families: ' + await p.locator('.tl-row').count());
+      if (await p.locator('.tl-row').count() !== 16) throw new Error('expected root and 15 families: ' + await p.locator('.tl-row').count());
       await p.fill('.tl-tools input', 'loan');
       if (!/1 match for “loan”/.test(await p.textContent('.dt-note')) || !(await p.isVisible('text=Loanpath'))) throw new Error('search failed');
       await p.fill('.tl-tools input', '');
@@ -396,9 +396,9 @@ const PAGES = [
       return 'one month across years, one segment';
   } },
   { url: '/templates/streamgraph/', name: 'streamgraph', check: async p => {
-      if (!/From 4 templates in v1\.0 to 79 templates in v1\.13\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
+      if (!/From 4 templates in v1\.0 to 85 templates in v1\.14\. Biggest layer now: Stories/.test(await p.textContent('.dv-note'))) throw new Error('summary wrong: ' + await p.textContent('.dv-note'));
       await p.click('.dv-legend [data-s="learn"]');
-      if (!/Learn: 6 templates in v1\.13 \(8% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
+      if (!/Learn: 6 templates in v1\.14 \(7% of the total\), first appearing in v1\.7/.test(await p.textContent('.dv-note'))) throw new Error('layer wrong: ' + await p.textContent('.dv-note'));
       await p.click('[data-m="stack"]');
       return 'growth in words, follow a layer, stacked mode';
   } },
@@ -478,9 +478,9 @@ const PAGES = [
       return 'right and wrong guesses explained, score, reveal';
   } },
   { url: '/templates/annotline/', name: 'annotline', check: async p => {
-      if (!/From 4 in v1\.0 to 79 in v1\.13/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
+      if (!/From 4 in v1\.0 to 85 in v1\.14/.test(await p.textContent('.dy-note'))) throw new Error('summary wrong: ' + await p.textContent('.dy-note'));
       await p.click('[data-d="1"]');
-      if (!/Note 1 of 7 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
+      if (!/Note 1 of 8 · v1\.0 · 4.*Four to start\./.test(await p.textContent('.dy-note'))) throw new Error('first note wrong');
       await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
       if (!/Infographics Fiji v2 lands/.test(await p.textContent('.dy-note'))) throw new Error('tap note wrong');
       return 'whole story, step, tap a note';
@@ -550,6 +550,57 @@ const PAGES = [
       if (!/4 rooms match/.test(await p.textContent('.dz-note'))) throw new Error('multi match wrong: ' + await p.textContent('.dz-note'));
       await p.fill('.fp-tools input', '');
       return 'search, which way from you are here';
+  } },
+  { url: '/templates/histobins/', name: 'histobins', check: async p => {
+      if (!/40 values\. Most fall between 70 and 75 characters \(12\)/.test(await p.textContent('.dw-note'))) throw new Error('summary wrong: ' + await p.textContent('.dw-note'));
+      const k = await p.evaluate(() => [...document.querySelectorAll('svg [data-k]')].findIndex(g => /^70 to 75/.test(g.getAttribute('aria-label'))));
+      await p.focus('svg [data-k="' + k + '"]'); await p.keyboard.press('Enter');
+      if (!/70 to 75 characters: 12 of 40 \(30%\)/.test(await p.textContent('.dw-note')) || (await p.locator('.dw-list li').count()) !== 12) throw new Error('bar detail wrong: ' + await p.textContent('.dw-note'));
+      await p.$eval('.dw-range input', i => { i.value = 4; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if ((await p.locator('svg [data-k]').count()) > 6 || !/^40 values/.test(await p.textContent('.dw-note'))) throw new Error('fewer ranges failed');
+      return 'summary, what is in a bar, change the ranges';
+  } },
+  { url: '/templates/boxplot/', name: 'boxplot', check: async p => {
+      if (!/Highest typical value: Business \(71\.5 characters\)\. Lowest: Maths \(59\.5 characters\)/.test(await p.textContent('.dw-note'))) throw new Error('summary wrong: ' + await p.textContent('.dw-note'));
+      await p.click('[data-sort]');
+      if (!/^Business/.test(await p.getAttribute('svg [data-k]:first-of-type', 'aria-label'))) throw new Error('sort failed');
+      await p.focus('svg [data-k="4"]'); await p.keyboard.press('Enter');
+      if (!/Science \(4 values\).*Unusual: .*96 characters/.test(await p.textContent('.dw-note'))) throw new Error('group wrong: ' + await p.textContent('.dw-note'));
+      await p.click('[data-points]');
+      if ((await p.locator('svg circle').count()) !== 35) throw new Error('points wrong: ' + await p.locator('svg circle').count());
+      return 'medians in words, sort, unusual values, every point';
+  } },
+  { url: '/templates/dumbbell/', name: 'dumbbell', check: async p => {
+      if (!/6 of 8 went up.*Biggest change: School E \(\+19\)/.test(await p.textContent('.dw-note'))) throw new Error('summary wrong: ' + await p.textContent('.dw-note'));
+      await p.click('[data-sort="change"]');
+      if (!/^School E/.test(await p.getAttribute('svg [data-k]:first-of-type', 'aria-label'))) throw new Error('sort by change failed');
+      await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
+      if (!/School D.*down 2 \(−3%\)/.test(await p.textContent('.dw-note'))) throw new Error('row wrong: ' + await p.textContent('.dw-note'));
+      return 'summary, sort by change, row detail';
+  } },
+  { url: '/templates/bulletbar/', name: 'bulletbar', check: async p => {
+      if (!/3 of 5 targets met; short: Sales, Average wait/.test(await p.textContent('.dw-note'))) throw new Error('summary wrong: ' + await p.textContent('.dw-note'));
+      await p.focus('svg [data-k="3"]'); await p.keyboard.press('Enter');
+      if (!/Average wait.*12 min against a target of 10 min \(120%\)\. 2 min to go\. Rated ok/.test(await p.textContent('.dw-note'))) throw new Error('row wrong: ' + await p.textContent('.dw-note'));
+      await p.click('[data-show="percent"]');
+      if (!/92% of target/.test(await p.textContent('svg'))) throw new Error('percent mode failed');
+      return 'targets met, lower is better, percent of target';
+  } },
+  { url: '/templates/ridgeline/', name: 'ridgeline', check: async p => {
+      if (!/Highest median: Friday \(\d+ min\); lowest: Saturday \(\d+ min\)/.test(await p.textContent('.dw-note'))) throw new Error('summary wrong: ' + await p.textContent('.dw-note'));
+      await p.focus('svg [data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/Monday \(60 values\): most common around/.test(await p.textContent('.dw-note'))) throw new Error('group wrong: ' + await p.textContent('.dw-note'));
+      await p.focus('.dw svg'); await p.keyboard.press('ArrowRight');
+      if (!/At or below .*Monday \d+%, Tuesday \d+%/.test(await p.textContent('.dw-note'))) throw new Error('read across failed: ' + await p.textContent('.dw-note'));
+      return 'medians in words, a group, read across at one value';
+  } },
+  { url: '/templates/marimekko/', name: 'marimekko', check: async p => {
+      if (!/Widest column: South \(48% of the total 20,200 people\)\. Largest part overall: Bus \(42%\)/.test(await p.textContent('.dw-note'))) throw new Error('summary wrong: ' + await p.textContent('.dw-note'));
+      await p.focus('svg [data-k="2:1"]'); await p.keyboard.press('Enter');
+      if (!/South · Bus.*4,300 people\. That is 44% of South/.test(await p.textContent('.dw-note'))) throw new Error('block wrong: ' + await p.textContent('.dw-note'));
+      await p.click('[data-row="3"]');
+      if (!/Boat: 8% overall\. Biggest share in West/.test(await p.textContent('.dw-note'))) throw new Error('key wrong: ' + await p.textContent('.dw-note'));
+      return 'two-way shares, block detail, highlight a part';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.13, 79 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.14, 85 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -133,6 +133,11 @@ window.PATHFINDER_DATA = {
      "label": "What several groups are made of",
      "hint": "e.g. spending by category, per year",
      "to": "r_stackbar"
+    },
+    {
+     "label": "Shares split two ways at once",
+     "to": "r_marimekko",
+     "hint": "e.g. transport by district"
     }
    ]
   },
@@ -224,6 +229,11 @@ window.PATHFINDER_DATA = {
      "label": "Sorting ideas by two qualities",
      "hint": "e.g. effort and impact",
      "to": "r_quadrant"
+    },
+    {
+     "label": "Before and after, row by row",
+     "to": "r_dumbbell",
+     "hint": "e.g. start and end of year"
     }
    ]
   },
@@ -441,6 +451,18 @@ window.PATHFINDER_DATA = {
     {
      "label": "How much moves between groups",
      "to": "r_ringflow"
+    },
+    {
+     "label": "How values spread out",
+     "to": "r_histobins"
+    },
+    {
+     "label": "Groups side by side, fairly",
+     "to": "r_boxplot"
+    },
+    {
+     "label": "The shapes of several groups",
+     "to": "r_ridgeline"
     }
    ]
   },
@@ -657,6 +679,10 @@ window.PATHFINDER_DATA = {
     {
      "label": "Free and booked times",
      "to": "r_slotgrid"
+    },
+    {
+     "label": "Results against targets",
+     "to": "r_bulletbar"
     }
    ]
   },
@@ -934,6 +960,42 @@ window.PATHFINDER_DATA = {
    "text": "Search or tap to find a room.",
    "link": "/templates/floorplan/",
    "linkLabel": "Open Floorplan"
+  },
+  "r_histobins": {
+   "result": "Histobins",
+   "text": "How many values fall in each range.",
+   "link": "/templates/histobins/",
+   "linkLabel": "Open Histobins"
+  },
+  "r_boxplot": {
+   "result": "Boxplot",
+   "text": "The middle half and the typical value, by group.",
+   "link": "/templates/boxplot/",
+   "linkLabel": "Open Boxplot"
+  },
+  "r_dumbbell": {
+   "result": "Dumbbell",
+   "text": "Before and after on one line per row.",
+   "link": "/templates/dumbbell/",
+   "linkLabel": "Open Dumbbell"
+  },
+  "r_bulletbar": {
+   "result": "Bulletbar",
+   "text": "Results against targets, poor to good.",
+   "link": "/templates/bulletbar/",
+   "linkLabel": "Open Bulletbar"
+  },
+  "r_ridgeline": {
+   "result": "Ridgeline",
+   "text": "The shape of each group, stacked like hills.",
+   "link": "/templates/ridgeline/",
+   "linkLabel": "Open Ridgeline"
+  },
+  "r_marimekko": {
+   "result": "Marimekko",
+   "text": "Shares by width and height at once.",
+   "link": "/templates/marimekko/",
+   "linkLabel": "Open Marimekko"
   }
  }
 };

@@ -90,6 +90,7 @@
       <a href="/#guides">Guides</a>
       <a href="/#stories">Stories</a>
       <a href="/#places">Places</a>
+      <a href="/#stats">Stats</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -341,6 +342,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="stats" aria-labelledby="stats-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Stats · how numbers spread and measure up</p><h2 id="stats-h">Stats</h2>
+      <p class="lede">How values spread, groups side by side, two values per row, results against targets, the shapes of groups, and shares two ways at once.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-boxplot"></div>
+    <ul class="family-list">
+      <li><a href="/templates/histobins/"><b>Histobins</b><span>How many values fall in each range.</span></a></li>
+      <li><a href="/templates/boxplot/"><b>Boxplot</b><span>The middle half and the typical value, by group.</span></a></li>
+      <li><a href="/templates/dumbbell/"><b>Dumbbell</b><span>Before and after on one line per row.</span></a></li>
+      <li><a href="/templates/bulletbar/"><b>Bulletbar</b><span>Results against targets, poor to good.</span></a></li>
+      <li><a href="/templates/ridgeline/"><b>Ridgeline</b><span>The shape of each group, stacked like hills.</span></a></li>
+      <li><a href="/templates/marimekko/"><b>Marimekko</b><span>Shares by width and height at once.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -385,6 +402,7 @@
 <script src="/templates/weighscore/sample-data.js"></script>
 <script src="/templates/slidestory/sample-data.js"></script>
 <script src="/templates/daylight/sample-data.js"></script>
+<script src="/templates/boxplot/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -404,6 +422,7 @@
   D.mount('#pv-weighscore', { template: 'weighscore', data: window.WEIGHSCORE_DATA });
   D.mount('#pv-slidestory', { template: 'slidestory', data: window.SLIDESTORY_DATA });
   D.mount('#pv-daylight', { template: 'daylight', data: window.DAYLIGHT_DATA });
+  D.mount('#pv-boxplot', { template: 'boxplot', data: window.BOXPLOT_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

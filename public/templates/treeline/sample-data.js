@@ -1,7 +1,7 @@
-/* Real data: this library (catalog.json, v1.13.0), every family and template. */
+/* Real data: this library (catalog.json, v1.14.0), every family and template. */
 window.TREELINE_DATA = {
  "root": {
-  "label": "Dimau Infographics 1.13.0",
+  "label": "Dimau Infographics 1.14.0",
   "children": [
    {
     "label": "Explore: the first four",
@@ -440,6 +440,41 @@ window.TREELINE_DATA = {
       "label": "Floorplan",
       "sub": "Clinics, schools, offices, markets, event venues, evacuation plans.",
       "link": "/templates/floorplan/"
+     }
+    ]
+   },
+   {
+    "label": "Stats",
+    "children": [
+     {
+      "label": "Histobins",
+      "sub": "Ages, prices, test scores, waiting times, sizes: anything where the spread matters more than the average.",
+      "link": "/templates/histobins/"
+     },
+     {
+      "label": "Boxplot",
+      "sub": "Comparing groups fairly: scores by school, prices by town, times by day, incomes by region.",
+      "link": "/templates/boxplot/"
+     },
+     {
+      "label": "Dumbbell",
+      "sub": "Before and after, this year and last, women and men, plan and actual.",
+      "link": "/templates/dumbbell/"
+     },
+     {
+      "label": "Bulletbar",
+      "sub": "Monthly reports, team dashboards, project health, service standards.",
+      "link": "/templates/bulletbar/"
+     },
+     {
+      "label": "Ridgeline",
+      "sub": "Waiting times by day, temperatures by month, scores by class, prices by year.",
+      "link": "/templates/ridgeline/"
+     },
+     {
+      "label": "Marimekko",
+      "sub": "Market shares by region, transport by district, spending by group and category.",
+      "link": "/templates/marimekko/"
      }
     ]
    },

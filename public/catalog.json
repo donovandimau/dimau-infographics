@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "base": "/v1/",
   "templates": [
     {
@@ -1782,6 +1782,149 @@
       ],
       "demo": "/templates/floorplan/",
       "sample": "A small health centre (example)",
+      "usedBy": []
+    },
+    {
+      "id": "histobins",
+      "name": "Histobins",
+      "global": "Histobins",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "histogram",
+      "family": "stats",
+      "bestFor": "Ages, prices, test scores, waiting times, sizes: anything where the spread matters more than the average.",
+      "mechanics": [
+        "Slider for how many ranges",
+        "Tap a bar for what is in it",
+        "Median and average marked",
+        "The middle half in words"
+      ],
+      "dataShape": "{ label?, unit?, prefix?, values:[number | {label,value}] }",
+      "events": [
+        "select",
+        "bins"
+      ],
+      "demo": "/templates/histobins/",
+      "sample": "FijiLearn description lengths (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "boxplot",
+      "name": "Boxplot",
+      "global": "Boxplot",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "box-plot",
+      "family": "stats",
+      "bestFor": "Comparing groups fairly: scores by school, prices by town, times by day, incomes by region.",
+      "mechanics": [
+        "Box, whiskers and median",
+        "Unusual values named",
+        "Show every point",
+        "Sort by median"
+      ],
+      "dataShape": "{ unit?, prefix?, groups:[{id,label,values:[number | {label,value}]}] }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/boxplot/",
+      "sample": "FijiLearn description lengths by subject (real data)",
+      "usedBy": []
+    },
+    {
+      "id": "dumbbell",
+      "name": "Dumbbell",
+      "global": "Dumbbell",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "dumbbell",
+      "family": "stats",
+      "bestFor": "Before and after, this year and last, women and men, plan and actual.",
+      "mechanics": [
+        "Ups and downs in different colours",
+        "Sort four ways",
+        "Change shown on each row",
+        "Better can be up or down"
+      ],
+      "dataShape": "{ a:{label}, b:{label}, unit?, prefix?, better?:'up'|'down', zero?, rows:[{id,label,a,b}] }",
+      "events": [
+        "select",
+        "sort"
+      ],
+      "demo": "/templates/dumbbell/",
+      "sample": "Reading scores, start and end of year (example)",
+      "usedBy": []
+    },
+    {
+      "id": "bulletbar",
+      "name": "Bulletbar",
+      "global": "Bulletbar",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "bullet-chart",
+      "family": "stats",
+      "bestFor": "Monthly reports, team dashboards, project health, service standards.",
+      "mechanics": [
+        "Result, target and bands in one line",
+        "Short of target in a warning colour",
+        "Lower can be better",
+        "Values or percent of target"
+      ],
+      "dataShape": "{ bandLabels?, rows:[{id,label,value,target,bands:[n,n,max],prefix?,suffix?,better?:'down'}] }",
+      "events": [
+        "select",
+        "mode"
+      ],
+      "demo": "/templates/bulletbar/",
+      "sample": "A month against targets (example)",
+      "usedBy": []
+    },
+    {
+      "id": "ridgeline",
+      "name": "Ridgeline",
+      "global": "Ridgeline",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "ridgeline",
+      "family": "stats",
+      "bestFor": "Waiting times by day, temperatures by month, scores by class, prices by year.",
+      "mechanics": [
+        "Smoothed shape per group",
+        "Drag or arrow keys to compare at one value",
+        "Median marked",
+        "Tap to bring a group forward"
+      ],
+      "dataShape": "{ unit?, prefix?, groups:[{id,label,values:[numbers]}] }",
+      "events": [
+        "select",
+        "move"
+      ],
+      "demo": "/templates/ridgeline/",
+      "sample": "Clinic waiting times by day (example)",
+      "usedBy": []
+    },
+    {
+      "id": "marimekko",
+      "name": "Marimekko",
+      "global": "Marimekko",
+      "file": "stats.js",
+      "status": "ready",
+      "shape": "marimekko",
+      "family": "stats",
+      "bestFor": "Market shares by region, transport by district, spending by group and category.",
+      "mechanics": [
+        "Width and height both mean something",
+        "Three shares for any block",
+        "Highlight one part everywhere",
+        "Totals in the key"
+      ],
+      "dataShape": "{ cols:[{id,label}], rows:[{id,label}], values:[[...] per column], unit?, prefix? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/marimekko/",
+      "sample": "Travel to work by district (example)",
       "usedBy": []
     },
     {
