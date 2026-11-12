@@ -82,6 +82,7 @@
       <a href="/#charts">Charts</a>
       <a href="/#everyday">Everyday</a>
       <a href="/#compare">Compare</a>
+      <a href="/#insight">Insight</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -204,6 +205,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="insight" aria-labelledby="insight-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Insight · read the numbers, spot the pattern</p><h2 id="insight-h">Insight</h2>
+      <p class="lede">Headline numbers, the whole spread as dots, one measure against another, a table coloured by size, a waterfall from start to finish, and groups that overlap.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-factwall"></div>
+    <ul class="family-list">
+      <li><a href="/templates/factwall/"><b>Factwall</b><span>Headline numbers that count up, with sources.</span></a></li>
+      <li><a href="/templates/swarm/"><b>Swarm</b><span>Every item as a dot, so the spread shows.</span></a></li>
+      <li><a href="/templates/scatter/"><b>Scatter</b><span>One measure against another, with the trend in words.</span></a></li>
+      <li><a href="/templates/heatgrid/"><b>Heatgrid</b><span>A table coloured by size; arrow keys read it.</span></a></li>
+      <li><a href="/templates/bridge/"><b>Bridge</b><span>A waterfall from start to finish; step through.</span></a></li>
+      <li><a href="/templates/overlap/"><b>Overlap</b><span>Two or three groups; tap any region.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -240,6 +257,7 @@
 <script src="/templates/rankrace/sample-data.js"></script>
 <script src="/templates/tilemap/sample-data.js"></script>
 <script src="/templates/pathfinder/sample-data.js"></script>
+<script src="/templates/factwall/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -251,6 +269,7 @@
   D.mount('#pv-riverline', { template: 'riverline', data: window.RIVERLINE_DATA, options: { height: 230 } });
   D.mount('#pv-tilemap', { template: 'tilemap', data: window.TILEMAP_DATA });
   D.mount('#pv-pathfinder', { template: 'pathfinder', data: window.PATHFINDER_DATA, options: { map: false } });
+  D.mount('#pv-factwall', { template: 'factwall', data: window.FACTWALL_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

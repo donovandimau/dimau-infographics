@@ -41,6 +41,13 @@ const LOADERS = {
   pathfinder: () => import('../compare.js').then(m => ({ default: (m.default || m).Pathfinder })),
   radar: () => import('../compare.js').then(m => ({ default: (m.default || m).Radar })),
   pyramid: () => import('../compare.js').then(m => ({ default: (m.default || m).Pyramid })),
+  // the six insight formats share one file
+  factwall: () => import('../insight.js').then(m => ({ default: (m.default || m).Factwall })),
+  swarm: () => import('../insight.js').then(m => ({ default: (m.default || m).Swarm })),
+  scatter: () => import('../insight.js').then(m => ({ default: (m.default || m).Scatter })),
+  heatgrid: () => import('../insight.js').then(m => ({ default: (m.default || m).Heatgrid })),
+  bridge: () => import('../insight.js').then(m => ({ default: (m.default || m).Bridge })),
+  overlap: () => import('../insight.js').then(m => ({ default: (m.default || m).Overlap })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),
@@ -71,7 +78,7 @@ const DimauInfographic = forwardRef(function DimauInfographic(
       const lf = new Ctor(host.current, data, options);
       inst.current = lf;
       // forward every event to the matching on<Event> prop, read fresh on each call
-      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode'];
+      const events = ['open', 'focus', 'progress', 'pins', 'lens', 'tour', 'statechange', 'reset', 'change', 'lock', 'drill', 'select', 'range', 'render', 'filter', 'step', 'frame', 'view', 'reveal', 'sort', 'zoom', 'day', 'move', 'answer', 'result', 'back', 'mode', 'layout'];
       events.forEach(type => lf.on(type, payload => {
         const key = Object.keys(handlers.current).find(k => k.toLowerCase() === 'on' + type);
         if (key && typeof handlers.current[key] === 'function') handlers.current[key](payload);

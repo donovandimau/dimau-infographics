@@ -32,6 +32,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Pathfinder** | Decisions | Eligibility checkers, "which plan is right for me" | One question at a time, change any earlier answer, a map of the whole path |
 | **Radar** | Profiles | Comparing on five to eight measures | One shape per profile, switch profiles on and off, tap a measure to rank |
 | **Pyramid** | Two groups | Population by age, staff by grade | Back-to-back bars, numbers or share of all, tap a row |
+| **Factwall** | Headline numbers | Impact reports, “at a glance” panels | Numbers count up when seen, shares as ten dots, detail and source on tap |
+| **Swarm** | Spread | Scores, prices, waiting times | One dot per item on one scale, split by group, medians and a marker line |
+| **Scatter** | Links | Distance against price, hours against results | Dots sized by a third measure, trend line and strength of the link in words |
+| **Heatgrid** | Patterns in a table | Use by day and hour, sales by month | Cells coloured by size, row totals, sort, arrow keys between cells |
+| **Bridge** | Start to finish | Budgets, profit, stock over a year | Waterfall with running totals; step through one bar at a time |
+| **Overlap** | Groups | Survey answers, customers of several services | Venn diagram of two or three groups; tap any region |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -86,6 +92,7 @@ v1/signal-cards.js           the four signal cards
 v1/charts.js                 Rankrace, Peoplegrid, Guessline, Flowbank, Ledger, Storyscroll
 v1/showcase.js               Tilemap, Mosaic, Duel, Almanac, Goalmeter, Dayclock (everyday formats)
 v1/compare.js                Dropoff, Quadrant, Slope, Pathfinder, Radar, Pyramid (compare and decide)
+v1/insight.js                Factwall, Swarm, Scatter, Heatgrid, Bridge, Overlap (insight)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

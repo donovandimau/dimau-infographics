@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.5, 31 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.6, 37 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -38,6 +38,11 @@ window.PATHFINDER_DATA = {
      "to": "choose"
     },
     {
+     "label": "Patterns in a set of numbers",
+     "hint": "spread, links, busy times",
+     "to": "nums"
+    },
+    {
      "label": "An explainer told as a story",
      "to": "r_storyscroll"
     },
@@ -48,8 +53,8 @@ window.PATHFINDER_DATA = {
     },
     {
      "label": "A few headline numbers",
-     "hint": "to share as a card",
-     "to": "r_cards"
+     "hint": "at a glance, or as a card",
+     "to": "heads"
     }
    ]
   },
@@ -93,6 +98,10 @@ window.PATHFINDER_DATA = {
     {
      "label": "Progress toward a target",
      "to": "r_goalmeter"
+    },
+    {
+     "label": "How a start amount became an end amount",
+     "to": "r_bridge"
     }
    ]
   },
@@ -355,6 +364,83 @@ window.PATHFINDER_DATA = {
    "text": "Read a story and see its pictures together: a book beside a picture stack, with a lightbox and loupe.",
    "link": "/templates/archive-desk/",
    "linkLabel": "Open Archive Desk"
+  },
+  "nums": {
+   "q": "What are you looking for in the numbers?",
+   "options": [
+    {
+     "label": "How spread out they are",
+     "to": "r_swarm"
+    },
+    {
+     "label": "Whether two measures are linked",
+     "to": "r_scatter"
+    },
+    {
+     "label": "Busy and quiet spots in a table",
+     "hint": "e.g. day by hour",
+     "to": "r_heatgrid"
+    },
+    {
+     "label": "How a start became an end",
+     "hint": "rises and falls",
+     "to": "r_bridge"
+    },
+    {
+     "label": "Who belongs to more than one group",
+     "to": "r_overlap"
+    }
+   ]
+  },
+  "heads": {
+   "q": "Where will the numbers be seen?",
+   "options": [
+    {
+     "label": "On a page, at a glance",
+     "to": "r_factwall"
+    },
+    {
+     "label": "As a card to share",
+     "hint": "PNG or SVG",
+     "to": "r_cards"
+    }
+   ]
+  },
+  "r_factwall": {
+   "result": "Factwall",
+   "text": "Headline numbers that count up, with detail and source on tap.",
+   "link": "/templates/factwall/",
+   "linkLabel": "Open Factwall"
+  },
+  "r_swarm": {
+   "result": "Swarm",
+   "text": "Every item as a dot on one scale, split by group.",
+   "link": "/templates/swarm/",
+   "linkLabel": "Open Swarm"
+  },
+  "r_scatter": {
+   "result": "Scatter",
+   "text": "One measure against another, with the trend in words.",
+   "link": "/templates/scatter/",
+   "linkLabel": "Open Scatter"
+  },
+  "r_heatgrid": {
+   "result": "Heatgrid",
+   "text": "A table coloured by size, with row totals.",
+   "link": "/templates/heatgrid/",
+   "linkLabel": "Open Heatgrid"
+  },
+  "r_bridge": {
+   "result": "Bridge",
+   "text": "A waterfall from a start to an end; step through it.",
+   "link": "/templates/bridge/",
+   "linkLabel": "Open Bridge"
+  },
+  "r_overlap": {
+   "result": "Overlap",
+   "text": "A Venn diagram of two or three groups.",
+   "link": "/templates/overlap/",
+   "linkLabel": "Open Overlap"
   }
  }
 };
