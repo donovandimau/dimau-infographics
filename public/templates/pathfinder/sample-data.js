@@ -8,109 +8,39 @@ window.PATHFINDER_DATA = {
    "help": "Pick the closest. You can change any answer later by tapping it above the question.",
    "options": [
     {
-     "label": "Things linked to each other",
-     "hint": "topics, systems, catalogues",
-     "to": "conn"
+     "label": "Numbers and charts",
+     "hint": "amounts, shares, spread, headline figures",
+     "to": "g_numbers"
     },
     {
-     "label": "Amounts and shares",
-     "hint": "money, people, stock",
-     "to": "amt"
+     "label": "How things connect or unfold",
+     "hint": "links, histories, steps in a process",
+     "to": "g_unfold"
     },
     {
-     "label": "Change over time",
-     "hint": "histories, plans, habits",
-     "to": "time"
+     "label": "Choosing and finding the way",
+     "hint": "comparisons, decisions, routes",
+     "to": "g_choose"
     },
     {
-     "label": "Places",
-     "hint": "regions, distances, routes, the sky",
-     "to": "place"
+     "label": "Teaching, explaining and words",
+     "hint": "lessons, stories, archives, text",
+     "to": "g_explain"
     },
     {
-     "label": "Steps in a process",
-     "hint": "sign-ups, journeys, courses",
-     "to": "steps"
+     "label": "Day-to-day running",
+     "hint": "tracking, polls, handy tools",
+     "to": "g_daily"
     },
     {
-     "label": "Choosing between options",
-     "hint": "plans, products, ideas",
-     "to": "choose"
+     "label": "Money, planning and energy",
+     "hint": "budgets, loans, bills, solar",
+     "to": "g_money"
     },
     {
-     "label": "Patterns in a set of numbers",
-     "hint": "spread, links, busy times",
-     "to": "nums"
-    },
-    {
-     "label": "Something people should learn or practise",
-     "hint": "lessons, training, guides",
-     "to": "learn"
-    },
-    {
-     "label": "Planning money or time",
-     "hint": "loans, savings, deadlines",
-     "to": "plan"
-    },
-    {
-     "label": "Asking people what they think",
-     "hint": "polls, priorities, surveys",
-     "to": "ask"
-    },
-    {
-     "label": "Keeping track of something",
-     "hint": "readings, status, events, bookings",
-     "to": "track"
-    },
-    {
-     "label": "Helping someone choose or find their way",
-     "hint": "decisions, routes, levels, terms",
-     "to": "guide"
-    },
-    {
-     "label": "A story or an explainer",
-     "to": "story",
-     "hint": "step by step, before and after, myths"
-    },
-    {
-     "label": "A story with its pictures",
-     "hint": "archives, histories, reports",
-     "to": "r_archive-desk"
-    },
-    {
-     "label": "Text: comments, documents, wording",
-     "hint": "feedback, policies, notices",
-     "to": "words"
-    },
-    {
-     "label": "An everyday tool",
-     "hint": "time zones, sharing costs, best value",
-     "to": "tools"
-    },
-    {
-     "label": "Just a plain, clear chart",
-     "hint": "ring, bars, lines, areas",
-     "to": "basics"
-    },
-    {
-     "label": "Sport and games",
-     "hint": "matches, races, tournaments",
-     "to": "sport"
-    },
-    {
-     "label": "Food, cooking and growing",
-     "hint": "recipes, seasons, labels",
-     "to": "food"
-    },
-    {
-     "label": "Power and energy",
-     "hint": "bills, solar, batteries",
-     "to": "energy"
-    },
-    {
-     "label": "A few headline numbers",
-     "hint": "at a glance, or as a card",
-     "to": "heads"
+     "label": "Places, weather, sport and food",
+     "hint": "maps, tides, matches, recipes",
+     "to": "g_world"
     }
    ]
   },
@@ -1821,6 +1751,146 @@ window.PATHFINDER_DATA = {
    "text": "When monthly savings pay back an up-front cost.",
    "link": "/templates/payback/",
    "linkLabel": "Open Payback"
+  },
+  "g_numbers": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Just a plain, clear chart",
+     "hint": "ring, bars, lines, areas",
+     "to": "basics"
+    },
+    {
+     "label": "Amounts and shares",
+     "hint": "money, people, stock",
+     "to": "amt"
+    },
+    {
+     "label": "Patterns in a set of numbers",
+     "hint": "spread, links, busy times",
+     "to": "nums"
+    },
+    {
+     "label": "A few headline numbers",
+     "hint": "at a glance, or as a card",
+     "to": "heads"
+    }
+   ]
+  },
+  "g_unfold": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Things linked to each other",
+     "hint": "topics, systems, catalogues",
+     "to": "conn"
+    },
+    {
+     "label": "Change over time",
+     "hint": "histories, plans, habits",
+     "to": "time"
+    },
+    {
+     "label": "Steps in a process",
+     "hint": "sign-ups, journeys, courses",
+     "to": "steps"
+    }
+   ]
+  },
+  "g_choose": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Choosing between options",
+     "hint": "plans, products, ideas",
+     "to": "choose"
+    },
+    {
+     "label": "Helping someone choose or find their way",
+     "hint": "decisions, routes, levels, terms",
+     "to": "guide"
+    }
+   ]
+  },
+  "g_explain": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Something people should learn or practise",
+     "hint": "lessons, training, guides",
+     "to": "learn"
+    },
+    {
+     "label": "A story or an explainer",
+     "to": "story",
+     "hint": "step by step, before and after, myths"
+    },
+    {
+     "label": "A story with its pictures",
+     "hint": "archives, histories, reports",
+     "to": "r_archive-desk"
+    },
+    {
+     "label": "Text: comments, documents, wording",
+     "hint": "feedback, policies, notices",
+     "to": "words"
+    }
+   ]
+  },
+  "g_daily": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Keeping track of something",
+     "hint": "readings, status, events, bookings",
+     "to": "track"
+    },
+    {
+     "label": "Asking people what they think",
+     "hint": "polls, priorities, surveys",
+     "to": "ask"
+    },
+    {
+     "label": "An everyday tool",
+     "hint": "time zones, sharing costs, best value",
+     "to": "tools"
+    }
+   ]
+  },
+  "g_money": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Planning money or time",
+     "hint": "loans, savings, deadlines",
+     "to": "plan"
+    },
+    {
+     "label": "Power and energy",
+     "hint": "bills, solar, batteries",
+     "to": "energy"
+    }
+   ]
+  },
+  "g_world": {
+   "q": "Which is closest?",
+   "options": [
+    {
+     "label": "Places",
+     "hint": "regions, distances, routes, the sky",
+     "to": "place"
+    },
+    {
+     "label": "Sport and games",
+     "hint": "matches, races, tournaments",
+     "to": "sport"
+    },
+    {
+     "label": "Food, cooking and growing",
+     "hint": "recipes, seasons, labels",
+     "to": "food"
+    }
+   ]
   }
  }
 };
