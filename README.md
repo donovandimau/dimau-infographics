@@ -183,6 +183,18 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Bracket** | Knockout draws | Tournaments, competitions, prediction games | Winners carried forward, pick unplayed matches, follow a team's path |
 | **Teamsheet** | Line-ups | Match-day posts, team pages | Rugby 1–15 or a football formation, position names, pitch or list view |
 | **Medaltable** | Medal tables | Games, sports days, inter-house competitions | Gold first or total, shared places, places gained or lost |
+| **Recipescale** | Recipes for any number | Recipe pages, school cooking, events | Any number of people, kitchen fractions, cups and spoons to millilitres |
+| **Seasonwheel** | In season | Markets, school gardens, menus | One ring per item, best months darker, what is in season this month |
+| **Platesplit** | A balanced plate | Health and school lessons, canteens | A meal beside a plate guide, over and under in points |
+| **Labelcard** | Nutrition labels | Product pages, lessons, food businesses | Per 100 g, per serving or any amount; high, medium and low; share of a day |
+| **Harvestplan** | Sowing to harvest | Gardens, farm extension, market growers | Any sowing date, ready and picking windows, what is ready today |
+| **Servetime** | Cooking to time | Cooking lessons, catering, family meals | Start times worked back from serving, hands-on clashes flagged |
+| **Appliancecost** | Running costs | Bill explainers, energy lessons | Watts and hours per appliance, cost a month, biggest user in words |
+| **Solarday** | Solar through the day | Solar sales and lessons, community energy | Clear-day output from the sun's height, any place and day, share covered by solar |
+| **Backuptime** | Backup power | Outage preparedness, clinics and schools | Loads on and off, hours left, without the biggest load |
+| **Tariffsteps** | Stepped prices | Bill explainers, utility pages | Cost block by block, average price, next 10 kWh |
+| **Meterreading** | Meter readings | Energy and water tracking | Uneven gaps handled, use per day, a month at the latest rate |
+| **Payback** | Paying back | Solar, efficient appliances, spend-to-save | Cost and saving sliders, savings that grow with prices, payback month |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -256,6 +268,8 @@ v1/practice.js               Matchup, Sequence, Fillgap, Estimator, Masterygrid,
 v1/money.js                  Paysplit, Budgetplan, Debtplan, Sendmoney, Cashcalendar, Pricerise (money)
 v1/weather.js                Tidecurve, Warmstripes, Stormtrack, Uvday, Feelslike, Forecastrow (weather)
 v1/sport.js                  Scoreworm, Pitchmap, Splitpace, Bracket, Teamsheet, Medaltable (sport)
+v1/food.js                   Recipescale, Seasonwheel, Platesplit, Labelcard, Harvestplan, Servetime (food)
+v1/energy.js                 Appliancecost, Solarday, Backuptime, Tariffsteps, Meterreading, Payback (energy)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template

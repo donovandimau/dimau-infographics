@@ -1,0 +1,36 @@
+/* Sun worked out for Suva (18.14°S, 178.44°E, UTC+12) for a clear day; the 3 kW of flat panels, the 80% losses and the hour-by-hour home use are example figures. */
+window.SOLARDAY_DATA = {
+ "place": "Suva",
+ "lat": -18.1416,
+ "lon": 178.4419,
+ "tz": 12,
+ "date": "2026-12-21",
+ "kw": 3,
+ "loss": 0.8,
+ "use": [
+  0.25,
+  0.2,
+  0.2,
+  0.2,
+  0.2,
+  0.3,
+  0.6,
+  0.7,
+  0.5,
+  0.4,
+  0.4,
+  0.5,
+  0.6,
+  0.4,
+  0.4,
+  0.4,
+  0.5,
+  0.8,
+  1.2,
+  1.3,
+  1.1,
+  0.8,
+  0.5,
+  0.3
+ ]
+};

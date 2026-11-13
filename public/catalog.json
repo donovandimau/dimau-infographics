@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.25.0",
+  "version": "1.27.0",
   "base": "/v1/",
   "templates": [
     {
@@ -3417,6 +3417,283 @@
       ],
       "demo": "/templates/medaltable/",
       "sample": "An imaginary games (example)",
+      "usedBy": []
+    },
+    {
+      "id": "recipescale",
+      "name": "Recipescale",
+      "global": "Recipescale",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "recipe",
+      "family": "food",
+      "bestFor": "Recipe pages, school cooking, community kitchens, events and fundraisers.",
+      "mechanics": [
+        "Any number of people",
+        "Kitchen fractions",
+        "Cups and spoons to millilitres",
+        "Items without amounts kept"
+      ],
+      "dataShape": "{ title?, serves, items:[{qty?, unit?, name, note?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/recipescale/",
+      "sample": "A rice and lentil pot (example)",
+      "usedBy": []
+    },
+    {
+      "id": "seasonwheel",
+      "name": "Seasonwheel",
+      "global": "Seasonwheel",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "season-wheel",
+      "family": "food",
+      "bestFor": "Market and farm pages, school gardens, menus, fishing and planting calendars.",
+      "mechanics": [
+        "What is in season this month",
+        "Best months darker",
+        "Seasons across the new year",
+        "Each item’s months in words"
+      ],
+      "dataShape": "{ items:[{id,label,months:[1–12], best?}], now?, place? }",
+      "events": [
+        "month"
+      ],
+      "demo": "/templates/seasonwheel/",
+      "sample": "Six crops (example)",
+      "usedBy": []
+    },
+    {
+      "id": "platesplit",
+      "name": "Platesplit",
+      "global": "Platesplit",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "plate",
+      "family": "food",
+      "bestFor": "Health and school lessons, canteen menus, community nutrition talks.",
+      "mechanics": [
+        "Guide and meal side by side",
+        "Over and under in points",
+        "Any guide and any parts",
+        "Switch meals"
+      ],
+      "dataShape": "{ guideLabel?, guide:[{id,label,share}], meals:[{id,label,parts:{id: share}}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/platesplit/",
+      "sample": "Three meals (example)",
+      "usedBy": []
+    },
+    {
+      "id": "labelcard",
+      "name": "Labelcard",
+      "global": "Labelcard",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "nutrition-label",
+      "family": "food",
+      "bestFor": "Shop and product pages, school lessons, canteens and food businesses.",
+      "mechanics": [
+        "Per 100 g, per serving or any amount",
+        "High, medium and low colours",
+        "Share of a day’s reference intake",
+        "kJ and kcal"
+      ],
+      "dataShape": "{ name, serving, unit?, per100:{energy, fat, saturates, sugars, salt} }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/labelcard/",
+      "sample": "A breakfast cereal (example)",
+      "usedBy": []
+    },
+    {
+      "id": "harvestplan",
+      "name": "Harvestplan",
+      "global": "Harvestplan",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "harvest-plan",
+      "family": "food",
+      "bestFor": "School and community gardens, farm extension, market gardeners.",
+      "mechanics": [
+        "Any sowing date",
+        "Ready and picking windows",
+        "What is ready today",
+        "Each crop in words"
+      ],
+      "dataShape": "{ sow:'YYYY-MM-DD', today?, crops:[{id,label,days,pick?}] }",
+      "events": [
+        "change",
+        "select"
+      ],
+      "demo": "/templates/harvestplan/",
+      "sample": "Six crops (example)",
+      "usedBy": []
+    },
+    {
+      "id": "servetime",
+      "name": "Servetime",
+      "global": "Servetime",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "cook-plan",
+      "family": "food",
+      "bestFor": "Cooking lessons, event catering, family meals, recipe pages.",
+      "mechanics": [
+        "Any serving time",
+        "Start times worked back",
+        "Hands-on clashes flagged",
+        "Jobs that finish early"
+      ],
+      "dataShape": "{ serve:'HH:MM', tasks:[{id,label,mins,before?,hands?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/servetime/",
+      "sample": "A family dinner (example)",
+      "usedBy": []
+    },
+    {
+      "id": "appliancecost",
+      "name": "Appliancecost",
+      "global": "Appliancecost",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "appliance-cost",
+      "family": "energy",
+      "bestFor": "Power bill explainers, energy-saving lessons, household budgeting, community talks.",
+      "mechanics": [
+        "Watts and hours per appliance",
+        "Cost per month, largest first",
+        "Biggest user and an hour saved in words",
+        "Switch things on and off"
+      ],
+      "dataShape": "{ prefix?, price, items:[{id,label,watts,hours,on?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/appliancecost/",
+      "sample": "A household (example)",
+      "usedBy": []
+    },
+    {
+      "id": "solarday",
+      "name": "Solarday",
+      "global": "Solarday",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "solar-day",
+      "family": "energy",
+      "bestFor": "Solar sales and lessons, community energy projects, choosing when to run appliances.",
+      "mechanics": [
+        "Any place and day of the year",
+        "Made, used, self-used, bought",
+        "Share covered by solar",
+        "Hour-by-hour bars"
+      ],
+      "dataShape": "{ place?, lat, lon, tz, date, kw, loss?, use:[24 kWh] }",
+      "events": [
+        "date"
+      ],
+      "demo": "/templates/solarday/",
+      "sample": "Suva, 21 December (sun worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "backuptime",
+      "name": "Backuptime",
+      "global": "Backuptime",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "backup-time",
+      "family": "energy",
+      "bestFor": "Cyclone and outage preparedness, solar and battery sales, clinics and schools.",
+      "mechanics": [
+        "Switch loads on and off",
+        "Hours and minutes left",
+        "Without the biggest load",
+        "Usable share of the battery"
+      ],
+      "dataShape": "{ capacity (Wh), usable?, loads:[{id,label,watts,on?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/backuptime/",
+      "sample": "A home battery (example)",
+      "usedBy": []
+    },
+    {
+      "id": "tariffsteps",
+      "name": "Tariffsteps",
+      "global": "Tariffsteps",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "block-tariff",
+      "family": "energy",
+      "bestFor": "Bill explainers, utility and council pages, energy lessons.",
+      "mechanics": [
+        "Use slider",
+        "Cost block by block",
+        "Average price per kWh",
+        "Next 10 kWh in words"
+      ],
+      "dataShape": "{ prefix?, fixed?, use, max?, blocks:[{upTo|null, price}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/tariffsteps/",
+      "sample": "A three-block price (example)",
+      "usedBy": []
+    },
+    {
+      "id": "meterreading",
+      "name": "Meterreading",
+      "global": "Meterreading",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "meter-readings",
+      "family": "energy",
+      "bestFor": "Household and business energy tracking, water meters, landlords and tenants.",
+      "mechanics": [
+        "Uneven gaps handled",
+        "Use per day per period",
+        "High periods marked",
+        "A month at the latest rate"
+      ],
+      "dataShape": "{ unit?, prefix?, price?, readings:[{date, value}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/meterreading/",
+      "sample": "Three months of readings (example)",
+      "usedBy": []
+    },
+    {
+      "id": "payback",
+      "name": "Payback",
+      "global": "Payback",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "payback",
+      "family": "energy",
+      "bestFor": "Solar, efficient appliances and insulation; any spend-to-save decision.",
+      "mechanics": [
+        "Cost and saving sliders",
+        "Savings that grow with prices",
+        "Payback month marked",
+        "Ahead after ten years"
+      ],
+      "dataShape": "{ prefix?, cost, saving, rise?, years? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/payback/",
+      "sample": "A solar water heater (example)",
       "usedBy": []
     },
     {
