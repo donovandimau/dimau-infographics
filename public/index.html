@@ -99,6 +99,7 @@
       <a href="/#basics">Basics</a>
       <a href="/#practice">Practice</a>
       <a href="/#money">Money</a>
+      <a href="/#weather">Weather</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -495,6 +496,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="weather" aria-labelledby="weather-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Weather · sea, sun, heat and storms</p><h2 id="weather-h">Weather</h2>
+      <p class="lede">Tides, years against the average, storm paths, sunburn risk, how hot it feels, and the days ahead.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-uvday"></div>
+    <ul class="family-list">
+      <li><a href="/templates/tidecurve/"><b>Tidecurve</b><span>Tide height through the day.</span></a></li>
+      <li><a href="/templates/warmstripes/"><b>Warmstripes</b><span>Each year against the average.</span></a></li>
+      <li><a href="/templates/stormtrack/"><b>Stormtrack</b><span>A storm's path and closest pass.</span></a></li>
+      <li><a href="/templates/uvday/"><b>Uvday</b><span>Sunburn risk through the day.</span></a></li>
+      <li><a href="/templates/feelslike/"><b>Feelslike</b><span>How hot it feels with humidity.</span></a></li>
+      <li><a href="/templates/forecastrow/"><b>Forecastrow</b><span>The days ahead in rows.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -548,6 +565,7 @@
 <script src="/templates/barchart/sample-data.js"></script>
 <script src="/templates/estimator/sample-data.js"></script>
 <script src="/templates/cashcalendar/sample-data.js"></script>
+<script src="/templates/uvday/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -576,6 +594,7 @@
   D.mount('#pv-barchart', { template: 'barchart', data: window.BARCHART_DATA });
   D.mount('#pv-estimator', { template: 'estimator', data: window.ESTIMATOR_DATA });
   D.mount('#pv-cashcalendar', { template: 'cashcalendar', data: window.CASHCALENDAR_DATA });
+  D.mount('#pv-uvday', { template: 'uvday', data: window.UVDAY_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

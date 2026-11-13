@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 29, null, { timeout: 8000 });
-      return '29 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 30, null, { timeout: 8000 });
+      return '30 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -1011,6 +1011,58 @@ const PAGES = [
       await p.$eval('[data-r]', i => { i.value = 0; i.dispatchEvent(new Event('input', { bubbles: true })); });
       if (!/never/.test(await p.textContent('.df-cards'))) throw new Error('zero rate wrong');
       return 'what money buys, needed to keep up, doubling time';
+  } },
+  { url: '/templates/tidecurve/', name: 'tidecurve', check: async p => {
+      const n = () => p.textContent('.dh-note');
+      if (!/^Tue 15 Dec, 10:30 am: 0\.53 m and rising\. Next high: 1\.66 m at 4:18 pm \(in 5 h 48 min\)\. Below 0\.5 m \(reef walk\) on Tue 15 Dec: 9:13 pm–12:08 am \(next day\)\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.focus('.dh svg'); await p.keyboard.press('PageDown');
+      if (!/^Wed 16 Dec, 10:30 am: 0\.56 m and falling\..*until 12:08 am and 10:03 pm–1:03 am \(next day\)/.test(await n())) throw new Error('next day wrong: ' + await n());
+      return 'height, next high and low-water times in words, a day later by key';
+  } },
+  { url: '/templates/warmstripes/', name: 'warmstripes', check: async p => {
+      const n = () => p.textContent('.dh-note');
+      if (!/^Warmest: 2023, 1\.1 °C above the 1961–1990 average\. Coolest: 1947, 0\.6 °C below the 1961–1990 average\. The last 10 years were all above the average/.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.focus('.dh svg'); await p.keyboard.press('Home');
+      if (!/^1901: 25\.57 °C, 0\.3 °C below the 1961–1990 average — the 99th warmest of 125 years\./.test(await n())) throw new Error('year wrong: ' + await n());
+      await p.click('[data-mode="bars"]');
+      if ((await p.getAttribute('[data-mode="bars"]', 'aria-pressed')) !== 'true') throw new Error('bars did not switch on');
+      return 'warmest and coolest in words, a year ranked, bars';
+  } },
+  { url: '/templates/stormtrack/', name: 'stormtrack', check: async p => {
+      const n = () => p.textContent('.dh-note');
+      if (!/^Storm A, Mon 12 Jan 6:00 pm: category 4, winds about 180 km\/h\. Closest pass: Island A 55 km at 1:30 am Mon 12 Jan \(category 4\); Island B 80 km/.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.$eval('.dh-range input', i => { i.value = 0; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/Sat 10 Jan 12:00 am: below cyclone strength, winds about 45 km\/h/.test(await n())) throw new Error('slider wrong: ' + await n());
+      await p.click('[data-play]'); await p.waitForTimeout(800);
+      if ((await p.getAttribute('[data-play]', 'aria-pressed')) !== 'true' || /Sat 10 Jan 12:00 am/.test(await n())) throw new Error('play did not move on');
+      await p.click('[data-play]');
+      return 'category and closest pass in words, time slider, play and pause (crosses 180°)';
+  } },
+  { url: '/templates/uvday/', name: 'uvday', check: async p => {
+      const n = () => p.textContent('.dh-note');
+      if (!/^21 Dec in Suva: on a clear day the UV index peaks at about 14 \(extreme\) at 12:05 pm\. It is 3 or more from 7:45 am to 4:25 pm/.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.$eval('.dh-range input', i => { i.value = 171; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/^21 Jun in Suva: on a clear day the UV index peaks at about 7 \(high\)/.test(await n())) throw new Error('winter day wrong: ' + await n());
+      await p.focus('.dh svg'); await p.keyboard.press('Home');
+      if (!/^21 Jun in Suva, 6:30 am: UV about 0, low/.test(await n())) throw new Error('time wrong: ' + await n());
+      return 'peak and cover-up hours worked out from the sun, another day, any time';
+  } },
+  { url: '/templates/feelslike/', name: 'feelslike', check: async p => {
+      const n = () => p.textContent('.dh-note');
+      if (!/^32 °C at 70% humidity feels like 40 °C: danger\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('[data-r="early"]');
+      if (!/^26 °C at 90% humidity feels like 27 °C: caution\./.test(await n())) throw new Error('reading wrong: ' + await n());
+      await p.$eval('[data-t]', i => { i.value = 24; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/^24 °C at 90% humidity feels like 25 °C: lower risk\..*the ring is at its edge/.test(await n())) throw new Error('slider wrong: ' + await n());
+      return 'heat index and risk in words, saved reading, slider';
+  } },
+  { url: '/templates/forecastrow/', name: 'forecastrow', check: async p => {
+      const n = () => p.textContent('.dh-note');
+      if (!/Warmest: Sat \(32 °C\)\. Wettest: Wed \(80% chance\)\. Driest: Fri \(10%\)/.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('.dh-day[data-k="2"]');
+      if (!/^Wed 16 Dec: thunderstorms, 23–28 °C, 80% chance of rain \(about 22 mm\), wind 30 km\/h\./.test(await n())) throw new Error('day wrong: ' + await n());
+      if ((await p.getAttribute('.dh-day[data-k="2"]', 'aria-pressed')) !== 'true') throw new Error('day not marked');
+      return 'warmest, wettest and driest in words, a day in full';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

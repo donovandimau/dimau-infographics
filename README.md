@@ -171,6 +171,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Sendmoney** | Sending money home | Remittance comparisons, family apps | Amount arriving per provider, fee and rate losses split out, any amount |
 | **Cashcalendar** | The month ahead | Planning around paydays and bills | Day-by-day balance, lowest point, below-zero warning, bills on and off |
 | **Pricerise** | Rising prices | Savings talks, school economics | What money buys, what is needed to keep up, doubling time |
+| **Tidecurve** | Tides | Fishing, reef walks, boat landings | Height at any time, next high, times below a chosen height, arrow keys |
+| **Warmstripes** | Each year against the average | Climate pages, school science, covers | Stripes or bars, any base period, warmest and coolest, each year ranked |
+| **Stormtrack** | Storm paths | Cyclone season pages, after-storm reports | Category colours, forecast dashed, play and slider, closest pass to each place |
+| **Uvday** | Sunburn risk | Health, school and outdoor pages | Clear-sky UV index from the sun's height, any place and day, when it is 3 or more |
+| **Feelslike** | Heat and humidity | Heat warnings, outdoor work and sport | Heat index on a grid of risk levels, sliders and saved readings |
+| **Forecastrow** | The days ahead | Town pages, events, farming | Low to high on one scale, chance of rain, warmest, wettest and driest |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -242,6 +248,7 @@ v1/metrics.js                Cohortgrid, Burndown, Controlchart, Cumflow, Kpitil
 v1/basics.js                 Donut, Barchart, Linechart, Areachart, Combochart, Waffle (basics)
 v1/practice.js               Matchup, Sequence, Fillgap, Estimator, Masterygrid, Leitner (practice)
 v1/money.js                  Paysplit, Budgetplan, Debtplan, Sendmoney, Cashcalendar, Pricerise (money)
+v1/weather.js                Tidecurve, Warmstripes, Stormtrack, Uvday, Feelslike, Forecastrow (weather)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template
