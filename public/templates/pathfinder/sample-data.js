@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.24, 140 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.25, 146 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -91,6 +91,11 @@ window.PATHFINDER_DATA = {
      "label": "Just a plain, clear chart",
      "hint": "ring, bars, lines, areas",
      "to": "basics"
+    },
+    {
+     "label": "Sport and games",
+     "hint": "matches, races, tournaments",
+     "to": "sport"
     },
     {
      "label": "A few headline numbers",
@@ -1607,6 +1612,73 @@ window.PATHFINDER_DATA = {
    "text": "The days ahead in rows: sky, rain chance, low to high.",
    "link": "/templates/forecastrow/",
    "linkLabel": "Open Forecastrow"
+  },
+  "sport": {
+   "q": "What about the sport?",
+   "options": [
+    {
+     "label": "How a match went, minute by minute",
+     "to": "r_scoreworm"
+    },
+    {
+     "label": "Where things happened on the pitch",
+     "to": "r_pitchmap"
+    },
+    {
+     "label": "Race times and pace",
+     "hint": "running, swimming, cycling",
+     "to": "r_splitpace"
+    },
+    {
+     "label": "A knockout draw",
+     "hint": "or predicting one",
+     "to": "r_bracket"
+    },
+    {
+     "label": "Who is playing where",
+     "to": "r_teamsheet"
+    },
+    {
+     "label": "A medal table",
+     "to": "r_medaltable"
+    }
+   ]
+  },
+  "r_scoreworm": {
+   "result": "Scoreworm",
+   "text": "The score gap through a match, with lead changes and time in front.",
+   "link": "/templates/scoreworm/",
+   "linkLabel": "Open Scoreworm"
+  },
+  "r_pitchmap": {
+   "result": "Pitchmap",
+   "text": "Where tries, goals or shots happened, by team and kind.",
+   "link": "/templates/pitchmap/",
+   "linkLabel": "Open Pitchmap"
+  },
+  "r_splitpace": {
+   "result": "Splitpace",
+   "text": "Each split against a target pace, halves compared.",
+   "link": "/templates/splitpace/",
+   "linkLabel": "Open Splitpace"
+  },
+  "r_bracket": {
+   "result": "Bracket",
+   "text": "A knockout draw with winners carried forward and picks.",
+   "link": "/templates/bracket/",
+   "linkLabel": "Open Bracket"
+  },
+  "r_teamsheet": {
+   "result": "Teamsheet",
+   "text": "A rugby or football line-up on the pitch, or as a list.",
+   "link": "/templates/teamsheet/",
+   "linkLabel": "Open Teamsheet"
+  },
+  "r_medaltable": {
+   "result": "Medaltable",
+   "text": "A medal table ranked gold first or by total.",
+   "link": "/templates/medaltable/",
+   "linkLabel": "Open Medaltable"
   }
  }
 };

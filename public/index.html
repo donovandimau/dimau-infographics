@@ -100,6 +100,7 @@
       <a href="/#practice">Practice</a>
       <a href="/#money">Money</a>
       <a href="/#weather">Weather</a>
+      <a href="/#sport">Sport</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -512,6 +513,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="sport" aria-labelledby="sport-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Sport · matches, races and tournaments</p><h2 id="sport-h">Sport</h2>
+      <p class="lede">How a match went, where it happened on the pitch, race pace, knockout draws, line-ups and medal tables.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-scoreworm"></div>
+    <ul class="family-list">
+      <li><a href="/templates/scoreworm/"><b>Scoreworm</b><span>The score gap through a match.</span></a></li>
+      <li><a href="/templates/pitchmap/"><b>Pitchmap</b><span>Where it happened on the pitch.</span></a></li>
+      <li><a href="/templates/splitpace/"><b>Splitpace</b><span>A race split by split.</span></a></li>
+      <li><a href="/templates/bracket/"><b>Bracket</b><span>A knockout draw; pick the winners.</span></a></li>
+      <li><a href="/templates/teamsheet/"><b>Teamsheet</b><span>A line-up on the pitch.</span></a></li>
+      <li><a href="/templates/medaltable/"><b>Medaltable</b><span>Gold first or total medals.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -566,6 +583,7 @@
 <script src="/templates/estimator/sample-data.js"></script>
 <script src="/templates/cashcalendar/sample-data.js"></script>
 <script src="/templates/uvday/sample-data.js"></script>
+<script src="/templates/scoreworm/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -595,6 +613,7 @@
   D.mount('#pv-estimator', { template: 'estimator', data: window.ESTIMATOR_DATA });
   D.mount('#pv-cashcalendar', { template: 'cashcalendar', data: window.CASHCALENDAR_DATA });
   D.mount('#pv-uvday', { template: 'uvday', data: window.UVDAY_DATA });
+  D.mount('#pv-scoreworm', { template: 'scoreworm', data: window.SCOREWORM_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {

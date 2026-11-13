@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 30, null, { timeout: 8000 });
-      return '30 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 31, null, { timeout: 8000 });
+      return '31 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -1063,6 +1063,55 @@ const PAGES = [
       if (!/^Wed 16 Dec: thunderstorms, 23–28 °C, 80% chance of rain \(about 22 mm\), wind 30 km\/h\./.test(await n())) throw new Error('day wrong: ' + await n());
       if ((await p.getAttribute('.dh-day[data-k="2"]', 'aria-pressed')) !== 'true') throw new Error('day not marked');
       return 'warmest, wettest and driest in words, a day in full';
+  } },
+  { url: '/templates/scoreworm/', name: 'scoreworm', check: async p => {
+      const n = () => p.textContent('.da-note');
+      if (!/^Team A won 33–25 against Team B\. The lead changed 6 times\. Biggest lead: Team A by 8 \(79′\)\. In front: Team A 38 minutes, Team B 25 minutes\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.focus('.da svg'); await p.keyboard.press('Home'); for (let i = 0; i < 4; i++) await p.keyboard.press('PageDown');
+      if (!/^40′: Team A 15–17 Team B \(Team B leads by 2\)\. Last score: conversion, Team B, 39′\./.test(await n())) throw new Error('minute wrong: ' + await n());
+      if (!/15\s*40′\s*17/.test(await p.textContent('.da-board'))) throw new Error('scoreboard wrong: ' + await p.textContent('.da-board'));
+      return 'result, lead changes and time in front in words, scoreboard at half time by key';
+  } },
+  { url: '/templates/pitchmap/', name: 'pitchmap', check: async p => {
+      const n = () => p.textContent('.da-note');
+      if (!/^19 events shown: Team A 4 tries, 3 penalty goals, 4 line breaks; Team B 3 tries, 2 penalty goals, 3 line breaks\. Most were in the middle third \(7 of 19\)/.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('[data-f="t:b"]');
+      if (!/^11 events shown: Team A .* Most were in the right third \(7 of 11\)/.test(await n())) throw new Error('filter wrong: ' + await n());
+      await p.focus('svg [data-k="0"]'); await p.keyboard.press('Enter');
+      if (!/^18′ Try, Team A: 97% of the way along/.test(await n())) throw new Error('mark wrong: ' + await n());
+      return 'counts and pitch third in words, team filter, a mark by key';
+  } },
+  { url: '/templates/splitpace/', name: 'splitpace', check: async p => {
+      const n = () => p.textContent('.da-note');
+      if (!/49:36 for 10 km \(4:58\/km\)\. First half 24:51, second half 24:45 — a negative split: the second half was 6 s faster\. Fastest: km 10 \(4:44\); slowest: km 6 \(5:06\)\. Finished 24 s inside the target time of 50:00\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('[data-mode="gap"]'); await p.focus('svg [data-k="5"]'); await p.keyboard.press('Enter');
+      if (!/^km 6: 5:06, 29:57 so far, 3 s ahead of target\./.test(await n())) throw new Error('split wrong: ' + await n());
+      return 'halves, fastest and slowest in words, ahead or behind by split';
+  } },
+  { url: '/templates/bracket/', name: 'bracket', check: async p => {
+      const n = () => p.textContent('.da-note');
+      if (!/^Still to play: Team E v Team C \(Final\)\. Tap a team to pick the winner\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('[data-k="2-0-1"]');
+      if (!/^Your pick for champion: Team C — beat Team F 31–7, then beat Team B 19–17, then picked over Team E\./.test(await n())) throw new Error('pick wrong: ' + await n());
+      await p.click('[data-k="0-1-0"]');
+      if (!/^Team D: lost to Team E 17–19 in the Quarter-finals\./.test(await n())) throw new Error('path wrong: ' + await n());
+      return 'unplayed final, pick a champion, follow a team';
+  } },
+  { url: '/templates/teamsheet/', name: 'teamsheet', check: async p => {
+      const n = () => p.textContent('.da-note');
+      if (!/^Example XV: 15 starters and 8 on the bench\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.focus('svg [data-k="10"]'); await p.keyboard.press('Enter');
+      if (!/^10 · Player J, Fly-half\. Goal kicker\./.test(await n())) throw new Error('player wrong: ' + await n());
+      await p.click('[data-view="list"]');
+      if ((await p.locator('.da-list li').count()) !== 23) throw new Error('list should show 23 players');
+      return 'line-up in words, a player by key, list view with bench';
+  } },
+  { url: '/templates/medaltable/', name: 'medaltable', check: async p => {
+      const n = () => p.textContent('.da-note');
+      if (!/^Gold first: Team A top with 9 gold medals\. By total medals: Team B top with 26\. 9 teams change place between the two orders\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('[data-by="total"]'); await p.focus('svg [data-k="d"]'); await p.keyboard.press('Enter');
+      if (!/^Team D: 2nd by total, 4th by gold first\. 5 gold, 8 silver, 12 bronze \(25 in all\)\./.test(await n())) throw new Error('row wrong: ' + await n());
+      return 'both orders in words, re-rank by total, a row by key';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

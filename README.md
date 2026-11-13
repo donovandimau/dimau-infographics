@@ -177,6 +177,12 @@ The central library of interactive infographic templates for every Dimau app. Ea
 | **Uvday** | Sunburn risk | Health, school and outdoor pages | Clear-sky UV index from the sun's height, any place and day, when it is 3 or more |
 | **Feelslike** | Heat and humidity | Heat warnings, outdoor work and sport | Heat index on a grid of risk levels, sliders and saved readings |
 | **Forecastrow** | The days ahead | Town pages, events, farming | Low to high on one scale, chance of rain, warmest, wettest and driest |
+| **Scoreworm** | How a match went | Match reports, club and school sport | Score gap step by step, lead changes, time in front, scoreboard at any minute |
+| **Pitchmap** | Where it happened | Match analysis, coaching | Rugby or football markings, team and kind filters, which third of the pitch |
+| **Splitpace** | Race pace | Running clubs, athletics, training | Each split against a target, ahead or behind, halves compared |
+| **Bracket** | Knockout draws | Tournaments, competitions, prediction games | Winners carried forward, pick unplayed matches, follow a team's path |
+| **Teamsheet** | Line-ups | Match-day posts, team pages | Rugby 1–15 or a football formation, position names, pitch or list view |
+| **Medaltable** | Medal tables | Games, sports days, inter-house competitions | Gold first or total, shared places, places gained or lost |
 | **Signal cards** (4) | Headline numbers | Settlement flow, community pulse, backhaul node map, debt-freedom trajectory | Named value slots with defaults, tap for detail, wide / tall / 1200×630 share card, dark and light, PNG and SVG export |
 
 The four timeline views (Switchback, Swimlane, Roadmap, Waypath) read one shared data shape, and Riverline's data works in all of them, so an app can switch view without reshaping anything. The four signal cards come from the Infographics Fiji spec; their template ids are the spec slugs (`rbf-sandbox-settlement-flow`, `sota-kece-community-pulse`, `pacific-backhaul-node-map`, `debt-freedom-trajectory`).
@@ -249,6 +255,7 @@ v1/basics.js                 Donut, Barchart, Linechart, Areachart, Combochart, 
 v1/practice.js               Matchup, Sequence, Fillgap, Estimator, Masterygrid, Leitner (practice)
 v1/money.js                  Paysplit, Budgetplan, Debtplan, Sendmoney, Cashcalendar, Pricerise (money)
 v1/weather.js                Tidecurve, Warmstripes, Stormtrack, Uvday, Feelslike, Forecastrow (weather)
+v1/sport.js                  Scoreworm, Pitchmap, Splitpace, Bracket, Teamsheet, Medaltable (sport)
 v1/lanternfield.d.ts         TypeScript types for Lanternfield
 v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template
