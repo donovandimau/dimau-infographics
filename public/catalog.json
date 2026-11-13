@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "base": "/v1/",
   "templates": [
     {
@@ -3277,6 +3277,146 @@
       ],
       "demo": "/templates/forecastrow/",
       "sample": "A week ahead (example)",
+      "usedBy": []
+    },
+    {
+      "id": "scoreworm",
+      "name": "Scoreworm",
+      "global": "Scoreworm",
+      "file": "sport.js",
+      "status": "ready",
+      "shape": "score-worm",
+      "family": "sport",
+      "bestFor": "Match reports, club and school sport pages, commentary, coaching reviews.",
+      "mechanics": [
+        "Score gap step by step",
+        "Lead changes and time in front in words",
+        "Scoreboard at any minute",
+        "Drag or use the arrow keys"
+      ],
+      "dataShape": "{ teams:[{id,label},{id,label}], length?, half?, events:[{t, team, pts, kind?, who?}] }",
+      "events": [
+        "minute"
+      ],
+      "demo": "/templates/scoreworm/",
+      "sample": "A rugby match (example)",
+      "usedBy": []
+    },
+    {
+      "id": "pitchmap",
+      "name": "Pitchmap",
+      "global": "Pitchmap",
+      "file": "sport.js",
+      "status": "ready",
+      "shape": "pitch-map",
+      "family": "sport",
+      "bestFor": "Match analysis, coaching sessions, club newsletters, school sport.",
+      "mechanics": [
+        "Rugby or football markings",
+        "Team and kind filters",
+        "A shape per kind, a colour per team",
+        "Which third of the pitch in words"
+      ],
+      "dataShape": "{ sport?:'rugby'|'football', teams, kinds?:[{id,label,plural?}], events:[{x, y, team, kind, t?, who?}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/pitchmap/",
+      "sample": "Scores and line breaks (example)",
+      "usedBy": []
+    },
+    {
+      "id": "splitpace",
+      "name": "Splitpace",
+      "global": "Splitpace",
+      "file": "sport.js",
+      "status": "ready",
+      "shape": "race-splits",
+      "family": "sport",
+      "bestFor": "Running clubs, school athletics, fun runs, training plans, swimming and cycling splits.",
+      "mechanics": [
+        "Each split against the target",
+        "Ahead or behind as a line",
+        "Halves compared in words",
+        "Any unit: km, miles, laps"
+      ],
+      "dataShape": "{ unit?, label?, target?: seconds per unit, splits:[seconds] }",
+      "events": [
+        "split"
+      ],
+      "demo": "/templates/splitpace/",
+      "sample": "A 10 km run (example)",
+      "usedBy": []
+    },
+    {
+      "id": "bracket",
+      "name": "Bracket",
+      "global": "Bracket",
+      "file": "sport.js",
+      "status": "ready",
+      "shape": "knockout",
+      "family": "sport",
+      "bestFor": "Tournaments, school and club competitions, quiz nights, prediction games.",
+      "mechanics": [
+        "Winners fill the next round",
+        "Pick unplayed matches",
+        "Follow a team’s path",
+        "Stacks by round on phones"
+      ],
+      "dataShape": "{ rounds:[{name, matches:[{a?, b?, sa?, sb?}]}] }",
+      "events": [
+        "pick",
+        "select"
+      ],
+      "demo": "/templates/bracket/",
+      "sample": "An eight-team knockout (example)",
+      "usedBy": []
+    },
+    {
+      "id": "teamsheet",
+      "name": "Teamsheet",
+      "global": "Teamsheet",
+      "file": "sport.js",
+      "status": "ready",
+      "shape": "line-up",
+      "family": "sport",
+      "bestFor": "Match-day posts, club and school team pages, programmes, coaching.",
+      "mechanics": [
+        "Rugby by shirt number or a football formation",
+        "Position names filled in",
+        "Pitch or list view",
+        "Bench and notes"
+      ],
+      "dataShape": "{ sport?:'rugby'|'football', formation?, team?, players:[{n, name, role?, note?}], bench? }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/teamsheet/",
+      "sample": "A rugby fifteen (example)",
+      "usedBy": []
+    },
+    {
+      "id": "medaltable",
+      "name": "Medaltable",
+      "global": "Medaltable",
+      "file": "sport.js",
+      "status": "ready",
+      "shape": "medal-table",
+      "family": "sport",
+      "bestFor": "Games and championships, school sports days, inter-house competitions.",
+      "mechanics": [
+        "Gold first or total",
+        "Ties share a place",
+        "Places gained or lost",
+        "Medals as stacked bars"
+      ],
+      "dataShape": "{ event?, rows:[{id,label,gold,silver,bronze}] }",
+      "events": [
+        "sort",
+        "select"
+      ],
+      "demo": "/templates/medaltable/",
+      "sample": "An imaginary games (example)",
       "usedBy": []
     },
     {
