@@ -74,3 +74,5 @@
 - 2026-11-11 — Claude — v1 library merged (PR #1): loader, shared theme, Lanternfield, Tidepool, Strata, Riverline, React wrapper, library site and demo pages, smoke test passing at 1360px and 390px.
 
 _Seeded 2026-11-11 from the Ops Room. From here on, this file is the record for this project._
+
+- 2026-11-13 — Claude — Switched links to sister apps from *.vercel.app to their dimau-fintech.com addresses (security rules keep both).
