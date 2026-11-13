@@ -1,0 +1,30 @@
+/* energy styles (Dimau Infographics). Generated from STYLE in v1/energy.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="ek-style"; the loader does it for them. */
+.ek{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.ek) button{font:inherit;color:inherit}
+.ek :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.ek svg{display:block;width:100%}
+.ek svg [data-k]{cursor:pointer}
+.ek svg [data-k]:focus{outline:none}
+.ek svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.ek-bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px}
+.ek-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer;min-height:36px}
+.ek-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.ek-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.ek-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.ek-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.ek-range{display:grid;gap:4px;font-size:13.5px;font-weight:700;flex:1 1 220px}
+.ek-range input{width:100%;accent-color:var(--di-accent,#0b6fa4);height:26px;margin:0}
+.ek-rows{display:grid;gap:6px;margin:0 0 12px}
+.ek-rows label{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;font-size:13.5px;background:var(--di-surface,#fff);border:1px solid var(--di-line,#c9dce8);border-radius:9px;padding:6px 10px}
+.ek-rows input[type=checkbox]{width:18px;height:18px;accent-color:var(--di-accent,#0b6fa4);margin:0}
+.ek-rows input[type=number]{width:64px;height:32px;border-radius:7px;border:1px solid var(--di-line,#c9dce8);background:var(--di-bg,#eef7fb);padding:0 6px;font:inherit;font-size:14px;color:inherit;text-align:right}
+.ek-rows small{color:var(--di-muted,#4f6578);font-variant-numeric:tabular-nums;min-width:5.5em;text-align:right}
+.ek-big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+.ek-big b{font-size:34px;font-variant-numeric:tabular-nums}
+.ek-big span{color:var(--di-muted,#4f6578);font-weight:700}
+.ek-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 10px}
+.ek-card{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:8px 12px}
+.ek-card b{display:block;font-size:20px}
+.ek-card span{font-size:12.5px;color:var(--di-muted,#4f6578)}
+.ek-warn{color:#c2563a;font-weight:800}

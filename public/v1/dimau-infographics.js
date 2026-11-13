@@ -6,6 +6,8 @@
  *    .then(instance => …);
  *
  *  The template list below must match catalog.json (tests/smoke.cjs checks this).
+ *  Strict style policies (no 'unsafe-inline' in style-src) are detected: each family's CSS is linked from v1/<file>.css
+ *  and the style="" values in the markup are applied through the CSSOM. See README, "Strict style policies".
  */
 (function (root) {
   'use strict';
@@ -169,10 +171,99 @@
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.27.0';
+  // the <style> each file would add; under a strict style policy the loader links <file>.css with this id instead
+  var STYLE_IDS = {
+    'analyse.js': 'du-style',
+    'archive-desk.js': 'ad-style',
+    'basics.js': 'db-style',
+    'chartbook.js': 'dv-style',
+    'charts.js': 'dc-style',
+    'compare.js': 'dk-style',
+    'energy.js': 'ek-style',
+    'food.js': 'fo-style',
+    'guides.js': 'dg-style',
+    'insight.js': 'dn-style',
+    'lanternfield.js': 'lf-style',
+    'learn.js': 'dl-style',
+    'metrics.js': 'dm-style',
+    'money.js': 'df-style',
+    'places.js': 'dz-style',
+    'plan.js': 'dq-style',
+    'practice.js': 'de-style',
+    'riverline.js': 'rl-style',
+    'showcase.js': 'ds-style',
+    'signal-cards.js': 'sc-style',
+    'sport.js': 'da-style',
+    'stagepath.js': 'sp-style',
+    'stats.js': 'dw-style',
+    'stories.js': 'dy-style',
+    'strata.js': 'st-style',
+    'structure.js': 'dx-style',
+    'tidepool.js': 'tp-style',
+    'timelines.js': 'tl-style',
+    'tools.js': 'dj-style',
+    'track.js': 'dt-style',
+    'weather.js': 'dh-style',
+    'words.js': 'dr-style'
+  };
+  var VERSION = '1.28.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
+  var strict = null;
+
+  /** True when the page's Content-Security-Policy blocks inline styles (no 'unsafe-inline' in style-src).
+   *  Set window.DIMAU_STRICT_STYLES = true or false before loading this script to skip the check. */
+  function strictStyles() {
+    if (strict !== null) return strict;
+    if (typeof root.DIMAU_STRICT_STYLES === 'boolean') return (strict = root.DIMAU_STRICT_STYLES);
+    strict = false;
+    try {
+      var d = document.createElement('div'); d.innerHTML = '<i style="display:none"></i>';
+      (document.body || document.documentElement).appendChild(d);
+      strict = getComputedStyle(d.firstChild).display !== 'none';
+      d.parentNode.removeChild(d);
+    } catch (e) { strict = false; }
+    return strict;
+  }
+
+  function loadCss(file) {
+    var id = STYLE_IDS[file];
+    if (!id || document.getElementById(id)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var l = document.createElement('link');
+      l.id = id; l.rel = 'stylesheet'; l.href = base + file.replace(/\.js$/, '.css');
+      l.onload = l.onerror = function () { resolve(); };
+      document.head.appendChild(l);
+    });
+  }
+
+  /* Under a strict policy the style="" text in template markup is ignored by the browser.
+   * Setting the same declarations through the CSSOM is allowed, so copy them across as nodes appear or change. */
+  var seen = typeof WeakMap === 'function' ? new WeakMap() : null;
+  function apply(n) {
+    var v = n.getAttribute('style');
+    if (v == null || (seen && seen.get(n) === v)) return;
+    n.style.cssText = v;
+    if (seen) seen.set(n, n.getAttribute('style'));
+  }
+  function applyAll(n) {
+    if (!n || n.nodeType !== 1) return;
+    if (n.hasAttribute('style')) apply(n);
+    var all = n.querySelectorAll('[style]');
+    for (var i = 0; i < all.length; i++) apply(all[i]);
+  }
+  function watchStyles(el) {
+    applyAll(el);
+    if (typeof MutationObserver !== 'function') return;
+    new MutationObserver(function (ms) {
+      for (var i = 0; i < ms.length; i++) {
+        var m = ms[i];
+        if (m.type === 'attributes') { if (m.target.nodeType === 1) apply(m.target); }
+        else for (var j = 0; j < m.addedNodes.length; j++) applyAll(m.addedNodes[j]);
+      }
+    }).observe(el, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+  }
 
   function addTheme() {
     if (document.getElementById('di-theme-css')) return;
@@ -185,6 +276,11 @@
   function load(id) {
     var t = TEMPLATES[id];
     if (!t) return Promise.reject(new Error('Dimau Infographics: no template called "' + id + '". Available: ' + Object.keys(TEMPLATES).join(', ')));
+    if (strictStyles()) return loadCss(t.file).then(function () { return loadScript(t); });
+    return loadScript(t);
+  }
+
+  function loadScript(t) {
     if (root[t.global]) return Promise.resolve(root[t.global]);
     // several templates can share one file: download each file once
     if (loading[t.file]) return loading[t.file].then(function () { return root[t.global] || Promise.reject(new Error('Dimau Infographics: ' + t.file + ' did not define ' + t.global)); });
@@ -205,6 +301,7 @@
     if (!cfg.data) return Promise.reject(new Error('Dimau Infographics: mount needs data'));
     if (cfg.theme !== false) { addTheme(); el.classList.add('di-theme'); }
     return load(cfg.template).then(function (Ctor) {
+      if (strictStyles()) watchStyles(el);
       var inst = new Ctor(el, cfg.data, cfg.options);
       if (cfg.on) Object.keys(cfg.on).forEach(function (k) { inst.on(k, cfg.on[k]); });
       el.setAttribute('data-di-template', cfg.template);
@@ -212,5 +309,5 @@
     });
   }
 
-  root.DimauInfographics = { version: VERSION, base: base, templates: Object.keys(TEMPLATES), load: load, mount: mount, addTheme: addTheme };
+  root.DimauInfographics = { version: VERSION, base: base, templates: Object.keys(TEMPLATES), load: load, mount: mount, addTheme: addTheme, strictStyles: strictStyles, watchStyles: watchStyles };
 })(typeof self !== 'undefined' ? self : this);

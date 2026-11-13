@@ -19,5 +19,6 @@ A template earns a place here when it handles a shape of information the library
 2. Add sample data at `templates/<id>/sample-data.js`. Say in the first line whether it is real (with source and date) or illustrative.
 3. Add a demo page at `templates/<id>/index.html`. Copy an existing one; the "Use it in an app" panel fills itself from `catalog.json`.
 4. Add the template to `catalog.json`, the `TEMPLATES` map in `v1/dimau-infographics.js`, the `LOADERS` map in `v1/react/DimauInfographic.jsx`, the site navigation, and a card on `index.html`.
-5. Add it to `PAGES` in `tests/smoke.cjs` with one interaction, then run `npm test`.
-6. Update `TRACKER.md` and open a pull request.
+5. Keep the CSS in one `const STYLE = `...`` string added once as `<style id="<prefix>-style">`, then run `node scripts/build-css.cjs` to write `v1/<file>.css` and add the file and its id to `STYLE_IDS` in the loader. This is what lets apps with a strict style policy use it (see README, "Strict style policies").
+6. Add it to `PAGES` in `tests/smoke.cjs` with one interaction, then run `npm test`.
+7. Update `TRACKER.md` and open a pull request.

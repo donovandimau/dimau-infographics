@@ -1,0 +1,45 @@
+/* plan styles (Dimau Infographics). Generated from STYLE in v1/plan.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dq-style"; the loader does it for them. */
+.dq{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dq) button{font:inherit;color:inherit}
+.dq :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dq svg{display:block;width:100%}
+.dq-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:8px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.dq-btn.primary,.dq-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dq-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.dq-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dq-small{font-size:12.5px;color:var(--di-muted,#4f6578);line-height:1.45}
+.dq-inputs{display:grid;gap:12px 20px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:12px}
+.dq-in{display:grid;gap:4px}
+.dq-in label{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:700}
+.dq-in output{font:700 13px/1.2 var(--di-mono,ui-monospace,monospace);color:var(--di-accent,#0b6fa4)}
+.dq-in input[type=range]{width:100%;accent-color:var(--di-accent,#0b6fa4);height:28px;margin:0}
+.dq-kpis{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:6px 0 12px}
+.dq-kpi{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 12px}
+.dq-kpi b{display:block;font-size:22px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.dq-kpi span{font-size:12.5px;color:var(--di-muted,#4f6578)}
+.dq-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.dq-legend i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:6px;vertical-align:3px}
+.cd-big{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.cd-unit{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 14px;min-width:84px;text-align:center}
+.cd-unit b{display:block;font-size:34px;font-weight:800;line-height:1.1;color:var(--di-accent,#0b6fa4);font-variant-numeric:tabular-nums}
+.cd-unit span{font-size:12px;color:var(--di-muted,#4f6578)}
+.pb-row{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 12px;border:1px solid var(--di-line,#c9dce8);border-radius:12px;background:var(--di-surface,#fff);margin-bottom:8px}
+.pb-row.mine{border-color:var(--di-accent,#0b6fa4);box-shadow:0 0 0 1px var(--di-accent,#0b6fa4) inset}
+.pb-lab{font-weight:700;font-size:15px}
+.pb-num{font:700 13px/1 var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#4f6578);text-align:right}
+.pb-track{grid-column:1/3;height:10px;border-radius:99px;background:var(--di-line,#c9dce8);overflow:hidden}
+.pb-track i{display:block;height:100%;background:var(--di-accent,#0b6fa4);border-radius:99px;transition:width .5s}
+.pb-row.lead .pb-track i{background:var(--di-fg,#13263a)}
+.pb-vote{grid-column:1/3;justify-self:start;border:0;background:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--di-accent,#0b6fa4);cursor:pointer}
+@media (prefers-reduced-motion:reduce){.pb-track i{transition:none}}
+.rk-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rk-item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 12px;touch-action:none}
+.rk-item.drag{opacity:.85;box-shadow:0 8px 20px rgba(0,0,0,.18);position:relative;z-index:2}
+.rk-pos{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff);font-weight:800;cursor:grab}
+.rk-lab{font-weight:700;font-size:15px;line-height:1.35}
+.rk-lab small{display:block;font-weight:500;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.rk-mv{display:flex;gap:4px}
+.rk-mv button{width:34px;height:34px;border:1px solid var(--di-line,#c9dce8);background:var(--di-bg,#eef7fb);border-radius:8px;cursor:pointer;font-weight:800}
+.rk-mv button:disabled{opacity:.35;cursor:default}
+.rk-cmp{font:700 12px/1.3 var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#4f6578)}

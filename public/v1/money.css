@@ -1,0 +1,31 @@
+/* money styles (Dimau Infographics). Generated from STYLE in v1/money.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="df-style"; the loader does it for them. */
+.df{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.df) button{font:inherit;color:inherit}
+.df :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.df svg{display:block;width:100%}
+.df svg [data-k]{cursor:pointer}
+.df svg [data-k]:focus{outline:none}
+.df svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.df-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.df-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.df-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.df-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.df-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.df-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.df-range{display:grid;gap:4px;margin:0 0 10px;font-size:13.5px;font-weight:700}
+.df-range input{width:100%;accent-color:var(--di-accent,#0b6fa4);height:26px;margin:0}
+.df-field{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700}
+.df-field input{width:110px;height:36px;border-radius:9px;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);padding:0 10px;font:inherit;font-size:14px;color:inherit}
+.df-rows{display:grid;gap:6px;margin:0 0 12px}
+.df-rows label{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;font-size:13.5px;background:var(--di-surface,#fff);border:1px solid var(--di-line,#c9dce8);border-radius:9px;padding:6px 10px}
+.df-rows label i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.df-rows input[type=number]{width:96px;height:32px;border-radius:7px;border:1px solid var(--di-line,#c9dce8);background:var(--di-bg,#eef7fb);padding:0 8px;font:inherit;font-size:14px;color:inherit;text-align:right}
+.df-rows input[type=checkbox]{width:18px;height:18px;accent-color:var(--di-accent,#0b6fa4)}
+.df-rows small{color:var(--di-muted,#4f6578);font-family:var(--di-mono,ui-monospace,monospace)}
+.df-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:10px}
+.df-card{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 12px}
+.df-card.best{border-color:#1f8a5b;box-shadow:0 0 0 2px #1f8a5b inset}
+.df-card b{display:block;font-size:22px}
+.df-card span{font-size:12.5px;color:var(--di-muted,#4f6578);line-height:1.5}
+.df-warn{color:#c2563a;font-weight:800}

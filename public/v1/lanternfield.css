@@ -1,0 +1,17 @@
+/* lanternfield styles (Dimau Infographics). Generated from STYLE in v1/lanternfield.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="lf-style"; the loader does it for them. */
+.lf{position:relative;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+.lf-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none;cursor:default}
+.lf-canvas:focus-visible{box-shadow:inset 0 0 0 2px var(--lf-lens,var(--di-accent,#f2b84b))}
+.lf-canvas.lf-point{cursor:pointer}
+.lf-canvas.lf-grab{cursor:grabbing}
+.lf-peek{position:absolute;left:0;top:0;width:max-content;max-width:250px;padding:10px 12px 9px;border-radius:10px;
+ background:var(--lf-peek-bg,var(--di-popover,rgba(16,24,38,.95)));color:var(--lf-fg,var(--di-fg,#e6ebf2));font:13px/1.42 var(--lf-font,var(--di-font,system-ui,sans-serif));
+ box-shadow:0 10px 30px rgba(0,0,0,.28);border:1px solid var(--lf-peek-border,var(--di-popover-border,rgba(255,255,255,.08)));pointer-events:none;z-index:2}
+.lf-peek-eb{display:flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lf-muted,var(--di-muted,#8a96a8))}
+.lf-peek-eb i{width:8px;height:8px;border-radius:50%;flex:none}
+.lf-peek-t{font-weight:600;font-size:14.5px;margin:3px 0 4px;font-family:var(--lf-display,var(--di-display,inherit));line-height:1.2}
+.lf-peek-s{color:var(--lf-fg,var(--di-fg,#e6ebf2));opacity:.86}
+.lf-peek-m{font:11px/1.3 var(--lf-mono,var(--di-mono,ui-monospace,monospace));color:var(--lf-muted,var(--di-muted,#8a96a8));margin-top:7px}
+.lf-mini{position:absolute;left:12px;bottom:12px;border-radius:8px;cursor:crosshair;z-index:1;
+ box-shadow:0 0 0 1px var(--lf-mini-border,var(--di-line,rgba(255,255,255,.12))),0 6px 18px rgba(0,0,0,.18)}

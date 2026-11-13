@@ -1,0 +1,29 @@
+/* chartbook styles (Dimau Infographics). Generated from STYLE in v1/chartbook.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dv-style"; the loader does it for them. */
+.dv{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dv) button{font:inherit;color:inherit}
+.dv :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dv svg{display:block;width:100%}
+.dv svg [data-k]{cursor:pointer}
+.dv svg [data-k]:focus{outline:none}
+.dv svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.dv-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.dv-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 13px;font-size:13.5px;font-weight:700;cursor:pointer}
+.dv-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dv-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dv-legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.dv-legend button{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:999px;padding:4px 10px;font-size:12.5px;cursor:pointer}
+.dv-legend button[aria-pressed="true"]{border-color:var(--di-fg,#13263a);font-weight:700}
+.dv-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.fg-wrap{overflow-x:auto;border:1px solid var(--di-line,#c9dce8);border-radius:12px;background:var(--di-surface,#fff)}
+.fg-t{border-collapse:collapse;width:100%;font-size:14px}
+.fg-t th,.fg-t td{padding:9px 12px;border-bottom:1px solid var(--di-line,#c9dce8);text-align:center;vertical-align:middle}
+.fg-t tbody th{text-align:left;font-weight:600;min-width:180px}
+.fg-t thead th{position:sticky;top:0;background:var(--di-surface,#fff);z-index:1}
+.fg-t thead button{border:1px solid var(--di-line,#c9dce8);background:var(--di-bg,#eef7fb);border-radius:9px;padding:6px 10px;font-weight:800;font-size:13.5px;cursor:pointer}
+.fg-t thead button[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.fg-t .grp th{background:var(--di-bg,#eef7fb);font:700 11.5px/1.2 var(--di-mono,ui-monospace,monospace);letter-spacing:.05em;text-transform:uppercase;color:var(--di-muted,#4f6578)}
+.fg-t td.pick{background:color-mix(in srgb,var(--di-accent,#0b6fa4) 9%,transparent)}
+.fg-y{color:#137a66;font-weight:800}.fg-n{color:var(--di-muted,#4f6578)}.fg-p{color:#a76b12;font-weight:700}
+.fg-t td small{display:block;font-size:11.5px;color:var(--di-muted,#4f6578);font-weight:500}
+.fg-t tr.same{opacity:.55}

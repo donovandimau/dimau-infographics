@@ -1,0 +1,23 @@
+/* structure styles (Dimau Infographics). Generated from STYLE in v1/structure.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dx-style"; the loader does it for them. */
+.dx{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dx) button{font:inherit;color:inherit}
+.dx :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dx svg{display:block;width:100%}
+.dx svg [data-k]{cursor:pointer}
+.dx svg [data-k]:focus{outline:none}
+.dx svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:3}
+.dx-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.dx-bar .dx-lab{font-size:13px;font-weight:700;color:var(--di-muted,#4f6578);margin-right:2px}
+.dx-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.dx-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dx-btn:disabled{opacity:.45;cursor:default}
+.dx-crumbs{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:0 0 10px;font-size:13px}
+.dx-crumbs button{border:0;background:none;padding:4px 6px;border-radius:6px;font-weight:700;color:var(--di-accent,#0b6fa4);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.dx-crumbs b{padding:4px 6px}
+.dx-crumbs span{color:var(--di-muted,#4f6578)}
+.dx-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dx-legend{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.dx-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.dx-range{display:grid;gap:4px;margin:0 0 10px;font-size:13.5px;font-weight:700}
+.dx-range input{width:100%;accent-color:var(--di-accent,#0b6fa4);height:26px;margin:0}

@@ -230,6 +230,20 @@ import DimauInfographic from './vendor/dimau-infographics/v1/react/DimauInfograp
 
 The wrapper code-splits each template and forwards events as `on<Event>` props. `persistKey` saves the reader's progress in their browser for templates that support `getState`/`setState`.
 
+## Strict style policies
+
+Some apps send a Content-Security-Policy whose `style-src` does not allow `'unsafe-inline'`. Under such a policy the browser ignores `<style>` elements and `style="…"` attributes added by scripts, so templates would draw without their styling. From loader 1.28.0 this is handled for you:
+
+- The loader notices the policy the first time it mounts a template (`DimauInfographics.strictStyles()` returns `true`).
+- It links the family's stylesheet, `v1/<file>.css`, with the same id the script would have used (for example `<link id="dh-style" href="…/v1/weather.css">`), so the script adds no `<style>` element.
+- It applies each `style="…"` value in the template's markup through the CSSOM (`element.style.cssText`), which these policies allow, including values that change later.
+
+What the policy needs: `script-src` and `style-src` must allow the library's address (for example `https://infographics.dimau-fintech.com`). To skip the check, set `window.DIMAU_STRICT_STYLES = true` (or `false`) before the loader runs.
+
+If you load a family file directly instead of using the loader: add `<link rel="stylesheet" id="<prefix>-style" href="…/v1/<file>.css">` yourself (the id is in the comment at the top of each `.css` file), load the loader too, and call `DimauInfographics.watchStyles(element)` before creating the template.
+
+The `.css` files are generated from the `STYLE` string inside each family file: after editing one, run `node scripts/build-css.cjs`. `npm test` fails if a copy is out of date, and it mounts one template from every family file on a page with `style-src 'self'` to check that each one draws, adds no `<style>` and has every inline style applied.
+
 ## Picking a template
 
 1. Decide the shape of your information: connections, amounts, levels or time.
@@ -275,6 +289,7 @@ v1/react/DimauInfographic.jsx React wrapper for every template
 templates/<id>/              demo page + sample data for each template
 index.html, site.css         the library site
 tests/smoke.cjs              headless browser checks for every page and template
+scripts/build-css.cjs        writes v1/<file>.css from each family's STYLE (strict style policies)
 docs/ADDING-A-TEMPLATE.md    how to add a template
 ```
 

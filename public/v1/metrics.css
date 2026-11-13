@@ -1,0 +1,30 @@
+/* metrics styles (Dimau Infographics). Generated from STYLE in v1/metrics.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dm-style"; the loader does it for them. */
+.dm{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dm) button{font:inherit;color:inherit}
+.dm :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dm svg{display:block;width:100%}
+.dm svg [data-k]{cursor:pointer}
+.dm svg [data-k]:focus{outline:none}
+.dm svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.dm-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.dm-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.dm-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dm-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dm-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.dm-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.kt{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.kt button{display:grid;gap:4px;text-align:left;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:14px;padding:12px 14px;cursor:pointer}
+.kt button[aria-expanded="true"]{border-color:var(--di-accent,#0b6fa4);box-shadow:0 0 0 2px var(--di-accent,#0b6fa4) inset}
+.kt .lab{font-size:12.5px;font-weight:700;color:var(--di-muted,#4f6578)}
+.kt .val{font-size:28px;font-weight:800;line-height:1.1}
+.kt .chg{font:700 12.5px/1.2 var(--di-mono,ui-monospace,monospace)}
+.kt .good{color:#1f8a5b}.kt .bad{color:#c2563a}.kt .flat{color:var(--di-muted,#4f6578)}
+.kt svg{height:34px}
+.kt .more{font-size:12.5px;line-height:1.5;color:var(--di-fg,#13263a);border-top:1px solid var(--di-line,#c9dce8);padding-top:6px;margin-top:2px}
+.ab-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:0 0 12px}
+.ab-in fieldset{border:1px solid var(--di-line,#c9dce8);border-radius:12px;padding:8px 12px 10px;margin:0;background:var(--di-surface,#fff)}
+.ab-in legend{font-weight:800;font-size:13.5px;padding:0 4px}
+.ab-in label{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;margin-top:6px}
+.ab-in input{width:110px;height:34px;border-radius:8px;border:1px solid var(--di-line,#c9dce8);background:var(--di-bg,#eef7fb);padding:0 8px;font:inherit;font-size:14px;color:inherit}
+.ab-verdict{font-size:17px;font-weight:800;margin:10px 0 0}

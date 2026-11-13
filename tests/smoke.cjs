@@ -1,6 +1,7 @@
 /* Smoke test for the whole library. Run: npm test   (optional: node tests/smoke.cjs <screenshot-dir>)
  * Serves the repo on a local port, opens every page at desktop and phone width, uses each template,
- * and fails on page errors, sideways page scroll, or a catalog/loader mismatch. */
+ * and fails on page errors, sideways page scroll, or a catalog/loader mismatch.
+ * SMOKE_ONLY=<regex> limits the page checks to matching names, e.g. SMOKE_ONLY='^(library|tidecurve)$' npm test */
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -9,6 +10,8 @@ try { ({ chromium } = require('playwright')); } catch (_) { ({ chromium } = requ
 
 const ROOT = path.resolve(__dirname, '../public');
 const SHOTS = process.argv[2] || null;
+// SMOKE_ONLY=<regex> runs only the page checks whose names match (the catalogue and strict-policy checks always run)
+const ONLY = process.env.SMOKE_ONLY ? new RegExp(process.env.SMOKE_ONLY) : null;
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.jsx': 'text/javascript' };
 const failures = [];
 const fail = m => { failures.push(m); console.log('  ✗ ' + m); };
@@ -1399,8 +1402,33 @@ const PAGES = [
   }))
 ];
 
+// 3. strict style policy: one template from every family file, mounted through the loader on a page whose
+//    Content-Security-Policy has no 'unsafe-inline' for styles (the CSS comes from v1/<file>.css instead)
+const STRICT = (() => {
+  const picks = [], seen = new Set();
+  for (const t of catalog.templates) {
+    if (seen.has(t.file)) continue;
+    const demo = path.join(ROOT, 'templates', t.id, 'index.html');
+    if (!fs.existsSync(demo)) continue;
+    const html = fs.readFileSync(demo, 'utf8'), d = html.match(/window\.([A-Z0-9_]+_DATA)\b/), src = html.match(/<script src="(\/templates\/[^"]+\/sample-data\.js)"/);
+    if (!d || !src) continue;
+    seen.add(t.file); picks.push({ id: t.id, file: t.file, data: d[1], src: src[1] });
+  }
+  // templates whose demos need no data file (the signal cards fill in their own defaults)
+  for (const t of catalog.templates) if (!seen.has(t.file)) { seen.add(t.file); picks.push({ id: t.id, file: t.file, data: null, src: null }); }
+  return picks;
+})();
+const STRICT_CSP = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'";
+const STRICT_HTML = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Strict style policy</title></head><body>' +
+  '<main id="root"></main><script src="/v1/dimau-infographics.js"></script>' + [...new Set(STRICT.map(x => x.src).filter(Boolean))].map(s => '<script src="' + s + '"></script>').join('') + '<script src="/__strict/run.js"></script></body></html>';
+const STRICT_JS = 'window.__picks = ' + JSON.stringify(STRICT.map(({ id, file, data }) => ({ id, file, data }))) + ';\n' +
+  "window.__done = Promise.all(window.__picks.map(function (p) { var d = document.createElement('section'); d.id = 'm-' + p.id; d.className = 'strict-box'; d.style.minHeight = '480px'; document.getElementById('root').appendChild(d);" +
+  " return DimauInfographics.mount(d, { template: p.id, data: (p.data && window[p.data]) || {} }).then(function () { return null; }, function (e) { return p.id + ': ' + e.message; }); }));\n";
+
 const server = http.createServer((req, res) => {
   let u = decodeURIComponent(req.url.split('?')[0]);
+  if (u === '/__strict/') { res.writeHead(200, { 'Content-Type': TYPES['.html'], 'Content-Security-Policy': STRICT_CSP }); res.end(STRICT_HTML); return; }
+  if (u === '/__strict/run.js') { res.writeHead(200, { 'Content-Type': TYPES['.js'] }); res.end(STRICT_JS); return; }
   if (u.endsWith('/')) u += 'index.html';
   const f = path.join(ROOT, u);
   if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); res.end('not found'); return; }
@@ -1415,6 +1443,7 @@ const server = http.createServer((req, res) => {
   for (const vp of [{ name: 'desktop', width: 1360, height: 860 }, { name: 'phone', width: 390, height: 844, isMobile: true, hasTouch: true }]) {
     console.log('\n' + vp.name);
     for (const pg of PAGES) {
+      if (ONLY && !ONLY.test(pg.name)) continue;
       const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch, deviceScaleFactor: 1, serviceWorkers: 'block' });
       const p = await ctx.newPage();
       const errs = [];
@@ -1436,6 +1465,57 @@ const server = http.createServer((req, res) => {
       }
       await ctx.close();
     }
+  }
+  console.log('\nstrict style policy');
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1360, height: 860 }, deviceScaleFactor: 1, serviceWorkers: 'block' });
+    const p = await ctx.newPage(), errs = [];
+    p.on('pageerror', e => errs.push(e.message));
+    p.on('console', m => { if (m.type() === 'error' && !/Content Security Policy|Failed to load resource|ERR_|net::/.test(m.text())) errs.push(m.text()); });
+    try {
+      await p.goto(base + '/__strict/', { waitUntil: 'load' });
+      const bad = (await p.evaluate(() => window.__done)).filter(Boolean);
+      if (bad.length) throw new Error('mount failed: ' + bad.join(' | '));
+      await p.waitForTimeout(800);
+      const r = await p.evaluate(() => {
+        const ls = [...document.querySelectorAll('link[rel=stylesheet][id$="-style"]')];
+        const out = { strict: DimauInfographics.strictStyles(), styleEls: document.querySelectorAll('style').length, links: ls.length, empty: ls.filter(l => { try { return !l.sheet || !l.sheet.cssRules.length; } catch (e) { return true; } }).map(l => l.id), small: [], unapplied: [] };
+        document.querySelectorAll('.strict-box').forEach(b => {
+          if (b.querySelectorAll('*').length < 5) out.small.push(b.id);
+          b.querySelectorAll('[style]').forEach(n => { if ((n.getAttribute('style') || '').trim() && n.style.length === 0) out.unapplied.push(b.id + ' ' + n.tagName.toLowerCase() + '[style="' + n.getAttribute('style').slice(0, 40) + '"]'); });
+        });
+        return out;
+      });
+      if (!r.strict) throw new Error('the loader did not notice the strict policy');
+      if (r.styleEls) throw new Error(r.styleEls + ' <style> element(s) were added; under a strict policy the CSS must come from linked files');
+      if (r.links !== STRICT.length) throw new Error('expected ' + STRICT.length + ' linked family stylesheets, found ' + r.links);
+      if (r.empty.length) throw new Error('stylesheet did not load: ' + r.empty.join(', '));
+      if (r.small.length) throw new Error('did not draw: ' + r.small.join(', '));
+      if (r.unapplied.length) throw new Error(r.unapplied.length + ' inline style(s) not applied, e.g. ' + r.unapplied.slice(0, 3).join('; '));
+      if (errs.length) throw new Error('page errors: ' + errs.join(' | '));
+      pass(STRICT.length + ' family files mounted under style-src \'self\': CSS linked, no <style> added, every inline style applied');
+    } catch (e) { fail('strict style policy: ' + e.message); }
+    // each linked .css must match what the script itself would inject
+    try {
+      const diff = [];
+      for (const pk of STRICT) {
+        const pg2 = await ctx.newPage();
+        await pg2.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
+        await pg2.goto(base + '/templates/' + pk.id + '/', { waitUntil: 'load' });
+        const same = await pg2.evaluate(async f => {
+          const src = await (await fetch('/v1/' + f)).text(), m = src.match(/getElementById\('([a-z]+-style)'\)/);
+          const el = m && document.getElementById(m[1]);
+          if (!el || el.tagName !== 'STYLE') return 'no <style id=' + (m && m[1]) + '> on the demo page';
+          const css = (await (await fetch('/v1/' + f.replace(/\.js$/, '.css'))).text()).replace(/\r\n/g, '\n').replace(/^\/\*[\s\S]*?\*\/\n/, '').trim();
+          return css === el.textContent.replace(/\r\n/g, '\n').trim() ? '' : 'differs';
+        }, pk.file);
+        if (same) diff.push(pk.file.replace('.js', '.css') + ' ' + same);
+        await pg2.close();
+      }
+      if (diff.length) throw new Error(diff.join('; ') + ' — run: node scripts/build-css.cjs');
+      pass('every v1/<file>.css matches the CSS its script injects');
+    } catch (e) { fail('css copies: ' + e.message); }
+    await ctx.close();
   }
   await browser.close();
   server.close();
