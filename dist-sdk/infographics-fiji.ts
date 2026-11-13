@@ -59,7 +59,7 @@ export interface InfographicTemplateMap {
 export type TemplateSlug = keyof InfographicTemplateMap;
 type Opts = { format?: InfographicFormat; theme?: InfographicTheme; variant?: InfographicVariant };
 
-export const INFOGRAPHICS_BASE_URL = 'https://dimau-infographics.vercel.app';
+export const INFOGRAPHICS_BASE_URL = 'https://infographics.dimau-fintech.com';
 
 /** Public embed URL (public templates only). Safe for <img src> and link previews. */
 export function getInfographicUrl<T extends TemplateSlug>(slug: T, vars: InfographicTemplateMap[T], o: Opts = {}): string {

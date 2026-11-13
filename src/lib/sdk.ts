@@ -61,4 +61,4 @@ export async function renderInfographic<T extends TemplateSlug>(
 `;
 }
 
-export const DEFAULT_BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://dimau-infographics.vercel.app';
+export const DEFAULT_BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://infographics.dimau-fintech.com';
