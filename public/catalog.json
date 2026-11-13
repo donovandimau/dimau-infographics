@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "base": "/v1/",
   "templates": [
     {
@@ -137,7 +137,10 @@
       "demo": "/templates/switchback/",
       "sample": "Fiji through time: dated events plus spans",
       "usedBy": [
-        { "app": "platform-fiji-museum", "since": "2026-11-12" }
+        {
+          "app": "platform-fiji-museum",
+          "since": "2026-11-12"
+        }
       ]
     },
     {
@@ -217,8 +220,14 @@
       "demo": "/templates/waypath/",
       "sample": "How an app adopts a template (real process)",
       "usedBy": [
-        { "app": "platform-viti-market", "since": "2026-11-12" },
-        { "app": "platform-qele", "since": "2026-11-12" }
+        {
+          "app": "platform-viti-market",
+          "since": "2026-11-12"
+        },
+        {
+          "app": "platform-qele",
+          "since": "2026-11-12"
+        }
       ]
     },
     {
@@ -626,8 +635,14 @@
       "demo": "/templates/pathfinder/",
       "sample": "Which template fits? (real: this library)",
       "usedBy": [
-        { "app": "platform-dimau-homes", "since": "2026-11-12" },
-        { "app": "platform-qele", "since": "2026-11-12" }
+        {
+          "app": "platform-dimau-homes",
+          "since": "2026-11-12"
+        },
+        {
+          "app": "platform-qele",
+          "since": "2026-11-12"
+        }
       ]
     },
     {
@@ -700,7 +715,10 @@
       "demo": "/templates/factwall/",
       "sample": "FijiLearn and this library in numbers (real data)",
       "usedBy": [
-        { "app": "platform-qele", "since": "2026-11-12" }
+        {
+          "app": "platform-qele",
+          "since": "2026-11-12"
+        }
       ]
     },
     {
@@ -920,7 +938,10 @@
       "demo": "/templates/checklist/",
       "sample": "Add a template to your app (real process)",
       "usedBy": [
-        { "app": "platform-bulacars", "since": "2026-11-12" }
+        {
+          "app": "platform-bulacars",
+          "since": "2026-11-12"
+        }
       ]
     },
     {
@@ -1206,8 +1227,14 @@
       "demo": "/templates/treeline/",
       "sample": "This library by family (real data)",
       "usedBy": [
-        { "app": "platform-myfiji", "since": "2026-11-12" },
-        { "app": "platform-qele", "since": "2026-11-12" }
+        {
+          "app": "platform-myfiji",
+          "since": "2026-11-12"
+        },
+        {
+          "app": "platform-qele",
+          "since": "2026-11-12"
+        }
       ]
     },
     {
@@ -3112,6 +3139,144 @@
       ],
       "demo": "/templates/pricerise/",
       "sample": "$100 over ten years (example)",
+      "usedBy": []
+    },
+    {
+      "id": "tidecurve",
+      "name": "Tidecurve",
+      "global": "Tidecurve",
+      "file": "weather.js",
+      "status": "ready",
+      "shape": "tide-curve",
+      "family": "weather",
+      "bestFor": "Fishing and reef walks, boat ramps and landings, village and school sea safety, coastal works.",
+      "mechanics": [
+        "Height at any time, rising or falling",
+        "Next high in words",
+        "Times below a chosen height shaded",
+        "Drag or use the arrow keys"
+      ],
+      "dataShape": "{ place?, unit?, extremes:[{t:'YYYY-MM-DDTHH:MM', h}], below?:{h,label}, now? }",
+      "events": [
+        "time"
+      ],
+      "demo": "/templates/tidecurve/",
+      "sample": "Three days of tides (example)",
+      "usedBy": []
+    },
+    {
+      "id": "warmstripes",
+      "name": "Warmstripes",
+      "global": "Warmstripes",
+      "file": "weather.js",
+      "status": "ready",
+      "shape": "warming-stripes",
+      "family": "weather",
+      "bestFor": "Climate and rainfall pages, school science, reports and covers, any yearly measure against its usual level.",
+      "mechanics": [
+        "Stripes or bars",
+        "Difference from any base period",
+        "Warmest and coolest in words",
+        "Each year ranked"
+      ],
+      "dataShape": "{ title?, unit?, base:[fromYear,toYear], years:[{y, v}] }",
+      "events": [
+        "year"
+      ],
+      "demo": "/templates/warmstripes/",
+      "sample": "125 years for one island (example)",
+      "usedBy": []
+    },
+    {
+      "id": "stormtrack",
+      "name": "Stormtrack",
+      "global": "Stormtrack",
+      "file": "weather.js",
+      "status": "ready",
+      "shape": "storm-track",
+      "family": "weather",
+      "bestFor": "Cyclone season pages, school lessons, after-storm reports, emergency and insurance briefings.",
+      "mechanics": [
+        "Category from the wind speed",
+        "Play, pause and a time slider",
+        "Closest pass to each place",
+        "Works across the 180° line"
+      ],
+      "dataShape": "{ name?, unit?, points:[{t, lat, lon, wind, cat?, forecast?}], places?:[{id,label,lat,lon}] }",
+      "events": [
+        "time"
+      ],
+      "demo": "/templates/stormtrack/",
+      "sample": "A cyclone near three islands (example)",
+      "usedBy": []
+    },
+    {
+      "id": "uvday",
+      "name": "Uvday",
+      "global": "Uvday",
+      "file": "weather.js",
+      "status": "ready",
+      "shape": "uv-index",
+      "family": "weather",
+      "bestFor": "Health and school pages, beach and sport events, outdoor work planning, tourism.",
+      "mechanics": [
+        "Any place, any day of the year",
+        "Peak and when it is 3 or more",
+        "Standard risk colours",
+        "Read any time"
+      ],
+      "dataShape": "{ place?, lat, lon, tz, date:'YYYY-MM-DD', ozone? }",
+      "events": [
+        "date"
+      ],
+      "demo": "/templates/uvday/",
+      "sample": "Suva, 21 December (worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "feelslike",
+      "name": "Feelslike",
+      "global": "Feelslike",
+      "file": "weather.js",
+      "status": "ready",
+      "shape": "heat-index",
+      "family": "weather",
+      "bestFor": "Heat warnings, outdoor work and sport, schools, health and farm pages.",
+      "mechanics": [
+        "Temperature and humidity sliders",
+        "Feels-like temperature and risk in words",
+        "Grid of risk levels",
+        "Saved readings"
+      ],
+      "dataShape": "{ temp, humidity, readings?:[{id,label,temp,humidity}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/feelslike/",
+      "sample": "A hot, humid day (example)",
+      "usedBy": []
+    },
+    {
+      "id": "forecastrow",
+      "name": "Forecastrow",
+      "global": "Forecastrow",
+      "file": "weather.js",
+      "status": "ready",
+      "shape": "forecast",
+      "family": "weather",
+      "bestFor": "Town and village pages, event and market planning, farming, school trips.",
+      "mechanics": [
+        "Low to high on one scale",
+        "Chance of rain as a bar",
+        "Warmest, wettest and driest in words",
+        "Tap a day"
+      ],
+      "dataShape": "{ place?, unit?, days:[{date, hi, lo, rain, mm?, wind?, sky}] }",
+      "events": [
+        "day"
+      ],
+      "demo": "/templates/forecastrow/",
+      "sample": "A week ahead (example)",
       "usedBy": []
     },
     {

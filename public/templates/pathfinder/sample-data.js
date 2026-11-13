@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.23, 134 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.24, 140 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -1084,6 +1084,11 @@ window.PATHFINDER_DATA = {
      "to": "r_moonmonth"
     },
     {
+     "label": "Weather, tides and storms",
+     "hint": "sea, sun, heat, rain",
+     "to": "weather"
+    },
+    {
      "label": "Which way the wind blows",
      "to": "r_windrose"
     }
@@ -1536,6 +1541,72 @@ window.PATHFINDER_DATA = {
    "text": "What rising prices do to money.",
    "link": "/templates/pricerise/",
    "linkLabel": "Open Pricerise"
+  },
+  "weather": {
+   "q": "What about the weather?",
+   "options": [
+    {
+     "label": "When the tide is high or low",
+     "to": "r_tidecurve"
+    },
+    {
+     "label": "Each year against the usual",
+     "hint": "warming, rainfall",
+     "to": "r_warmstripes"
+    },
+    {
+     "label": "Where a storm went or is going",
+     "to": "r_stormtrack"
+    },
+    {
+     "label": "Sunburn risk through the day",
+     "to": "r_uvday"
+    },
+    {
+     "label": "How hot it feels with humidity",
+     "to": "r_feelslike"
+    },
+    {
+     "label": "The next few days",
+     "to": "r_forecastrow"
+    }
+   ]
+  },
+  "r_tidecurve": {
+   "result": "Tidecurve",
+   "text": "Tide height through the day, the next high, and when the water is low.",
+   "link": "/templates/tidecurve/",
+   "linkLabel": "Open Tidecurve"
+  },
+  "r_warmstripes": {
+   "result": "Warmstripes",
+   "text": "One coloured stripe per year against the average.",
+   "link": "/templates/warmstripes/",
+   "linkLabel": "Open Warmstripes"
+  },
+  "r_stormtrack": {
+   "result": "Stormtrack",
+   "text": "A storm's path by category, and how close it comes to each place.",
+   "link": "/templates/stormtrack/",
+   "linkLabel": "Open Stormtrack"
+  },
+  "r_uvday": {
+   "result": "Uvday",
+   "text": "The UV index through a clear day, for any place and day.",
+   "link": "/templates/uvday/",
+   "linkLabel": "Open Uvday"
+  },
+  "r_feelslike": {
+   "result": "Feelslike",
+   "text": "How hot it feels from temperature and humidity, with the risk level.",
+   "link": "/templates/feelslike/",
+   "linkLabel": "Open Feelslike"
+  },
+  "r_forecastrow": {
+   "result": "Forecastrow",
+   "text": "The days ahead in rows: sky, rain chance, low to high.",
+   "link": "/templates/forecastrow/",
+   "linkLabel": "Open Forecastrow"
   }
  }
 };
