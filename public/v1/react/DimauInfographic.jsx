@@ -175,6 +175,13 @@ const LOADERS = {
   bracket: () => import('../sport.js').then(m => ({ default: (m.default || m).Bracket })),
   teamsheet: () => import('../sport.js').then(m => ({ default: (m.default || m).Teamsheet })),
   medaltable: () => import('../sport.js').then(m => ({ default: (m.default || m).Medaltable })),
+  // the six food templates share one file
+  recipescale: () => import('../food.js').then(m => ({ default: (m.default || m).Recipescale })),
+  seasonwheel: () => import('../food.js').then(m => ({ default: (m.default || m).Seasonwheel })),
+  platesplit: () => import('../food.js').then(m => ({ default: (m.default || m).Platesplit })),
+  labelcard: () => import('../food.js').then(m => ({ default: (m.default || m).Labelcard })),
+  harvestplan: () => import('../food.js').then(m => ({ default: (m.default || m).Harvestplan })),
+  servetime: () => import('../food.js').then(m => ({ default: (m.default || m).Servetime })),
   // the four signal cards share one file
   'rbf-sandbox-settlement-flow': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).SettlementFlow })),
   'sota-kece-community-pulse': () => import('../signal-cards.js').then(m => ({ default: (m.default || m).CommunityPulse })),

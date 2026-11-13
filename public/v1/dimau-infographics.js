@@ -151,13 +151,19 @@
     bracket: { file: 'sport.js', global: 'Bracket' },
     teamsheet: { file: 'sport.js', global: 'Teamsheet' },
     medaltable: { file: 'sport.js', global: 'Medaltable' },
+    recipescale: { file: 'food.js', global: 'Recipescale' },
+    seasonwheel: { file: 'food.js', global: 'Seasonwheel' },
+    platesplit: { file: 'food.js', global: 'Platesplit' },
+    labelcard: { file: 'food.js', global: 'Labelcard' },
+    harvestplan: { file: 'food.js', global: 'Harvestplan' },
+    servetime: { file: 'food.js', global: 'Servetime' },
     'rbf-sandbox-settlement-flow': { file: 'signal-cards.js', global: 'SettlementFlow' },
     'sota-kece-community-pulse': { file: 'signal-cards.js', global: 'CommunityPulse' },
     'pacific-backhaul-node-map': { file: 'signal-cards.js', global: 'BackhaulMap' },
     'debt-freedom-trajectory': { file: 'signal-cards.js', global: 'DebtTrajectory' },
     'archive-desk': { file: 'archive-desk.js', global: 'ArchiveDesk' }
   };
-  var VERSION = '1.25.0';
+  var VERSION = '1.26.0';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};

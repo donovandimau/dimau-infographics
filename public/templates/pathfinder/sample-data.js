@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.25, 146 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.26, 152 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -96,6 +96,11 @@ window.PATHFINDER_DATA = {
      "label": "Sport and games",
      "hint": "matches, races, tournaments",
      "to": "sport"
+    },
+    {
+     "label": "Food, cooking and growing",
+     "hint": "recipes, seasons, labels",
+     "to": "food"
     },
     {
      "label": "A few headline numbers",
@@ -1679,6 +1684,72 @@ window.PATHFINDER_DATA = {
    "text": "A medal table ranked gold first or by total.",
    "link": "/templates/medaltable/",
    "linkLabel": "Open Medaltable"
+  },
+  "food": {
+   "q": "What about the food?",
+   "options": [
+    {
+     "label": "A recipe for more or fewer people",
+     "to": "r_recipescale"
+    },
+    {
+     "label": "What is in season when",
+     "to": "r_seasonwheel"
+    },
+    {
+     "label": "How a meal compares with a plate guide",
+     "to": "r_platesplit"
+    },
+    {
+     "label": "What is in a food",
+     "hint": "nutrition label",
+     "to": "r_labelcard"
+    },
+    {
+     "label": "When crops will be ready",
+     "to": "r_harvestplan"
+    },
+    {
+     "label": "When to start cooking each part",
+     "to": "r_servetime"
+    }
+   ]
+  },
+  "r_recipescale": {
+   "result": "Recipescale",
+   "text": "A recipe for any number of people, in cups or millilitres.",
+   "link": "/templates/recipescale/",
+   "linkLabel": "Open Recipescale"
+  },
+  "r_seasonwheel": {
+   "result": "Seasonwheel",
+   "text": "What is in season month by month, best months darker.",
+   "link": "/templates/seasonwheel/",
+   "linkLabel": "Open Seasonwheel"
+  },
+  "r_platesplit": {
+   "result": "Platesplit",
+   "text": "A meal beside a plate guide, over and under in words.",
+   "link": "/templates/platesplit/",
+   "linkLabel": "Open Platesplit"
+  },
+  "r_labelcard": {
+   "result": "Labelcard",
+   "text": "A nutrition label with high, medium and low colours.",
+   "link": "/templates/labelcard/",
+   "linkLabel": "Open Labelcard"
+  },
+  "r_harvestplan": {
+   "result": "Harvestplan",
+   "text": "When each crop is ready from a sowing date.",
+   "link": "/templates/harvestplan/",
+   "linkLabel": "Open Harvestplan"
+  },
+  "r_servetime": {
+   "result": "Servetime",
+   "text": "Start times worked back from serving, with clashes flagged.",
+   "link": "/templates/servetime/",
+   "linkLabel": "Open Servetime"
   }
  }
 };

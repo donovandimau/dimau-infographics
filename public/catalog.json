@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.25.0",
+  "version": "1.26.0",
   "base": "/v1/",
   "templates": [
     {
@@ -3417,6 +3417,145 @@
       ],
       "demo": "/templates/medaltable/",
       "sample": "An imaginary games (example)",
+      "usedBy": []
+    },
+    {
+      "id": "recipescale",
+      "name": "Recipescale",
+      "global": "Recipescale",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "recipe",
+      "family": "food",
+      "bestFor": "Recipe pages, school cooking, community kitchens, events and fundraisers.",
+      "mechanics": [
+        "Any number of people",
+        "Kitchen fractions",
+        "Cups and spoons to millilitres",
+        "Items without amounts kept"
+      ],
+      "dataShape": "{ title?, serves, items:[{qty?, unit?, name, note?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/recipescale/",
+      "sample": "A rice and lentil pot (example)",
+      "usedBy": []
+    },
+    {
+      "id": "seasonwheel",
+      "name": "Seasonwheel",
+      "global": "Seasonwheel",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "season-wheel",
+      "family": "food",
+      "bestFor": "Market and farm pages, school gardens, menus, fishing and planting calendars.",
+      "mechanics": [
+        "What is in season this month",
+        "Best months darker",
+        "Seasons across the new year",
+        "Each item’s months in words"
+      ],
+      "dataShape": "{ items:[{id,label,months:[1–12], best?}], now?, place? }",
+      "events": [
+        "month"
+      ],
+      "demo": "/templates/seasonwheel/",
+      "sample": "Six crops (example)",
+      "usedBy": []
+    },
+    {
+      "id": "platesplit",
+      "name": "Platesplit",
+      "global": "Platesplit",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "plate",
+      "family": "food",
+      "bestFor": "Health and school lessons, canteen menus, community nutrition talks.",
+      "mechanics": [
+        "Guide and meal side by side",
+        "Over and under in points",
+        "Any guide and any parts",
+        "Switch meals"
+      ],
+      "dataShape": "{ guideLabel?, guide:[{id,label,share}], meals:[{id,label,parts:{id: share}}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/platesplit/",
+      "sample": "Three meals (example)",
+      "usedBy": []
+    },
+    {
+      "id": "labelcard",
+      "name": "Labelcard",
+      "global": "Labelcard",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "nutrition-label",
+      "family": "food",
+      "bestFor": "Shop and product pages, school lessons, canteens and food businesses.",
+      "mechanics": [
+        "Per 100 g, per serving or any amount",
+        "High, medium and low colours",
+        "Share of a day’s reference intake",
+        "kJ and kcal"
+      ],
+      "dataShape": "{ name, serving, unit?, per100:{energy, fat, saturates, sugars, salt} }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/labelcard/",
+      "sample": "A breakfast cereal (example)",
+      "usedBy": []
+    },
+    {
+      "id": "harvestplan",
+      "name": "Harvestplan",
+      "global": "Harvestplan",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "harvest-plan",
+      "family": "food",
+      "bestFor": "School and community gardens, farm extension, market gardeners.",
+      "mechanics": [
+        "Any sowing date",
+        "Ready and picking windows",
+        "What is ready today",
+        "Each crop in words"
+      ],
+      "dataShape": "{ sow:'YYYY-MM-DD', today?, crops:[{id,label,days,pick?}] }",
+      "events": [
+        "change",
+        "select"
+      ],
+      "demo": "/templates/harvestplan/",
+      "sample": "Six crops (example)",
+      "usedBy": []
+    },
+    {
+      "id": "servetime",
+      "name": "Servetime",
+      "global": "Servetime",
+      "file": "food.js",
+      "status": "ready",
+      "shape": "cook-plan",
+      "family": "food",
+      "bestFor": "Cooking lessons, event catering, family meals, recipe pages.",
+      "mechanics": [
+        "Any serving time",
+        "Start times worked back",
+        "Hands-on clashes flagged",
+        "Jobs that finish early"
+      ],
+      "dataShape": "{ serve:'HH:MM', tasks:[{id,label,mins,before?,hands?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/servetime/",
+      "sample": "A family dinner (example)",
       "usedBy": []
     },
     {

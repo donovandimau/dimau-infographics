@@ -101,6 +101,7 @@
       <a href="/#money">Money</a>
       <a href="/#weather">Weather</a>
       <a href="/#sport">Sport</a>
+      <a href="/#food">Food</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -529,6 +530,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="food" aria-labelledby="food-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Food · kitchens, gardens and markets</p><h2 id="food-h">Food</h2>
+      <p class="lede">Recipes for any number, what is in season, a balanced plate, nutrition labels, sowing to harvest, and cooking to time.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-recipescale"></div>
+    <ul class="family-list">
+      <li><a href="/templates/recipescale/"><b>Recipescale</b><span>A recipe for any number of people.</span></a></li>
+      <li><a href="/templates/seasonwheel/"><b>Seasonwheel</b><span>What is in season each month.</span></a></li>
+      <li><a href="/templates/platesplit/"><b>Platesplit</b><span>A meal against a plate guide.</span></a></li>
+      <li><a href="/templates/labelcard/"><b>Labelcard</b><span>A nutrition label, high to low.</span></a></li>
+      <li><a href="/templates/harvestplan/"><b>Harvestplan</b><span>From sowing to harvest.</span></a></li>
+      <li><a href="/templates/servetime/"><b>Servetime</b><span>When to start each part of a meal.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -584,6 +601,7 @@
 <script src="/templates/cashcalendar/sample-data.js"></script>
 <script src="/templates/uvday/sample-data.js"></script>
 <script src="/templates/scoreworm/sample-data.js"></script>
+<script src="/templates/recipescale/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -614,6 +632,7 @@
   D.mount('#pv-cashcalendar', { template: 'cashcalendar', data: window.CASHCALENDAR_DATA });
   D.mount('#pv-uvday', { template: 'uvday', data: window.UVDAY_DATA });
   D.mount('#pv-scoreworm', { template: 'scoreworm', data: window.SCOREWORM_DATA });
+  D.mount('#pv-recipescale', { template: 'recipescale', data: window.RECIPESCALE_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {
