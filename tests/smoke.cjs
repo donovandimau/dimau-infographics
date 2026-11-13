@@ -115,16 +115,18 @@ const PAGES = [
       return 'summary, filter, line detail';
   } },
   { url: '/templates/pathfinder/', name: 'pathfinder', check: async p => {
-      await p.click('[data-opt="5"]'); await p.click('[data-opt="1"]'); await p.click('[data-opt="1"]');
+      const first = await p.locator('[data-opt]').count();
+      if (first > 8) throw new Error('the first question offers ' + first + ' answers; keep it to 8 or fewer');
+      await p.click('[data-opt="2"]'); await p.click('[data-opt="0"]'); await p.click('[data-opt="1"]'); await p.click('[data-opt="1"]');
       if ((await p.textContent('.pf-result')) !== 'Radar') throw new Error('expected Radar, got ' + await p.textContent('.pf-result'));
-      if (await p.locator('.pf-trail button').count() !== 3) throw new Error('trail should list 3 answers');
-      await p.click('[data-back="1"]');
+      if (await p.locator('.pf-trail button').count() !== 4) throw new Error('trail should list 4 answers');
+      await p.click('[data-back="2"]');
       if (!/How are you comparing\?/.test(await p.textContent('.pf-q'))) throw new Error('going back failed');
       await p.click('[data-restart]');
       if (!/mainly about/.test(await p.textContent('.pf-q'))) throw new Error('start again failed');
       await p.click('[data-help]');
       if (await p.isHidden('.pf-pop')) throw new Error('help pop-up did not open');
-      return 'three answers to Radar, change an answer, start again, help pop-up';
+      return first + ' first answers, four answers to Radar, change an answer, start again, help pop-up';
   } },
   { url: '/templates/radar/', name: 'radar', check: async p => {
       if (await p.locator('[data-s]').count() !== 5) throw new Error('expected 5 subjects');
