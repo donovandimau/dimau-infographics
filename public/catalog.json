@@ -1,6 +1,6 @@
 {
   "name": "Dimau Infographics",
-  "version": "1.26.0",
+  "version": "1.27.0",
   "base": "/v1/",
   "templates": [
     {
@@ -3556,6 +3556,144 @@
       ],
       "demo": "/templates/servetime/",
       "sample": "A family dinner (example)",
+      "usedBy": []
+    },
+    {
+      "id": "appliancecost",
+      "name": "Appliancecost",
+      "global": "Appliancecost",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "appliance-cost",
+      "family": "energy",
+      "bestFor": "Power bill explainers, energy-saving lessons, household budgeting, community talks.",
+      "mechanics": [
+        "Watts and hours per appliance",
+        "Cost per month, largest first",
+        "Biggest user and an hour saved in words",
+        "Switch things on and off"
+      ],
+      "dataShape": "{ prefix?, price, items:[{id,label,watts,hours,on?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/appliancecost/",
+      "sample": "A household (example)",
+      "usedBy": []
+    },
+    {
+      "id": "solarday",
+      "name": "Solarday",
+      "global": "Solarday",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "solar-day",
+      "family": "energy",
+      "bestFor": "Solar sales and lessons, community energy projects, choosing when to run appliances.",
+      "mechanics": [
+        "Any place and day of the year",
+        "Made, used, self-used, bought",
+        "Share covered by solar",
+        "Hour-by-hour bars"
+      ],
+      "dataShape": "{ place?, lat, lon, tz, date, kw, loss?, use:[24 kWh] }",
+      "events": [
+        "date"
+      ],
+      "demo": "/templates/solarday/",
+      "sample": "Suva, 21 December (sun worked out)",
+      "usedBy": []
+    },
+    {
+      "id": "backuptime",
+      "name": "Backuptime",
+      "global": "Backuptime",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "backup-time",
+      "family": "energy",
+      "bestFor": "Cyclone and outage preparedness, solar and battery sales, clinics and schools.",
+      "mechanics": [
+        "Switch loads on and off",
+        "Hours and minutes left",
+        "Without the biggest load",
+        "Usable share of the battery"
+      ],
+      "dataShape": "{ capacity (Wh), usable?, loads:[{id,label,watts,on?}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/backuptime/",
+      "sample": "A home battery (example)",
+      "usedBy": []
+    },
+    {
+      "id": "tariffsteps",
+      "name": "Tariffsteps",
+      "global": "Tariffsteps",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "block-tariff",
+      "family": "energy",
+      "bestFor": "Bill explainers, utility and council pages, energy lessons.",
+      "mechanics": [
+        "Use slider",
+        "Cost block by block",
+        "Average price per kWh",
+        "Next 10 kWh in words"
+      ],
+      "dataShape": "{ prefix?, fixed?, use, max?, blocks:[{upTo|null, price}] }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/tariffsteps/",
+      "sample": "A three-block price (example)",
+      "usedBy": []
+    },
+    {
+      "id": "meterreading",
+      "name": "Meterreading",
+      "global": "Meterreading",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "meter-readings",
+      "family": "energy",
+      "bestFor": "Household and business energy tracking, water meters, landlords and tenants.",
+      "mechanics": [
+        "Uneven gaps handled",
+        "Use per day per period",
+        "High periods marked",
+        "A month at the latest rate"
+      ],
+      "dataShape": "{ unit?, prefix?, price?, readings:[{date, value}] }",
+      "events": [
+        "select"
+      ],
+      "demo": "/templates/meterreading/",
+      "sample": "Three months of readings (example)",
+      "usedBy": []
+    },
+    {
+      "id": "payback",
+      "name": "Payback",
+      "global": "Payback",
+      "file": "energy.js",
+      "status": "ready",
+      "shape": "payback",
+      "family": "energy",
+      "bestFor": "Solar, efficient appliances and insulation; any spend-to-save decision.",
+      "mechanics": [
+        "Cost and saving sliders",
+        "Savings that grow with prices",
+        "Payback month marked",
+        "Ahead after ten years"
+      ],
+      "dataShape": "{ prefix?, cost, saving, rise?, years? }",
+      "events": [
+        "change"
+      ],
+      "demo": "/templates/payback/",
+      "sample": "A solar water heater (example)",
       "usedBy": []
     },
     {

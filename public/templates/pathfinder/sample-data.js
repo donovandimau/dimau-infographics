@@ -1,4 +1,4 @@
-/* Real data: the Dimau Infographics library itself (v1.26, 152 templates). Answer the questions to find the template that fits your information. */
+/* Real data: the Dimau Infographics library itself (v1.27, 158 templates). Answer the questions to find the template that fits your information. */
 window.PATHFINDER_DATA = {
  "title": "Which template fits?",
  "start": "start",
@@ -101,6 +101,11 @@ window.PATHFINDER_DATA = {
      "label": "Food, cooking and growing",
      "hint": "recipes, seasons, labels",
      "to": "food"
+    },
+    {
+     "label": "Power and energy",
+     "hint": "bills, solar, batteries",
+     "to": "energy"
     },
     {
      "label": "A few headline numbers",
@@ -1750,6 +1755,72 @@ window.PATHFINDER_DATA = {
    "text": "Start times worked back from serving, with clashes flagged.",
    "link": "/templates/servetime/",
    "linkLabel": "Open Servetime"
+  },
+  "energy": {
+   "q": "What about the energy?",
+   "options": [
+    {
+     "label": "What appliances cost to run",
+     "to": "r_appliancecost"
+    },
+    {
+     "label": "Solar panels through the day",
+     "to": "r_solarday"
+    },
+    {
+     "label": "How long a battery lasts",
+     "to": "r_backuptime"
+    },
+    {
+     "label": "A stepped price or bill",
+     "to": "r_tariffsteps"
+    },
+    {
+     "label": "Meter readings",
+     "hint": "power or water",
+     "to": "r_meterreading"
+    },
+    {
+     "label": "When a spend pays for itself",
+     "to": "r_payback"
+    }
+   ]
+  },
+  "r_appliancecost": {
+   "result": "Appliancecost",
+   "text": "What each appliance costs a day and a month.",
+   "link": "/templates/appliancecost/",
+   "linkLabel": "Open Appliancecost"
+  },
+  "r_solarday": {
+   "result": "Solarday",
+   "text": "Solar output against use, hour by hour, for any day.",
+   "link": "/templates/solarday/",
+   "linkLabel": "Open Solarday"
+  },
+  "r_backuptime": {
+   "result": "Backuptime",
+   "text": "How long a battery lasts with chosen loads.",
+   "link": "/templates/backuptime/",
+   "linkLabel": "Open Backuptime"
+  },
+  "r_tariffsteps": {
+   "result": "Tariffsteps",
+   "text": "A stepped price, block by block.",
+   "link": "/templates/tariffsteps/",
+   "linkLabel": "Open Tariffsteps"
+  },
+  "r_meterreading": {
+   "result": "Meterreading",
+   "text": "Readings into use per day, and a month ahead.",
+   "link": "/templates/meterreading/",
+   "linkLabel": "Open Meterreading"
+  },
+  "r_payback": {
+   "result": "Payback",
+   "text": "When monthly savings pay back an up-front cost.",
+   "link": "/templates/payback/",
+   "linkLabel": "Open Payback"
   }
  }
 };

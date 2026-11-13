@@ -34,8 +34,8 @@ if (!failures.length) pass(catalog.templates.length + ' templates agree across c
 // 2. pages
 const PAGES = [
   { url: '/', name: 'library', check: async p => {
-      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 32, null, { timeout: 8000 });
-      return '32 live templates mounted';
+      await p.waitForFunction(() => document.querySelectorAll('[data-di-template]').length === 33, null, { timeout: 8000 });
+      return '33 live templates mounted';
   } },
   { url: '/templates/tilemap/', name: 'tilemap', check: async p => {
       if (await p.locator('.ds-hot').count() !== 15) throw new Error('expected 15 tiles');
@@ -1162,6 +1162,50 @@ const PAGES = [
       await p.fill('[data-serve]', '19:00'); await p.dispatchEvent('[data-serve]', 'change');
       if (!/^To serve at 7:00 pm, start with chop vegetables at 5:50 pm\./.test(await n())) throw new Error('new time wrong: ' + await n());
       return 'start times worked back, clashes in words, new serving time';
+  } },
+  { url: '/templates/appliancecost/', name: 'appliancecost', check: async p => {
+      const n = () => p.textContent('.ek-note');
+      if (!/^These 8 things use 4\.4 kWh a day, about \$53 a month at \$0\.40 a kWh\. Biggest: fridge, 41% of the total\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.uncheck('[data-on="0"]');
+      if (!/^These 7 things use 2\.6 kWh a day, .* Biggest: water pump, 29% of the total\. An hour less of it each day saves \$9\.00 a month\./.test(await n())) throw new Error('switch off wrong: ' + await n());
+      await p.fill('[data-h="6"]', '3');
+      if (!/use 4\.1 kWh a day, .* water pump, 55%/.test(await n())) throw new Error('hours wrong: ' + await n());
+      return 'cost a month and biggest user in words, switch off, change hours';
+  } },
+  { url: '/templates/solarday/', name: 'solarday', check: async p => {
+      const n = () => p.textContent('.ek-note');
+      if (!/^On a clear 21 Dec in Suva, the panels make about 18\.7 kWh and the home uses 12\.8 kWh\. Solar covers 43% of the use; 71%/.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.$eval('.ek-range input', i => { i.value = 171; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/^On a clear 21 Jun in Suva, the panels make about 10\.9 kWh .* Solar covers 33%/.test(await n())) throw new Error('winter wrong: ' + await n());
+      return 'made, used and covered worked out from the sun, another day';
+  } },
+  { url: '/templates/backuptime/', name: 'backuptime', check: async p => {
+      const n = () => p.textContent('.ek-note');
+      if (!/lasts about 22 h 51 min running lights, fridge and phone chargers\. Without the fridge it would last 72 h 44 min\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.click('[data-l="6"]');
+      if (!/lasts about 4 h 34 min running .* and water pump/.test(await n()) || !/875 W/.test(await p.textContent('.ek-big'))) throw new Error('load wrong: ' + await n());
+      return 'hours left in words, without the biggest load, add a load';
+  } },
+  { url: '/templates/tariffsteps/', name: 'tariffsteps', check: async p => {
+      const n = () => p.textContent('.ek-note');
+      if (!/^160 kWh costs \$49\.75 including \$5\.00 fixed: 75 kWh × \$0\.20 \+ 85 kWh × \$0\.35\. The next 10 kWh would cost \$3\.50\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.$eval('.ek-range input', i => { i.value = 250; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/^250 kWh costs \$86\.25 .* \+ 50 kWh × \$0\.45\./.test(await n())) throw new Error('third block wrong: ' + await n());
+      return 'cost block by block in words, into the top block';
+  } },
+  { url: '/templates/meterreading/', name: 'meterreading', check: async p => {
+      const n = () => p.textContent('.ek-note');
+      if (!/^From 1 Aug to 31 Oct: 1118 kWh, 12\.3 a day on average\. Highest: 20 Sep to 27 Sep \(14\.1 a day\)\. At the latest rate a month is about 376 kWh, or \$150\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.focus('svg [data-k="4"]'); await p.keyboard.press('Enter');
+      if (!/^6 Sep to 20 Sep: 183 kWh in 14 days, 13\.1 a day \(\$5\.23 a day\)\./.test(await n())) throw new Error('period wrong: ' + await n());
+      return 'use per day across uneven gaps, a month ahead, a period by key';
+  } },
+  { url: '/templates/payback/', name: 'payback', check: async p => {
+      const n = () => p.textContent('.ek-note');
+      if (!/paid back after 51 months, then \$3,790 ahead by year 10\./.test(await n())) throw new Error('summary wrong: ' + await n());
+      await p.$eval('[data-s]', i => { i.value = 15; i.dispatchEvent(new Event('input', { bubbles: true })); });
+      if (!/not paid back within 10 years\./.test(await n())) throw new Error('slider wrong: ' + await n());
+      return 'payback month and ahead in words, too small a saving';
   } },
   { url: '/templates/lanternfield/', name: 'lanternfield', check: async p => {
       await p.evaluate(() => { localStorage.clear(); window.lanternfield.open('pumping'); });

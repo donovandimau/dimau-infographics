@@ -102,6 +102,7 @@
       <a href="/#weather">Weather</a>
       <a href="/#sport">Sport</a>
       <a href="/#food">Food</a>
+      <a href="/#energy">Energy</a>
       <a href="/#cards">Cards</a>
     </nav>
   </div>
@@ -546,6 +547,22 @@
     </ul>
   </section>
 
+  <section class="panel family" id="energy" aria-labelledby="energy-h">
+    <div class="family-head">
+      <div><p class="eyebrow">Energy · power at home and in the community</p><h2 id="energy-h">Energy</h2>
+      <p class="lede">What appliances cost to run, solar through the day, backup batteries, stepped prices, meter readings and paying back.</p></div>
+    </div>
+    <div class="stage-mini di-theme" id="pv-appliancecost"></div>
+    <ul class="family-list">
+      <li><a href="/templates/appliancecost/"><b>Appliancecost</b><span>What each appliance costs to run.</span></a></li>
+      <li><a href="/templates/solarday/"><b>Solarday</b><span>Solar output against use, hour by hour.</span></a></li>
+      <li><a href="/templates/backuptime/"><b>Backuptime</b><span>How long a battery lasts.</span></a></li>
+      <li><a href="/templates/tariffsteps/"><b>Tariffsteps</b><span>A stepped price, block by block.</span></a></li>
+      <li><a href="/templates/meterreading/"><b>Meterreading</b><span>Meter readings into use per day.</span></a></li>
+      <li><a href="/templates/payback/"><b>Payback</b><span>When savings pay back a cost.</span></a></li>
+    </ul>
+  </section>
+
   <section class="panel family" id="cards" aria-labelledby="cards-h">
     <div class="family-head">
       <div><p class="eyebrow">Signal cards · value slots with defaults</p><h2 id="cards-h">Cards</h2>
@@ -602,6 +619,7 @@
 <script src="/templates/uvday/sample-data.js"></script>
 <script src="/templates/scoreworm/sample-data.js"></script>
 <script src="/templates/recipescale/sample-data.js"></script>
+<script src="/templates/appliancecost/sample-data.js"></script>
 <script src="/v1/dimau-infographics.js"></script>
 <script>
 (function () {
@@ -633,6 +651,7 @@
   D.mount('#pv-uvday', { template: 'uvday', data: window.UVDAY_DATA });
   D.mount('#pv-scoreworm', { template: 'scoreworm', data: window.SCOREWORM_DATA });
   D.mount('#pv-recipescale', { template: 'recipescale', data: window.RECIPESCALE_DATA });
+  D.mount('#pv-appliancecost', { template: 'appliancecost', data: window.APPLIANCECOST_DATA });
   D.mount('#pv-rankrace', { template: 'rankrace', data: window.RANKRACE_DATA, options: { top: 6, rowH: 32 } });
   D.mount('#pv-swimlane', { template: 'swimlane', data: window.TIMELINE_FIJI, options: { view: [1780, 2030] } });
   [['#pv-c1', 'rbf-sandbox-settlement-flow'], ['#pv-c2', 'sota-kece-community-pulse'], ['#pv-c3', 'pacific-backhaul-node-map'], ['#pv-c4', 'debt-freedom-trajectory']].forEach(function (c) {
