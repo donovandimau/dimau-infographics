@@ -1,0 +1,22 @@
+/* analyse styles (Dimau Infographics). Generated from STYLE in v1/analyse.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="du-style"; the loader does it for them. */
+.du{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.du) button{font:inherit;color:inherit}
+.du :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.du svg{display:block;width:100%}
+.du svg [data-k]{cursor:pointer}
+.du svg [data-k]:focus{outline:none}
+.du svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:3}
+.du-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.du-bar .du-lab{font-size:13px;font-weight:700;color:var(--di-muted,#4f6578);margin-right:2px}
+.du-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.du-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.du-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.du-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.du-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.du-range{display:grid;gap:4px;margin:0 0 10px;font-size:13.5px;font-weight:700}
+.du-range input{width:100%;accent-color:var(--di-accent,#0b6fa4);height:26px;margin:0}
+.du-play{display:flex;gap:10px;align-items:center;margin:0 0 10px}
+.du-play .du-range{flex:1;margin:0}
+.du-bub{transition:transform .55s ease}
+@media (prefers-reduced-motion:reduce){.du-bub{transition:none}}

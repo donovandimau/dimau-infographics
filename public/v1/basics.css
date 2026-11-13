@@ -1,0 +1,22 @@
+/* basics styles (Dimau Infographics). Generated from STYLE in v1/basics.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="db-style"; the loader does it for them. */
+.db{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.db) button{font:inherit;color:inherit}
+.db :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.db svg{display:block;width:100%}
+.db svg [data-k]{cursor:pointer}
+.db svg [data-k]:focus{outline:none}
+.db svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.db-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.db-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.db-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.db-keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.db-key{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:700;cursor:pointer}
+.db-key i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.db-key[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+.db-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.db-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
+.db-table th,.db-table td{border-bottom:1px solid var(--di-line,#c9dce8);padding:6px 8px;text-align:right;white-space:nowrap}
+.db-table th:first-child,.db-table td:first-child{text-align:left;white-space:normal}
+.db-table thead th{font-size:12px;color:var(--di-muted,#4f6578)}
+.db-twrap{overflow-x:auto}

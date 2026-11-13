@@ -1,0 +1,31 @@
+/* weather styles (Dimau Infographics). Generated from STYLE in v1/weather.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dh-style"; the loader does it for them. */
+.dh{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dh) button{font:inherit;color:inherit}
+.dh :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dh svg{display:block;width:100%;touch-action:pan-y}
+.dh svg.dh-plot{cursor:crosshair}
+.dh-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.dh-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer;min-height:36px}
+.dh-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dh-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dh-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.dh-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.dh-range{display:grid;gap:4px;margin:0 0 10px;font-size:13.5px;font-weight:700;flex:1 1 220px}
+.dh-range input{width:100%;accent-color:var(--di-accent,#0b6fa4);height:26px;margin:0}
+.dh-warn{color:#c2563a;font-weight:800}
+.dh-fc{display:grid;gap:6px}
+.dh-day{display:grid;grid-template-columns:2.7em 28px 3.4em 2.2em minmax(40px,1fr) 2.4em;gap:7px;align-items:center;width:100%;text-align:left;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:10px;padding:7px 10px;cursor:pointer;font-size:14px}
+.dh-fc.wide .dh-day{gap:10px;grid-template-columns:7em 30px 7.5em 2.8em minmax(60px,1fr) 2.8em 6.5em}
+.dh-day[aria-pressed="true"]{border-color:var(--di-accent,#0b6fa4);box-shadow:0 0 0 2px var(--di-accent,#0b6fa4) inset}
+.dh-day b{font-weight:800}
+.dh-day svg{width:30px;height:30px}
+.dh-rain{display:grid;gap:3px;font-size:12px;font-weight:700;color:var(--di-muted,#4f6578)}
+.dh-rain s{display:block;height:5px;border-radius:3px;background:var(--di-line,#c9dce8);overflow:hidden;text-decoration:none}
+.dh-rain s i{display:block;height:100%;background:#2f7fd1;border-radius:3px}
+.dh-lo{color:var(--di-muted,#4f6578);text-align:right;font-weight:700}
+.dh-hi{font-weight:800}
+.dh-rng{position:relative;height:8px;border-radius:4px;background:var(--di-bg,#eef7fb)}
+.dh-rng i{position:absolute;top:0;bottom:0;border-radius:4px}
+.dh-wind{font-size:12px;color:var(--di-muted,#4f6578)}
+.dh-chips{display:flex;flex-wrap:wrap;gap:6px}

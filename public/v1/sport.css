@@ -1,0 +1,26 @@
+/* sport styles (Dimau Infographics). Generated from STYLE in v1/sport.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="da-style"; the loader does it for them. */
+.da{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.da) button{font:inherit;color:inherit}
+.da :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.da svg{display:block;width:100%;touch-action:pan-y}
+.da svg [data-k]{cursor:pointer}
+.da svg [data-k]:focus{outline:none}
+.da svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.da svg.da-plot{cursor:crosshair}
+.da-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.da-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer;min-height:36px}
+.da-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.da-btn i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.da-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.da-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.da-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.da-board{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:0 0 10px}
+.da-board div{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:800}
+.da-board div b{font-size:26px;font-variant-numeric:tabular-nums}
+.da-board span{font-size:12.5px;color:var(--di-muted,#4f6578);font-weight:700;text-align:center}
+.da-list{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.da-list li{display:grid;grid-template-columns:2.4em 1fr auto;gap:10px;align-items:center;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:6px 10px;font-size:14px}
+.da-list li b{font-variant-numeric:tabular-nums}
+.da-list li small{color:var(--di-muted,#4f6578)}
+.da-warn{color:#c2563a;font-weight:800}

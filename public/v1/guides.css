@@ -1,0 +1,59 @@
+/* guides styles (Dimau Infographics). Generated from STYLE in v1/guides.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dg-style"; the loader does it for them. */
+.dg{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dg) button{font:inherit;color:inherit}
+.dg :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dg svg{display:block;width:100%}
+.dg svg [data-k]{cursor:pointer}
+.dg svg [data-k]:focus{outline:none}
+.dg svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.dg-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.dg-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 13px;font-size:13.5px;font-weight:700;cursor:pointer}
+.dg-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dg-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dg-small{font-size:12.5px;color:var(--di-muted,#4f6578)}
+.ws-grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
+.ws-grid.narrow{grid-template-columns:1fr}
+.ws-w{display:grid;gap:10px}
+.ws-w label{display:grid;gap:2px;font-size:13.5px;font-weight:700}
+.ws-w label span{display:flex;justify-content:space-between}
+.ws-w output{font:700 12px/1.4 var(--di-mono,ui-monospace,monospace);color:var(--di-accent,#0b6fa4)}
+.ws-w input{width:100%;accent-color:var(--di-accent,#0b6fa4);height:26px;margin:0}
+.ws-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ws-row{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 12px;display:grid;gap:6px;transition:transform .35s}
+.ws-row.first{border-color:var(--di-accent,#0b6fa4);box-shadow:0 0 0 1px var(--di-accent,#0b6fa4) inset}
+.ws-row header{display:flex;justify-content:space-between;gap:8px;font-weight:800}
+.ws-row header span{font:700 12.5px/1.4 var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#4f6578)}
+.ws-track{display:flex;height:12px;border-radius:99px;overflow:hidden;background:var(--di-line,#c9dce8)}
+.ws-track i{display:block;height:100%}
+@media (prefers-reduced-motion:reduce){.ws-row{transition:none}}
+.lv-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.lv-item{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 12px;text-align:left;width:100%;cursor:pointer}
+.lv-item.done{background:var(--di-bg,#eef7fb)}
+.lv-item.now{border-color:var(--di-accent,#0b6fa4);box-shadow:0 0 0 2px var(--di-accent,#0b6fa4) inset}
+.lv-badge{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;border:2px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff)}
+.lv-item.done .lv-badge,.lv-item.now .lv-badge{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.lv-item b{font-size:15px}
+.lv-need{font:700 12px/1.3 var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#4f6578);text-align:right}
+.lv-meter{grid-column:2/4;height:8px;border-radius:99px;background:var(--di-line,#c9dce8);overflow:hidden}
+.lv-meter i{display:block;height:100%;background:var(--di-accent,#0b6fa4)}
+.lv-perk{grid-column:2/4;font-size:13px;line-height:1.45;color:var(--di-fg,#13263a)}
+.lv-perk[hidden]{display:none}
+.oc-list,.oc-list ul{list-style:none;margin:0;padding:0}
+.oc-list ul{margin-left:14px;padding-left:12px;border-left:1.5px solid var(--di-line,#c9dce8)}
+.oc-li{display:flex;gap:8px;align-items:baseline;width:100%;text-align:left;border:0;background:none;padding:6px 8px;border-radius:8px;cursor:pointer}
+.oc-li[aria-pressed="true"]{background:var(--di-bg,#eef7fb)}
+.oc-li small{color:var(--di-muted,#4f6578)}
+.gl-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.gl-tools input{flex:1;min-width:180px;height:38px;border-radius:9px;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);padding:0 12px;font:inherit;font-size:14px;color:inherit}
+.gl-az{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:12px}
+.gl-az button{min-width:30px;height:30px;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:7px;font:700 12.5px/1 var(--di-mono,ui-monospace,monospace);cursor:pointer}
+.gl-az button:disabled{opacity:.3;cursor:default}
+.gl-letter{font:800 13px/1 var(--di-mono,ui-monospace,monospace);color:var(--di-accent,#0b6fa4);margin:14px 0 6px;letter-spacing:.06em}
+.gl-term{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:12px;padding:10px 14px;margin-bottom:8px;scroll-margin-top:90px}
+.gl-term.hl{border-color:var(--di-accent,#0b6fa4);box-shadow:0 0 0 2px var(--di-accent,#0b6fa4) inset}
+.gl-term h5{margin:0 0 4px;font-size:15.5px}
+.gl-term p{margin:0;font-size:14px;line-height:1.55}
+.gl-see{margin-top:6px;font-size:12.5px;color:var(--di-muted,#4f6578)}
+.gl-see button{border:0;background:none;padding:0 2px;color:var(--di-accent,#0b6fa4);font-weight:700;cursor:pointer;text-decoration:underline}
+.gl-term mark{background:color-mix(in srgb,var(--di-accent,#0b6fa4) 22%,transparent);border-radius:3px;color:inherit}

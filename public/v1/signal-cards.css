@@ -1,0 +1,12 @@
+/* signal-cards styles (Dimau Infographics). Generated from STYLE in v1/signal-cards.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="sc-style"; the loader does it for them. */
+.sc{position:relative;width:100%;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif}
+.sc-stage svg{display:block;width:100%;height:auto;border-radius:16px}
+.sc-hot{cursor:pointer;outline:none}
+.sc-hot:focus-visible>*:first-child{stroke:currentColor;stroke-width:2.5}
+.sc-hot:hover{filter:brightness(1.12)}
+.sc-tip{position:absolute;z-index:5;max-width:260px;padding:9px 12px;border-radius:10px;font:500 13px/1.4 Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;pointer-events:none;box-shadow:0 10px 28px rgba(0,0,0,.3)}
+.sc-tip b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+@keyframes sc-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sc-anim .sc-in{animation:sc-rise .55s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion:reduce){.sc-anim .sc-in{animation:none}}

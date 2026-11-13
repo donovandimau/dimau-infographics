@@ -1,0 +1,42 @@
+/* strata styles (Dimau Infographics). Generated from STYLE in v1/strata.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="st-style"; the loader does it for them. */
+.st{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#18202b);display:grid;grid-template-columns:150px minmax(0,1fr) minmax(200px,280px);gap:16px;align-items:start}
+.st-gauge{display:grid;gap:8px;position:sticky;top:8px}
+.st-gauge h4,.st-info h4{margin:0;font:600 10.5px/1.2 var(--di-font,system-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--di-muted,#5a6574)}
+.st-depth{font:500 11.5px/1.3 var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#5a6574)}
+.st-crumbs{display:grid;gap:3px;margin:0;padding:0;list-style:none}
+.st-crumbs button{width:100%;text-align:left;border:0;cursor:pointer;padding:6px 8px;border-radius:6px;font:500 12.5px/1.25 var(--di-font,system-ui);color:var(--di-fg,#18202b);
+ background:color-mix(in srgb,var(--c,var(--di-line,#cfd6de)) 22%,var(--di-surface,#fff));display:grid;gap:1px}
+.st-crumbs button small{font:11px var(--di-mono,ui-monospace,monospace);color:var(--di-muted,#5a6574)}
+.st-crumbs button:hover{background:color-mix(in srgb,var(--c,var(--di-line,#cfd6de)) 38%,var(--di-surface,#fff))}
+.st-crumbs li.cur button{box-shadow:inset 0 0 0 1.5px var(--di-fg,#18202b);cursor:default}
+.st-core-wrap{position:relative;min-width:0}
+.st-core{display:flex;flex-direction:column;gap:3px;height:var(--st-h,440px);border-radius:12px;padding:3px;background:var(--di-line,#cfd6de);
+ transition:clip-path .45s cubic-bezier(.3,.7,.2,1)}
+.st-band{all:unset;box-sizing:border-box;position:relative;flex:var(--v) 1 0;min-height:34px;border-radius:8px;padding:6px 12px 12px;cursor:pointer;display:flex;align-items:center;gap:10px;
+ background:color-mix(in srgb,var(--c) 26%,var(--di-surface,#fff));color:var(--di-fg,#18202b);overflow:hidden;transition:background .15s}
+.st-band:hover,.st-band.on{background:color-mix(in srgb,var(--c) 40%,var(--di-surface,#fff))}
+.st-band:focus-visible{outline:2px solid var(--di-accent,#2f7fd1);outline-offset:1px}
+.st-band .t{font:600 14px/1.2 var(--di-display,inherit);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.st-band .n{font:500 12px/1 var(--di-mono,ui-monospace,monospace);font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--di-muted,#5a6574)}
+.st-band .n b{color:var(--di-fg,#18202b);font-weight:600}
+.st-band .go{font:600 15px/1 var(--di-mono,ui-monospace,monospace);opacity:.55}
+.st-xray{position:absolute;left:8px;right:8px;bottom:5px;height:4px;display:flex;gap:2px;transition:height .2s}
+.st-xray i{flex:var(--v) 1 0;background:var(--c);border-radius:2px;opacity:.85}
+.st-xray i:nth-child(even){opacity:.5}
+.st-band:hover .st-xray,.st-band.on .st-xray{height:8px}
+.st-info{display:grid;gap:8px;padding:14px 16px;border-radius:12px;background:var(--di-surface,#fff);box-shadow:0 0 0 1px var(--di-line,#cfd6de)}
+.st-info h3{margin:0;font:700 19px/1.2 var(--di-display,inherit);text-wrap:balance}
+.st-info p{margin:0;font-size:13.5px;line-height:1.5}
+.st-stats{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:2px 0 0;font-size:13px}
+.st-stats dt{color:var(--di-muted,#5a6574)}
+.st-stats dd{margin:0;font:600 13px/1.35 var(--di-font,system-ui);font-variant-numeric:tabular-nums;text-align:right}
+.st-meter{height:6px;border-radius:3px;background:var(--di-line,#cfd6de);overflow:hidden}
+.st-meter i{display:block;height:100%;background:var(--c,var(--di-accent,#2f7fd1))}
+.st-btn{justify-self:start;height:32px;padding:0 12px;border-radius:8px;border:1px solid var(--di-line,#cfd6de);background:var(--di-surface,#fff);cursor:pointer;font:600 13px var(--di-font,system-ui);color:var(--di-fg,#18202b)}
+.st-btn:hover{border-color:var(--di-accent,#2f7fd1)}
+.st-src{font-size:11.5px;color:var(--di-muted,#5a6574)}
+@keyframes st-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.st-core.fresh .st-band{animation:st-in .35s both}
+@media (max-width:900px){.st{grid-template-columns:minmax(0,1fr)}.st-gauge{position:static}.st-crumbs{display:flex;flex-wrap:wrap;gap:4px}.st-crumbs button{width:auto}}
+@media (prefers-reduced-motion:reduce){.st-core{transition:none}.st-core.fresh .st-band{animation:none}}

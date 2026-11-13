@@ -1,0 +1,42 @@
+/* words styles (Dimau Infographics). Generated from STYLE in v1/words.js by scripts/build-css.cjs — do not edit by hand.
+ * Apps with a strict style policy link this file with id="dr-style"; the loader does it for them. */
+.dr{font-family:var(--di-font,system-ui,sans-serif);color:var(--di-fg,#13263a);position:relative}
+:where(.dr) button{font:inherit;color:inherit}
+.dr :focus-visible{outline:2px solid var(--di-accent,#0b6fa4);outline-offset:2px}
+.dr svg{display:block;width:100%}
+.dr svg [data-k]{cursor:pointer}
+.dr svg [data-k]:focus{outline:none}
+.dr svg [data-k]:focus-visible>*:first-child{stroke:var(--di-fg,#13263a);stroke-width:2.5}
+.dr-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.dr-bar input[type=search],.dr-bar input[type=text]{flex:1;min-width:150px;height:38px;border-radius:9px;border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);padding:0 12px;font:inherit;font-size:14px;color:inherit}
+.dr-btn{border:1px solid var(--di-line,#c9dce8);background:var(--di-surface,#fff);border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.dr-btn[aria-pressed="true"]{background:var(--di-accent,#0b6fa4);border-color:var(--di-accent,#0b6fa4);color:var(--di-surface,#fff)}
+.dr-btn:disabled{opacity:.45;cursor:default}
+.dr-note{font-size:14px;line-height:1.55;margin:10px 0 0;min-height:1.5em}
+.dr-quotes{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.dr-quotes li{font-size:13.5px;line-height:1.5;background:var(--di-surface,#fff);border:1px solid var(--di-line,#c9dce8);border-radius:9px;padding:8px 10px}
+.dr-quotes li small{display:block;color:var(--di-muted,#4f6578);font-size:12px;margin-top:2px}
+.dr mark{background:color-mix(in srgb,var(--di-accent,#0b6fa4) 22%,transparent);color:inherit;border-radius:3px;padding:0 2px;font-weight:700}
+.td-text{font-size:15px;line-height:1.75;background:var(--di-surface,#fff);border:1px solid var(--di-line,#c9dce8);border-radius:12px;padding:14px 16px}
+.td-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.td-cols{grid-template-columns:1fr}}
+.td-cols h5{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--di-muted,#4f6578)}
+.td-text del{background:#f6d5cf;color:#8a2a17;text-decoration:line-through;border-radius:3px;padding:0 2px}
+.td-text ins{background:#cfeedd;color:#155c37;text-decoration:none;border-radius:3px;padding:0 2px;font-weight:600}
+.td-text .on{outline:2px solid var(--di-fg,#13263a);outline-offset:1px}
+.rs-box{width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--di-line,#c9dce8);border-radius:12px;background:var(--di-surface,#fff);padding:12px 14px;font:inherit;font-size:15px;line-height:1.6;color:inherit;resize:vertical}
+.rs-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:12px 0}
+.rs-stats div{background:var(--di-surface,#fff);border:1px solid var(--di-line,#c9dce8);border-radius:10px;padding:8px 10px}
+.rs-stats b{display:block;font-size:20px}
+.rs-stats span{font-size:12px;color:var(--di-muted,#4f6578)}
+.rs-long{margin:6px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55}
+.kl-wrap{overflow-x:auto;border:1px solid var(--di-line,#c9dce8);border-radius:12px;background:var(--di-surface,#fff)}
+.kl{display:grid;font-size:13.5px;min-width:0}
+.kl button{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);width:100%;border:0;background:none;padding:0;text-align:inherit;cursor:pointer}
+.kl span{padding:6px 8px;border-bottom:1px solid var(--di-line,#c9dce8);white-space:nowrap;overflow:hidden}
+.kl .l{text-align:right;direction:rtl;text-overflow:ellipsis}
+.kl .l bdi{direction:ltr}
+.kl .k{font-weight:800;color:var(--di-accent,#0b6fa4)}
+.kl .r{text-overflow:ellipsis}
+.kl button:hover span,.kl button:focus-visible span{background:color-mix(in srgb,var(--di-accent,#0b6fa4) 8%,transparent)}
+.kl button[aria-pressed="true"] span{background:color-mix(in srgb,var(--di-accent,#0b6fa4) 16%,transparent)}
