@@ -9,6 +9,7 @@ Added TRACKER.md merge=union while preserving other Git attributes. Git attribut
 > Work that applies to **every** project (shared rules, rollouts, new-project checklist) lives on the main board: `donovandimau/Dimau-Ops-Room` → `ALL-PROJECTS.md`.
 
 ## Project
+- 2026-11-14 — claude — Security: closed Dependabot fflate alert (unzipSync infinite loop on bad ZIP64, moderate) by overriding fflate 0.7.3 → 0.7.5 (pulled in by satori → @shuding/opentype.js). npm audit 0; render tests pass. Also turned on secret scanning + push protection for this public repo.
 - Ops Room card: `platform-dimau-infographics` (created 11 Nov 2026)
 - Code: https://github.com/donovandimau/dimau-infographics
 - Live: https://dimau-infographics.vercel.app/ (Vercel project `dimau-infographics`, team donovandimau-3468s-projects; every merge to `main` deploys)

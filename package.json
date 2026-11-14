@@ -35,5 +35,8 @@
   },
   "engines": {
     "node": "24.x"
+  },
+  "overrides": {
+    "fflate": "0.7.5"
   }
 }
