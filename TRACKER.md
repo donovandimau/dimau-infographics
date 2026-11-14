@@ -1,3 +1,7 @@
+## 2026-11-14 — TRACKER merge prevention
+
+Added TRACKER.md merge=union while preserving other Git attributes. Git attribute resolution and a real concurrent-log merge pass. Application behavior is unchanged. Publication is tracked in this PR and Ops.
+
 # TRACKER — dimau-infographics
 
 > **Every AI: read this whole file before you start any work on this project, and update it before you finish — in the same commit as your work.**
@@ -31,7 +35,6 @@
 ## In progress — claim a task here BEFORE you start it
 | Started | AI | Task | Branch / PR |
 |---|---|---|---|
-| 2026-11-14 | Codex | TRACKER merge conflict prevention | agent/codex/tracker-merge-prevention-dimau-infographics/1 |
 | — | — | nothing claimed | — |
 
 ## Do not change
