@@ -206,25 +206,19 @@
     'weather.js': 'dh-style',
     'words.js': 'dr-style'
   };
-  var VERSION = '1.28.0';
+  var VERSION = '1.28.1';
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/[^/]*(\?.*)?$/, '') : '/v1/';
   var loading = {};
   var strict = null;
 
-  /** True when the page's Content-Security-Policy blocks inline styles (no 'unsafe-inline' in style-src).
-   *  Set window.DIMAU_STRICT_STYLES = true or false before loading this script to skip the check. */
+  /** Styles always go in as linked .css files plus CSSOM copies of style="" text. That works under any
+   *  Content-Security-Policy and needs no probe: the old probe wrote an inline style attribute, which a
+   *  strict policy reports as a violation in the console of every app that loads this script.
+   *  Set window.DIMAU_STRICT_STYLES = false before loading this script to let template files inject inline <style>. */
   function strictStyles() {
     if (strict !== null) return strict;
-    if (typeof root.DIMAU_STRICT_STYLES === 'boolean') return (strict = root.DIMAU_STRICT_STYLES);
-    strict = false;
-    try {
-      var d = document.createElement('div'); d.innerHTML = '<i style="display:none"></i>';
-      (document.body || document.documentElement).appendChild(d);
-      strict = getComputedStyle(d.firstChild).display !== 'none';
-      d.parentNode.removeChild(d);
-    } catch (e) { strict = false; }
-    return strict;
+    return (strict = root.DIMAU_STRICT_STYLES !== false);
   }
 
   function loadCss(file) {
@@ -233,7 +227,9 @@
     return new Promise(function (resolve) {
       var l = document.createElement('link');
       l.id = id; l.rel = 'stylesheet'; l.href = base + file.replace(/\.js$/, '.css');
-      l.onload = l.onerror = function () { resolve(); };
+      l.onload = function () { resolve(); };
+      // if the stylesheet cannot load, drop the link so the template file falls back to its own <style>
+      l.onerror = function () { if (l.parentNode) l.parentNode.removeChild(l); resolve(); };
       document.head.appendChild(l);
     });
   }
