@@ -88,3 +88,5 @@ Added TRACKER.md merge=union while preserving other Git attributes. Git attribut
 _Seeded 2026-11-11 from the Ops Room. From here on, this file is the record for this project._
 
 - 2026-11-13 — Claude — Switched links to sister apps from *.vercel.app to their dimau-fintech.com addresses (security rules keep both).
+
+- 2026-11-21 — Claude — **Library served from Cloudflare** (Donovan: "yes do it" after the 21 Nov analytics report showed infographics.dimau-fintech.com answering 402 since the Vercel account was switched off, breaking dimau-infographics.js on Vanua OS and others). New `wrangler.jsonc` (Worker `dimau-infographics`, static assets from `public/`, no build step) and `public/_headers` (same CORS and cache rules as vercel.json for /v1/* and /catalog.json, nosniff, referrer policy). Cloudflare Workers Builds deploys on every merge to main; infographics.dimau-fintech.com/* is routed to the Worker. Not on Cloudflare: the Next.js studio and the render API (/api/*, resvg is native) — apps only load the static /v1 library.

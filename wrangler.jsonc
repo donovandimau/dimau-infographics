@@ -1,0 +1,8 @@
+{
+  // Static copy of the public template library (public/), served by Cloudflare
+  // so apps keep loading /v1/* after the Vercel account was switched off.
+  // The Next.js studio and render API (/api/*) are not on this Worker.
+  "name": "dimau-infographics",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./public", "not_found_handling": "none" }
+}
