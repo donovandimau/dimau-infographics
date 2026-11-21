@@ -15,6 +15,8 @@ A template earns a place here when it handles a shape of information the library
 
 ## Steps
 
+Adding a whole family? Follow `.claude/skills/add-template-family/SKILL.md`: `scripts/new-family.py` does steps 3–5's wiring from one spec file, and `scripts/shots.cjs` takes the desktop and phone screenshots.
+
 1. Build `v1/<id>.js` to the contract above.
 2. Add sample data at `templates/<id>/sample-data.js`. Say in the first line whether it is real (with source and date) or illustrative.
 3. Add a demo page at `templates/<id>/index.html`. Copy an existing one; the "Use it in an app" panel fills itself from `catalog.json`.

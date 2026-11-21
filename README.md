@@ -290,6 +290,9 @@ templates/<id>/              demo page + sample data for each template
 index.html, site.css         the library site
 tests/smoke.cjs              headless browser checks for every page and template
 scripts/build-css.cjs        writes v1/<file>.css from each family's STYLE (strict style policies)
+scripts/new-family.py        wires a new template family in (pages, catalog, loader, React, nav, css)
+scripts/shots.cjs            desktop and phone screenshots of demo pages
+.claude/skills/              how-to skills for AI sessions: adding a family, shipping and recording a change
 docs/ADDING-A-TEMPLATE.md    how to add a template
 ```
 
