@@ -37,7 +37,7 @@ Database: run `supabase/migrations/001_infographics_fiji.sql`, then `supabase/se
 
 # Dimau Infographics v1 library
 
-Live: https://dimau-infographics.vercel.app/
+Live: https://infographics.dimau-fintech.com/ (the public library in `public/`, served by the Cloudflare Worker `dimau-infographics`; see `wrangler.jsonc`)
 
 The central library of interactive infographic templates for every Dimau app. Each app loads one shared script, picks the template that fits the shape of its information, and supplies its own data and colours. Nothing is copied into app repos, so a fix here reaches every app.
 
@@ -205,7 +205,7 @@ Not sure which template fits? Answer the questions in Pathfinder on the library 
 
 ```html
 <div id="explore" style="min-height:480px"></div>
-<script src="https://dimau-infographics.vercel.app/v1/dimau-infographics.js"></script>
+<script src="https://infographics.dimau-fintech.com/v1/dimau-infographics.js"></script>
 <script>
   DimauInfographics.mount('#explore', {
     template: 'tidepool',          // any id in catalog.json, e.g. strata, swimlane, debt-freedom-trajectory

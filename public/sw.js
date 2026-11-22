@@ -22,7 +22,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.NetworkFirst({ cacheName: APP + '-library', networkTimeoutSeconds: 4 })
 );
 workbox.routing.registerRoute(
-  ({ url }) => /fijian-assistant-api\.vercel\.app|cdn\.jsdelivr\.net|unpkg\.com|fonts\.(googleapis|gstatic)\.com/.test(url.hostname),
+  ({ url }) => /volau\.dimau-fintech\.com|cdn\.jsdelivr\.net|unpkg\.com|fonts\.(googleapis|gstatic)\.com/.test(url.hostname),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: APP + '-libs',
     plugins: [new workbox.expiration.ExpirationPlugin({ maxEntries: 40, maxAgeSeconds: 30 * 24 * 3600 }), new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0, 200] })]
