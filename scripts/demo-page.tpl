@@ -54,6 +54,6 @@
 }})();
 </script>
 <script src="/dimau-pwa.js" data-sw="/sw.js" defer></script>
-<script src="https://fijian-assistant-api.vercel.app/dimau-consistency.js" defer></script>
+<script src="https://volau.dimau-fintech.com/dimau-consistency.js" defer></script>
 </body>
 </html>
