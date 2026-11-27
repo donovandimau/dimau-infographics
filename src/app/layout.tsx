@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import './globals.css';
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <main className="flex-1 flex flex-col">{children}</main>
         <footer className="px-4 py-3 text-center text-[10px] text-crisp/35">Infographics Fiji · Dimau Ventures Ltd</footer>
+        <Script src="/dimau-share.js" strategy="afterInteractive" />
       </body>
     </html>
   );
