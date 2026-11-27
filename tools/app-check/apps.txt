@@ -1,0 +1,43 @@
+# Every live public Dimau app checked weekly at phone size. One address per line.
+# Add "menu-share" after an address whose Share button lives inside its menu; "private" for owner-only tools (no share/install needed).
+dimau-fintech.com
+galala.dimau-fintech.com
+lavo.dimau-fintech.com
+planner.dimau-fintech.com
+ratings.dimau-fintech.com menu-share
+volau.dimau-fintech.com
+sala.dimau-fintech.com
+mataka.dimau-fintech.com menu-share
+visuals.dimau-fintech.com
+fijihistory.com menu-share
+3d.fijimap.com menu-share
+bulascore.dimau-fintech.com menu-share
+solifiji.com
+navolavola.dimau-fintech.com
+mydebtcalculator.app menu-share
+fhtbcalculator.co.uk menu-share
+myfiji.dimau-fintech.com/id/ menu-share
+vanua.dimau-fintech.com
+ops.dimau-fintech.com private
+lessons.dimau-fintech.com
+teitei.dimau-fintech.com
+reels.dimau-fintech.com private
+pitch.dimau-fintech.com
+corpus.dimau-fintech.com
+infographics.dimau-fintech.com
+group.dimau-fintech.com
+digital.dimau-fintech.com
+sere.dimau-fintech.com
+sema.dimau-fintech.com
+marketing.dimau-fintech.com
+studios-app.dimau-fintech.com
+command.dimau-fintech.com private
+navigate.dimau-fintech.com menu-share
+market.dimau-fintech.com
+grow.dimau-fintech.com
+tap.dimau-fintech.com
+studio.dimau-fintech.com
+freight.dimau-fintech.com
+analytics.dimau-fintech.com
+lawa.dimau-fintech.com
+raica.dimau-fintech.com
